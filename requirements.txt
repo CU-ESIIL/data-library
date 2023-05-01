@@ -1,0 +1,33 @@
+bump2version
+coverage
+flake8
+grip
+ipykernel
+livereload
+nbconvert==6.5
+pip
+sphinx
+tox
+twine
+watchdog
+wheel
+mkdocs-git-revision-date-plugin 
+mkdocs-jupyter 
+mkdocs-material 
+mkdocs-pdf-export-plugin
+mkdocstrings 
+mkdocstrings-crystal
+mkdocstrings-python-legacy
+
+# Requirements for core
+jinja2>=3.0
+markdown>=3.2
+mkdocs>=1.4.2
+mkdocs-material-extensions>=1.1
+pygments>=2.14
+pymdown-extensions>=9.9.1
+
+# Requirements for plugins
+colorama>=0.4
+regex>=2022.4.24
+requests>=2.26
