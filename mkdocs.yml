@@ -1,11 +1,11 @@
 site_name: 'ESIIL Data Library'
 site_description: 'Data for May 2023 ESIIL Innovation Summit'
 site_author: 'ESIIL Education'
-site_url: https://cu-esiil.github.io/data_library
+site_url: https://cu-esiil.github.io/data-library
 
 # Repository
-repo_name: data_library
-repo_url: https://github.com/cu-esiil/data_library
+repo_name: data-library
+repo_url: https://github.com/cu-esiil/data-library
 edit_uri: edit/main/docs/
 # Copyright
 copyright: 'Copyright &copy; 2023 University of Colorado Boulder'
