@@ -14,7 +14,7 @@ copyright: 'Copyright &copy; 2023 University of Colorado Boulder'
 nav:
   - Home: index.md
   - USA Government data:
-    - Government/US Census.md
+    - Government/US_Census.md
 
 
 # Configuration

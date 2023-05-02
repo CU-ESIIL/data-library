@@ -3,7 +3,7 @@ title: "US Census"
 format: gfm
 ---
 
-```{r}
+```{r, cache=TRUE}
 # example code for downloading poverty measures from the American Community
 # Survey through tidycensus and visualizing them through maps
 
