@@ -1,0 +1,79 @@
+---
+title: "AIANNH"
+format: gfm
+---
+# American Indian and Alaska Native Areas (AIANNH)
+
+In this example, we'll download and analyze the American Indian and Alaska Native Areas (AIANNH) TIGER/Line Shapefile from the U.S. Census Bureau. We'll download the data for the year 2020, and analyze the number of AIANNH per congressional district
+
+R:
+In R, we'll use the 'sf' and 'dplyr' packages to read and process the Shapefile data.
+
+R code:
+
+```{r, cache=TRUE}
+# Install and load necessary libraries
+library(sf)
+library(dplyr)
+library(knitr)
+
+# Download historic redlining data for Philadelphia
+url <- "https://www2.census.gov/geo/tiger/TIGER2020/AIANNH/tl_2020_us_aiannh.zip"
+temp_file <- tempfile(fileext = ".zip")
+download.file(url, temp_file, mode = "wb")
+unzip(temp_file, exdir = tempdir())
+
+# Read the Shapefile
+shapefile_path <- file.path(tempdir(), "tl_2020_us_aiannh.shp")
+aiannh <- read_sf(shapefile_path)
+
+# Count the number of AIANNH per congressional district
+state_counts <- aiannh %>%
+  group_by(LSAD) %>%
+  summarize(count = n())
+
+kable(state_counts[order(-state_counts$count),])
+```
+
+
+Python:
+In Python, we'll use the 'geopandas' library to read and process the Shapefile data.
+
+Python code:
+
+```{python, cache=TRUE}
+import geopandas as gpd
+import pandas as pd
+import requests
+import zipfile
+import os
+from io import BytesIO
+
+# Download historic redlining data for Philadelphia
+url = "https://www2.census.gov/geo/tiger/TIGER2020/AIANNH/tl_2020_us_aiannh.zip"
+response = requests.get(url)
+zip_file = zipfile.ZipFile(BytesIO(response.content))
+
+# Extract Shapefile
+temp_dir = "temp"
+if not os.path.exists(temp_dir):
+    os.makedirs(temp_dir)
+
+zip_file.extractall(path=temp_dir)
+shapefile_path = os.path.join(temp_dir, "tl_2020_us_aiannh.shp")
+
+# Read the Shapefile
+aiannh = gpd.read_file(shapefile_path)
+
+# Count the number of AIANNH per congressional district
+state_counts = aiannh.groupby("LSAD").size().reset_index(name="count")
+
+# Sort by descending count
+state_counts_sorted = state_counts.sort_values(by="count", ascending=False)
+
+print(state_counts_sorted)
+```
+
+
+In conclusion, both R and Python offer efficient ways to download and process AIANNH TIGER/Line Shapefile data from the U.S. Census Bureau. The 'sf' package in R provides a simple way to read and manipulate spatial data, while the 'geopandas' library in Python offers similar functionality. The 'dplyr' package in R can be used for data manipulation and analysis, and Python's built-in functions like value_counts() can be used for aggregating data. Depending on your preferred programming language and environment, both options can be effective for working with AIANNH data.
+
