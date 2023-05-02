@@ -48,6 +48,7 @@ theme:
   favicon: 'assets/favicon.ico'
 # setting features for the navigation tab
   features:
+    - navigation.sections
     - navigation.instant
     - navigation.tracking
     - navigation.tabs
