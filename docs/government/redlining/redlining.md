@@ -1,6 +1,17 @@
 Historic Redlining
 ================
 
+## Richmond example
+
+The Census Home Owners’ Loan Corporation (HOLC) dataset, available on
+GitHub, is a valuable resource containing historical data about the
+process of redlining in the United States. Redlining is a discriminatory
+practice that involves denying loans or insurance to people living in
+specific neighborhoods, often based on race or ethnicity. The dataset
+provides details on the HOLC risk classifications, neighborhood
+boundaries, and descriptions for over 200 cities across the United
+States from the 1930s.
+
 Historic redlining data refers to data from the Home Owners’ Loan
 Corporation (HOLC) that created residential security maps in the 1930s,
 which contributed to racial segregation and disinvestment in minority
@@ -159,3 +170,77 @@ and Python’s built-in functions like value_counts() can be used for
 aggregating data. Depending on your preferred programming language and
 environment, both options can be effective for working with historic
 redlining data.
+
+## Per census track
+
+Downloading and plotting the dataset in R:
+
+R code:
+
+``` r
+# Load libraries
+library(sf)
+library(ggplot2)
+
+# Download the dataset
+url <- "https://raw.githubusercontent.com/americanpanorama/Census_HOLC_Research/main/2020_Census_Tracts/Tracts_2020_HOLC.geojson"
+holc_data <- st_read(url)
+```
+
+    Reading layer `Tracts_2020_HOLC' from data source 
+      `https://raw.githubusercontent.com/americanpanorama/Census_HOLC_Research/main/2020_Census_Tracts/Tracts_2020_HOLC.geojson' 
+      using driver `GeoJSON'
+    Simple feature collection with 42074 features and 9 fields
+    Geometry type: MULTIPOLYGON
+    Dimension:     XY
+    Bounding box:  xmin: -122.7675 ymin: 25.70537 xmax: -70.94938 ymax: 47.72251
+    Geodetic CRS:  WGS 84
+
+``` r
+kable(head(holc_data))
+```
+
+| OBJECTID | GISJOIN        | neighborho |  SUM_Perc | FIRST_holc_grade | MAX_state | MAX_city   | Shape_Length | Shape_Area | geometry                     |
+|---------:|:---------------|-----------:|----------:|:-----------------|:----------|:-----------|-------------:|-----------:|:-----------------------------|
+|        1 | G0100730000100 |        180 | 0.0929688 | D                | AL        | Birmingham |     3336.386 |   709582.0 | MULTIPOLYGON (((-86.71213 3… |
+|        2 | G0100730000100 |        181 | 0.1616926 | D                | AL        | Birmingham |     7731.381 |  1234059.9 | MULTIPOLYGON (((-86.72188 3… |
+|        3 | G0100730000100 |        182 | 0.1703257 | D                | AL        | Birmingham |     6111.241 |  1300062.3 | MULTIPOLYGON (((-86.72644 3… |
+|        4 | G0100730000100 |        185 | 0.2582595 | C                | AL        | Birmingham |     7905.510 |  1971178.6 | MULTIPOLYGON (((-86.71611 3… |
+|        5 | G0100730000100 |        187 | 0.0419889 | B                | AL        | Birmingham |     3422.128 |   320481.6 | MULTIPOLYGON (((-86.70262 3… |
+|        6 | G0100730000300 |        182 | 0.8398497 | D                | AL        | Birmingham |     6759.741 |  1745630.8 | MULTIPOLYGON (((-86.73525 3… |
+
+``` r
+# Plot the data
+ggplot() +
+  geom_sf(data = holc_data) +
+  theme_minimal() +
+  ggtitle("2020 Census Tracts with HOLC Data")
+```
+
+![](redlining_files/figure-gfm/unnamed-chunk-3-1.png)
+
+Downloading and plotting the dataset in Python:
+
+Python code:
+
+``` python
+# Import libraries
+import geopandas as gpd
+
+# Download the dataset
+url = "https://raw.githubusercontent.com/americanpanorama/Census_HOLC_Research/main/2020_Census_Tracts/Tracts_2020_HOLC.geojson"
+holc_data = gpd.read_file(url)
+
+# Display the data as a table
+print(holc_data)
+
+# Plot the data
+holc_data.plot()
+plot.title("2020 Census Tracts with HOLC Data")
+plot.show()
+```
+
+In both R and Python, the code downloads the dataset, reads the
+Shapefile, and plots the data using ggplot2 in R and geopandas in
+Python. Make sure to install the necessary packages before running the
+code.

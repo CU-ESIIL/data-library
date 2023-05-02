@@ -74,7 +74,7 @@ library(ggplot2)
 url <- "https://raw.githubusercontent.com/americanpanorama/Census_HOLC_Research/main/2020_Census_Tracts/Tracts_2020_HOLC.geojson"
 holc_data <- st_read(url)
 
-kable(holc_data)
+kable(head(holc_data))
 # Plot the data
 ggplot() +
   geom_sf(data = holc_data) +
@@ -87,7 +87,7 @@ Downloading and plotting the dataset in Python:
 
 Python code:
 
-```{python, cache=TRUE}
+```{python, cache=TRUE, eval=FALSE}
 # Import libraries
 import geopandas as gpd
 
@@ -100,8 +100,8 @@ print(holc_data)
 
 # Plot the data
 holc_data.plot()
-plt.title("2020 Census Tracts with HOLC Data")
-plt.show()
+plot.title("2020 Census Tracts with HOLC Data")
+plot.show()
 
 ```
 
