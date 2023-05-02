@@ -1,4 +1,4 @@
-FDIC Failed Bank
+FDIC Failed Banks
 ================
 
 The FDIC Failed Bank List dataset from data.gov provides a list of banks

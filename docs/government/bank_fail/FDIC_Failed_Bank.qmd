@@ -1,5 +1,5 @@
 ---
-title: "FDIC Failed Bank"
+title: "FDIC Failed Banks"
 format: gfm
 ---
 
