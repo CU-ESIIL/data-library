@@ -1,4 +1,4 @@
-American Indian and Alaska Native Areas (AIANNH)
+American Indian and Alaska Native Areas
 ================
 
 The National American Indian/Alaska Native/Native Hawaiian (AIANNH)
