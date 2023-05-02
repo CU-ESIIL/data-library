@@ -10,7 +10,7 @@ Here is the code in R and Python to download and wrangle this dataset:
 
 R code:
 
-```{r, cache=TRUE}
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
 library(dplyr)
 # Define dataset URL
 data <- read.csv("https://www.fdic.gov/resources/resolutions/bank-failures/failed-bank-list/banklist.csv", check.names = F)

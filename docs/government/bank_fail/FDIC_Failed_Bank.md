@@ -15,20 +15,6 @@ R code:
 
 ``` r
 library(dplyr)
-```
-
-
-    Attaching package: 'dplyr'
-
-    The following objects are masked from 'package:stats':
-
-        filter, lag
-
-    The following objects are masked from 'package:base':
-
-        intersect, setdiff, setequal, union
-
-``` r
 # Define dataset URL
 data <- read.csv("https://www.fdic.gov/resources/resolutions/bank-failures/failed-bank-list/banklist.csv", check.names = F)
 
