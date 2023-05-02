@@ -27,7 +27,7 @@ grade_counts <- philly_geojson %>%
   group_by(holc_grade) %>%
   summarize(count = n())
 
-kable(grade_counts)
+kable(philly_geojson)
 plot(grade_counts)
 ```
 
