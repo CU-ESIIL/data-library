@@ -1,6 +1,102 @@
 US Census
 ================
 
+## Get data
+
+Retrieving USA census data in R, R Tidy, and Python can be done using
+different packages and libraries. Here are some working examples in code
+for each language:
+
+R:
+
+To retrieve census data in R, we can use the tidycensus package. Here’s
+an example of how to retrieve the total population for the state of
+California:
+
+R code:
+
+``` r
+library(tidycensus)
+library(tidyverse)
+
+# Set your Census API key
+census_api_key("your_api_key")
+
+# Get the total population for the state of California
+ca_pop <- get_acs(
+  geography = "state",
+  variables = "B01003_001",
+  state = "CA"
+) %>% 
+  rename(total_population = estimate) %>% 
+  select(total_population)
+
+# View the result
+ca_pop
+```
+
+R Tidy:
+
+To retrieve census data in R Tidy, we can also use the tidycensus
+package. Here’s an example of how to retrieve the total population for
+the state of California using pipes and dplyr functions:
+
+R tidy code:
+
+``` r
+library(tidycensus)
+library(tidyverse)
+
+# Set your Census API key
+census_api_key("your_api_key")
+
+# Get the total population for the state of California
+ca_pop <- get_acs(
+  geography = "state",
+  variables = "B01003_001",
+  state = "CA"
+) %>% 
+  rename(total_population = estimate) %>% 
+  select(total_population)
+
+# View the result
+ca_pop
+```
+
+Python:
+
+To retrieve census data in Python, we can use the census library. Here’s
+an example of how to retrieve the total population for the state of
+California:
+
+Python code:
+
+``` python
+from census import Census
+from us import states
+import pandas as pd
+
+# Set your Census API key
+c = Census("your_api_key")
+
+# Get the total population for the state of California
+ca_pop = c.acs5.state(("B01003_001"), states.CA.fips, year=2019)
+
+# Convert the result to a Pandas DataFrame
+ca_pop_df = pd.DataFrame(ca_pop)
+
+# Rename the column
+ca_pop_df = ca_pop_df.rename(columns={"B01003_001E": "total_population"})
+
+# Select only the total population column
+ca_pop_df = ca_pop_df[["total_population"]]
+
+# View the result
+ca_pop_df
+```
+
+## Public health example
+
 ``` r
 # example code for downloading poverty measures from the American Community
 # Survey through tidycensus and visualizing them through maps
@@ -77,11 +173,45 @@ poverty <- get_acs(
       |                                                                            
       |============                                                          |  17%
       |                                                                            
-      |============                                                          |  18%
-      |                                                                            
       |=============                                                         |  18%
       |                                                                            
+      |==============                                                        |  20%
+      |                                                                            
+      |===============                                                       |  21%
+      |                                                                            
+      |===============                                                       |  22%
+      |                                                                            
+      |================                                                      |  22%
+      |                                                                            
+      |================                                                      |  23%
+      |                                                                            
+      |=================                                                     |  24%
+      |                                                                            
+      |==================                                                    |  25%
+      |                                                                            
+      |==================                                                    |  26%
+      |                                                                            
+      |===================                                                   |  26%
+      |                                                                            
+      |===================                                                   |  27%
+      |                                                                            
+      |====================                                                  |  28%
+      |                                                                            
+      |====================                                                  |  29%
+      |                                                                            
+      |=====================                                                 |  29%
+      |                                                                            
+      |=====================                                                 |  30%
+      |                                                                            
+      |=====================                                                 |  31%
+      |                                                                            
+      |======================                                                |  31%
+      |                                                                            
+      |======================                                                |  32%
+      |                                                                            
       |=======================                                               |  33%
+      |                                                                            
+      |=======================                                               |  34%
       |                                                                            
       |========================                                              |  34%
       |                                                                            
@@ -89,13 +219,9 @@ poverty <- get_acs(
       |                                                                            
       |=========================                                             |  35%
       |                                                                            
-      |=========================                                             |  36%
-      |                                                                            
       |==========================                                            |  37%
       |                                                                            
       |==========================                                            |  38%
-      |                                                                            
-      |===========================                                           |  38%
       |                                                                            
       |===========================                                           |  39%
       |                                                                            
@@ -103,19 +229,27 @@ poverty <- get_acs(
       |                                                                            
       |=============================                                         |  41%
       |                                                                            
+      |=============================                                         |  42%
+      |                                                                            
       |==============================                                        |  42%
       |                                                                            
       |==============================                                        |  43%
       |                                                                            
       |===============================                                       |  44%
       |                                                                            
+      |================================                                      |  45%
+      |                                                                            
       |================================                                      |  46%
       |                                                                            
       |=================================                                     |  47%
       |                                                                            
-      |==================================                                    |  48%
-      |                                                                            
       |==================================                                    |  49%
+      |                                                                            
+      |===================================                                   |  50%
+      |                                                                            
+      |===================================                                   |  51%
+      |                                                                            
+      |====================================                                  |  51%
       |                                                                            
       |====================================                                  |  52%
       |                                                                            
@@ -123,7 +257,29 @@ poverty <- get_acs(
       |                                                                            
       |======================================                                |  54%
       |                                                                            
+      |======================================                                |  55%
+      |                                                                            
+      |=======================================                               |  55%
+      |                                                                            
+      |=======================================                               |  56%
+      |                                                                            
+      |========================================                              |  57%
+      |                                                                            
+      |========================================                              |  58%
+      |                                                                            
       |=========================================                             |  58%
+      |                                                                            
+      |=========================================                             |  59%
+      |                                                                            
+      |==========================================                            |  60%
+      |                                                                            
+      |===========================================                           |  61%
+      |                                                                            
+      |============================================                          |  62%
+      |                                                                            
+      |============================================                          |  63%
+      |                                                                            
+      |=============================================                         |  64%
       |                                                                            
       |==============================================                        |  65%
       |                                                                            
@@ -131,27 +287,23 @@ poverty <- get_acs(
       |                                                                            
       |===============================================                       |  67%
       |                                                                            
-      |=================================================                     |  70%
+      |=================================================                     |  69%
       |                                                                            
       |=================================================                     |  71%
       |                                                                            
+      |==================================================                    |  72%
+      |                                                                            
       |===================================================                   |  73%
+      |                                                                            
+      |====================================================                  |  74%
       |                                                                            
       |=====================================================                 |  75%
       |                                                                            
       |=====================================================                 |  76%
       |                                                                            
-      |========================================================              |  80%
+      |=======================================================               |  78%
       |                                                                            
-      |=========================================================             |  81%
-      |                                                                            
-      |============================================================          |  86%
-      |                                                                            
-      |=============================================================         |  87%
-      |                                                                            
-      |===============================================================       |  91%
-      |                                                                            
-      |================================================================      |  91%
+      |========================================================              |  79%
       |                                                                            
       |=================================================================     |  93%
       |                                                                            
@@ -159,7 +311,11 @@ poverty <- get_acs(
       |                                                                            
       |==================================================================    |  95%
       |                                                                            
+      |===================================================================   |  96%
+      |                                                                            
       |===================================================================== |  98%
+      |                                                                            
+      |===================================================================== |  99%
       |                                                                            
       |======================================================================| 100%
 
@@ -211,7 +367,7 @@ ggplot(poverty, aes(fill = proportion_in_poverty)) +
           subtitle = "Based on American Community Survey 2015-2019 Estimates")
 ```
 
-![](US_Census_files/figure-gfm/unnamed-chunk-1-1.png)
+![](US_Census_files/figure-gfm/unnamed-chunk-4-1.png)
 
 ``` r
 # visualize the denominator counts -- 
@@ -227,4 +383,4 @@ ggplot(poverty, aes(fill = estimate_total_pop_for_poverty_estimates)) +
           "Based on American Community Survey 2015-2019 Estimates"))
 ```
 
-![](US_Census_files/figure-gfm/unnamed-chunk-1-2.png)
+![](US_Census_files/figure-gfm/unnamed-chunk-4-2.png)

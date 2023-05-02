@@ -1,7 +1,5 @@
-AIANNH
+American Indian and Alaska Native Areas (AIANNH)
 ================
-
-# American Indian and Alaska Native Areas (AIANNH)
 
 The National American Indian/Alaska Native/Native Hawaiian (AIANNH)
 Areas Shapefile encompasses the following legal entities: federally

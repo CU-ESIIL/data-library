@@ -3,6 +3,97 @@ title: "US Census"
 format: gfm
 ---
 
+## Get data
+
+Retrieving USA census data in R, R Tidy, and Python can be done using different packages and libraries. Here are some working examples in code for each language:
+
+R:
+
+To retrieve census data in R, we can use the tidycensus package. Here's an example of how to retrieve the total population for the state of California:
+
+R code:
+
+```{r, cache=TRUE, eval=FALSE}
+library(tidycensus)
+library(tidyverse)
+
+# Set your Census API key
+census_api_key("your_api_key")
+
+# Get the total population for the state of California
+ca_pop <- get_acs(
+  geography = "state",
+  variables = "B01003_001",
+  state = "CA"
+) %>% 
+  rename(total_population = estimate) %>% 
+  select(total_population)
+
+# View the result
+ca_pop
+```
+
+
+R Tidy:
+
+To retrieve census data in R Tidy, we can also use the tidycensus package. Here's an example of how to retrieve the total population for the state of California using pipes and dplyr functions:
+
+R tidy code:
+
+```{r, cache=TRUE, eval=FALSE}
+library(tidycensus)
+library(tidyverse)
+
+# Set your Census API key
+census_api_key("your_api_key")
+
+# Get the total population for the state of California
+ca_pop <- get_acs(
+  geography = "state",
+  variables = "B01003_001",
+  state = "CA"
+) %>% 
+  rename(total_population = estimate) %>% 
+  select(total_population)
+
+# View the result
+ca_pop
+```
+
+
+Python:
+
+To retrieve census data in Python, we can use the census library. Here's an example of how to retrieve the total population for the state of California:
+
+Python code:
+
+```{python, cache=TRUE, eval=FALSE}
+from census import Census
+from us import states
+import pandas as pd
+
+# Set your Census API key
+c = Census("your_api_key")
+
+# Get the total population for the state of California
+ca_pop = c.acs5.state(("B01003_001"), states.CA.fips, year=2019)
+
+# Convert the result to a Pandas DataFrame
+ca_pop_df = pd.DataFrame(ca_pop)
+
+# Rename the column
+ca_pop_df = ca_pop_df.rename(columns={"B01003_001E": "total_population"})
+
+# Select only the total population column
+ca_pop_df = ca_pop_df[["total_population"]]
+
+# View the result
+ca_pop_df
+```
+
+
+## Public health example
+
 ```{r, cache=TRUE, warning=FALSE, message=FALSE}
 # example code for downloading poverty measures from the American Community
 # Survey through tidycensus and visualizing them through maps

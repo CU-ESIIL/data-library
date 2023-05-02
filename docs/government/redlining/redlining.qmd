@@ -1,9 +1,8 @@
 ---
-title: "Redlining"
+title: "Historic Redlining"
 format: gfm
 ---
-# Historic Redlining
-
+ 
 Historic redlining data refers to data from the Home Owners' Loan Corporation (HOLC) that created residential security maps in the 1930s, which contributed to racial segregation and disinvestment in minority neighborhoods. One popular source for this data is the Mapping Inequality project (https://dsl.richmond.edu/panorama/redlining/).
 
 In this example, we'll download historic redlining data for Philadelphia in the form of a GeoJSON file and analyze the data in R and Python.

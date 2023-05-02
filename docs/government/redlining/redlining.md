@@ -1,7 +1,5 @@
-Redlining
+Historic Redlining
 ================
-
-# Historic Redlining
 
 Historic redlining data refers to data from the Home Owners’ Loan
 Corporation (HOLC) that created residential security maps in the 1930s,
