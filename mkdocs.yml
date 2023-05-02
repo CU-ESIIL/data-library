@@ -16,6 +16,7 @@ nav:
   - USA Government data:
       - US Census: government/census/US_Census.md
       - FDIC Failed Banks: government/bank_fail/FDIC_Failed_Bank.md
+      - National Atlas of Indian Lands in USA: government/national_atlas_of_indian_lands/National_atlas_of_indian_lands.md
 
 
 # Configuration
