@@ -2,7 +2,7 @@
 title: "American Indian and Alaska Native Areas"
 format: gfm
 ---
- 
+
 The National American Indian/Alaska Native/Native Hawaiian (AIANNH) Areas Shapefile encompasses the following legal entities: federally recognized American Indian reservations, off-reservation trust lands, Alaska Native regional corporations, and Native Hawaiian homelands. This comprehensive dataset offers valuable information on the geographic boundaries, demographic data, and cultural aspects of these distinct communities throughout the United States.
 
 R:
@@ -72,7 +72,6 @@ state_counts_sorted = state_counts.sort_values(by="count", ascending=False)
 
 print(state_counts_sorted)
 ```
-
 
 In conclusion, both R and Python offer efficient ways to download and process AIANNH TIGER/Line Shapefile data from the U.S. Census Bureau. The 'sf' package in R provides a simple way to read and manipulate spatial data, while the 'geopandas' library in Python offers similar functionality. The 'dplyr' package in R can be used for data manipulation and analysis, and Python's built-in functions like value_counts() can be used for aggregating data. Depending on your preferred programming language and environment, both options can be effective for working with AIANNH data.
 
