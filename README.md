@@ -12,3 +12,6 @@ downloading and working with each dataset. For more advanced users, we
 also provide extensive tutorials and vignettes tailored to individual
 datasets. Explore our vast collection and tap into the potential of
 environmental data for your research today!
+
+Click on this link to go to our data library website:
+https://cu-esiil.github.io/data-library/
