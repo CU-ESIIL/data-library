@@ -3,10 +3,13 @@ AIANNH
 
 # American Indian and Alaska Native Areas (AIANNH)
 
-In this example, we’ll download and analyze the American Indian and
-Alaska Native Areas (AIANNH) TIGER/Line Shapefile from the U.S. Census
-Bureau. We’ll download the data for the year 2020, and analyze the
-number of AIANNH per congressional district
+The National American Indian/Alaska Native/Native Hawaiian (AIANNH)
+Areas Shapefile encompasses the following legal entities: federally
+recognized American Indian reservations, off-reservation trust lands,
+Alaska Native regional corporations, and Native Hawaiian homelands. This
+comprehensive dataset offers valuable information on the geographic
+boundaries, demographic data, and cultural aspects of these distinct
+communities throughout the United States.
 
 R: In R, we’ll use the ‘sf’ and ‘dplyr’ packages to read and process the
 Shapefile data.
