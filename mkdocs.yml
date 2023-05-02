@@ -14,8 +14,8 @@ copyright: 'Copyright &copy; 2023 University of Colorado Boulder'
 nav:
   - Home: index.md
   - USA Government data:
-    - Government/US_Census.md
-    - Government/FDIC_Failed_Bank.md
+      - US Census: Government/US_Census.md
+      - FDIC Failed Bank: Government/FDIC_Failed_Bank.md
 
 
 # Configuration
