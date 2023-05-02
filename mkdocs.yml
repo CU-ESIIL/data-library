@@ -17,7 +17,7 @@ nav:
       - US Census: government/census/US_Census.md
       - FDIC Failed Banks: government/bank_fail/FDIC_Failed_Bank.md
       - National Atlas of Indian Lands in USA: government/national_atlas_of_indian_lands/National_atlas_of_indian_lands.md
-      - American Indian and Alaska Native Areas: government/aiannh/AIANNH.md
+      - Native Areas: government/aiannh/AIANNH.md
       - Redlining: government/redlining/redlining.md
 
 # Configuration
