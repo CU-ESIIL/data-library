@@ -1,7 +1,7 @@
 National Atlas: Indian lands in USA
 ================
 
-## National Atlas - Indian Lands of the United States dataset
+# National Atlas - Indian Lands of the United States dataset
 
 In this example, we will download and analyze the National Atlas -
 Indian Lands of the United States dataset in both R and Python. We will
