@@ -15,7 +15,7 @@ nav:
   - Home: index.md
   - USA Government data:
       - US Census: government/census/US_Census.md
-      - FDIC Failed Bank: government/bank_fail/FDIC_Failed_Bank.md
+      - FDIC Failed Banks: government/bank_fail/FDIC_Failed_Bank.md
 
 
 # Configuration
