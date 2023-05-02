@@ -13,6 +13,8 @@ copyright: 'Copyright &copy; 2023 University of Colorado Boulder'
 # Page tree
 nav:
   - Home: index.md
+  - USA Government data:
+    - Government/US Census.md
 
 
 # Configuration
