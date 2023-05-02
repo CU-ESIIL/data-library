@@ -13,13 +13,28 @@ copyright: 'Copyright &copy; 2023 University of Colorado Boulder'
 # Page tree
 nav:
   - Home: index.md
-  - USA Government data:
-      - US Census: government/census/US_Census.md
-      - FDIC Failed Banks: government/bank_fail/FDIC_Failed_Bank.md
+  - EDS in indian country:
       - National Atlas of Indian Lands in USA: government/national_atlas_of_indian_lands/National_atlas_of_indian_lands.md
       - American Indian and Alaska Native Areas: government/aiannh/AIANNH.md
-  - Non-governmental data:
+  - Solving water:
+  - Data librarianship:
+  - Cutting-edge remote sensing:
+  - Nature-based solutions and Human development:
+  - Extreme events and hazards:
+  - Spatial scale:
+  - Data ethics:
+  - Ecological forecasting:
+  - Data harmonization:
+  - Food supply:
+  - Social justice:
       - Redlining: nongovernment/redlining/redlining.md
+  - Data science in decision making and policy:
+      - US Census: government/census/US_Census.md
+      - FDIC Failed Banks: government/bank_fail/FDIC_Failed_Bank.md
+  - AI in environmental data science: 
+  - Math, modeling, statistics:
+  - EDS education:
+       
 
 # Configuration
 imgwidth: 70px;
