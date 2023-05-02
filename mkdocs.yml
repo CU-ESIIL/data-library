@@ -51,8 +51,6 @@ theme:
     - navigation.sections
     - navigation.instant
     - navigation.tracking
-    - navigation.tabs
-    - navigation.tabs.sticky
     - navigation.indexes
     - navigation.top
     - toc.integrate
