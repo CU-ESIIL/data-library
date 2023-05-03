@@ -1,5 +1,3 @@
-index
-================
 
 <figure>
 <img src="assets/pre-summit-training-header.png" width="1000"

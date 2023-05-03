@@ -1,5 +1,5 @@
 ---
-title: "index"
+title: ""
 format: gfm
 ---
 ![header](assets/pre-summit-training-header.png){width=1000}
