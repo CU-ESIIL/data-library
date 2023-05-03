@@ -3,7 +3,7 @@ ESIIL data library and vignette repository
 
 <figure>
 <img src="assets/pre-summit-training-header.png" width="1000"
-alt="header" />
+/>
 <figcaption aria-hidden="true">header</figcaption>
 </figure>
 
