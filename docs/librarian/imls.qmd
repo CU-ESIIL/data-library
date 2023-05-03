@@ -1,0 +1,80 @@
+---
+title: "Institute of Museum and Library Services (IMLS) Data Catalog"
+format: gfm
+---
+
+The Institute of Museum and Library Services (IMLS) Data Catalog provides datasets related to libraries, museums, and their services in the United States. One such dataset is the Public Libraries Survey (PLS) dataset, which includes information on library usage, staffing, budgets, and other aspects of library operations. The PLS dataset can be used to study the librarian profession and library practices across the country.
+
+Here's how to download the Public Libraries Survey dataset and create a plot using R and Python:
+
+R code:
+
+```{r, cache=TRUE}
+# Load required libraries
+library(tidyverse)
+library(readr)
+library(curl)
+
+# Download the dataset
+url <- "https://www.imls.gov/sites/default/files/2022-07/pls_fy2020_csv.zip"
+temp_file <- tempfile(fileext = ".zip")
+curl_download(url, temp_file)
+
+# Unzip the dataset
+temp_dir <- tempdir()
+unzip(temp_file, exdir = temp_dir)
+
+# Read the CSV file
+csv_file <- list.files(temp_dir, pattern = "*.csv", full.names = TRUE)
+data <- read_csv(csv_file[1]) # Corrected this line
+
+# Create a plot (example: number of libraries by state)
+state_counts <- data %>% count(STABR)
+ggplot(state_counts, aes(x = reorder(STABR, -n), y = n)) +
+  geom_bar(stat = "identity") +
+  theme_minimal() +
+  labs(title = "Number of Libraries by State",
+       x = "State",
+       y = "Number of Libraries") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+
+Python code:
+
+```{python, cache=TRUE, eval=FALSE, warnings=FALSE, messages=FALSE}
+import pandas as pd
+import requests
+import zipfile
+import io
+import os
+import matplotlib.pyplot as plt
+
+# Download the dataset
+url = "https://www.imls.gov/sites/default/files/2022-07/pls_fy2020_csv.zip"
+response = requests.get(url)
+temp_file = io.BytesIO(response.content)
+
+# Unzip the dataset
+with zipfile.ZipFile(temp_file, 'r') as zf:
+    zf.extractall()
+
+# Find the CSV file
+csv_file = [f for f in os.listdir() if f.endswith('.csv')][0]
+
+# Read the CSV file
+data = pd.read_csv(csv_file)
+
+# Create a plot (example: number of libraries by state)
+state_counts = data['STABR'].value_counts().sort_values(ascending=False)
+
+plt.figure(figsize=(12, 6))
+plt.bar(state_counts.index, state_counts.values)
+plt.xticks(rotation=45, ha='right')
+plt.title('Number of Libraries by State')
+plt.xlabel('State')
+plt.ylabel('Number of Libraries')
+plt.show()
+```
+
+Both the R and Python code above download the Public Libraries Survey dataset, convert it to a data frame, and create a bar plot of the total library staff by state. Note that the dataset provided by the IMLS Data Catalog API might have a limit on the number of records returned, so you may need to adjust the API request to retrieve a more extensive dataset.
