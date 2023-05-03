@@ -36,7 +36,8 @@ nav:
       - US Census: policy/census/US_Census.md
       - FDIC Failed Banks: policy/bank_fail/FDIC_Failed_Bank.md
   - AI in environmental data science: ai_environmental_data_science/PLACEHOLDER.md
-  - Math, modeling, statistics: math_modeling_statistics/PLACEHOLDER.md
+  - Math, modeling, statistics: 
+      - Everglades food network: math/foodweb/foodweb.md
   - EDS education: eds_education/PLACEHOLDER.md
 
 # Configuration

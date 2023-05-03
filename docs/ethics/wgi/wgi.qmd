@@ -1,5 +1,5 @@
 ---
-title: "governance indicators"
+title: "World Governance Indicators"
 format: gfm
 ---
 

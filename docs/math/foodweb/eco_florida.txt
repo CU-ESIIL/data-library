@@ -1,0 +1,9 @@
+<html>
+    <head>
+        <title>NetworkRepository.com - Graph Data Repository with Interactive Visual Analytics</title>
+        <meta http-equiv="Cache-Control" content="no-store" />
+        <meta http-equiv="refresh" content="0;url=http://networkrepository.com/"/>
+    </head>
+    <body>
+    </body>
+</html>

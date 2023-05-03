@@ -1,6 +1,0 @@
----
-title: "placeholder"
-format: gfm
----
-
-Placeholder
