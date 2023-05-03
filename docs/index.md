@@ -1,10 +1,6 @@
 ESIIL data library and vignette repository
 ================
 
-<img src="assets/pre-summit-training-header.png" width="1000" />
-
-<img src="assets/data_library.png" width="1000" />
-
 Welcome to the Environmental Data Science Innovation and Inclusion Lab
 (ESIIL) Data Library! As an NSF-funded national synthesis center, ESIIL
 is dedicated to fostering collaboration between biological and computer
@@ -15,6 +11,10 @@ and Python code snippets for downloading and working with each dataset.
 For more advanced users, we also offer comprehensive tutorials and
 vignettes tailored to individual datasets. Explore our rich collection
 and unlock the power of environmental data for your research today!
+
+<img src="assets/pre-summit-training-header.png" width="1000" />
+
+<img src="assets/data_library.png" width="1000" />
 
 ## Innovation Summit Environmental Data Science Questions
 
