@@ -37,7 +37,6 @@ nav:
   - Math, modeling, statistics: math_modeling_statistics/PLACEHOLDER.md
   - EDS education: eds_education/PLACEHOLDER.md
 
-
 # Configuration
 imgwidth: 70px;
 theme:
@@ -48,7 +47,7 @@ theme:
     code: 'Roboto Mono'
   logo: 'assets/ESIIL_logo.png'
   favicon: 'assets/favicon.ico'
-# setting features for the navigation tab
+  # setting features for the navigation tab
   features:
     - navigation.sections
     - navigation.instant
@@ -60,7 +59,6 @@ theme:
     - content.code.copy
   # Default values, taken from mkdocs_theme.yml
   language: en
-  # custom_dir: 'overrides'
   palette:
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: white)"
@@ -79,69 +77,12 @@ theme:
 # Options
 extra:
   social:
-#    - icon: fontawesome/brands/orcid
-#      link: 
     - icon: fontawesome/brands/github
       link: https://github.com/cu-esiil/
-#    - icon: fontawesome/brands/mastodon
-#      link: 
-#    - icon: fontawesome/brands/twitter
-#      link: 
-#    - icon: fontawesome/brands/linkedin
-#      link: 
-#    - icon: fontawesome/brands/youtube
-#      link: 
-#  analytics:
-#    provider: google
-#    property: G-NYETZFD8DN
-  
-# Extensions
-markdown_extensions:
-  - admonition
-  - abbr
-  - attr_list
-  - def_list
-  - footnotes
-  - meta
-  - md_in_html
-  - toc:
-      permalink: true
-  - pymdownx.arithmatex:
-      generic: true
-  - pymdownx.betterem:
-      smart_enable: all
-  - pymdownx.caret
-  - pymdownx.critic
-  - pymdownx.details
-  - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
-  - pymdownx.highlight
-  - pymdownx.inlinehilite
-  - pymdownx.keys
-  - pymdownx.magiclink:
-      repo_url_shorthand: true
-      user: squidfunk
-      repo: mkdocs-material
-  - pymdownx.mark
-  - pymdownx.smartsymbols
-  - pymdownx.superfences:
-      custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format
-  - pymdownx.tabbed
-  - pymdownx.tasklist:
-      custom_checkbox: true
-  - pymdownx.tilde
-
+      
 extra_css:
   - stylesheets/extra.css
- 
+
 plugins:
     - search
     - mkdocstrings
-    - git-revision-date
-    - mkdocs-jupyter:
-          include_source: True
-          ignore_h1_titles: True
