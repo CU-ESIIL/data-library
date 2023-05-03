@@ -39,7 +39,7 @@ nav:
   - AI in environmental data science: ai_environmental_data_science/PLACEHOLDER.md
   - Math, modeling, statistics: 
       - Everglades food network: math/foodweb/foodweb.md
-      - Mammal Primate association network: math/mammal_primate_association/mammal_primate_associations.qmd
+      - Mammal Primate association network: math/mammal_primate_association/mammal_primate_associations.md
   - EDS education: eds_education/PLACEHOLDER.md
 
 # Configuration
