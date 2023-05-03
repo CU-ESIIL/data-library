@@ -1,152 +1,80 @@
 USGS Water Services
 ================
 
+The United States Geological Survey (USGS) provides APIs for accessing
+real-time and historical water data, such as streamflow, groundwater
+levels, and water quality measurements. In this example, we will
+download the real-time streamflow data for a specific site and create a
+plot of the data.
+
+R Code:
+
 ``` r
-library(httr)
-library(jsonlite)
+# Load the required libraries
+library(dataRetrieval)
+library(ggplot2)
 
+# Define the USGS site number for a specific location
+site <- "06759500" # Changed to a different site number
 
-site <- "01594440"  # USGS site number for a specific location
-url <- paste0("https://waterservices.usgs.gov/nwis/iv/?format=json&sites=", site, "&parameterCd=00060&siteStatus=all")
+# Define the parameter code for streamflow
+parameterCd <- "00060"
 
-response <- GET(url)
+# Specify the start and end dates for data retrieval
+startDate <- "2023-01-01"
+endDate <- "2023-05-01"
 
-if (status_code(response) == 200) {
-  data <- fromJSON(content(response, "text", encoding = "UTF-8"))
-  kable(data)
+# Retrieve daily streamflow data for the specified site and date range
+data <- readNWISdv(siteNumbers = site, parameterCd = parameterCd, startDate = startDate, endDate = endDate)
+
+if (nrow(data) > 0) {
+  # Convert the data to a data frame
+  df <- data.frame(Date = as.Date(data$Date),
+                   Streamflow = data$X_00060_00003)
+  
+  # Plot the data
+  ggplot(df, aes(x = Date, y = Streamflow)) +
+    geom_line() +
+    theme_minimal() +
+    labs(title = "Streamflow Over Time",
+         x = "Date",
+         y = "Streamflow (cubic feet per second)")
 } else {
-  cat(paste("Error:", status_code(response)), "\n")
+  cat("No data available for the specified site and date range.\n")
 }
 ```
 
-    Warning in `[<-.data.frame`(`*tmp*`, , j, value = structure(list(siteName =
-    structure("PATUXENT RIVER NEAR BOWIE, MD", class = "AsIs"), : provided 14
-    variables to replace 1 variables
+![](usgs_water_services_files/figure-gfm/unnamed-chunk-2-1.png)
 
-    Warning in `[<-.data.frame`(`*tmp*`, , j, value = structure(list(variableCode =
-    structure("00060, NWIS, NWIS:UnitValues, 45807197, TRUE", class = "AsIs"), :
-    provided 10 variables to replace 1 variables
+``` python
+import hydrofunctions as hf
+import matplotlib.pyplot as plt
+import pandas as pd
 
-<table class="kable_wrapper">
-<tbody>
-<tr>
-<td>
+# Define the USGS site number for a specific location
+site = "06759500"
 
-| x                          |
-|:---------------------------|
-| ns1:timeSeriesResponseType |
+# Define the parameter code for streamflow
+parameterCd = "00060"
 
-</td>
-<td>
+# Specify the start and end dates for data retrieval
+startDate = "2023-01-01"
+endDate = "2023-05-01"
 
-| x                                         |
-|:------------------------------------------|
-| org.cuahsi.waterml.TimeSeriesResponseType |
+# Retrieve daily streamflow data for the specified site and date range
+data = hf.NWIS(site, parameterCd, start_date=startDate, end_date=endDate).get_data()
 
-</td>
-<td>
-
-| x                                       |
-|:----------------------------------------|
-| javax.xml.bind.JAXBElement\$GlobalScope |
-
-</td>
-<td>
-<table class="kable_wrapper">
-<tbody>
-<tr>
-<td>
-<table class="kable_wrapper">
-<tbody>
-<tr>
-<td>
-
-| x                                                                                                 |
-|:--------------------------------------------------------------------------------------------------|
-| http://waterservices.usgs.gov/nwis/iv/format=json&sites=01594440&parameterCd=00060&siteStatus=all |
-
-</td>
-<td>
-<table class="kable_wrapper">
-<tbody>
-<tr>
-<td>
-
-| x                |
-|:-----------------|
-| \[ALL:01594440\] |
-
-</td>
-<td>
-
-| x         |
-|:----------|
-| \[00060\] |
-
-</td>
-<td>
-<table class="kable_wrapper">
-<tbody>
-<tr>
-<td>
-</td>
-</tr>
-</tbody>
-</table>
-</td>
-</tr>
-</tbody>
-</table>
-</td>
-<td>
-
-| value                                                                                                                  | title            |
-|:-----------------------------------------------------------------------------------------------------------------------|:-----------------|
-| \[ALL:01594440\]                                                                                                       | filter:sites     |
-| \[mode=LATEST, modifiedSince=null\]                                                                                    | filter:timeRange |
-| methodIds=\[ALL\]                                                                                                      | filter:methodId  |
-| 2023-05-03T02:11:35.876Z                                                                                               | requestDT        |
-| d4ba2930-e957-11ed-af61-005056beda50                                                                                   | requestId        |
-| Provisional data are subject to revision. Go to http://waterdata.usgs.gov/nwis/help/?provisional for more information. | disclaimer       |
-| caas01                                                                                                                 | server           |
-
-</td>
-</tr>
-</tbody>
-</table>
-</td>
-<td>
-
-| sourceInfo                    | variable                                     | values                                                                                                              | name                      |
-|:------------------------------|:---------------------------------------------|:--------------------------------------------------------------------------------------------------------------------|:--------------------------|
-| PATUXENT RIVER NEAR BOWIE, MD | 00060, NWIS, NWIS:UnitValues, 45807197, TRUE | 340 , P , 2023-05-02T21:45:00.000-04:00 , P , Provisional data subject to revision., 0 , NWIS , uv_rmk_cd , , 69783 | USGS:01594440:00060:00000 |
-
-</td>
-</tr>
-</tbody>
-</table>
-</td>
-<td>
-
-| x     |
-|:------|
-| FALSE |
-
-</td>
-<td>
-
-| x    |
-|:-----|
-| TRUE |
-
-</td>
-<td>
-
-| x     |
-|:------|
-| FALSE |
-
-</td>
-</tr>
-</tbody>
-</table>
+if not data.empty:
+    # Convert the data to a data frame
+    df = pd.DataFrame({"Date": data.index, "Streamflow": data["X_00060_00003"]})
+    
+    # Plot the data
+    plt.plot(df["Date"], df["Streamflow"])
+    plt.title("Streamflow Over Time")
+    plt.xlabel("Date")
+    plt.ylabel("Streamflow (cubic feet per second)")
+    plt.tight_layout()
+    plt.show()
+else:
+    print("No data available for the specified site and date range.")
+```
