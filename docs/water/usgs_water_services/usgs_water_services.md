@@ -48,8 +48,8 @@ if (status_code(response) == 200) {
     1                                                                                                         [ALL:01594440]
     2                                                                                      [mode=LATEST, modifiedSince=null]
     3                                                                                                        methodIds=[ALL]
-    4                                                                                               2023-05-03T01:45:30.699Z
-    5                                                                                   2fcf1aa0-e954-11ed-a823-2cea7f5e5ede
+    4                                                                                               2023-05-03T02:07:26.793Z
+    5                                                                                   40431c80-e957-11ed-a823-2cea7f5e5ede
     6 Provisional data are subject to revision. Go to http://waterdata.usgs.gov/nwis/help/?provisional for more information.
     7                                                                                                                 sdas01
                  title
@@ -94,7 +94,7 @@ if (status_code(response) == 200) {
       variable.oid
     1     45807197
                                                                                                             values
-    1 344, P, 2023-05-02T20:45:00.000-04:00, P, Provisional data subject to revision., 0, NWIS, uv_rmk_cd, , 69783
+    1 340, P, 2023-05-02T21:45:00.000-04:00, P, Provisional data subject to revision., 0, NWIS, uv_rmk_cd, , 69783
                            name
     1 USGS:01594440:00060:00000
 
