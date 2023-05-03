@@ -1,4 +1,4 @@
-governance indicators
+World Governance Indicators
 ================
 
 The Worldwide Governance Indicators (WGI) dataset provides aggregate

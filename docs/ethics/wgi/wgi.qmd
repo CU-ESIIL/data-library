@@ -14,7 +14,7 @@ library(knitr)
 ```
 
 List of possible indicators
-```{r}
+```{r, cache=TRUE}
 library(httr)
 library(jsonlite)
 
