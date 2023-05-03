@@ -16,7 +16,8 @@ nav:
   - EDS in indian country:
       - National Atlas of Indian Lands in USA: indian_country/national_atlas_of_indian_lands/National_atlas_of_indian_lands.md
       - American Indian and Alaska Native Areas: indian_country/aiannh/AIANNH.md
-  - Solving water: solving_water/PLACEHOLDER.md
+  - Solving water: 
+      - USGS water services: water/usgs_water_services.md
   - Data librarianship: data_librarianship/PLACEHOLDER.md
   - Cutting-edge remote sensing: cutting_edge_remote_sensing/PLACEHOLDER.md
   - Nature-based solutions and Human development: nature_based_solutions_human_development/PLACEHOLDER.md

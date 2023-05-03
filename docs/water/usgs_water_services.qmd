@@ -1,0 +1,23 @@
+---
+title: "USGS Water Services "
+format: gfm
+---
+
+
+```{r}
+library(httr)
+library(jsonlite)
+
+site <- "01594440"  # USGS site number for a specific location
+url <- paste0("https://waterservices.usgs.gov/nwis/iv/?format=json&sites=", site, "&parameterCd=00060&siteStatus=all")
+
+response <- GET(url)
+
+if (status_code(response) == 200) {
+  data <- fromJSON(content(response, "text", encoding = "UTF-8"))
+  print(data)
+} else {
+  cat(paste("Error:", status_code(response)), "\n")
+}
+```
+
