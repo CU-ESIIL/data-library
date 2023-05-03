@@ -2,6 +2,7 @@ ESIIL data library and vignette repository
 ================
 
 <img src="assets/pre-summit-training-header.png" width="1000" />
+
 <img src="assets/data_library.png" width="1000" />
 
 Welcome to the Environmental Data Science Innovation and Inclusion Lab
