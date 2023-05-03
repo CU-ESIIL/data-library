@@ -25,7 +25,8 @@ nav:
   - Nature-based solutions and Human development: nature_based_solutions_human_development/PLACEHOLDER.md
   - Extreme events and hazards: extreme_events_hazards/PLACEHOLDER.md
   - Spatial scale: spatial_scale/PLACEHOLDER.md
-  - Data ethics: data_ethics/PLACEHOLDER.md
+  - Data ethics: 
+      - World Governance Indicators: ethics/wgi/wgi.md
   - Ecological forecasting: ecological_forecasting/PLACEHOLDER.md
   - Data harmonization: data_harmonization/PLACEHOLDER.md
   - Food supply: food_supply/PLACEHOLDER.md

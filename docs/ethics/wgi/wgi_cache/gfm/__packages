@@ -1,0 +1,13 @@
+knitr
+httr
+jsonlite
+ggplot2
+tidyverse
+tibble
+tidyr
+readr
+purrr
+dplyr
+stringr
+forcats
+lubridate

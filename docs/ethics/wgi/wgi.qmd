@@ -1,0 +1,157 @@
+---
+title: "governance indicators"
+format: gfm
+---
+
+The Worldwide Governance Indicators (WGI) dataset provides aggregate governance indicators for over 200 countries and territories for six dimensions of governance: voice and accountability, political stability, government effectiveness, regulatory quality, rule of law, and control of corruption. The dataset is updated annually and is available for download in various formats, including Excel and CSV.
+
+https://info.worldbank.org/governance/wgi/
+https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1682130
+
+R code: 
+```{r, cache=TRUE}
+library(knitr)
+```
+
+List of possible indicators
+```{r}
+library(httr)
+library(jsonlite)
+
+# Define the base URL and parameters
+base_url <- "https://api.worldbank.org/v2/indicators"
+format <- "json"
+per_page <- 1000
+
+# Create the full URL
+url <- paste0(base_url, "?format=", format, "&per_page=", per_page)
+
+# Make an API request
+response <- GET(url)
+
+# Check the status of the response
+if (http_status(response)$category == "Success") {
+  # Parse the response
+  data <- content(response, "text", encoding = "UTF-8")
+  data_json <- fromJSON(data)
+  
+  # Extract the relevant data
+  indicators <- data.frame(data_json[[2]])
+  
+  # Print the first few rows of the data
+  kable(head(indicators))
+} else {
+  cat("Failed to retrieve data:", http_status(response)$message, "\n")
+}
+```
+
+Download one of those indicators and flatten into a table.
+```{r, cache=TRUE}
+library(httr)
+library(jsonlite)
+library(ggplot2)
+library(tidyverse)
+
+# Define the base URL and parameters
+base_url <- "https://api.worldbank.org/v2/country/all/indicator"
+indicator <- "NY.GDP.MKTP.CD" # Example indicator (GDP in current US dollars)
+date_range <- "2020:2020" # Filter only for the year 2020
+format <- "json"
+per_page <- 1000
+
+# Create the full URL
+url <- paste0(base_url, "/", indicator, "?date=", date_range, "&format=", format, "&per_page=", per_page)
+
+# Make an API request
+response <- GET(url)
+
+# Check the status of the response
+if (http_status(response)$category == "Success") {
+  # Parse the response
+  data <- content(response, "text", encoding = "UTF-8")
+  data_json <- fromJSON(data)
+  
+  # Extract the relevant data and flatten the data frame
+  indicators <- data.frame(data_json[[2]])
+  indicators_flat <- indicators %>% 
+    unnest(cols = c(country, indicator), names_sep = "_") %>%
+    select(countryiso3code, country_value, date, value)
+
+  # Remove rows with missing values
+  indicators_filtered <- indicators_flat[!is.na(indicators_flat$value),]
+
+  
+  
+  # Create a plot for GDP in 2020
+  ggplot(indicators_filtered, aes(x = reorder(country_value, -value), y = value)) +
+    geom_bar(stat = "identity") +
+    theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+    labs(title = "GDP in current US dollars (2020)", x = "Country", y = "GDP (current US$)") +
+    coord_flip() +
+    scale_y_continuous(labels = scales::comma)
+} else {
+  cat("Failed to retrieve data:", http_status(response)$message, "\n")
+}
+```
+```{r, cache=TRUE}
+library(knitr)
+kable(indicators_filtered)
+```
+
+Python code:
+
+```{python, cache=TRUE}
+import requests
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Define the base URL and parameters
+base_url = "https://api.worldbank.org/v2/country/all/indicator"
+indicator = "NY.GDP.MKTP.CD"  # Example indicator (GDP in current US dollars)
+date_range = "2020:2020"  # Filter only for the year 2020
+params = {
+    "format": "json",
+    "date": date_range,
+    "per_page": 1000,
+}
+
+# Create the full URL
+url = f"{base_url}/{indicator}"
+
+# Make an API request
+response = requests.get(url, params=params)
+
+# Check the status of the response
+if response.status_code == 200:
+    # Parse the response
+    data_json = response.json()
+
+    # Extract the relevant data and flatten the data frame
+    indicators = pd.json_normalize(data_json[1])
+    indicators_flat = indicators[["countryiso3code", "country.value", "date", "value"]]
+
+    # Remove rows with missing values
+    indicators_filtered = indicators_flat.dropna(subset=["value"])
+
+    # Create a plot for GDP in 2020
+    indicators_filtered = indicators_filtered.sort_values(by="value", ascending=False)
+    plot = indicators_filtered.plot.bar(
+        x="country.value", y="value", figsize=(15, 8), legend=None
+    )
+    plot.set_title("GDP in current US dollars (2020)")
+    plot.set_xlabel("Country")
+    plot.set_ylabel("GDP (current US$)")
+    plt.xticks(rotation=90)
+    plt.show()
+else:
+    print("Failed to retrieve data:", response.status_code)
+```
+
+Both the R and Python code achieve the same goal of fetching GDP data for the year 2020, processing the data, and plotting a bar chart. However, there are some differences in terms of libraries and syntax:
+
+Libraries: In R, we used the httr, jsonlite, ggplot2, and tidyverse packages to handle HTTP requests, JSON parsing, data manipulation, and plotting. In Python, we used the requests, pandas, and matplotlib libraries for similar tasks.
+Data manipulation: In R, we used the unnest() function from the tidyverse package to flatten the data frame, while in Python, we used the pd.json_normalize() function from the pandas library. Both methods provide a convenient way to flatten nested JSON data into a tabular format.
+Plotting: In R, we used the ggplot2 package to create the bar plot, while in Python, we used matplotlib. The syntax and structure of the plotting code differ between the two languages, but they both produce similar visualizations.
+Error handling: In R, we used the http_status() function to check the status of the response, whereas in Python, we used the status_code attribute of the response object. Both methods allow for checking the success of the API request.
+In summary, both R and Python offer powerful tools and libraries for working with API data, data manipulation, and visualization. The choice between the two languages depends on personal preferences, the specific use case, and the existing skill set of the user.
+

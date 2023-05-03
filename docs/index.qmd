@@ -1,5 +1,5 @@
 ---
-title: "ESIIL data library and vignette repository"
+title: "ESIIL data library"
 format: gfm
 ---
 
