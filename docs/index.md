@@ -1,13 +1,11 @@
+ESIIL data library and vignette repository
+================
 
 <figure>
 <img src="assets/pre-summit-training-header.png" width="1000"
 alt="header" />
 <figcaption aria-hidden="true">header</figcaption>
 </figure>
-
-## ESIIL data library and vignette repository
-
-------------------------------------------------------------------------
 
 Welcome to the Environmental Data Science Innovation and Inclusion Lab
 (ESIIL) Data Library! As an NSF-funded national synthesis center, ESIIL
