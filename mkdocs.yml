@@ -27,7 +27,8 @@ nav:
   - Spatial scale: spatial_scale/PLACEHOLDER.md
   - Data ethics: 
       - World Governance Indicators: ethics/wgi/wgi.md
-  - Ecological forecasting: ecological_forecasting/PLACEHOLDER.md
+  - Ecological forecasting: 
+      - National Ecological Observation Network: forecasting/neon/neon.md
   - Data harmonization: data_harmonization/PLACEHOLDER.md
   - Food supply: food_supply/PLACEHOLDER.md
   - Social justice:
