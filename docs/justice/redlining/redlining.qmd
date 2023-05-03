@@ -3,7 +3,7 @@ title: "Historic Redlining"
 format: gfm
 ---
 
-## Richmond example
+## Philadelphia example
 The Census Home Owners' Loan Corporation (HOLC) dataset, available on GitHub, is a valuable resource containing historical data about the process of redlining in the United States. Redlining is a discriminatory practice that involves denying loans or insurance to people living in specific neighborhoods, often based on race or ethnicity. The dataset provides details on the HOLC risk classifications, neighborhood boundaries, and descriptions for over 200 cities across the United States from the 1930s.
  
 Historic redlining data refers to data from the Home Owners' Loan Corporation (HOLC) that created residential security maps in the 1930s, which contributed to racial segregation and disinvestment in minority neighborhoods. One popular source for this data is the Mapping Inequality project (https://dsl.richmond.edu/panorama/redlining/).

@@ -1,7 +1,7 @@
 Historic Redlining
 ================
 
-## Richmond example
+## Philadelphia example
 
 The Census Home Owners’ Loan Corporation (HOLC) dataset, available on
 GitHub, is a valuable resource containing historical data about the
