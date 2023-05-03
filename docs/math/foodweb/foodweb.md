@@ -7,6 +7,8 @@ this network are species or groups of species, and the directed edges
 represent predator-prey relationships. The network contains 128 nodes
 and 2,102 directed edges.
 
+https://networkrepository.com/index.php
+
 ``` r
 install.packages("igraph")
 install.packages("tidygraph")
