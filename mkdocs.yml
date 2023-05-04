@@ -29,7 +29,8 @@ nav:
       - World Governance Indicators: ethics/wgi/wgi.md
   - Ecological forecasting: 
       - National Ecological Observation Network: forecasting/neon/neon.md
-  - Data harmonization: data_harmonization/PLACEHOLDER.md
+  - Data harmonization: 
+      - Dryad: harmonization/dryad/dryad.md
   - Food supply: food_supply/PLACEHOLDER.md
   - Social justice:
       - Redlining: justice/redlining/redlining.md

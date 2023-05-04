@@ -2,8 +2,93 @@
 title: "dryad"
 format: gfm
 ---
+Dryad is a repository of curated, open access, data files associated with published articles in the sciences and social sciences. To access a dataset, you'll first need to choose a dataset and get its DOI (Digital Object Identifier) or a direct link to download the dataset. In this example, we'll use a dataset called "The phantom chorus: birdsong boosts human well-being in protected areas" by Dr. Clinton Francis with DOI: 10.5061/dryad.vmcvdncs3.
 
-```{r}
 
+
+R code:
+
+```{r, eval=FALSE}
+install.packages("rdryad")
+install.packages("ggplot2")
 ```
+
+
+
+
+```{r, cache=TRUE}
+library(rdryad)
+library(ggplot2)
+
+
+search_results <- dryad_datasets()
+print(search_results$data)
+
+# Get the first DOI from the search results
+doi <-  "https://doi.org/10.5061/dryad.wwpzgmsgx"
+clean_doi <- gsub("https://doi.org/", "", doi)
+
+files <- dryad_download(clean_doi)
+print(files)
+a <- unlist(files)
+short_files <- as.data.frame(a)[,1]
+
+# Identify the CSV file from the extracted files
+csv_file <- list.files("/Users/ty/Library/Caches/R/rdryad/10_5061_dryad_wwpzgmsgx", pattern = ".csv", full.names = TRUE)[2]
+
+# Read the CSV data
+data <- read.csv(csv_file)
+
+ggplot(data=data, aes(y=Perceivedrestoration, Sound_Comp)) +
+  geom_point()
+  
+```
+
+
+
+```{python, cache=TRUE, eval=FALSE}
+import requests
+import pandas as pd
+import matplotlib.pyplot as plt
+import io
+
+# Search for datasets related to the term "habitat"
+base_url = "https://datadryad.org/api/v2/datasets?"
+params = {"query": "habitat"}
+
+response = requests.get(base_url, params=params)
+search_results = response.json()
+print(search_results)
+
+# Get the first DOI from the search results
+doi = "https://doi.org/10.5061/dryad.wwpzgmsgx"
+clean_doi = doi.replace("https://doi.org/", "")
+
+# Download the dataset
+files_url = f"https://datadryad.org/api/v2/datasets/{clean_doi}/download"
+response = requests.get(files_url)
+files = response.json()
+print(files)
+
+# Identify the CSV file from the extracted files
+csv_file_url = None
+for file in files['data']:
+    if '.csv' in file['attributes']['name']:
+        csv_file_url = file['links']['download']
+        break
+
+# Read the CSV data
+response = requests.get(csv_file_url)
+data = pd.read_csv(io.StringIO(response.text))
+
+# Plot the data using pandas and matplotlib
+# Replace 'Perceivedrestoration' and 'Sound_Comp' with the actual column names in your dataset
+ax = data.plot(x='Perceivedrestoration', y='Sound_Comp', kind='scatter')
+ax.set_xlabel('Perceivedrestoration')
+ax.set_ylabel('Sound_Comp')
+plt.show()
+```
+
+
+
 
