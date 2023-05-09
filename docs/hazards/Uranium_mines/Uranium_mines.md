@@ -55,7 +55,7 @@ ggplot(mines_co) +
   ggtitle("Top 10 counties with Uranium mines in Colorado")
 ```
 
-In Python, we need 4 libraries to download and visualize the data. You can find data definitions and sources [here](%5Bhttps://www.epa.gov/sites/default/files/2015-05/documents/402-r-05-009.pdf).
+In Python, we need 4 libraries to download and visualize the data. 
 
 ```{python}
 import requests 
