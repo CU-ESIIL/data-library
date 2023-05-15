@@ -1,5 +1,4 @@
-Food and Agriculture Organization of the United Nations: Food Balance
-Sheets
+Food Balance Sheets
 ================
 
 FAOSTAT, maintained by the Food and Agriculture Organization (FAO) of
@@ -65,20 +64,7 @@ R code:
 library(FAOSTAT)
 library(ggplot2)
 library(dplyr)
-```
 
-
-    Attaching package: 'dplyr'
-
-    The following objects are masked from 'package:stats':
-
-        filter, lag
-
-    The following objects are masked from 'package:base':
-
-        intersect, setdiff, setequal, union
-
-``` r
 data_folder <- "data_raw" 
 dir.create(data_folder)
 ```
@@ -88,24 +74,7 @@ dir.create(data_folder)
 ``` r
 crop_production <- get_faostat_bulk(code = "QCL", data_folder = data_folder) # Show the structure of the data
 str(crop_production)
-```
 
-    'data.frame':   3761168 obs. of  13 variables:
-     $ area_code      : int  2 2 2 2 2 2 2 2 2 2 ...
-     $ area_code__m49_: chr  "'004" "'004" "'004" "'004" ...
-     $ area           : chr  "Afghanistan" "Afghanistan" "Afghanistan" "Afghanistan" ...
-     $ item_code      : int  221 221 221 221 221 221 221 221 221 221 ...
-     $ item_code__cpc_: chr  "'01371" "'01371" "'01371" "'01371" ...
-     $ item           : chr  "Almonds, in shell" "Almonds, in shell" "Almonds, in shell" "Almonds, in shell" ...
-     $ element_code   : int  5312 5312 5312 5312 5312 5312 5312 5312 5312 5312 ...
-     $ element        : chr  "area_harvested" "area_harvested" "area_harvested" "area_harvested" ...
-     $ year_code      : int  1975 1976 1977 1978 1979 1980 1981 1982 1983 1984 ...
-     $ year           : int  1975 1976 1977 1978 1979 1980 1981 1982 1983 1984 ...
-     $ unit           : chr  "ha" "ha" "ha" "ha" ...
-     $ value          : num  0 5900 6000 6000 6000 5800 5800 5800 5700 5700 ...
-     $ flag           : chr  "E" "E" "E" "E" ...
-
-``` r
 saveRDS(crop_production, "data_raw/crop_production_e_all_data.rds")
 ```
 

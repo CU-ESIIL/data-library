@@ -1,5 +1,5 @@
 ---
-title: "Food and Agriculture Organization of the United Nations: Food Balance Sheets"
+title: "Food Balance Sheets"
 format: gfm
 ---
 
@@ -29,7 +29,7 @@ The data available include values for over 245 countries and territories from 19
 
 R code:
 
-```{r, cache=TRUE, warnings=FALSE}
+```{r, cache=TRUE, warnings=FALSE,results='hide'}
 # Load necessary libraries
 library(FAOSTAT)
 library(ggplot2)
