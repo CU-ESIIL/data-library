@@ -161,7 +161,6 @@ https://ncbiinsights.ncbi.nlm.nih.gov/2017/11/02/new-api-keys-for-the-e-utilitie
 ``` r
 # Thin to unique
 a <- sci2comm(as.character(unique(gbif$verbatimScientificName)), api_key= api_key)
-save(a, file = "names.Rdata")
 ```
 
 ``` r
@@ -193,7 +192,7 @@ st_GBIF <- st_as_sf(SpatialPointsDataFrame(coords,GBIF_common_names ))
 plot(st_GBIF, pch=19, cex=0.25)
 ```
 
-![](iNaturalist_files/figure-gfm/unnamed-chunk-7-1.png)
+![](iNaturalist_files/figure-gfm/unnamed-chunk-8-1.png)
 
 ### Hexagon grid to aggregate data for standardized analysis
 
@@ -230,7 +229,7 @@ speed up computation time and keep this example light and fast.
 ```
 
 ![Freshly constructed hexagonal sampling
-grid](iNaturalist_files/figure-gfm/unnamed-chunk-8-1.png)
+grid](iNaturalist_files/figure-gfm/unnamed-chunk-9-1.png)
 
 ``` r
 # Make the dataset more presentable
@@ -263,7 +262,7 @@ plot(int_result$geometry, pch=19, cex=0.25, col=adjustcolor("cornflowerblue", al
 ```
 
 ![Hexagon grid laid over a distribution of iNaturalist
-points](iNaturalist_files/figure-gfm/unnamed-chunk-9-1.png)
+points](iNaturalist_files/figure-gfm/unnamed-chunk-10-1.png)
 
 #### Aggrigate points into hex bins
 
@@ -288,7 +287,7 @@ plot(int_result$geometry, pch=19, cex=0.05, col=adjustcolor("cornflowerblue", al
 
 ![iNaturalist occurance points aggrigated into hex bins. The color of
 the bin represents the number of different species detected in that
-hexagon.](iNaturalist_files/figure-gfm/unnamed-chunk-10-1.png)
+hexagon.](iNaturalist_files/figure-gfm/unnamed-chunk-11-1.png)
 
 #### Plot species richness using a fancy color scheme that works well for color-blind people
 
@@ -307,4 +306,4 @@ plot(hex_counts$geometry, lwd=0.001,
 ```
 
 ![Species richness of iNaturalist records in
-2021](iNaturalist_files/figure-gfm/unnamed-chunk-11-1.png)
+2021](iNaturalist_files/figure-gfm/unnamed-chunk-12-1.png)
