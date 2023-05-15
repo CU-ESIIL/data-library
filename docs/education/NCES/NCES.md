@@ -7,6 +7,7 @@ analyzing data related to education. It is part of the U.S. Department
 of Education and the Institute of Education Sciences. NCES provides a
 wealth of data resources on a variety of topics. Here are some of the
 main types of data you can find through NCES:
+https://nces.ed.gov/datatools/
 
 Assessments: NCES conducts several major assessments, including the
 National Assessment of Educational Progress (NAEP), the Programme for
@@ -87,20 +88,6 @@ R code:
 ``` r
 # Load the necessary libraries
 library(tidyverse)
-```
-
-    ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-    ✔ dplyr     1.1.2     ✔ readr     2.1.4
-    ✔ forcats   1.0.0     ✔ stringr   1.5.0
-    ✔ ggplot2   3.4.2     ✔ tibble    3.2.1
-    ✔ lubridate 1.9.2     ✔ tidyr     1.3.0
-    ✔ purrr     1.0.1     
-    ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-    ✖ dplyr::filter() masks stats::filter()
-    ✖ dplyr::lag()    masks stats::lag()
-    ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
-
-``` r
 library(httr)
 library(readxl)
 
@@ -111,39 +98,16 @@ GET(url, write_disk(output_file, overwrite = TRUE))
 ```
 
     Response [https://nces.ed.gov/programs/digest/d22/tables/xls/tabn318.45.xlsx]
-      Date: 2023-05-15 06:57
+      Date: 2023-05-15 17:52
       Status: 200
       Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
       Size: 49.5 kB
-    <ON DISK>  stem_degrees.xlsx
+    <ON DISK>  /Users/ty/Documents/Github/data-library/docs/education/NCES/stem_degrees.xlsx
 
 ``` r
 # Load the data from the Excel file
 data <- readxl::read_excel(output_file)
-```
 
-    New names:
-    • `` -> `...2`
-    • `` -> `...3`
-    • `` -> `...4`
-    • `` -> `...5`
-    • `` -> `...6`
-    • `` -> `...7`
-    • `` -> `...8`
-    • `` -> `...9`
-    • `` -> `...10`
-    • `` -> `...11`
-    • `` -> `...12`
-    • `` -> `...13`
-    • `` -> `...14`
-    • `` -> `...15`
-    • `` -> `...16`
-    • `` -> `...17`
-    • `` -> `...18`
-    • `` -> `...19`
-    • `` -> `...20`
-
-``` r
 # Rename the columns
 names(data)[c(1,12:20)] <- c("sex_and_year", "Total", "White", "Black", "Hispanic", "Total_Islander", "Asian_Islander", "Pacific_Islander", "American_Indian", "Two_or_more_races")
 
