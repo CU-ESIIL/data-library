@@ -6,6 +6,16 @@ Dryad is a repository of curated, open access, data files associated with publis
 
 https://datadryad.org/stash/dataset/doi:10.5061/dryad.wwpzgmsgx
 
+Citation
+
+Francis, Clinton (2020), The phantom chorus: birdsong boosts human well-being in protected areas, Dryad, Dataset, https://doi.org/10.5061/dryad.wwpzgmsgx
+
+Abstract
+
+Spending time in nature is known to benefit human health and well-being, but evidence is mixed as to whether biodiversity or perceptions of biodiversity contribute to these benefits. Perhaps more importantly, little is known about the sensory modalities by which humans perceive biodiversity and obtain benefits from their interactions with nature. Here, we used a “phantom bird song chorus” consisting of hidden speakers to experimentally increase audible birdsong biodiversity during “on” and “off” (i.e., ambient conditions) blocks on two trails to study the role of audition in biodiversity perception and self-reported well-being among hikers. Hikers exposed to the phantom chorus reported higher levels of restorative effects compared to those that experienced ambient conditions on both trails; however, increased restorative effects were directly linked to the phantom chorus on one trail and indirectly linked to the phantom chorus on the other trail through perceptions of avian biodiversity. Our findings add to a growing body of evidence linking mental health to nature experiences and suggest that audition is an important modality by which natural environments confer restorative effects. Finally, our results suggest that maintaining or improving natural soundscapes within protected areas may be an important component to maximizing human experiences.
+
+
+
 R code:
 
 ```{r, eval=FALSE}

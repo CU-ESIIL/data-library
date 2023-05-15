@@ -41,7 +41,8 @@ nav:
   - Math, modeling, statistics: 
       - Everglades food network: math/foodweb/foodweb.md
       - Mammal Primate association network: math/mammal_primate_association/mammal_primate_associations.md
-  - EDS education: eds_education/PLACEHOLDER.md
+  - EDS education: 
+      - NCES: education/NCES/NCES.md
 
 # Configuration
 imgwidth: 70px;
