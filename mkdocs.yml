@@ -41,6 +41,7 @@ nav:
       - United Nations Food and Agriculture: food/FAOSTAT/FAO.md
   - Social justice:
       - Redlining: justice/redlining/redlining.md
+      - Congressional voting: justice/congress/congress.md
   - Data science in decision making and policy:
       - US Census: policy/census/US_Census.md
       - FDIC Failed Banks: policy/bank_fail/FDIC_Failed_Bank.md
