@@ -52,7 +52,7 @@ ggplot(ics_sum) +
            stat = 'identity') +
   theme_bw() +
   xlab("") +
-  ylab("Projected final cost of wildfires")
+  ylab("Estimated final cost of wildfires")
 ```
 
 In Python, we need 6 libraries to download and visualize the data.

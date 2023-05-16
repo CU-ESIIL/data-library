@@ -1,8 +1,13 @@
-# ICS-209-Plus
+ICS-209-Plus
+================
 
-This is an all-hazards data set mined from the US National Incident Management System (1999-2020). You can find more information [here](https://www.nature.com/articles/s41597-023-01955-0#code-availability)).
+This is an all-hazards data set mined from the US National Incident
+Management System (1999-2020). You can find more information
+[here](https://www.nature.com/articles/s41597-023-01955-0#code-availability)).
 
-In R, we need 2 packages to download and visualize the data. First, check if the packages are already installed. Install them if they are not:
+In R, we need 2 packages to download and visualize the data. First,
+check if the packages are already installed. Install them if they are
+not:
 
 ``` r
 packages <- c("tidyverse", "httr") 
@@ -16,28 +21,26 @@ Then, load them:
 lapply(packages, library, character.only = TRUE)
 ```
 
-```         
-── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──
+    ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+    ✔ dplyr     1.1.2     ✔ readr     2.1.4
+    ✔ forcats   1.0.0     ✔ stringr   1.5.0
+    ✔ ggplot2   3.4.2     ✔ tibble    3.2.1
+    ✔ lubridate 1.9.2     ✔ tidyr     1.3.0
+    ✔ purrr     1.0.1     
+    ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+    ✖ dplyr::filter() masks stats::filter()
+    ✖ dplyr::lag()    masks stats::lag()
+    ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 
-✔ ggplot2 3.4.1     ✔ purrr   0.3.4
-✔ tibble  3.2.1     ✔ dplyr   1.0.9
-✔ tidyr   1.1.2     ✔ stringr 1.4.0
-✔ readr   1.4.0     ✔ forcats 0.5.0
+    [[1]]
+     [1] "lubridate" "forcats"   "stringr"   "dplyr"     "purrr"     "readr"    
+     [7] "tidyr"     "tibble"    "ggplot2"   "tidyverse" "stats"     "graphics" 
+    [13] "grDevices" "utils"     "datasets"  "methods"   "base"     
 
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-
-[[1]]
- [1] "forcats"   "stringr"   "dplyr"     "purrr"     "readr"     "tidyr"    
- [7] "tibble"    "ggplot2"   "tidyverse" "stats"     "graphics"  "grDevices"
-[13] "utils"     "datasets"  "methods"   "base"     
-
-[[2]]
- [1] "httr"      "forcats"   "stringr"   "dplyr"     "purrr"     "readr"    
- [7] "tidyr"     "tibble"    "ggplot2"   "tidyverse" "stats"     "graphics" 
-[13] "grDevices" "utils"     "datasets"  "methods"   "base"     
-```
+    [[2]]
+     [1] "httr"      "lubridate" "forcats"   "stringr"   "dplyr"     "purrr"    
+     [7] "readr"     "tidyr"     "tibble"    "ggplot2"   "tidyverse" "stats"    
+    [13] "graphics"  "grDevices" "utils"     "datasets"  "methods"   "base"     
 
 Download the data set containing wildfire information:
 
@@ -72,10 +75,10 @@ ggplot(ics_sum) +
            stat = 'identity') +
   theme_bw() +
   xlab("") +
-  ylab("Projected final cost of wildfires")
+  ylab("Estimated final cost of wildfires")
 ```
 
-![](ICS209_Plus_files/figure-commonmark/unnamed-chunk-5-1.png)
+![](ICS209_Plus_files/figure-gfm/unnamed-chunk-5-1.png)
 
 In Python, we need 6 libraries to download and visualize the data.
 
@@ -100,9 +103,7 @@ with open(data_file, 'wb') as f:
 # Unzip the file
 ```
 
-```         
-516191541
-```
+    516191541
 
 ``` python
 with zipfile.ZipFile(data_file, 'r') as zip_ref:
@@ -128,9 +129,7 @@ plt.figure()
 plt.bar(ics_sum['START_YEAR'], ics_sum['cost'])
 ```
 
-```         
-<BarContainer object of 22 artists>
-```
+    <BarContainer object of 22 artists>
 
 ``` python
 plt.xlabel("")
@@ -138,4 +137,5 @@ plt.ylabel("Projected final cost of wildfires")
 plt.show()
 ```
 
-![](ICS209_Plus_files/figure-commonmark/unnamed-chunk-9-1.png)
+<img src="ICS209_Plus_files/figure-gfm/unnamed-chunk-9-1.png"
+width="672" />
