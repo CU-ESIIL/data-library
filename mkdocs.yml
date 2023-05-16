@@ -27,13 +27,13 @@ nav:
       - EPA air data: hazards/Air_data/Air_data.md
       - ICS-209-Plus: hazards/ICS209_plus/ICS209_Plus.md
       - Uranium mines: hazards/Uranium_mines/Uranium_mines.md
-      - USA phenology network: hazards/Phenology_network/Phenology_network.md
   - Spatial scale: 
       - iNaturalist: scale/iNaturalist/iNaturalist.md
   - Data ethics: 
       - World Governance Indicators: ethics/wgi/wgi.md
   - Ecological forecasting: 
       - National Ecological Observation Network: forecasting/neon/neon.md
+      - USA phenology network: forecasting/Phenology_network/Phenology_network.md
   - Data harmonization: 
       - Dryad: harmonization/dryad/dryad.md
   - Food supply:
