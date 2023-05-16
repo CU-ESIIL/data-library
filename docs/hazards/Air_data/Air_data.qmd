@@ -1,0 +1,92 @@
+---
+title: "EPA air data"
+format: gfm
+---
+
+This data set developed by the Environmental Protection Agency (EPA) contains air quality data per county. Other related data sets are available [here](https://aqs.epa.gov/aqsweb/airdata/download_files.html#AQI).
+
+In R, we need 2 packages to download and visualize the data. First, check if the packages are already installed. Install them if they are not:
+
+```{r}
+packages <- c("tidyverse", "httr") 
+new.packages <- packages[!(packages %in% installed.packages()[,"Package"])] 
+if(length(new.packages)>0) install.packages(new.packages) 
+```
+
+Then, load them:
+
+```{r}
+lapply(packages, library, character.only = TRUE)
+```
+
+Download the data set:
+
+```{r, cache = T}
+url <- "https://aqs.epa.gov/aqsweb/airdata/annual_aqi_by_county_2022.zip" 
+aqi <- GET(url) 
+data_file <-"aqi.zip" 
+writeBin(content(aqi, "raw"), data_file)
+
+# Unzip the file
+unzip(data_file)
+```
+
+Read the data set:
+
+```{r, cache = T}
+aqi <- read_csv('annual_aqi_by_county_2022.csv')
+```
+
+Select 5 states and make violin plots of the maximum air quality index per county in 2022:
+
+```{r, cache = T}
+aqi_5_states <- aqi %>% 
+  filter(State %in% c("Alabama", "Colorado", "New Jersey", "Rhode Island", "West Virginia")) 
+
+ggplot(aqi_5_states) +
+  geom_violin(aes(x = `Max AQI`, y = State), draw_quantiles = c(.25, .5, .75)) +
+  theme_bw() +
+  ylab("State")
+```
+
+In Python, we need 5 libraries to download and visualize the data.
+
+```{python, cache = T}
+import requests 
+import zipfile
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+```
+
+Download the data set:
+
+```{python, cache = T}
+url = "https://aqs.epa.gov/aqsweb/airdata/annual_aqi_by_county_2022.zip" 
+aqi = requests.get(url)
+data_file = "aqi.zip"
+with open(data_file, 'wb') as f:
+    f.write(aqi.content)
+    data_file = "aqi.zip"
+
+# Unzip the file
+with zipfile.ZipFile(data_file, 'r') as zip_ref:
+    zip_ref.extractall()
+```
+
+Read it:
+
+```{python, cache = T}
+csv_file = "annual_aqi_by_county_2022.csv" 
+aqi = pd.read_csv(csv_file)
+```
+
+Select 5 states and make violin plots of the maximum air quality index per county in 2022:
+
+```{python, cache = T}
+states = ["Alabama", "Colorado", "New Jersey", "Rhode Island", "West Virginia"]
+aqi_5_states = aqi[aqi['State'].isin(states)]
+
+plt.figure()
+sns.catplot(data=aqi_5_states, x='Max AQI', y='State', kind='violin', bw=.15)
+```
