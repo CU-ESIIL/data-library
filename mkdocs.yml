@@ -25,6 +25,7 @@ nav:
   - Nature-based solutions and Human development: nature_based_solutions_human_development/PLACEHOLDER.md
   - Extreme events and hazards: 
       - EPA air data: hazards/Air_data/Air_data.md
+      - FIRED: hazards/FIRED/FIRED.md
       - ICS-209-Plus: hazards/ICS209_plus/ICS209_Plus.md
       - Uranium mines: hazards/Uranium_mines/Uranium_mines.md
   - Spatial scale: 
