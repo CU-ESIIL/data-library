@@ -170,6 +170,5 @@ plt.title('Top 10 counties with Uranium mines in Colorado')
 plt.gca().invert_yaxis()
 plt.show()
 ```
+![](Uranium_mines_files/figure-gfm/unnamed-chunk-11-1.png)
 
-<img src="Uranium_mines_files/figure-gfm/unnamed-chunk-11-1.png"
-width="672" />
