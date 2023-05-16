@@ -7,7 +7,7 @@ This is an all-hazards data set mined from the US National Incident Management S
 
 In R, we need 2 packages to download and visualize the data. First, check if the packages are already installed. Install them if they are not:
 
-```{r, cache=TRUE}
+```{r}
 packages <- c("tidyverse", "httr") 
 new.packages <- packages[!(packages %in% installed.packages()[,"Package"])] 
 if(length(new.packages)>0) install.packages(new.packages) 
@@ -15,13 +15,13 @@ if(length(new.packages)>0) install.packages(new.packages)
 
 Then, load them:
 
-```{r, cache=TRUE}
+```{r}
 lapply(packages, library, character.only = TRUE)
 ```
 
 Download the data set containing wildfire information:
 
-```{r, cache = TRUE}
+```{r}
 url <- "https://figshare.com/ndownloader/articles/19858927/versions/3" 
 ics <- GET(url) 
 data_file <-"ics.zip" 
@@ -34,7 +34,7 @@ unzip('ics209plus-wildfire.zip')
 
 Read the data set:
 
-```{r, cache = TRUE}
+```{r}
 csvs <- list.files('ics209plus-wildfire',
                    full.names = T)[5]
 ics <- read.csv(csvs)
@@ -42,7 +42,7 @@ ics <- read.csv(csvs)
 
 Calculate the annual cost of wildfires and plot:
 
-```{r, cache = TRUE}
+```{r}
 ics_sum  <-  ics %>% 
   group_by(START_YEAR) %>% 
   summarise(cost = sum(PROJECTED_FINAL_IM_COST, na.rm = T)) 
@@ -57,7 +57,7 @@ ggplot(ics_sum) +
 
 In Python, we need 6 libraries to download and visualize the data.
 
-```{python, cache=TRUE}
+```{python}
 import requests 
 import zipfile 
 import matplotlib.pyplot as plt
@@ -68,7 +68,7 @@ import glob
 
 Download the data set containing wildfire information:
 
-```{python, cache=TRUE}
+```{python}
 url = "https://figshare.com/ndownloader/articles/19858927/versions/3" 
 ics = requests.get(url)
 data_file = "ics.zip"
@@ -85,7 +85,7 @@ with zipfile.ZipFile('ics209plus-wildfire.zip', 'r') as zip_ref:
 
 Read the data set:
 
-```{python, cache=TRUE}
+```{python}
 csvs = glob.glob('ics209plus-wildfire' + '/*')[8]
 
 ics = pd.read_csv(csvs, low_memory = False)
@@ -93,7 +93,7 @@ ics = pd.read_csv(csvs, low_memory = False)
 
 Calculate the annual cost of wildfires and plot:
 
-```{python, cache=TRUE}
+```{python}
 ics_sum = ics.groupby('START_YEAR').agg(cost=('PROJECTED_FINAL_IM_COST', 'sum')).reset_index()
 
 plt.figure()
