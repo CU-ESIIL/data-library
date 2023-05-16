@@ -1,0 +1,64 @@
+---
+title: "Nonprofit organizations"
+format: gfm
+---
+
+## Nonprofit Explorer API by ProPublica
+The Nonprofit Explorer API by ProPublica provides data on tax-exempt organizations in the United States. In this example, we'll search for organizations with the keyword "education" and analyze the results.
+
+R:
+In R, we'll use the 'httr' and 'jsonlite' packages to fetch and process data from the Nonprofit Explorer API.
+
+R code:
+
+```{r, cache=TRUE}
+# Install and load necessary libraries
+library(httr)
+library(jsonlite)
+
+# Fetch data for organizations with the keyword "education"
+url <- "https://projects.propublica.org/nonprofits/api/v2/search.json?q=education"
+response <- GET(url)
+
+# Check if the request was successful
+if (http_status(response)$category == "Success") {
+  data <- content(response, "parsed")
+  organizations <- data$organizations
+  
+  # Count the number of organizations per state
+  state_counts <- table(sapply(organizations, function(x) x$state))
+  print(state_counts)
+} else {
+  print(http_status(response)$message)
+}
+```
+
+
+Python:
+In Python, we'll use the 'requests' library to fetch data from the Nonprofit Explorer API and 'pandas' library to process the data.
+
+Python code:
+
+```{python, cache=TRUE}
+# Install necessary libraries
+import requests
+import pandas as pd
+
+# Fetch data for organizations with the keyword "education"
+url = "https://projects.propublica.org/nonprofits/api/v2/search.json?q=education"
+response = requests.get(url)
+
+# Check if the request was successful
+if response.status_code == 200:
+    data = response.json()
+    organizations = data["organizations"]
+    
+    # Count the number of organizations per state
+    state_counts = pd.DataFrame(organizations)["state"].value_counts()
+    print(state_counts)
+else:
+    print(f"Error: {response.status_code}")
+```
+
+
+In conclusion, both R and Python offer efficient ways to fetch and process data from APIs like the Nonprofit Explorer API. The 'httr' and 'jsonlite' libraries in R provide a straightforward way to make HTTP requests and parse JSON data, while the 'requests' library in Python offers similar functionality. The 'pandas' library in Python can be used for data manipulation and analysis, and R provides built-in functions like table() for aggregating data. Depending on your preferred programming language and environment, both options can be effective for working with the Nonprofit Explorer API.

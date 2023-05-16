@@ -50,6 +50,7 @@ nav:
       - Mammal Primate association network: math/mammal_primate_association/mammal_primate_associations.md
   - EDS education: 
       - NCES: education/NCES/NCES.md
+      - Nonprofit explorer: education/nonprofit_explorer/nonprofit_explorer.md
 
 # Configuration
 imgwidth: 70px;
