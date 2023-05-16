@@ -24,35 +24,33 @@ Then, load them:
 lapply(packages, library, character.only = TRUE)
 ```
 
-    ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──
-
-    ✔ ggplot2 3.4.1     ✔ purrr   0.3.4
-    ✔ tibble  3.2.1     ✔ dplyr   1.0.9
-    ✔ tidyr   1.1.2     ✔ stringr 1.4.0
-    ✔ readr   1.4.0     ✔ forcats 0.5.0
-
+    ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+    ✔ dplyr     1.1.2     ✔ readr     2.1.4
+    ✔ forcats   1.0.0     ✔ stringr   1.5.0
+    ✔ ggplot2   3.4.2     ✔ tibble    3.2.1
+    ✔ lubridate 1.9.2     ✔ tidyr     1.3.0
+    ✔ purrr     1.0.1     
     ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
     ✖ dplyr::filter() masks stats::filter()
     ✖ dplyr::lag()    masks stats::lag()
-
-    Warning: package 'sf' was built under R version 4.0.5
-
-    Linking to GEOS 3.9.1, GDAL 3.4.0, PROJ 8.1.1; sf_use_s2() is TRUE
+    ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+    Linking to GEOS 3.10.2, GDAL 3.4.2, PROJ 8.2.1; sf_use_s2() is TRUE
 
     [[1]]
-     [1] "forcats"   "stringr"   "dplyr"     "purrr"     "readr"     "tidyr"    
-     [7] "tibble"    "ggplot2"   "tidyverse" "stats"     "graphics"  "grDevices"
-    [13] "utils"     "datasets"  "methods"   "base"     
-
-    [[2]]
-     [1] "httr"      "forcats"   "stringr"   "dplyr"     "purrr"     "readr"    
+     [1] "lubridate" "forcats"   "stringr"   "dplyr"     "purrr"     "readr"    
      [7] "tidyr"     "tibble"    "ggplot2"   "tidyverse" "stats"     "graphics" 
     [13] "grDevices" "utils"     "datasets"  "methods"   "base"     
 
-    [[3]]
-     [1] "sf"        "httr"      "forcats"   "stringr"   "dplyr"     "purrr"    
+    [[2]]
+     [1] "httr"      "lubridate" "forcats"   "stringr"   "dplyr"     "purrr"    
      [7] "readr"     "tidyr"     "tibble"    "ggplot2"   "tidyverse" "stats"    
     [13] "graphics"  "grDevices" "utils"     "datasets"  "methods"   "base"     
+
+    [[3]]
+     [1] "sf"        "httr"      "lubridate" "forcats"   "stringr"   "dplyr"    
+     [7] "purrr"     "readr"     "tidyr"     "tibble"    "ggplot2"   "tidyverse"
+    [13] "stats"     "graphics"  "grDevices" "utils"     "datasets"  "methods"  
+    [19] "base"     
 
 Download the data set:
 
@@ -73,7 +71,7 @@ mines <- st_read("Master_Database_and_Shape_Files/ULD_albers.shp")
 ```
 
     Reading layer `ULD_albers' from data source 
-      `/Users/viig7608/Desktop/data library/Uranium_mines/Master_Database_and_Shape_Files/ULD_albers.shp' 
+      `/Users/ty/Documents/Github/data-library/docs/hazards/Uranium_mines/Master_Database_and_Shape_Files/ULD_albers.shp' 
       using driver `ESRI Shapefile'
     Simple feature collection with 14810 features and 30 fields
     Geometry type: MULTIPOINT
@@ -103,7 +101,7 @@ ggplot(mines_co) +
   ggtitle("Top 10 counties with Uranium mines in Colorado")
 ```
 
-![](Uranium_mines_files/figure-commonmark/unnamed-chunk-6-1.png)
+![](Uranium_mines_files/figure-gfm/unnamed-chunk-6-1.png)
 
 In Python, we need 4 libraries to download and visualize the data. You
 can find data definitions and sources
@@ -173,4 +171,5 @@ plt.gca().invert_yaxis()
 plt.show()
 ```
 
-![](Uranium_mines_files/figure-commonmark/unnamed-chunk-11-1.png)
+<img src="Uranium_mines_files/figure-gfm/unnamed-chunk-11-1.png"
+width="672" />

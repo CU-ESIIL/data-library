@@ -1,0 +1,12 @@
+!table
+!version 300
+!charset WindowsLatin1
+
+Definition Table
+  Type NATIVE Charset "Neutral"
+  Fields 5
+    ID Integer ;
+    Dep_Type Char (45) ;
+    State Char (2) ;
+    County Char (15) ;
+    Reference Char (150) ;
