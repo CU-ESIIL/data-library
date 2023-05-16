@@ -264,7 +264,7 @@ plot(int_result$geometry, pch=19, cex=0.25, col=adjustcolor("cornflowerblue", al
 ![Hexagon grid laid over a distribution of iNaturalist
 points](iNaturalist_files/figure-gfm/unnamed-chunk-10-1.png)
 
-#### Aggrigate points into hex bins
+#### Aggregate points into hex bins
 
 ``` r
 # Create storage device
