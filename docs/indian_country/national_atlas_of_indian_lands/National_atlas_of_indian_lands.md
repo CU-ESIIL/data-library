@@ -1,9 +1,24 @@
 National Atlas - Indian Lands of the United States dataset
 ================
 
-In this example, we will download and analyze the National Atlas -
-Indian Lands of the United States dataset in both R and Python. We will
-read the dataset and count the number of Indian lands per state.
+The “National Atlas - Indian Lands of the United States” dataset is a
+comprehensive geographical resource that presents the locations and
+extents of lands associated with Native American tribes recognized by
+the U.S. government. It encompasses lands managed by these tribes under
+the oversight of the U.S. Bureau of Indian Affairs, lands held in trust
+by the U.S. for specific tribes, as well as other types of recognized
+tribal lands. https://www.loc.gov/resource/g3701e.ct003648r/
+
+This dataset offers vital spatial information for educators,
+policymakers, researchers, and others interested in learning about and
+engaging with Native American tribal lands. Its intent is to facilitate
+enhanced awareness and understanding of the rich cultural heritage and
+sovereignty of these Indigenous and Tribal Nations.
+
+As such, it serves not only as a tool for geographical reference, but
+also as a resource that contributes to a deeper understanding of the
+history, diversity, and contemporary life of Native American tribes
+across the United States.
 
 R: In R, we’ll use the ‘sf’ package to read the Shapefile and the
 ‘dplyr’ package to process the data.
@@ -14,26 +29,10 @@ R code:
 # Install and load necessary libraries
 
 library(sf)
-```
-
-    Linking to GEOS 3.10.2, GDAL 3.4.2, PROJ 8.2.1; sf_use_s2() is TRUE
-
-``` r
 library(dplyr)
-```
+library(USAboundaries)
+library(ggplot2)
 
-
-    Attaching package: 'dplyr'
-
-    The following objects are masked from 'package:stats':
-
-        filter, lag
-
-    The following objects are masked from 'package:base':
-
-        intersect, setdiff, setequal, union
-
-``` r
 # Download the Indian Lands dataset
 url <- "https://prd-tnm.s3.amazonaws.com/StagedProducts/Small-scale/data/Boundaries/indlanp010g.shp_nt00968.tar.gz"
 temp_file <- tempfile(fileext = ".tar.gz")
@@ -44,16 +43,26 @@ untar(temp_file, exdir = tempdir())
 shapefile_path <- file.path(tempdir(), "indlanp010g.shp")
 indian_lands <- read_sf(shapefile_path)
 
-# Count the number of Indian lands per state
-# state_counts <- indian_lands %>%
-#   group_by(STATE) %>%
-#   summarize(count = n())
+states <- us_states(map_date = NULL) # for contemporary boundaries
+counties <- us_counties(map_date = NULL) # for contemporary boundaries
 
-plot(indian_lands)
+
+bbox <- st_bbox(indian_lands)
+
+# Extract the xmin, xmax, ymin, and ymax values
+xmin <- bbox[1]
+xmax <- bbox[3]
+ymin <- bbox[2]
+ymax <- bbox[4]
+
+ggplot(data= indian_lands) + 
+  geom_sf(data=states, fill=NA, color="grey70", size=0.2) +
+  geom_sf(data=counties, fill=NA, color="grey90", size=0.1) +
+  geom_sf(data=indian_lands, fill="cornflowerblue", color="darkblue") +
+  coord_sf(xlim=c(xmin, xmax), ylim=c(ymin, ymax)) + 
+  theme_minimal() +  # Use minimal theme
+  theme(legend.position = "none") 
 ```
-
-    Warning: plotting the first 9 out of 23 attributes; use max.plot = 23 to plot
-    all
 
 ![](National_atlas_of_indian_lands_files/figure-gfm/unnamed-chunk-1-1.png)
 
@@ -64,34 +73,48 @@ Python code:
 
 ``` python
 import geopandas as gpd
-import pandas as pd
-import requests
-import tarfile
+import matplotlib.pyplot as plt
+import contextily as ctx
+from urllib.request import urlretrieve
 import os
-from io import BytesIO
+import tarfile
+import tempfile
 
 # Download the Indian Lands dataset
-url = "https://prd-tnm.s3.amazonaws.com/StagedProducts/Small-scale/data/Boundaries/indlanp010g.shp_nt00966.tar.gz"
-response = requests.get(url)
-tar_file = tarfile.open(fileobj=BytesIO(response.content), mode='r:gz')
-
-# Extract Shapefile
-temp_dir = "temp"
-if not os.path.exists(temp_dir):
-    os.makedirs(temp_dir)
-
-tar_file.extractall(path=temp_dir)
-shapefile_path = os.path.join(temp_dir, "indlanp010g.shp")
+url = "https://prd-tnm.s3.amazonaws.com/StagedProducts/Small-scale/data/Boundaries/indlanp010g.shp_nt00968.tar.gz"
+temp_file, _ = urlretrieve(url)
+tar = tarfile.open(temp_file, "r:gz")
+tar.extractall(path=tempfile.gettempdir())
+tar.close()
 
 # Read the Shapefile
+shapefile_path = os.path.join(tempfile.gettempdir(), "indlanp010g.shp")
 indian_lands = gpd.read_file(shapefile_path)
 
-# Count the number of Indian lands per state
-state_counts = indian_lands.groupby("STATE").size().reset_index(name="count")
+# Set CRS
+indian_lands = indian_lands.set_crs("EPSG:4326", allow_override=True)
 
-print(state_counts)
+# Get the US map with state boundaries
+us_map = gpd.read_file(gpd.datasets.get_path('naturalearth_lowres'))
+us_map = us_map[us_map.name == 'United States of America'].set_crs("EPSG:4326")
+
+# Plot
+fig, ax = plt.subplots(figsize=(10,10))
+us_map.boundary.plot(ax=ax, color='black')
 ```
 
-Both R and Python codes download the dataset and read the Shapefile
-using the respective packages. They then group the data by the ‘STATE’
-attribute and calculate the count of Indian lands per state.
+``` python
+indian_lands.plot(ax=ax, color='blue')
+```
+
+``` python
+plt.axis('equal')
+```
+
+``` python
+plt.show()
+```
+
+<img
+src="National_atlas_of_indian_lands_files/figure-gfm/unnamed-chunk-2-1.png"
+width="960" />
