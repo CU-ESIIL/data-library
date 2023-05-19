@@ -135,64 +135,15 @@ https://native-land.ca/maps/languages/lakotayapi/.
 
 ``` r
 library(sf)
-```
-
-    Linking to GEOS 3.10.2, GDAL 3.4.2, PROJ 8.2.1; sf_use_s2() is TRUE
-
-``` r
 library(dplyr)
-```
-
-
-    Attaching package: 'dplyr'
-
-    The following objects are masked from 'package:stats':
-
-        filter, lag
-
-    The following objects are masked from 'package:base':
-
-        intersect, setdiff, setequal, union
-
-``` r
 library(USAboundaries)
 library(tidyverse)
-```
 
-    ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-    ✔ forcats   1.0.0     ✔ readr     2.1.4
-    ✔ ggplot2   3.4.2     ✔ stringr   1.5.0
-    ✔ lubridate 1.9.2     ✔ tibble    3.2.1
-    ✔ purrr     1.0.1     ✔ tidyr     1.3.0
-
-    ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-    ✖ dplyr::filter() masks stats::filter()
-    ✖ dplyr::lag()    masks stats::lag()
-    ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
-
-``` r
 states <- us_states(map_date = NULL) # for contemporary boundaries
 counties <- us_counties(map_date = NULL) # for contemporary boundaries
 
 native_lands <- read_sf("data.geojson")
-str(native_lands)
-```
 
-    sf [1,406 × 6] (S3: sf/tbl_df/tbl/data.frame)
-     $ Name       : chr [1:1406] "Vosa Vakaviti" "Innu-aimun (Mushuau)" "Innu-aimun (Sheshatshiu)" "Innu-aimun (Mashkuannu)" ...
-     $ ID         : int [1:1406] 39194 39002 39001 39000 38992 38975 38960 38959 38958 38957 ...
-     $ Slug       : chr [1:1406] "vosa-vakaviti" "innu-aimun-mushuau" "innu-aimun-sheshatshiu" "innu-aimun-mashkuannu" ...
-     $ description: chr [1:1406] "https://native-land.ca/maps/languages/vosa-vakaviti/" "https://native-land.ca/maps/languages/innu-aimun-mushuau/" "https://native-land.ca/maps/languages/innu-aimun-sheshatshiu/" "https://native-land.ca/maps/languages/innu-aimun-mashkuannu/" ...
-     $ color      : chr [1:1406] "#0e1b82" "#0e1b82" "#0e1b82" "#0e1b82" ...
-     $ geometry   :sfc_MULTIPOLYGON of length 1406; first list element: List of 1
-      ..$ :List of 1
-      .. ..$ : num [1:17, 1:2] 180 181 181 181 182 ...
-      ..- attr(*, "class")= chr [1:3] "XY" "MULTIPOLYGON" "sfg"
-     - attr(*, "sf_column")= chr "geometry"
-     - attr(*, "agr")= Factor w/ 3 levels "constant","aggregate",..: NA NA NA NA NA
-      ..- attr(*, "names")= chr [1:5] "Name" "ID" "Slug" "description" ...
-
-``` r
 names(native_lands)
 ```
 
@@ -211,14 +162,6 @@ print(data_for_plot$description)
 # Calculate the bounding box of data_for_plot
 bbox <- st_bbox(data_for_plot)
 
-# Print the bounding box to see its structure
-print(bbox)
-```
-
-          xmin       ymin       xmax       ymax 
-    -113.80642   34.87492  -89.94008   54.06951 
-
-``` r
 # Extract the xmin, xmax, ymin, and ymax values
 xmin <- bbox[1]
 xmax <- bbox[3]
@@ -240,6 +183,6 @@ ggplot() +
   theme_minimal()
 ```
 
-![](native_lands_digital_files/figure-gfm/unnamed-chunk-2-3.png)
+![](native_lands_digital_files/figure-gfm/unnamed-chunk-2-1.png)
 
 -   Blue polygon is Boulder County, Colorado
