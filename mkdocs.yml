@@ -42,7 +42,6 @@ nav:
       - USA phenology network: forecasting/Phenology_network/Phenology_network.md
       - neon4cast: https://github.com/eco4cast/neon4cast-example 
       - recovery after fire: https://github.com/NEONScience/NEON-Data-Skills/blob/main/tutorials-in-development/ESIIL_InnovationSummit_2023/Python/wildfire/fire_effects_on_veg_structure_using_lidar.ipynb
-      
   - Data harmonization: 
       - Dryad: harmonization/dryad/dryad.md
       - NEON and LTER: harmonization/neon_and_lter/neon_and_lter.md
