@@ -45,6 +45,7 @@ nav:
       - NEON forecast challenge: https://github.com/OlssonF/NEON-forecast-challenge-workshop/blob/main/NEON_forecast_challenge_workshop.md
   - Data harmonization: 
       - Dryad: harmonization/dryad/dryad.md
+      - NEON and LTER: 
   - Food supply:
       - United Nations Food and Agriculture: food/FAOSTAT/FAO.md
   - Social justice:
