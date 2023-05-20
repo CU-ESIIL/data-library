@@ -37,6 +37,7 @@ nav:
   - Ecological forecasting: 
       - National Ecological Observation Network: forecasting/neon/neon.md
       - USA phenology network: forecasting/Phenology_network/Phenology_network.md
+      - Forecast model template: https://github.com/eco4cast/neon4cast-example 
   - Data harmonization: 
       - Dryad: harmonization/dryad/dryad.md
   - Food supply:
