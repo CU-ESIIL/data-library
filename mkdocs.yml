@@ -59,6 +59,7 @@ nav:
   - Math, modeling, statistics: 
       - Everglades food network: math/foodweb/foodweb.md
       - Mammal Primate association network: math/mammal_primate_association/mammal_primate_associations.md
+      - Neon tick pathogen data: math/neon_pathogen/neon_pathogen.md
   - EDS education: 
       - NCES: education/NCES/NCES.md
       - Nonprofit explorer: education/nonprofit_explorer/nonprofit_explorer.md

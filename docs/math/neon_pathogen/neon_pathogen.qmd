@@ -21,13 +21,13 @@ Tick collection using drag cloths occurs every 3-6 weeks at 47 terrestrial field
 
 Small mammal box-trapping occurs 4-6 times per year at 3-8 grids across 44 terrestrial field sites. Several different types of samples are collected from target taxa including ear and blood samples. Small mammal data collection began at some sites as early as 2014, with all sites having data beginning in 2019. Beginning in 2020, a subset of blood samples have been tested for several bacterial tick-borne pathogens. The ear samples in all regions within and bordering areas where Lyme disease has been detected have been tested for Borrelia burgdorferi.
 
-```{r load packages}
+```{r load packages, message=FALSE, warning=FALSE, results='hide', cache=TRUE}
 require("neonUtilities")
 require("dplyr")
 require("ggplot2")
 ```
 
-```{r download data, results="hide"}
+```{r download data, message=FALSE, warning=FALSE, results='hide', cache=TRUE}
 #Select the dates and sites for data download:
 sd = '2021-01'
 ed = '2022-01'
@@ -70,7 +70,7 @@ mamPath <- loadByProduct(
   check.size = F)
 ```
 
-```{r convert to df, results = 'hide'}
+```{r convert to df, message=FALSE, warning=FALSE, results='hide', cache=TRUE}
 #Separate the downloaded lists into dataframes for ease of accessing data tables:
 list2env(tckColl, envir=.GlobalEnv)
 list2env(tckPath, envir=.GlobalEnv)
@@ -78,7 +78,7 @@ list2env(mamColl, envir=.GlobalEnv)
 list2env(mamPath, envir=.GlobalEnv)
 ```
 
-```{r aggregate data for plots}
+```{r aggregate data for plots, message=FALSE, warning=FALSE, results='hide', cache=TRUE}
 
 #Calculate pathogen prevalence for ticks:
 tpp<-tck_pathogen %>%
@@ -113,7 +113,7 @@ mpp<-rptall %>%
 
 There is considerable interest in improving understanding of the factors that contribute to the spread of the bacterial pathogen, Borrelia burgdorferi, which causes Lyme disease.  Here we make a simple barplot of the prevalence of this pathogen in 2021 in small mammals (M) and ticks (T) at 3 different sites.
 
-```{r plot Borrelia burgdorferi by taxonID and site, echo=FALSE}
+```{r plot Borrelia burgdorferi by taxonID and site, echo=FALSE, message=FALSE, warning=FALSE, results='hide', cache=TRUE}
 pathall<-rbind(mpp, tpp)
 Bbprev<-pathall %>% filter(testPathogenName %in% 'Borrelia burgdorferi sensu lato')
 
@@ -125,7 +125,7 @@ ggplot(Bbprev, aes(fill=taxonID, y=prevalence, x=siteID)) +
 
 The abundance of ticks and small mammals found at a site likely plays a role in understanding the interplay between environment, hosts and vectors in this complex system.  Here we plot the abundance of 3 life stages of the primary vector, Ixodes scapularis at the three selected sites.  A more detailed tutorial describing how to get started analyzing and plotting small mammal abundances can be found here: https://www.neonscience.org/resources/learning-hub/tutorials/mammal-data-intro
 
-```{r plot tick populations, echo=FALSE}
+```{r plot tick populations, echo=FALSE, message=FALSE, warning=FALSE, results='hide', cache=TRUE}
 #Remove data with no sampling:
 tckcol<-tck_fielddata %>% filter(samplingImpractical%in%'OK'|samplingImpractical%in%''| is.na(samplingImpractical))
 
