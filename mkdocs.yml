@@ -47,7 +47,8 @@ nav:
   - Data science in decision making and policy:
       - US Census: policy/census/US_Census.md
       - FDIC Failed Banks: policy/bank_fail/FDIC_Failed_Bank.md
-  - AI in environmental data science: ai_environmental_data_science/PLACEHOLDER.md
+  - AI in environmental data science: 
+      - WeatherBench: AI/weatherbench/weatherbench.md
   - Math, modeling, statistics: 
       - Everglades food network: math/foodweb/foodweb.md
       - Mammal Primate association network: math/mammal_primate_association/mammal_primate_associations.md
