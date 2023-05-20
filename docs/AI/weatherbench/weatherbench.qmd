@@ -6,11 +6,6 @@ editor_options:
     wrap: 72
 ---
 
-
-
-
-
-
 ```{python, cache=TRUE, warnings=FALSE, messages=FALSE, results='hide'}
 import xarray as xr
 import matplotlib.pyplot as plt
