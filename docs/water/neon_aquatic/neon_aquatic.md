@@ -1,0 +1,66 @@
+Neon aquatic data
+================
+
+NEON water quality sondes are deployed at stream sensor sets and lake
+and river buoys. At stream sites, the sondes are affixed to a post at a
+static depth relative to the stream bottom. The upstream sensor set \#1
+(S1) collects specific conductance, dissolved oxygen, pH, chlorophyll,
+and turbidity, but no fDOM. The downstream sensor set \#2 (S2) collects
+specific conductance, dissolved oxygen, pH, chlorophyll, turbidity and
+fDOM. The buoy-deployed multisondes collect specific conductance,
+dissolved oxygen, pH, chlorophyll, turbidity, fDOM, and depth. At all
+but the Flint River, GA (FLNT) buoys, the water quality multisonde is
+fixed to a profiling winch to collect data from multiple depths every 4
+hours and from 0.5 m parked depth when not profiling. Due to the high
+velocity of the Flint River (FLNT), one multisonde is deployed at a
+fixed depth of 0.5 m below the water surface.
+
+``` r
+library(neonUtilities)
+library(ggplot2)
+```
+
+For this example let’s download a month of water quality data
+(DP1.20288.001) from the Flint River site (FLNT) from June 2022
+(2022-06). We’ll download the basic package and we can skip checking the
+file size because one month of data will not be very large.
+
+``` r
+waq <- loadByProduct(dpID="DP1.20288.001", site="FLNT", 
+                     startdate="2022-06", enddate="2022-06", 
+                     package="expanded", 
+                     release = "RELEASE-2023",
+                     check.size = F)
+```
+
+``` r
+list2env(waq, .GlobalEnv)
+```
+
+    <environment: R_GlobalEnv>
+
+Now we can plot the dissolved Oxygen time-series. For plotting purposes
+we can consider either the `startDateTime`or the `endDateTime` time
+stamp. From the **variables_xxxxx** file we can see that these are the
+start and end times of the interval over which measurements were
+collected. Because water quality is an instantaneous measurement that is
+not averaged, these will be the same. Note all NEON data are always in
+UTC time. We will also consider the variable `dissolvedOxygen`, which
+the **variables_xxxxx** file tells us is the concentration in mg/L.
+
+``` r
+doPlot <- ggplot() +
+    geom_line(data = waq_instantaneous, 
+              aes(endDateTime, dissolvedOxygen), 
+              na.rm=TRUE, color="blue") +
+  geom_line( na.rm = TRUE) +
+    ylim(6, 9) + ylab("DO (mg/L)") +
+    xlab(" ") +
+  ggtitle("Flint River - Dissolved Oxygen") 
+  
+  
+
+doPlot
+```
+
+![](neon_aquatic_files/figure-gfm/plot-wqual-1.png)
