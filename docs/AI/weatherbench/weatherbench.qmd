@@ -7,6 +7,10 @@ editor_options:
 ---
 
 
+
+
+
+
 ```{python, cache=TRUE, warnings=FALSE, messages=FALSE, results='hide'}
 import xarray as xr
 import matplotlib.pyplot as plt
@@ -20,7 +24,7 @@ wget "https://dataserv.ub.tum.de/s/m1524895/download?path=%2F5.625deg%2Fgeopoten
 ```
 
 
-```{bash, cache=TRUE, warnings=FALSE, messages=FALSE, results='hide'}
+```{bash, cache=TRUE, warnings=FALSE, messages=FALSE, results='hide', eval=FALSE}
 mkdir -p geopotential_500
 unzip -d geopotential_500/ geopotential_500_5.625deg.zip
 ```
@@ -48,3 +52,40 @@ plt.show()
 ```
 
 
+
+```{r, cache=TRUE, warnings=FALSE, messages=FALSE, results='hide'}
+library(RCurl)
+library(ncdf4)
+library(ggplot2)
+library(reshape2)
+library(tidync)
+
+# Set options to skip SSL verification
+download_opts <- list(ssl.verifypeer = FALSE, ssl.verifyhost = FALSE)
+
+# Download the dataset
+bin_data <- getBinaryURL("https://dataserv.ub.tum.de/s/m1524895/download?path=%2F5.625deg%2Fgeopotential_500&files=geopotential_500_5.625deg.zip", .opts = download_opts)
+
+# Write the downloaded data to a file
+writeBin(bin_data, "geopotential_500_5.625deg.zip")
+
+# Unzip the downloaded file
+unzip("geopotential_500_5.625deg.zip", exdir = "geopotential_500/")
+
+# Load multiple NetCDF files into R
+filenames <- list.files(path = "geopotential_500", full.names = TRUE, pattern = "*.nc")
+
+# Use tidync to read the first NetCDF file
+z500_first <- tidync(filenames[[1]]) %>% hyper_tibble()
+
+# Melt the data frame to make it compatible with ggplot2
+z500_melt <- melt(z500_first, id.vars = c("lon", "lat")) 
+
+ggplot(z500_melt, aes(lon, lat, fill = value)) + 
+   geom_tile() +
+   scale_fill_gradientn(colors = terrain.colors(1000)) +
+   theme_minimal() +
+   theme(axis.text = element_blank(),
+         axis.ticks = element_blank(),
+         panel.grid = element_blank())
+```
