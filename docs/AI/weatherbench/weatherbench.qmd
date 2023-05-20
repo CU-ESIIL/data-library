@@ -1,0 +1,50 @@
+---
+title: "WeatherBench"
+format: gfm
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+
+```{python, cache=TRUE, warnings=FALSE, messages=FALSE, results='hide'}
+import xarray as xr
+import matplotlib.pyplot as plt
+```
+
+```{bash, cache=TRUE, warnings=FALSE, messages=FALSE, results='hide'}
+
+# This might take a few minutes
+wget "https://dataserv.ub.tum.de/s/m1524895/download?path=%2F5.625deg%2Fgeopotential_500&files=geopotential_500_5.625deg.zip" -O geopotential_500_5.625deg.zip --no-check-certificate
+
+```
+
+
+```{bash, cache=TRUE, warnings=FALSE, messages=FALSE, results='hide'}
+mkdir -p geopotential_500
+unzip -d geopotential_500/ geopotential_500_5.625deg.zip
+```
+
+
+```{python, cache=TRUE, warnings=FALSE, messages=FALSE, results='hide'}
+z500 = xr.open_mfdataset('geopotential_500/*.nc', combine='by_coords')
+z500
+```
+```{python, cache=TRUE, warnings=FALSE, messages=FALSE, results='hide'}
+
+plt.clf()
+# Plot an example
+z500.z.isel(time=1500).plot();
+plt.show()
+```
+
+```{python, cache=TRUE, warnings=FALSE, messages=FALSE, results='hide'}
+plt.clf()
+# To speed things up we will just take the mean for 2016
+climatology = z500.sel(time=slice('2016', '2018')).mean('time').load()
+climatology.z.plot()
+
+plt.show()
+```
+
+
