@@ -42,10 +42,11 @@ nav:
       - USA phenology network: forecasting/Phenology_network/Phenology_network.md
       - neon4cast: https://github.com/eco4cast/neon4cast-example 
       - recovery after fire: https://github.com/NEONScience/NEON-Data-Skills/blob/main/tutorials-in-development/ESIIL_InnovationSummit_2023/Python/wildfire/fire_effects_on_veg_structure_using_lidar.ipynb
-      - NEON forecast challenge: https://github.com/OlssonF/NEON-forecast-challenge-workshop/blob/main/NEON_forecast_challenge_workshop.md
+      
   - Data harmonization: 
       - Dryad: harmonization/dryad/dryad.md
-      - NEON and LTER: 
+      - NEON and LTER: harmonization/neon_and_lter/neon_and_lter.md
+      - NEON lidar and organismal data: harmonization/neon_lidar_and_organismal/neon_lidar_and_organismal.md
   - Food supply:
       - United Nations Food and Agriculture: food/FAOSTAT/FAO.md
   - Social justice:
