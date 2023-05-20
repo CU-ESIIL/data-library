@@ -20,7 +20,7 @@ nav:
   - Solving water: 
       - USGS water services: water/usgs_water_services/usgs_water_services.md
       - EPA water quality: water/epa_water_quality/epa_water_quality.md
-      - NEON Aquatic Instrument Data: /Users/ty/Documents/Github/data-library/docs/water/neon_aquatic/neon_aquatic.md
+      - NEON Aquatic Instrument Data: water/neon_aquatic/neon_aquatic.md
   - Data librarianship: 
       - Public Libraries Survey: librarian/imls.md
   - Cutting-edge remote sensing: 

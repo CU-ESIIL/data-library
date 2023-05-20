@@ -1,0 +1,211 @@
+---
+title: "Fusing NEON LiDAR and Organismal Data"
+author: "Sydne Record & Isaac Shepard"
+date: "2023-03-02"
+format: gfm
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+This tutorial focuses on integrating multiple National Ecological Observatory Network (NEON) data sources to examine how edge effects might influence biodiversity patterns in the Great Smoky Mountains National Park (GRSM) NEON site.
+
+## Learning Objectives
+1. Participants will learn how to visualize spatial data representing features of NEON sites (i.e., lines representing roads and points indicating organismal plot locations) in R.
+2. Participants will learn about NEON organismal data for sentinel taxa and how to access those data in the ecocomDP format in R using the NEONdivdata package.
+3. Participants will formulate hypotheses about how edge effects may influence biodiversity at NEON sites and explore these hypotheses with analyses on the relationships between distance from road and species richness of various sentinel taxa.
+
+## Context 
+Fragmentation is the disruption of continuity in pattern or process. Across the globe, human activity has resulted in habitat fragmentation to varying degrees. For instance, the creation of roads for transportation creates a mosaic of fragmented patches of habitat. Environmental conditions differ closer to the edge of a road relative to areas further from a road where there is intact habitat within a patch. This phenomenon of differing conditions at the transition zone between the road and intact habitat away from the road is known more generally as an edge effect. In this tutorial, we will explore how edge effects caused by roads within a NEON site influence species richness of NEON's sentinel taxa.
+
+[NEON](https://www.neonscience.org/) is comprised of 81 terrestrial and aquatic sites spanning the contiguous United States, Puerto Rico, Alaska, and Hawaii distributed across twenty eco-climatic domains. NEON uses standardized protocols to collect a variety of observations at each site ranging from information on the flux of greenhouse gases in the atmosphere above sites to the number of small mammals scurrying around on the ground. Although NEON collects a great deal of information at each site, very little information on human land use and management is collected by the Observatory. However, remote sensing data collected by the NEON Airborne Observation Platform (AOP), a low-flying plane equipped with various sensors and cameras, have the potential to provide some information on land use at the sites (Ordway et al. 2021). For instance, the NEON AOP collects remotely sensed information using a **Li**ght **D**etection **A**nd **R**anging (LiDAR or active scanning) sensor that can be used to reconstruct a high-resolution (1-m) topographic map of the each site. Such LiDAR derived data have been used by archaeologists to detect artefacts across landscape scales (Johnson & Oiumet 2014).
+
+Recent work by the Record research group at Bryn Mawr College and the University of Maine generated spatial data layers (shapefiles) of roads across all NEON sites leveraging the NEON AOP LiDAR data. During this process, roads and stream data layers provided by the United States Census and National Hydrological Databases, respectively, were overlaid onto a high-resolution (i.e., 1-m) digital elevation model hillshade map generated from the NEON LiDAR data and then shapefiles of undetected roads (e.g., dirt roads) were made (Figure 1).
+
+![Close up of NEON LiDAR derived digital elevation map showing unmarked road, US Census road in pink, and National Hydrography Database stream in blue.](C:/Users/sydne.record/Documents/GitHub/April2023_Meeting_ORNL/Tutorial2/Figures/Fig1-Lidar.jpg)
+
+Today we will explore how to incorporate this information on roads at NEON sites into an analysis investigating relationships between NEON organismal observations and edge effects focused on the Great Smoky Mountain National Park (GRSM) site. 
+
+### Mapping roads and NEON Terrestrial Observation Sampling (TOS) plots 
+Let's first load in the GRSM LiDAR derived road layer and the NEON TOS boundaries.
+
+To begin, we need to point R to the location where we will be reading in data from. Generally, it is good practice to set a directory from with you will be importing data and another directory to which you will be exporting any outputs. If you have not used the *file.path* function before type "? file.path" into your console to read the help file about it. You can do this for any of the funtions we are using today.
+```{r, eval=FALSE}
+# Set root folder that is our shared MSB Google Drive
+root_folder <- 'G:/Shared drives/Record_Lab/GRSM_Tutorial'
+# Set your working directory to the root folder
+setwd(file.path(root_folder))
+```
+
+You will also want to load the following R packages that will provide some additional functions for us to use today that are not included in the base configuration of R. The terra package has a great tutorial [here](https://rspatial.org/spatial/). The book [*R for Data Science*](https://r4ds.had.co.nz/) by Grolemund and Wickham is an excellent introduction to the tidyverse, which is the group of packages we will be using today to wrangle and visualize data.
+```{r, eval=FALSE}
+# Load relevant R packages
+library(terra)
+library(rgeos)
+library(tidyverse)
+```
+
+First, let's visualize the GRSM LiDAR data based on a hillshade raster made from the ground elevation data product. NEON has a great tutorial on how to generate such a map [here](https://www.neonscience.org/resources/learning-hub/tutorials/da-viz-neon-lidar-co13flood-r).
+  
+```{r, eval=FALSE}
+# Read in the hillshade map (i.e., digital elevation model) generated from the NEON LiDAR data
+dem <- terra::rast(file.path(root_folder,"Data/finalGRSM.TIF"))
+# Plot the hillshade map of the GRSM site
+plot(dem, col = grey(1:90/100), legend=FALSE)
+```
+
+Now read in the LiDAR-derived roads layer, NEON network-wide terrestrial sampling boundaries, and NEON network-wide organismal sampling plot boundaries. Note that all of these are shapefiles. Create a map of the roads, sampling boundaries and plot centroids to visualize the spatial data. Note that for accessibility, we have intentionally used a colorblind friendly color combination.
+
+```{r, eval=FALSE}
+# Read in NEON site boundaries shapefile as a spatial polygons vector
+NEONsiteshp <- terra::vect(file.path(root_folder,"Data/TerrestrialSamplingBoundaries/terrestrialSamplingBoundaries.shp"))
+# Read in NEON Terrestrial Observation System plot centroids shapefile as a spatial points vector
+NEONTOSshp <- terra::vect(file.path(root_folder,"Data/All_NEON_TOS_Plot_Centroids_V9/All_NEON_TOS_Plot_Centroids_V9.shp"))
+# Read in GRSM roads shapefile as a spatial polygons vector. 
+GRSMlinearshp <- terra::vect(file.path(root_folder,"Data/GRSM_linear_features/linear_features.shp"))
+# Plot these shapefiles together - note run all these three lines at once
+####specify xlim
+plot(GRSMlinearshp, ylim=c(35.55, 35.75), xlim=c(-83.7,-83.3))
+plot(NEONsiteshp, add=TRUE, col="#999999")
+plot(NEONTOSshp, add=TRUE, col="#E69F00")
+```
+
+Note here that the roads layer does not completely cover the spatial extent of the entire GRSM site, particularly the northeastern portion of the GRSM site. Keep in mind that the roads layer was derived from the NEON LiDAR data, which has some spatial gaps in it when weather conditions during flights prevent good visibility. For the purposes of this analysis, we will exclude the plots that do not overlap with the road layer by cropping the plot centroids data to match the spatial extent of the road layer.
+
+```{r, eval=FALSE}
+# Crop NEON TOS plot points to LiDAR data. 
+GRSMplotslidar <- crop(NEONTOSshp, GRSMlinearshp)
+# Plot the cropped points overlaid onto the roads layer to make sure that you have accomplished what you intended.
+plot(GRSMlinearshp)
+plot(GRSMplotslidar, add=TRUE, col="#E69F00")
+```
+
+### Calculating distance between NEON plots and nearest road
+
+For this analysis, we will investigate edge effects by calculating the distance of a NEON plot from the nearest road in the roads layer. However, note that there are many ways to calculate fragmentation that could alternatively be used. Before calculating the distance between each NEON plot centroid and the nearest road, we re-project the road and plot centroids to the UTM projection for the NEON site based to ensure distance estimates are output in meters. Note that in addition to keeping track of the plotID, we also keep track of the plot subtype. The plot subtype variables indicates which type of observations are made in each plot. For instance, basePlots have observations for microbes, beetles, and herbaceous vegetation. Other plot subtypes and their corresponding organismal measurements are: birds in birdGrid, plant phenology in phenology, ticks in tickPlot, small mammals in mammalGrid, mosquitos in mosquitoPoint.
+
+```{r, eval=FALSE}
+# Project linear features and TOS plot centroids to UTM projection for NEON site based on UTM of AOP data derived hillshade map
+GRSMplotslidarproj <- project(GRSMplotslidar, dem)
+GRSMlinearproj <- project(GRSMlinearshp,dem)
+
+# calculate the perpendicular distance from plots to the nearest road in meters
+ptroad <-apply(distance(GRSMplotslidarproj,GRSMlinearproj),1, min)
+# Create a tibble containing only information on plotID, plot subtype that indicates the type of observation plot, and distance in meters.
+distRoad<-tibble(plotID=GRSMplotslidarproj$plotID, subtype=GRSMplotslidarproj$subtype, distancem=ptroad) 
+```
+
+### Wrangling NEON organismal data and exploring effects of edges on biodiversity
+To facilitate the use of NEON organismal data for biodiversity research and synthesis, Record and colleagues created a workflow to process and format NEON organismal data into the ecocomDP (ecological community data design pattern) format (O'Brien et al. 2021), and available through the [ecocomDP R package](https://cran.rstudio.com/web/packages/ecocomDP/index.html); we then provided the standardized data as an R data package [neonDivData](https://github.com/daijiang/neonDivData)) (Li et al. 2022). For details on how neonDivData makes it easier to use NEON organismal data in general, and especially for synthesis with other community ecology data products (e.g., from the Long Term Ecological Research Network), see this [tutorial](https://www.neonscience.org/resources/learning-hub/tutorials/neon-biodiversity-ecocomdp-cyverse). 
+
+You can install the development version of neonDivData from Github with:
+```{r, eval=FALSE}
+# Uncomment the below line of code if you need to install neonDivData
+#install.packages("neonDivData", repos = 'https://daijiang.r-universe.dev')
+library(neonDivData)
+```
+
+To see the various data for different NEON sentinel taxonomic groups contained in *neonDivData*, you can type ?neon_taxa to pull up the help pages for the R data package. Take a moment to consider how the richness of varied taxonomic groups (e.g., plants and birds) might vary in terms of how edge effects (e.g., distance from road) influence them. Let's explore some of these hypotheses graphically, starting with birds.
+
+The NEONdivdata package data_bird object contains observations from all NEON sites, so let's first filer our data to just include bird observation from GRSM and see how many taxa of birds are there.
+```{r, eval=FALSE}
+# Subset all NEON bird data down to GRSM observations 
+birds <- filter(neonDivData::data_bird, siteID=="GRSM")
+# How many unique taxa of birds are across GRSM?
+length(unique(birds$taxon_id))
+```
+
+Now let's calculate a simple metric of taxonomic richness of birds per plot based on how many unique taxa are in the filtered dataset.  
+```{r, eval=FALSE}
+# Determine simple metric of taxonomic richness of birds per plot across GRSM
+birdsrich <- birds %>%
+  group_by(plotID) %>%
+  summarise(richness = length(unique((taxon_id))))
+```
+
+We can now join the information on distance from roads that we calculated earlier for the birdGrid suplots with the information on bird richness in each plot.
+```{r, eval=FALSE}
+# Join birdsrich and distRoad from birdGrids
+birdsdist <- distRoad %>%
+  filter(subtype=='birdGrid')
+birdsrichdist <- left_join(birdsrich, birdsdist)
+```
+
+Finally, let's plot the relationship between distance from roads and bird richness:
+```{r, eval=FALSE}
+ggplot(birdsrichdist, main='Birds') +
+  geom_point(aes(x=distancem, y=richness)) +
+  expand_limits(x=0,y=0) +
+  labs(title="Birds", x="Distance from Road (m)", y="Richness")
+```
+Note that you should have recend a warning message that some observations were removed due to missing values. These were the plots that fell outside of the NEON LiDAR flight box, so distances from roads were not possible to calculate for those plots. 
+
+Is your hypothesis about how bird richness varies with distance from road supported or not? What is the trend in the data? What are the limitations of using this subset of NEON data from GRSM to explore effect of road edges on bird richness?
+
+Birds are fairly mobile species that may find it easier to access resources within a NEON site more easily than immobile taxa, such as plants. How do you think herbaceous plant richness might be influenced by edge effects? How do you think introduced plant species might differ from native species in terms of distance from road? The NEON plant data provide information on whether species are native vs. introduced in a 'nativeStatusCode' based on classifications from the USDA Plants Database, which enable this investigation. 
+
+Note that NEONdivdata so far only contains data from NEON plant quadrat sampling. We have not yet incorporated the woody vegetation structure data product. Below we run similar code for generating the above scatterplot for birds for plants, but also include data to determine the presence or absence of introduced plant species in relationship to distance from road.
+
+```{r, eval=FALSE}
+## Plants
+# Subset all NEON herbaceous vegetation data down to GRSM observations 
+plants <- filter(neonDivData::data_plant, siteID=="GRSM")
+# How many unique taxa of herbaceous plants are across GRSM?
+length(unique(plants$taxon_id))
+
+# Determine simple metric of taxonomic richness of beetles per plot across GRSM
+plantsrich <- plants %>%
+  group_by(plotID) %>%
+  summarise(richness = length(unique((taxon_id))))
+
+# Determine presence or absence of invasive plants in plot
+# To do this, first switch nativeStatusCode in plants to a binary variable where 0 is native/unknown/native-introduced and 1 is introduced
+plantsinvpa <- plants %>%
+  mutate(inv = ifelse(nativeStatusCode == "I", 1, 0))
+# For each plotID, sum the inv column. 
+invbyplot <- plantsinvpa %>%
+  group_by(plotID) %>%
+  summarise(inv = sum(inv))
+# Finally, convert the summed number of introduced species into a binary status again where 1 is presence of introduced species and 0 is absence 
+invbyplot <- invbyplot %>%
+  mutate(invpa = ifelse(inv>0, 1, 0))
+# Join plantsrich and distRoad from baseplots
+plantsdist <- distRoad %>%
+  filter(subtype=='basePlot')
+plantsrichdist <- left_join(plantsrich, plantsdist)
+# Join plantsrich and invbyplot
+plantsinvrich <- left_join(plantsrichdist, invbyplot)
+
+# Create a scatterplot of distance from road vs. plant richness
+ggplot(plantsinvrich, main='Plants') +
+  geom_point(aes(x=distancem, y=richness)) +
+  labs(title="Plants", x="Distance from Road (m)", y="Richness")
+
+# Plot the relationship between absence or presence of introduced plants and distance from road
+ggplot(plantsinvrich, main='Plants') +
+  geom_boxplot(aes(x=as.factor(invpa), y=distancem)) +
+  labs(title="Plants", x="Introduced absence or presence", y="Distance from Road (m)")
+```
+For the plant data, we have enough points to fit a regression model to explore the relationship between distance from road and plant richness:
+```{r, eval=FALSE}
+# Explore this relationships with a regression model
+summary(lm(richness~distancem, data=plantsrichdist))
+```
+
+Was there a significant effect of distance from roads on plant richness? Does this confirm what we saw in the exploratory data analysis with the scatterplot?
+
+To explore if there is a significant effect of distance from road and the presence or absence of introduced plants we can run a logistic regression model:
+```{r, eval=FALSE}
+summary(glm(invpa~distancem, data=plantsinvrich))
+```
+
+As we conclude this tutorial, consider the possibilities and limitations of NEON data for exploring the influence of edge effects on biodiversity. How might a network-wide analysis change any of our data limitations? How might you design the sampling protocol of these organisms to better address questions about edge effects? What other drivers might there be of biodiversity that were not included in this analysis?
+
+### Literature Cited
+Johnson, K.M. and W.B. Ouimet. 2014. Rediscovering the lost archaeological landscape of southern New England using airborne light detection and ranging (LiDAR). *Journal of Archaeological Science*, 42:9-20.
+
+Li, D., S. Record, E. Sokol, et al. 2022. Standardized NEON organismal data for biodiversity research. *Ecosphere*, 13(7):e4141.
+
+O’Brien, M., C. A. Smith, E. R. Sokol, C. Gries, N. Lany, S. Record, and M. C. Castorani. 2021. ecocomDP: A flexible data design pattern for ecological community survey data. *Ecological Informatics*, 64:101374.
+
+Ordway, E.M., A.J. Elmore, S. Kolstoe, J.E. Quinn, R. Swanwick, M. Cattau, D. Taillie, S.M. Guinn, K.D. Chadwick, J.W. Atkins, and R.E. Blake. 2021. Leveraging the NEON Airborne Observation Platform for socio-environmental systems research. *Ecosphere*, 12(6), e03640.
