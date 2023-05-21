@@ -8,7 +8,7 @@ editor_options:
     wrap: 72
 ---
 
-We are grateful to have the opportunity to work with data provided by Native Land Digital <https://native-land.ca/maps/languages/lakotayapi/>. This data represents territories, languages, and treaties associated with Indigenous nations across North America and other parts of the world.
+We are grateful to have the opportunity to work with data provided by Native Land Digital <https://native-land.ca>. This data represents territories, languages, and treaties associated with Indigenous nations across North America and other parts of the world.
 
 This rich dataset is more than just a collection of shapes, names, or historical facts. Each entry represents a living community with a rich history, vibrant culture, and ongoing connection to the lands and waters that sustain them. The boundaries and names reflect deep relationships between these communities and their homelands—relationships that predate colonial borders and continue to be meaningful today.
 
