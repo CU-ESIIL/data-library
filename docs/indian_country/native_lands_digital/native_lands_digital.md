@@ -4,10 +4,9 @@ Ty Tuff, ESIIL Data Scientist
 2023-05-21
 
 We are grateful to have the opportunity to work with data provided by
-Native Land Digital <https://native-land.ca>.
-This data represents territories, languages, and treaties associated
-with Indigenous nations across North America and other parts of the
-world.
+Native Land Digital <https://native-land.ca>. This data represents
+territories, languages, and treaties associated with Indigenous nations
+across North America and other parts of the world.
 
 This rich dataset is more than just a collection of shapes, names, or
 historical facts. Each entry represents a living community with a rich

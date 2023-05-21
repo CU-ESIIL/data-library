@@ -52,110 +52,101 @@ Regional Corporation, and others.
 
 R code:
 
-``` r
-# Install and load necessary libraries
-library(sf)
-library(dplyr)
-library(knitr)
-library(ggplot2)
+\`\`\`{r, cache=TRUE, messages=FALSE, warnings=FALSE, results=‘hide’} \#
+Install and load necessary libraries library(sf) library(dplyr)
+library(knitr) library(ggplot2)
 
 # Download dataset from source
-url <- "https://www2.census.gov/geo/tiger/TIGER2020/AIANNH/tl_2020_us_aiannh.zip"
-temp_file <- tempfile(fileext = ".zip")
-download.file(url, temp_file, mode = "wb")
-unzip(temp_file, exdir = tempdir())
+
+url \<-
+“https://www2.census.gov/geo/tiger/TIGER2020/AIANNH/tl_2020_us_aiannh.zip”
+temp_file \<- tempfile(fileext = “.zip”) download.file(url, temp_file,
+mode = “wb”) unzip(temp_file, exdir = tempdir())
 
 # Read the Shapefile
-shapefile_path <- file.path(tempdir(), "tl_2020_us_aiannh.shp")
-aiannh <- read_sf(shapefile_path)
 
+shapefile_path \<- file.path(tempdir(), “tl_2020_us_aiannh.shp”) aiannh
+\<- read_sf(shapefile_path)
 
 # Plot the count per LSAD
-ggplot() +
-  geom_sf(data = aiannh, aes( fill="blue", color="darkblue")) +
-  theme_minimal() +
-  labs(title = "AIANNH Areas")+ theme(legend.position = "none")
-```
 
-![](AIANNH_files/figure-gfm/unnamed-chunk-1-1.png)
+ggplot() + geom_sf(data = aiannh, aes( fill=“blue”, color=“darkblue”)) +
+theme_minimal() + labs(title = “AIANNH Areas”)+ theme(legend.position =
+“none”)
 
-``` r
 # Count the number of AIANNH per legal statistical area description (LSAD)
-state_counts <- aiannh %>%
-  group_by(LSAD) %>%
-  summarize(count = n()) 
 
+state_counts \<- aiannh %\>% group_by(LSAD) %\>% summarize(count = n())
 
 # Plot the count per LSAD
+
 ggplot(state_counts, aes(x = reorder(LSAD, -count), y = count)) +
-  geom_bar(stat = "identity", fill = "steelblue") +
-  theme_minimal() +
-  labs(x = "Legal Statistical Area Description (LSAD)", 
-       y = "Count", 
-       title = "Number of AIANNH per LSAD") +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1))
-```
+geom_bar(stat = “identity”, fill = “steelblue”) + theme_minimal() +
+labs(x = “Legal Statistical Area Description (LSAD)”, y = “Count”, title
+= “Number of AIANNH per LSAD”) + theme(axis.text.x = element_text(angle
+= 90, hjust = 1))
 
-![](AIANNH_files/figure-gfm/unnamed-chunk-1-2.png)
 
-Python code:
 
-``` python
-# Import necessary libraries
-import os
-import geopandas as gpd
-import pandas as pd
-import matplotlib.pyplot as plt
-import urllib.request
-import zipfile
-from tempfile import TemporaryDirectory
 
-# Download dataset from source
-url = "https://www2.census.gov/geo/tiger/TIGER2020/AIANNH/tl_2020_us_aiannh.zip"
-with TemporaryDirectory() as tmpdirname:
-    zip_path = os.path.join(tmpdirname, "tl_2020_us_aiannh.zip")
-    shapefile_path = os.path.join(tmpdirname, "tl_2020_us_aiannh.shp")
-    
-    # Download and unzip the file
-    urllib.request.urlretrieve(url, zip_path)
-    with zipfile.ZipFile(zip_path, 'r') as zip_ref:
-        zip_ref.extractall(tmpdirname)
-    
-    # Read the Shapefile
-    aiannh = gpd.read_file(shapefile_path)
 
-# Create a map of the AIANNH areas
-```
 
-``` python
-aiannh.plot(color="blue", edgecolor="darkblue")
-plt.title("AIANNH Areas")
-plt.axis("off")  # to turn off the axis
-```
+    Python code:
 
-``` python
-plt.show()
+    ::: {.cell execution_count=1}
+    ``` {.python .cell-code}
+    # Import necessary libraries
+    import os
+    import geopandas as gpd
+    import pandas as pd
+    import matplotlib.pyplot as plt
+    import urllib.request
+    import zipfile
+    from tempfile import TemporaryDirectory
 
-# Count the number of AIANNH per LSAD
-```
+    # Download dataset from source
+    url = "https://www2.census.gov/geo/tiger/TIGER2020/AIANNH/tl_2020_us_aiannh.zip"
+    with TemporaryDirectory() as tmpdirname:
+        zip_path = os.path.join(tmpdirname, "tl_2020_us_aiannh.zip")
+        shapefile_path = os.path.join(tmpdirname, "tl_2020_us_aiannh.shp")
+        
+        # Download and unzip the file
+        urllib.request.urlretrieve(url, zip_path)
+        with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+            zip_ref.extractall(tmpdirname)
+        
+        # Read the Shapefile
+        aiannh = gpd.read_file(shapefile_path)
 
-<img src="AIANNH_files/figure-gfm/unnamed-chunk-2-1.png" width="672" />
+    # Create a map of the AIANNH areas
+    aiannh.plot(color="blue", edgecolor="darkblue")
+    plt.title("AIANNH Areas")
+    plt.axis("off")  # to turn off the axis
+    plt.show()
 
-``` python
-state_counts = aiannh['LSAD'].value_counts().reset_index()
-state_counts.columns = ['LSAD', 'Count']  # rename columns
+    # Count the number of AIANNH per LSAD
+    state_counts = aiannh['LSAD'].value_counts().reset_index()
+    state_counts.columns = ['LSAD', 'Count']  # rename columns
 
-# Create a bar plot of the count per LSAD
-state_counts = state_counts.sort_values(by='Count', ascending=False)  # sort by Count
-state_counts.plot(x='LSAD', y='Count', kind='bar', legend=None, color="steelblue")
-plt.title("Number of AIANNH per LSAD")
-plt.xlabel("Legal Statistical Area Description (LSAD)")
-plt.ylabel("Count")
-plt.xticks(rotation=90)
-```
+    # Create a bar plot of the count per LSAD
+    state_counts = state_counts.sort_values(by='Count', ascending=False)  # sort by Count
+    state_counts.plot(x='LSAD', y='Count', kind='bar', legend=None, color="steelblue")
+    plt.title("Number of AIANNH per LSAD")
+    plt.xlabel("Legal Statistical Area Description (LSAD)")
+    plt.ylabel("Count")
+    plt.xticks(rotation=90)
+    plt.show()
 
-``` python
-plt.show()
-```
+<div class="cell-output cell-output-display">
 
-<img src="AIANNH_files/figure-gfm/unnamed-chunk-2-2.png" width="672" />
+![](AIANNH_files/figure-gfm/cell-2-output-1.png)
+
+</div>
+
+<div class="cell-output cell-output-display">
+
+![](AIANNH_files/figure-gfm/cell-2-output-2.png)
+
+</div>
+
+:::

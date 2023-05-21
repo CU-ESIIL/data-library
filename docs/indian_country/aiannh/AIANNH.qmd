@@ -6,6 +6,7 @@ format: gfm
 editor_options: 
   markdown: 
     wrap: 72
+jupyter: python3
 ---
 
 The National American Indian/Alaska Native/Native Hawaiian (AIANNH) Areas Shapefile is a dataset that provides a comprehensive view of the geographic, demographic, and cultural landscape of Indigenous communities in the United States. This unique resource comprises diverse legal entities, encompassing federally recognized American Indian reservations, off-reservation trust lands, Alaska Native regional corporations, and Native Hawaiian homelands.
