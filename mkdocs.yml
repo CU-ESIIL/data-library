@@ -24,8 +24,8 @@ nav:
   - Data librarianship: 
       - Public Libraries Survey: librarian/imls.md
   - Cutting-edge remote sensing: 
-      - NEON Hyperspectral Data: https://github.com/NEONScience/NEON-Data-Skills/blob/main/tutorials-in-development/ESIIL_InnovationSummit_2023/Python/hyperspectral/neon_hyperspectral_python.ipynb
-      - Lidar-based Canopy Height: https://github.com/NEONScience/NEON-Data-Skills/blob/main/tutorials-in-development/ESIIL_InnovationSummit_2023/R/lidar/veg_structure_and_chm.md
+      - NEON Hyperspectral Data: remote_sensing/neon_hyperspectral/neon_hyperspectral.md
+      - Lidar-based Canopy Height: remote_sensing/lidar_canopy_height/lidar_canopy_height.md
   - Nature-based solutions and Human development: 
       - Open Street Map: solutions/osm/osm.md
   - Extreme events and hazards: 
