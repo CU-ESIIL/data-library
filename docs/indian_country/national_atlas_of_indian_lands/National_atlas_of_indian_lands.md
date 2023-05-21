@@ -74,6 +74,7 @@ read the Shapefile and process the data.
 Python code:
 
 ``` python
+
 import geopandas as gpd
 import matplotlib.pyplot as plt
 import contextily as ctx
@@ -117,6 +118,4 @@ plt.axis('equal')
 plt.show()
 ```
 
-<img
-src="National_atlas_of_indian_lands_files/figure-gfm/unnamed-chunk-2-1.png"
-width="960" />
+![](National_atlas_of_indian_lands_files/figure-gfm/unnamed-chunk-2-1.png)

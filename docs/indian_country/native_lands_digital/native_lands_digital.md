@@ -98,8 +98,7 @@ data_gdf.plot(figsize=(10, 10))
 plt.show()
 ```
 
-<img src="native_lands_digital_files/figure-gfm/unnamed-chunk-1-1.png"
-width="960" />
+![](native_lands_digital_files/figure-gfm/unnamed-chunk-1-1.png)
 
 ## Lakȟótiyapi (Lakota)
 
