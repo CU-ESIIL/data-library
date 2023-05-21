@@ -1,6 +1,6 @@
 National Atlas - Indian Lands of the United States dataset
 ================
-Ty Tuff
+Ty Tuff, ESIIL Data Scientist
 2023-05-21
 
 The “National Atlas - Indian Lands of the United States” dataset is a
@@ -27,96 +27,88 @@ R: In R, we’ll use the ‘sf’ package to read the Shapefile and the
 
 R code:
 
-``` r
-# Install and load necessary libraries
+\`\`\`{r, cache=TRUE, messages=FALSE, warnings=FALSE, results=‘hide’} \#
+Install and load necessary libraries
 
-library(sf)
-library(dplyr)
-library(USAboundaries)
-library(ggplot2)
+library(sf) library(dplyr) library(USAboundaries) library(ggplot2)
 
 # Download the Indian Lands dataset
-url <- "https://prd-tnm.s3.amazonaws.com/StagedProducts/Small-scale/data/Boundaries/indlanp010g.shp_nt00968.tar.gz"
-temp_file <- tempfile(fileext = ".tar.gz")
-download.file(url, temp_file, mode = "wb")
-untar(temp_file, exdir = tempdir())
+
+url \<-
+“https://prd-tnm.s3.amazonaws.com/StagedProducts/Small-scale/data/Boundaries/indlanp010g.shp_nt00968.tar.gz”
+temp_file \<- tempfile(fileext = “.tar.gz”) download.file(url,
+temp_file, mode = “wb”) untar(temp_file, exdir = tempdir())
 
 # Read the Shapefile
-shapefile_path <- file.path(tempdir(), "indlanp010g.shp")
-indian_lands <- read_sf(shapefile_path)
 
-states <- us_states(map_date = NULL) # for contemporary boundaries
-counties <- us_counties(map_date = NULL) # for contemporary boundaries
+shapefile_path \<- file.path(tempdir(), “indlanp010g.shp”) indian_lands
+\<- read_sf(shapefile_path)
 
+states \<- us_states(map_date = NULL) \# for contemporary boundaries
+counties \<- us_counties(map_date = NULL) \# for contemporary boundaries
 
-bbox <- st_bbox(indian_lands)
+bbox \<- st_bbox(indian_lands)
 
 # Extract the xmin, xmax, ymin, and ymax values
-xmin <- bbox[1]
-xmax <- bbox[3]
-ymin <- bbox[2]
-ymax <- bbox[4]
 
-ggplot(data= indian_lands) + 
-  geom_sf(data=states, fill=NA, color="grey70", size=0.2) +
-  geom_sf(data=counties, fill=NA, color="grey90", size=0.1) +
-  geom_sf(data=indian_lands, fill="cornflowerblue", color="darkblue") +
-  coord_sf(xlim=c(xmin, xmax), ylim=c(ymin, ymax)) + 
-  theme_minimal() +  # Use minimal theme
-  theme(legend.position = "none") 
-```
+xmin \<- bbox\[1\] xmax \<- bbox\[3\] ymin \<- bbox\[2\] ymax \<-
+bbox\[4\]
 
-![](National_atlas_of_indian_lands_files/figure-gfm/unnamed-chunk-1-1.png)
+ggplot(data= indian_lands) + geom_sf(data=states, fill=NA,
+color=“grey70”, size=0.2) + geom_sf(data=counties, fill=NA,
+color=“grey90”, size=0.1) + geom_sf(data=indian_lands,
+fill=“cornflowerblue”, color=“darkblue”) + coord_sf(xlim=c(xmin, xmax),
+ylim=c(ymin, ymax)) + theme_minimal() + \# Use minimal theme
+theme(legend.position = “none”)
 
-Python: In Python, we’ll use the ‘geopandas’ and ‘pandas’ libraries to
-read the Shapefile and process the data.
 
-Python code:
 
-``` python
-import geopandas as gpd
-import matplotlib.pyplot as plt
-import contextily as ctx
-from urllib.request import urlretrieve
-import os
-import tarfile
-import tempfile
 
-# Download the Indian Lands dataset
-url = "https://prd-tnm.s3.amazonaws.com/StagedProducts/Small-scale/data/Boundaries/indlanp010g.shp_nt00968.tar.gz"
-temp_file, _ = urlretrieve(url)
-tar = tarfile.open(temp_file, "r:gz")
-tar.extractall(path=tempfile.gettempdir())
-tar.close()
 
-# Read the Shapefile
-shapefile_path = os.path.join(tempfile.gettempdir(), "indlanp010g.shp")
-indian_lands = gpd.read_file(shapefile_path)
+    Python:
+    In Python, we'll use the 'geopandas' and 'pandas' libraries to read the Shapefile and process the data.
 
-# Set CRS
-indian_lands = indian_lands.set_crs("EPSG:4326", allow_override=True)
+    Python code:
 
-# Get the US map with state boundaries
-us_map = gpd.read_file(gpd.datasets.get_path('naturalearth_lowres'))
-us_map = us_map[us_map.name == 'United States of America'].set_crs("EPSG:4326")
+    ::: {.cell execution_count=1}
+    ``` {.python .cell-code}
+    import geopandas as gpd
+    import matplotlib.pyplot as plt
+    import contextily as ctx
+    from urllib.request import urlretrieve
+    import os
+    import tarfile
+    import tempfile
 
-# Plot
-fig, ax = plt.subplots(figsize=(10,10))
-us_map.boundary.plot(ax=ax, color='black')
-```
+    # Download the Indian Lands dataset
+    url = "https://prd-tnm.s3.amazonaws.com/StagedProducts/Small-scale/data/Boundaries/indlanp010g.shp_nt00968.tar.gz"
+    temp_file, _ = urlretrieve(url)
+    tar = tarfile.open(temp_file, "r:gz")
+    tar.extractall(path=tempfile.gettempdir())
+    tar.close()
 
-``` python
-indian_lands.plot(ax=ax, color='blue')
-```
+    # Read the Shapefile
+    shapefile_path = os.path.join(tempfile.gettempdir(), "indlanp010g.shp")
+    indian_lands = gpd.read_file(shapefile_path)
 
-``` python
-plt.axis('equal')
-```
+    # Set CRS
+    indian_lands = indian_lands.set_crs("EPSG:4326", allow_override=True)
 
-``` python
-plt.show()
-```
+    # Get the US map with state boundaries
+    us_map = gpd.read_file(gpd.datasets.get_path('naturalearth_lowres'))
+    us_map = us_map[us_map.name == 'United States of America'].set_crs("EPSG:4326")
 
-<img
-src="National_atlas_of_indian_lands_files/figure-gfm/unnamed-chunk-2-1.png"
-width="960" />
+    # Plot
+    fig, ax = plt.subplots(figsize=(10,10))
+    us_map.boundary.plot(ax=ax, color='black')
+    indian_lands.plot(ax=ax, color='blue')
+    plt.axis('equal')
+    plt.show()
+
+<div class="cell-output cell-output-display">
+
+![](National_atlas_of_indian_lands_files/figure-gfm/cell-2-output-1.png)
+
+</div>
+
+:::
