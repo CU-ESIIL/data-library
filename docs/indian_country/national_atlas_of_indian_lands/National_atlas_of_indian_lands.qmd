@@ -21,9 +21,15 @@ R:
 In R, we'll use the 'sf' package to read the Shapefile and the 'dplyr' package to process the data.
 
 R code:
+```{r setup, include=FALSE}  
+library(knitr)  
+library(reticulate)  
+knitr::knit_engines$set(python = reticulate::eng_python)  
+```
+
+
 
 ```{r, cache=TRUE, message=FALSE, warnings=FALSE, results='hide'}
-
 
 # Install and load necessary libraries
 
