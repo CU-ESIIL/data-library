@@ -22,7 +22,9 @@ In R, we'll use the 'sf' package to read the Shapefile and the 'dplyr' package t
 
 R code:
 
-```{r, cache=TRUE, messages=FALSE, warnings=FALSE, results='hide'}
+```{r, cache=TRUE, message=FALSE, warnings=FALSE, results='hide'}
+
+
 # Install and load necessary libraries
 
 library(sf)
@@ -69,7 +71,8 @@ In Python, we'll use the 'geopandas' and 'pandas' libraries to read the Shapefil
 
 Python code:
 
-```{python, cache=TRUE, messages=FALSE, warnings=FALSE, results='hide'}
+```{python, cache=TRUE, message=FALSE, warnings=FALSE, results='hide'}
+
 import geopandas as gpd
 import matplotlib.pyplot as plt
 import contextily as ctx
