@@ -18,9 +18,9 @@ nav:
       - USA Federal tribal reservations: indian_country/national_atlas_of_indian_lands/National_atlas_of_indian_lands.md
       - All types of tribal land in USA: indian_country/aiannh/AIANNH.md
   - Solving water: 
-      - USGS water services: water/usgs_water_services/usgs_water_services.md
-      - EPA water quality: water/epa_water_quality/epa_water_quality.md
       - NEON Aquatic Instrument Data: water/neon_aquatic/neon_aquatic.md
+      - EPA water quality: water/epa_water_quality/epa_water_quality.md
+      - USGS water services: water/usgs_water_services/usgs_water_services.md
   - Data librarianship: 
       - Public Libraries Survey: librarian/imls.md
   - Cutting-edge remote sensing: 
@@ -57,9 +57,9 @@ nav:
   - AI in environmental data science: 
       - WeatherBench: AI/weatherbench/weatherbench.md
   - Math, modeling, statistics: 
+      - Neon tick pathogen data: math/neon_pathogen/neon_pathogen.md
       - Everglades food network: math/foodweb/foodweb.md
       - Mammal Primate association network: math/mammal_primate_association/mammal_primate_associations.md
-      - Neon tick pathogen data: math/neon_pathogen/neon_pathogen.md
   - EDS education: 
       - NCES: education/NCES/NCES.md
       - Nonprofit explorer: education/nonprofit_explorer/nonprofit_explorer.md
