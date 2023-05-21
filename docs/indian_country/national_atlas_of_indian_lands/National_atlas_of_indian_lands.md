@@ -1,5 +1,7 @@
 National Atlas - Indian Lands of the United States dataset
 ================
+Ty Tuff
+2023-05-21
 
 The “National Atlas - Indian Lands of the United States” dataset is a
 comprehensive geographical resource that presents the locations and
@@ -7,7 +9,7 @@ extents of lands associated with Native American tribes recognized by
 the U.S. government. It encompasses lands managed by these tribes under
 the oversight of the U.S. Bureau of Indian Affairs, lands held in trust
 by the U.S. for specific tribes, as well as other types of recognized
-tribal lands. https://www.loc.gov/resource/g3701e.ct003648r/
+tribal lands. <https://www.loc.gov/resource/g3701e.ct003648r/>
 
 This dataset offers vital spatial information for educators,
 policymakers, researchers, and others interested in learning about and
