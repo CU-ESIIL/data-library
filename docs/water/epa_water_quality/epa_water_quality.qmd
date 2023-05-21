@@ -1,11 +1,28 @@
 ---
 title: "EPA's Water Quality Data Portal"
+author: "Ty Tuff, ESIIL Data Scientist"
+date: "2023-05-21"
 format: gfm
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
 
-The EPA's Water Quality Data Portal provides access to water quality monitoring data from various sources, including federal, state, tribal, and local organizations. This data covers a wide range of parameters, such as temperature, pH, dissolved oxygen, and the presence of various chemicals and pollutants. The portal aggregates data from the Water Quality Exchange (WQX), the Storage and Retrieval (STORET) Data Warehouse, and other sources.
+```{r setup, include=FALSE}  
+library(knitr)  
+library(reticulate)  
+knitr::knit_engines$set(python = reticulate::eng_python)  
+```
 
-The data can be used for various purposes, such as identifying pollution sources, assessing the effectiveness of water quality management programs, and understanding the health of aquatic ecosystems. The portal allows users to search and download data related to specific water bodies or locations, making it an invaluable resource for water quality analysis and research.
+The U.S. Environmental Protection Agency's (EPA) Water Quality Data Portal is a comprehensive repository of water quality monitoring data gathered from a broad spectrum of sources. It aggregates information from federal, state, tribal, and local organizations, and presents a wide array of parameters indicative of the health and status of various water bodies.
+
+The data spans parameters such as temperature, pH, dissolved oxygen, along with details about specific chemicals and pollutants, offering a nuanced and comprehensive insight into water quality across multiple regions. This information is gleaned from several notable databases, including the Water Quality Exchange (WQX), the Storage and Retrieval (STORET) Data Warehouse, among other trusted sources.
+
+One of the primary uses of the data accessible through the portal is to identify sources of pollution and assess the effectiveness of various water quality management programs. It offers crucial insights that help in understanding the health of aquatic ecosystems, tracking changes over time, and identifying trends or anomalies that might need immediate attention.
+
+A particularly noteworthy feature of the Water Quality Data Portal is its search functionality. Users can search and download data specific to certain water bodies or geographic locations, tailoring the information to their specific requirements. This makes the portal an invaluable resource for stakeholders interested in water quality analysis and research.
+
+Whether you're an environmental scientist, a policymaker, a water management professional, or simply someone with a keen interest in understanding the quality of water in your region, the EPA's Water Quality Data Portal is an unparalleled resource that brings a wealth of data right at your fingertips.
 
 R
 
@@ -25,7 +42,7 @@ Now you can use the following R script to download the data and create a plot:
 
 R code:
 
-```{r, cache=TRUE}
+```{r, cache=TRUE, message=FALSE, warning=FALSE, results='hide'}
 library(httr)
 library(xml2)
 library(tidyverse)
@@ -66,7 +83,7 @@ if (status_code(response) == 200) {
 
 Python code:
 
-```{python, cache=TRUE}
+```{python, cache=TRUE, message=FALSE, warning=FALSE, results='hide'}
 import requests
 import pandas as pd
 import matplotlib.pyplot as plt

@@ -1,20 +1,41 @@
 EPA’s Water Quality Data Portal
 ================
+Ty Tuff, ESIIL Data Scientist
+2023-05-21
 
-The EPA’s Water Quality Data Portal provides access to water quality
-monitoring data from various sources, including federal, state, tribal,
-and local organizations. This data covers a wide range of parameters,
-such as temperature, pH, dissolved oxygen, and the presence of various
-chemicals and pollutants. The portal aggregates data from the Water
-Quality Exchange (WQX), the Storage and Retrieval (STORET) Data
-Warehouse, and other sources.
+The U.S. Environmental Protection Agency’s (EPA) Water Quality Data
+Portal is a comprehensive repository of water quality monitoring data
+gathered from a broad spectrum of sources. It aggregates information
+from federal, state, tribal, and local organizations, and presents a
+wide array of parameters indicative of the health and status of various
+water bodies.
 
-The data can be used for various purposes, such as identifying pollution
-sources, assessing the effectiveness of water quality management
-programs, and understanding the health of aquatic ecosystems. The portal
-allows users to search and download data related to specific water
-bodies or locations, making it an invaluable resource for water quality
-analysis and research.
+The data spans parameters such as temperature, pH, dissolved oxygen,
+along with details about specific chemicals and pollutants, offering a
+nuanced and comprehensive insight into water quality across multiple
+regions. This information is gleaned from several notable databases,
+including the Water Quality Exchange (WQX), the Storage and Retrieval
+(STORET) Data Warehouse, among other trusted sources.
+
+One of the primary uses of the data accessible through the portal is to
+identify sources of pollution and assess the effectiveness of various
+water quality management programs. It offers crucial insights that help
+in understanding the health of aquatic ecosystems, tracking changes over
+time, and identifying trends or anomalies that might need immediate
+attention.
+
+A particularly noteworthy feature of the Water Quality Data Portal is
+its search functionality. Users can search and download data specific to
+certain water bodies or geographic locations, tailoring the information
+to their specific requirements. This makes the portal an invaluable
+resource for stakeholders interested in water quality analysis and
+research.
+
+Whether you’re an environmental scientist, a policymaker, a water
+management professional, or simply someone with a keen interest in
+understanding the quality of water in your region, the EPA’s Water
+Quality Data Portal is an unparalleled resource that brings a wealth of
+data right at your fingertips.
 
 R
 
@@ -40,20 +61,6 @@ R code:
 library(httr)
 library(xml2)
 library(tidyverse)
-```
-
-    ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-    ✔ dplyr     1.1.2     ✔ readr     2.1.4
-    ✔ forcats   1.0.0     ✔ stringr   1.5.0
-    ✔ ggplot2   3.4.2     ✔ tibble    3.2.1
-    ✔ lubridate 1.9.2     ✔ tidyr     1.3.0
-    ✔ purrr     1.0.1     
-    ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-    ✖ dplyr::filter() masks stats::filter()
-    ✖ dplyr::lag()    masks stats::lag()
-    ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
-
-``` r
 library(ggplot2)
 
 # Parameters for the query
@@ -86,27 +93,6 @@ if (status_code(response) == 200) {
   cat(paste("Error:", status_code(response)), "\n")
 }
 ```
-
-    Data downloaded successfully.
-
-    Warning: One or more parsing issues, call `problems()` on your data frame for details,
-    e.g.:
-      dat <- vroom(...)
-      problems(dat)
-
-    Rows: 57151 Columns: 63
-    ── Column specification ────────────────────────────────────────────────────────
-    Delimiter: ","
-    chr  (31): OrganizationIdentifier, OrganizationFormalName, ActivityIdentifie...
-    dbl   (2): ResultMeasureValue, DetectionQuantitationLimitMeasure/MeasureValue
-    lgl  (27): ActivityEndDate, ActivityEndTime/Time, ActivityDepthHeightMeasure...
-    date  (2): ActivityStartDate, AnalysisStartDate
-    time  (1): ActivityStartTime/Time
-
-    ℹ Use `spec()` to retrieve the full column specification for this data.
-    ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-
-    Warning: Removed 22581 rows containing missing values (`geom_point()`).
 
 ![](epa_water_quality_files/figure-gfm/unnamed-chunk-2-1.png)
 
@@ -153,8 +139,6 @@ else:
     print(f"Error: {response.status_code}")
 ```
 
-<img src="epa_water_quality_files/figure-gfm/unnamed-chunk-3-1.png"
-width="672" />
+![](epa_water_quality_files/figure-gfm/unnamed-chunk-3-1.png)
 
-<img src="epa_water_quality_files/figure-gfm/unnamed-chunk-3-2.png"
-width="672" />
+![](epa_water_quality_files/figure-gfm/unnamed-chunk-3-2.png)

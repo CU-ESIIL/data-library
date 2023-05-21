@@ -1,19 +1,37 @@
 Neon aquatic data
 ================
 
-NEON water quality sondes are deployed at stream sensor sets and lake
-and river buoys. At stream sites, the sondes are affixed to a post at a
-static depth relative to the stream bottom. The upstream sensor set \#1
-(S1) collects specific conductance, dissolved oxygen, pH, chlorophyll,
-and turbidity, but no fDOM. The downstream sensor set \#2 (S2) collects
-specific conductance, dissolved oxygen, pH, chlorophyll, turbidity and
-fDOM. The buoy-deployed multisondes collect specific conductance,
-dissolved oxygen, pH, chlorophyll, turbidity, fDOM, and depth. At all
-but the Flint River, GA (FLNT) buoys, the water quality multisonde is
-fixed to a profiling winch to collect data from multiple depths every 4
-hours and from 0.5 m parked depth when not profiling. Due to the high
-velocity of the Flint River (FLNT), one multisonde is deployed at a
-fixed depth of 0.5 m below the water surface.
+The National Ecological Observatory Network (NEON) provides
+comprehensive ecological data, including water quality data collected
+via specialized equipment known as water quality sondes. These devices
+are strategically deployed in various freshwater systems including
+streams, lakes, and rivers across different sites to measure a multitude
+of water parameters.
+
+At stream sites, the sondes are attached to a post at a fixed depth
+relative to the stream bottom. The upstream sensor set, known as S1,
+measures specific conductance, dissolved oxygen, pH, chlorophyll, and
+turbidity. However, fluorescent dissolved organic matter (fDOM) is not
+measured at these locations. The downstream sensor set, S2, monitors the
+same parameters as S1 but also includes fDOM.
+
+For larger water bodies, such as lakes and rivers, the sondes are
+deployed on buoys. These buoy-deployed multisondes gather data on
+specific conductance, dissolved oxygen, pH, chlorophyll, turbidity,
+fDOM, and depth. Most of the buoys are equipped with a profiling winch,
+allowing the multisonde to collect data from multiple depths every 4
+hours and from a parked depth of 0.5 m when not profiling.
+
+An exception to this is the Flint River site (FLNT) due to its high
+water velocity. Here, one multisonde is deployed at a fixed depth of 0.5
+m below the water surface.
+
+The NEON provides a valuable package, ‘neonUtilities’, to access,
+download and prepare these datasets for analysis. This data, which can
+be invaluable for researchers studying freshwater systems, contributes
+significantly to the understanding of water quality trends, aquatic
+ecosystem health, and the impacts of various environmental factors on
+water quality.
 
 ``` r
 library(neonUtilities)
@@ -36,8 +54,6 @@ waq <- loadByProduct(dpID="DP1.20288.001", site="FLNT",
 ``` r
 list2env(waq, .GlobalEnv)
 ```
-
-    <environment: R_GlobalEnv>
 
 Now we can plot the dissolved Oxygen time-series. For plotting purposes
 we can consider either the `startDateTime`or the `endDateTime` time

@@ -1,9 +1,4 @@
-base
-methods
-datasets
-utils
-grDevices
-graphics
-stats
 neonUtilities
 ggplot2
+knitr
+reticulate

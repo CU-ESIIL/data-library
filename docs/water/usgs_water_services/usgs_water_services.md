@@ -1,11 +1,27 @@
 USGS Water Services
 ================
+Ty Tuff, ESIIL Data Scientist
+2023-05-21
 
-The United States Geological Survey (USGS) provides APIs for accessing
-real-time and historical water data, such as streamflow, groundwater
-levels, and water quality measurements. In this example, we will
-download the real-time streamflow data for a specific site and create a
-plot of the data.
+The United States Geological Survey (USGS) delivers a suite of robust
+and comprehensive APIs to facilitate the exploration and analysis of
+water data. Offering real-time and historical information on parameters
+such as streamflow, groundwater levels, and water quality measurements,
+these APIs are critical for a wide array of stakeholders, including
+researchers, policymakers, environmentalists, and many others.
+
+In the upcoming example, we will tap into this invaluable resource,
+specifically focusing on real-time streamflow data for a designated
+site. By accessing the USGS APIs, we will retrieve and subsequently
+chart the streamflow data, offering a clear, visual representation of
+this critical water measurement.
+
+This exercise serves as not only a practical guide to interacting with
+USGS water data APIs but also as an introduction to the vast
+possibilities these data sources present. Whether it’s tracking
+environmental changes, informing water policy, or guiding scientific
+research, the data accessible through the USGS APIs provides an
+indispensable foundation for a multitude of analyses.
 
 R Code:
 
@@ -44,15 +60,16 @@ if (nrow(data) > 0) {
 }
 ```
 
-![](usgs_water_services_files/figure-gfm/unnamed-chunk-2-1.png)
+![](usgs_water_services_files/figure-gfm/unnamed-chunk-1-1.png)
 
 ``` python
-import hydrofunctions as hf
-import matplotlib.pyplot as plt
+import requests
 import pandas as pd
+import matplotlib.pyplot as plt
+from datetime import datetime
 
 # Define the USGS site number for a specific location
-site = "06759500"
+site = "06759500"  # Changed to a different site number
 
 # Define the parameter code for streamflow
 parameterCd = "00060"
@@ -61,20 +78,40 @@ parameterCd = "00060"
 startDate = "2023-01-01"
 endDate = "2023-05-01"
 
-# Retrieve daily streamflow data for the specified site and date range
-data = hf.NWIS(site, parameterCd, start_date=startDate, end_date=endDate).get_data()
+# Build the URL
+url = f"https://waterservices.usgs.gov/nwis/dv/?format=json&sites={site}&startDT={startDate}&endDT={endDate}&parameterCd={parameterCd}"
 
-if not data.empty:
-    # Convert the data to a data frame
-    df = pd.DataFrame({"Date": data.index, "Streamflow": data["X_00060_00003"]})
+# Send the request
+response = requests.get(url)
+
+# Parse the JSON response
+data = response.json()
+
+# Extract the time series data
+time_series = data["value"]["timeSeries"]
+
+# Check if there is data
+if time_series:
+    # Extract the values and dates
+    values = [
+        float(item["value"]) for item in time_series[0]["values"][0]["value"]
+    ]
+    dates = [
+        datetime.strptime(item["dateTime"], "%Y-%m-%dT%H:%M:%S.%f")
+        for item in time_series[0]["values"][0]["value"]
+    ]
     
+    # Create a data frame
+    df = pd.DataFrame({"Date": dates, "Streamflow": values})
+
     # Plot the data
-    plt.plot(df["Date"], df["Streamflow"])
+    df.plot(x="Date", y="Streamflow")
     plt.title("Streamflow Over Time")
-    plt.xlabel("Date")
     plt.ylabel("Streamflow (cubic feet per second)")
-    plt.tight_layout()
+    plt.grid(True)
     plt.show()
-else:
-    print("No data available for the specified site and date range.")
 ```
+
+![](usgs_water_services_files/figure-gfm/unnamed-chunk-2-1.png)
+
+![](usgs_water_services_files/figure-gfm/unnamed-chunk-2-2.png)

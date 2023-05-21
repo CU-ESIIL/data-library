@@ -1,5 +1,7 @@
 National Center for Education Statistics
 ================
+Ty Tuff, ESIIL Data Scientist
+2023-05-21
 
 The National Center for Education Statistics (NCES) is the primary
 federal entity in the United States responsible for collecting and
@@ -7,7 +9,7 @@ analyzing data related to education. It is part of the U.S. Department
 of Education and the Institute of Education Sciences. NCES provides a
 wealth of data resources on a variety of topics. Here are some of the
 main types of data you can find through NCES:
-https://nces.ed.gov/datatools/
+<https://nces.ed.gov/datatools/>
 
 Assessments: NCES conducts several major assessments, including the
 National Assessment of Educational Progress (NAEP), the Programme for
@@ -198,4 +200,4 @@ plt.ylim(0, 100)
 plt.show()
 ```
 
-<img src="NCES_files/figure-gfm/unnamed-chunk-3-1.png" width="960" />
+![](NCES_files/figure-gfm/unnamed-chunk-3-1.png" width="960)

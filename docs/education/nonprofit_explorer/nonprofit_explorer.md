@@ -1,7 +1,40 @@
 Nonprofit organizations
 ================
+Ty Tuff, ESIIL Data Scientist
+2023-05-21
 
 ## Nonprofit Explorer API by ProPublica
+
+The Nonprofit Explorer API by ProPublica offers an invaluable resource
+to anyone interested in exploring the extensive landscape of tax-exempt
+organizations in the United States. Launched by ProPublica, a renowned
+non-profit newsroom specializing in investigative journalism, this API
+provides extensive access to data collected from millions of tax filings
+sent to the Internal Revenue Service (IRS).
+
+<https://projects.propublica.org/nonprofits/api>
+
+The data accessible through the Nonprofit Explorer API encompasses
+information about each organization’s financial details, including
+revenues and expenses, mission statements, lists of officers, and more.
+This information, sourced from the IRS, has been carefully organized and
+made searchable, bringing a wealth of data to your fingertips.
+
+A particularly significant feature of this API is its ability to search
+through the database using specific keywords. In the example we’re about
+to delve into, we’ll use the keyword “education”. This functionality
+opens up countless avenues for analysis, helping researchers,
+journalists, policy makers, and curious individuals alike to investigate
+patterns, identify trends, and uncover insightful details about the
+non-profit sector’s contribution to education.
+
+Through this exploration, we aim to unlock a better understanding of the
+non-profit ecosystem, its role in our society, and particularly its
+impact on education. The insights we gain may serve as a foundation for
+future research, decision making, and strategy development for those
+working in or with the non-profit sector.
+
+## Education
 
 The Nonprofit Explorer API by ProPublica provides data on tax-exempt
 organizations in the United States. In this example, we’ll search for
@@ -34,16 +67,6 @@ if (http_status(response)$category == "Success") {
 }
 ```
 
-
-         AZ      CA      CO      DC      FL      GA      HI      IA      ID      IL 
-          3      19       6       2       4       1       1       1       1       5 
-    Indiana      LA      MA      MD      MI      MN      MO      MP      MS      NC 
-          1       2       1       1       2       5       3       1       2       2 
-         ND      NE      NJ      NY      OH  Oregon      PA      TX      UT      VA 
-          1       1       3       1       6       1       2      13       2       3 
-         WA      ZZ 
-          2       2 
-
 Python: In Python, we’ll use the ‘requests’ library to fetch data from
 the Nonprofit Explorer API and ‘pandas’ library to process the data.
 
@@ -69,40 +92,6 @@ if response.status_code == 200:
 else:
     print(f"Error: {response.status_code}")
 ```
-
-    CA         19
-    TX         13
-    OH          6
-    CO          6
-    IL          5
-    MN          5
-    FL          4
-    MO          3
-    NJ          3
-    VA          3
-    AZ          3
-    DC          2
-    MS          2
-    WA          2
-    MI          2
-    UT          2
-    NC          2
-    LA          2
-    PA          2
-    ZZ          2
-    Indiana     1
-    NE          1
-    NY          1
-    Oregon      1
-    HI          1
-    GA          1
-    MP          1
-    MD          1
-    IA          1
-    ID          1
-    ND          1
-    MA          1
-    Name: state, dtype: int64
 
 In conclusion, both R and Python offer efficient ways to fetch and
 process data from APIs like the Nonprofit Explorer API. The ‘httr’ and
