@@ -65,7 +65,7 @@ nav:
       - Nonprofit explorer: education/nonprofit_explorer/nonprofit_explorer.md
 
 # Configuration
-imgwidth: 70px;
+imgwidth: 700px;
 theme:
   highlightjs: true
   name: material
@@ -113,3 +113,7 @@ extra_css:
 plugins:
     - search
     - mkdocstrings
+    - git-revision-date
+    - mkdocs-jupyter:
+          include_source: True
+          ignore_h1_titles: True
