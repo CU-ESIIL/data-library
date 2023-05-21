@@ -6,11 +6,20 @@ format: gfm
 This dataset from the Network Repository, titled "eco-florida," represents a food web of the Everglades in South Florida. The nodes in this network are species or groups of species, and the directed edges represent predator-prey relationships. The network contains 128 nodes and 2,102 directed edges.
 
 ```{r, cache=TRUE, eval=FALSE}
-install.packages("igraph")
-install.packages("tidygraph")
-install.packages("ggraph")
-install.packages("httr")
-install.packages("zip")
+# List of packages to install
+package_list <- c("igraph", "tidygraph", "ggraph", "httr", "zip")
+
+# Function to check if a package is installed
+is_package_installed <- function(package_name) {
+  require(package_name, character.only = TRUE, quietly = TRUE)
+}
+
+# Install packages that are not already installed
+for (package in package_list) {
+  if (!is_package_installed(package)) {
+    install.packages(package)
+  }
+}
 ```
 
 

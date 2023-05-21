@@ -19,8 +19,20 @@ Spending time in nature is known to benefit human health and well-being, but evi
 R code:
 
 ```{r, eval=FALSE}
-install.packages("rdryad")
-install.packages("ggplot2")
+# List of packages to install
+package_list <- c("rdryad", "ggplot2")
+
+# Function to check if a package is installed
+is_package_installed <- function(package_name) {
+  require(package_name, character.only = TRUE, quietly = TRUE)
+}
+
+# Install packages that are not already installed
+for (package in package_list) {
+  if (!is_package_installed(package)) {
+    install.packages(package)
+  }
+}
 ```
 
 
@@ -29,6 +41,7 @@ install.packages("ggplot2")
 ```{r, cache=TRUE}
 library(rdryad)
 library(ggplot2)
+library(rappdirs)
 
 
 search_results <- dryad_datasets()
@@ -44,7 +57,9 @@ a <- unlist(files)
 short_files <- as.data.frame(a)[,1]
 
 # Identify the CSV file from the extracted files
-csv_file <- list.files("/Users/ty/Library/Caches/R/rdryad/10_5061_dryad_wwpzgmsgx", pattern = ".csv", full.names = TRUE)[2]
+csv_file <- list.files(file.path(user_cache_dir(), "R", "rdryad", "10_5061_dryad_wwpzgmsgx"), pattern = ".csv", full.names = TRUE)[2]
+
+print(csv_file)
 
 # Read the CSV data
 data <- read.csv(csv_file)
@@ -61,6 +76,9 @@ import requests
 import pandas as pd
 import matplotlib.pyplot as plt
 import io
+import time
+import zipfile
+import os
 
 # Search for datasets related to the term "habitat"
 base_url = "https://datadryad.org/api/v2/datasets?"
@@ -68,28 +86,32 @@ params = {"query": "habitat"}
 
 response = requests.get(base_url, params=params)
 search_results = response.json()
-print(search_results)
 
 # Get the first DOI from the search results
-doi = "https://doi.org/10.5061/dryad.wwpzgmsgx"
-clean_doi = doi.replace("https://doi.org/", "")
-
+files_url = "https://datadryad.org/api/v2/datasets/doi%3A10.5061%2Fdryad.wwpzgmsgx/download"
 # Download the dataset
-files_url = f"https://datadryad.org/api/v2/datasets/{clean_doi}/download"
 response = requests.get(files_url)
-files = response.json()
-print(files)
+if response.status_code == 200:
+  zip_filename = 'response.zip'
+  with open(zip_filename, 'wb') as zip_file:
+    for chunk in response.iter_content(chunk_size=255): 
+        if chunk:
+          zip_file.write(chunk)
+else:
+  print(f"Response generated non successful response code {response.status_code}")
+  return
 
 # Identify the CSV file from the extracted files
-csv_file_url = None
-for file in files['data']:
-    if '.csv' in file['attributes']['name']:
-        csv_file_url = file['links']['download']
-        break
+csv_file = None
+with zipfile.ZipFile("response.zip", "r") as f:
+    for name in f.namelist():
+        if '.csv' in name:
+          csv_file = name
+          f.extract(csv_file)
+          break
 
 # Read the CSV data
-response = requests.get(csv_file_url)
-data = pd.read_csv(io.StringIO(response.text))
+data = pd.read_csv(csv_file)
 
 # Plot the data using pandas and matplotlib
 # Replace 'Perceivedrestoration' and 'Sound_Comp' with the actual column names in your dataset
@@ -97,6 +119,8 @@ ax = data.plot(x='Perceivedrestoration', y='Sound_Comp', kind='scatter')
 ax.set_xlabel('Perceivedrestoration')
 ax.set_ylabel('Sound_Comp')
 plt.show()
+if os.path.exists('response.zip'):
+  os.remove('response.zip')
 ```
 
 

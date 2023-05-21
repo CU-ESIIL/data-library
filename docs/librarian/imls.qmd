@@ -66,10 +66,10 @@ csv_file = [f for f in os.listdir() if f.endswith('.csv')][0]
 data = pd.read_csv(csv_file)
 
 # Create a plot (example: number of libraries by state)
-state_counts = data['STABR'].value_counts().sort_values(ascending=False)
-
-plt.figure(figsize=(12, 6))
-plt.bar(state_counts.index, state_counts.values)
+state_counts = sorted([(a, data['CENTLIB'][i]) for i, a in enumerate(data['STABR'])], key=lambda x: x[1], reverse=True)
+print(state_counts.values)
+plt.figure(figsize=(24, 6))
+plt.bar([i[0] for i in state_counts], [i[1] for i in state_counts])
 plt.xticks(rotation=45, ha='right')
 plt.title('Number of Libraries by State')
 plt.xlabel('State')

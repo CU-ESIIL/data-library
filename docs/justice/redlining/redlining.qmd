@@ -90,6 +90,7 @@ Python code:
 ```{python, cache=TRUE, eval=FALSE}
 # Import libraries
 import geopandas as gpd
+import matplotlib.pyplot as plt
 
 # Download the dataset
 url = "https://raw.githubusercontent.com/americanpanorama/Census_HOLC_Research/main/2020_Census_Tracts/Tracts_2020_HOLC.geojson"
@@ -97,12 +98,12 @@ holc_data = gpd.read_file(url)
 
 # Display the data as a table
 print(holc_data)
-
+plt.cla()
+plt.clf()
 # Plot the data
-holc_data.plot()
-plot.title("2020 Census Tracts with HOLC Data")
-plot.show()
-
+plot = holc_data.plot(cmap='OrRd')
+plot.set_title("2020 Census Tracts with HOLC Data")
+plt.show()
 ```
 
 

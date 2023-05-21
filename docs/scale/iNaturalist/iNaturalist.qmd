@@ -29,7 +29,7 @@ library("taxize")
 library("data.table")
 library("sp")
 library("spdep")
-library(osmdata)
+library("osmdata")
 ```
 
 

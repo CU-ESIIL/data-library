@@ -64,7 +64,7 @@ startDate = "2023-01-01"
 endDate = "2023-05-01"
 
 # Retrieve daily streamflow data for the specified site and date range
-data = hf.NWIS(site, parameterCd, start_date=startDate, end_date=endDate).get_data()
+data = hf.NWIS(site, parameterCd=parameterCd, start_date=startDate, end_date=endDate).get_data()
 
 if not data.empty:
     # Convert the data to a data frame

@@ -51,8 +51,9 @@ import os
 from io import BytesIO
 
 # Download the Indian Lands dataset
-url = "https://prd-tnm.s3.amazonaws.com/StagedProducts/Small-scale/data/Boundaries/indlanp010g.shp_nt00966.tar.gz"
+url = "https://prd-tnm.s3.amazonaws.com/StagedProducts/Small-scale/data/Boundaries/indlanp010g.shp_nt00968.tar.gz"
 response = requests.get(url)
+print(response.status_code)
 tar_file = tarfile.open(fileobj=BytesIO(response.content), mode='r:gz')
 
 # Extract Shapefile
