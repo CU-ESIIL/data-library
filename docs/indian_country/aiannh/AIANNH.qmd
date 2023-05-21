@@ -6,7 +6,6 @@ format: gfm
 editor_options: 
   markdown: 
     wrap: 72
-
 ---
 
 The National American Indian/Alaska Native/Native Hawaiian (AIANNH) Areas Shapefile is a dataset that provides a comprehensive view of the geographic, demographic, and cultural landscape of Indigenous communities in the United States. This unique resource comprises diverse legal entities, encompassing federally recognized American Indian reservations, off-reservation trust lands, Alaska Native regional corporations, and Native Hawaiian homelands.
@@ -52,7 +51,7 @@ aiannh <- read_sf(shapefile_path)
 
 # Plot the count per LSAD
 ggplot() +
-  geom_sf(data = aiannh, aes( fill="blue", color="darkblue")) +
+  geom_sf(data = aiannh, aes( fill="steelblue")) +
   theme_minimal() +
   labs(title = "AIANNH Areas")+ theme(legend.position = "none")
 
@@ -77,7 +76,7 @@ ggplot(state_counts, aes(x = reorder(LSAD, -count), y = count)) +
 
 Python code:
 
-```{python, cache=TRUE, messages=FALSE, warnings=FALSE, results='hide'}
+```{python, cache=TRUE, messages=FALSE, warnings=FALSE, results='hide', width="100%"}
 # Import necessary libraries
 import os
 import geopandas as gpd

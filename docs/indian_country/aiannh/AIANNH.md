@@ -72,7 +72,7 @@ aiannh <- read_sf(shapefile_path)
 
 # Plot the count per LSAD
 ggplot() +
-  geom_sf(data = aiannh, aes( fill="blue", color="darkblue")) +
+  geom_sf(data = aiannh, aes( fill="steelblue")) +
   theme_minimal() +
   labs(title = "AIANNH Areas")+ theme(legend.position = "none")
 ```
