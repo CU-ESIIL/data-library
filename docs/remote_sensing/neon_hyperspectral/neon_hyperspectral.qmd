@@ -1,6 +1,6 @@
 ---
 title: "NEON Hyperspectral Data"
-author: "Ty Tuff, NEON"
+author: ", NEON"
 date: "2023-05-21"
 format: gfm
 editor_options: 

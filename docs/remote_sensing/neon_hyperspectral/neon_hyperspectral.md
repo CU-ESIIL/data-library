@@ -1,6 +1,6 @@
 NEON Hyperspectral Data
 ================
-Ty Tuff, NEON
+, NEON
 2023-05-21
 
 neonhs The goal of neonhs is to make data from the National Ecological
