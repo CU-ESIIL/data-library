@@ -25,7 +25,7 @@ Finally, we acknowledge and express our gratitude to Native Land Digital for the
 Please be aware that as part of this tutorial, we encountered challenges when attempting to directly download and load the data from the Native Land API using R due to its specific formatting. As a solution, we turned to Python, which allowed for a more straightforward handling of this dataset. Specifically, we used Python to download the data from the API, convert it into a GeoDataFrame, and save it as a GeoJSON file. This intermediate GeoJSON file was then successfully loaded into R for further analysis. While this may seem like an extra step, it effectively resolves the issue encountered in R, and facilitates a smooth integration of the data into our R-based workflow. This approach underscores the utility of being versatile in multiple programming languages, as each language has its own strengths and may be more suited to different tasks.
 
 
-```{python, results='hide', messages=FALSE, warnings=FALSE, cache=TRUE}
+```{python, cache=TRUE, messages=FALSE, warnings=FALSE, results='hide'}
 import requests
 import geopandas as gpd
 from shapely.geometry import shape
@@ -74,7 +74,7 @@ Please note that while these historical ranges provide a broad overview of the t
 
 For more information about the Lakota people and their language, visit Native Land Digital's map at https://native-land.ca/maps/languages/lakotayapi/.
 
-```{r, cache=TRUE, messages=FALSE, warnings=FALSE}
+```{r, cache=TRUE, messages=FALSE, warnings=FALSE, results='hide'}
 library(sf)
 library(dplyr)
 library(USAboundaries)

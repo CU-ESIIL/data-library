@@ -11,6 +11,8 @@ legal entities, encompassing federally recognized American Indian
 reservations, off-reservation trust lands, Alaska Native regional
 corporations, and Native Hawaiian homelands.
 
+<https://catalog.data.gov/dataset/tiger-line-shapefile-2020-nation-u-s-american-indian-alaska-native-native-hawaiian-aiannh-areas>
+
 These entities hold a rich tapestry of diverse cultures, languages, and
 histories, each with unique stories to tell and invaluable wisdom to
 impart. The AIANNH Areas Shapefile is more than just a collection of
@@ -33,7 +35,20 @@ dataset, you are not only exploring data, but also appreciating the rich
 tapestry of cultures that form an integral part of the United States’
 historical, present, and future narrative.
 
-<https://catalog.data.gov/dataset/tiger-line-shapefile-2020-nation-u-s-american-indian-alaska-native-native-hawaiian-aiannh-areas>
+## LSAD
+
+Legal/Statistical Area Description (LSAD) is a classification that the
+U.S. Census Bureau uses to define the legal and statistical entities for
+geographic areas. It is a code that represents the type, function, or
+status of a geographic entity.
+
+For example, in the context of American Indian, Alaska Native, and
+Native Hawaiian Areas (AIANNHA), the LSAD can represent the following
+classifications:
+
+“RS” for Reservation (Federal) “OK” for Oklahoma Tribal Statistical Area
+“SD” for State Designated Tribal Statistical Area “RC” for Alaska Native
+Regional Corporation, and others.
 
 R code:
 
@@ -42,6 +57,7 @@ R code:
 library(sf)
 library(dplyr)
 library(knitr)
+library(ggplot2)
 
 # Download dataset from source
 url <- "https://www2.census.gov/geo/tiger/TIGER2020/AIANNH/tl_2020_us_aiannh.zip"
@@ -53,102 +69,93 @@ unzip(temp_file, exdir = tempdir())
 shapefile_path <- file.path(tempdir(), "tl_2020_us_aiannh.shp")
 aiannh <- read_sf(shapefile_path)
 
-# Count the number of AIANNH per congressional district
-state_counts <- aiannh %>%
-  group_by(LSAD) %>%
-  summarize(count = n())
 
-kable(state_counts[order(-state_counts$count),])
+# Plot the count per LSAD
+ggplot() +
+  geom_sf(data = aiannh, aes( fill="blue", color="darkblue")) +
+  theme_minimal() +
+  labs(title = "AIANNH Areas")+ theme(legend.position = "none")
 ```
 
-| LSAD | count | geometry                     |
-|:-----|------:|:-----------------------------|
-| 79   |   221 | MULTIPOLYGON (((-166.5331 6… |
-| 86   |   206 | MULTIPOLYGON (((-83.38811 3… |
-| OT   |   155 | MULTIPOLYGON (((-92.32972 4… |
-| 78   |    75 | MULTIPOLYGON (((-155.729 20… |
-| 85   |    46 | MULTIPOLYGON (((-122.3355 3… |
-| 92   |    35 | MULTIPOLYGON (((-93.01356 3… |
-| 88   |    25 | MULTIPOLYGON (((-97.35299 3… |
-| 96   |    19 | MULTIPOLYGON (((-116.48 32…. |
-| 84   |    16 | MULTIPOLYGON (((-105.5937 3… |
-| 89   |    11 | MULTIPOLYGON (((-95.91705 4… |
-| 82   |     8 | MULTIPOLYGON (((-123.5766 4… |
-| 80   |     7 | MULTIPOLYGON (((-77.21183 3… |
-| 81   |     6 | MULTIPOLYGON (((-119.1725 3… |
-| 97   |     5 | MULTIPOLYGON (((-122.5227 3… |
-| 98   |     5 | MULTIPOLYGON (((-119.7176 3… |
-| 90   |     4 | MULTIPOLYGON (((-94.96309 3… |
-| 83   |     3 | MULTIPOLYGON (((-106.4006 3… |
-| 95   |     3 | MULTIPOLYGON (((-87.33648 4… |
-| 94   |     2 | MULTIPOLYGON (((-116.7145 3… |
-| 00   |     1 | POLYGON ((-106.1191 36.0735… |
-| 87   |     1 | POLYGON ((-131.7133 55.099,… |
-| 91   |     1 | POLYGON ((-119.2362 39.0904… |
-| 93   |     1 | POLYGON ((-116.8737 32.7020… |
-| 99   |     1 | POLYGON ((-106.4424 35.6096… |
-| 9C   |     1 | POLYGON ((-106.0627 35.8852… |
-| 9D   |     1 | MULTIPOLYGON (((-92.61927 4… |
+![](AIANNH_files/figure-gfm/unnamed-chunk-1-1.png)
+
+``` r
+# Count the number of AIANNH per legal statistical area description (LSAD)
+state_counts <- aiannh %>%
+  group_by(LSAD) %>%
+  summarize(count = n()) 
+
+
+# Plot the count per LSAD
+ggplot(state_counts, aes(x = reorder(LSAD, -count), y = count)) +
+  geom_bar(stat = "identity", fill = "steelblue") +
+  theme_minimal() +
+  labs(x = "Legal Statistical Area Description (LSAD)", 
+       y = "Count", 
+       title = "Number of AIANNH per LSAD") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
+![](AIANNH_files/figure-gfm/unnamed-chunk-1-2.png)
 
 Python code:
 
 ``` python
+# Import necessary libraries
+import os
 import geopandas as gpd
 import pandas as pd
-import requests
+import matplotlib.pyplot as plt
+import urllib.request
 import zipfile
-import os
-from io import BytesIO
+from tempfile import TemporaryDirectory
 
-# Download historic redlining data for Philadelphia
+# Download dataset from source
 url = "https://www2.census.gov/geo/tiger/TIGER2020/AIANNH/tl_2020_us_aiannh.zip"
-response = requests.get(url)
-zip_file = zipfile.ZipFile(BytesIO(response.content))
+with TemporaryDirectory() as tmpdirname:
+    zip_path = os.path.join(tmpdirname, "tl_2020_us_aiannh.zip")
+    shapefile_path = os.path.join(tmpdirname, "tl_2020_us_aiannh.shp")
+    
+    # Download and unzip the file
+    urllib.request.urlretrieve(url, zip_path)
+    with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+        zip_ref.extractall(tmpdirname)
+    
+    # Read the Shapefile
+    aiannh = gpd.read_file(shapefile_path)
 
-# Extract Shapefile
-temp_dir = "temp"
-if not os.path.exists(temp_dir):
-    os.makedirs(temp_dir)
-
-zip_file.extractall(path=temp_dir)
-shapefile_path = os.path.join(temp_dir, "tl_2020_us_aiannh.shp")
-
-# Read the Shapefile
-aiannh = gpd.read_file(shapefile_path)
-
-# Count the number of AIANNH per congressional district
-state_counts = aiannh.groupby("LSAD").size().reset_index(name="count")
-
-# Sort by descending count
-state_counts_sorted = state_counts.sort_values(by="count", ascending=False)
-
-print(state_counts_sorted)
+# Create a map of the AIANNH areas
 ```
 
-       LSAD  count
-    2    79    221
-    9    86    206
-    25   OT    155
-    1    78     75
-    8    85     46
-    15   92     35
-    11   88     25
-    19   96     19
-    7    84     16
-    12   89     11
-    5    82      8
-    3    80      7
-    4    81      6
-    21   98      5
-    20   97      5
-    13   90      4
-    18   95      3
-    6    83      3
-    17   94      2
-    16   93      1
-    14   91      1
-    10   87      1
-    22   99      1
-    23   9C      1
-    24   9D      1
-    0    00      1
+``` python
+aiannh.plot(color="blue", edgecolor="darkblue")
+plt.title("AIANNH Areas")
+plt.axis("off")  # to turn off the axis
+```
+
+``` python
+plt.show()
+
+# Count the number of AIANNH per LSAD
+```
+
+<img src="AIANNH_files/figure-gfm/unnamed-chunk-2-1.png" width="672" />
+
+``` python
+state_counts = aiannh['LSAD'].value_counts().reset_index()
+state_counts.columns = ['LSAD', 'Count']  # rename columns
+
+# Create a bar plot of the count per LSAD
+state_counts = state_counts.sort_values(by='Count', ascending=False)  # sort by Count
+state_counts.plot(x='LSAD', y='Count', kind='bar', legend=None, color="steelblue")
+plt.title("Number of AIANNH per LSAD")
+plt.xlabel("Legal Statistical Area Description (LSAD)")
+plt.ylabel("Count")
+plt.xticks(rotation=90)
+```
+
+``` python
+plt.show()
+```
+
+<img src="AIANNH_files/figure-gfm/unnamed-chunk-2-2.png" width="672" />

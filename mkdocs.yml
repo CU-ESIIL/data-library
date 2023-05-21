@@ -14,9 +14,9 @@ copyright: 'Copyright &copy; 2023 University of Colorado Boulder'
 nav:
   - Home: index.md
   - EDS in indian country:
-      - Native Lands Digital: indian_country/native_lands_digital/native_lands_digital.md
-      - National Atlas of Indian Lands in USA: indian_country/national_atlas_of_indian_lands/National_atlas_of_indian_lands.md
-      - American Indian and Alaska Native Areas: indian_country/aiannh/AIANNH.md
+      - Global native homelands: indian_country/native_lands_digital/native_lands_digital.md
+      - USA Federal tribal reservations: indian_country/national_atlas_of_indian_lands/National_atlas_of_indian_lands.md
+      - All types of tribal land in USA: indian_country/aiannh/AIANNH.md
   - Solving water: 
       - USGS water services: water/usgs_water_services/usgs_water_services.md
       - EPA water quality: water/epa_water_quality/epa_water_quality.md

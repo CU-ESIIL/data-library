@@ -147,20 +147,11 @@ counties <- us_counties(map_date = NULL) # for contemporary boundaries
 native_lands <- read_sf("data.geojson")
 
 names(native_lands)
-```
 
-    [1] "Name"        "ID"          "Slug"        "description" "color"      
-    [6] "geometry"   
-
-``` r
 data_for_plot <- native_lands %>% 
   filter(Name == "Lakȟótiyapi (Lakota)" )
 print(data_for_plot$description)
-```
 
-    [1] "https://native-land.ca/maps/languages/lakotayapi/"
-
-``` r
 # Calculate the bounding box of data_for_plot
 bbox <- st_bbox(data_for_plot)
 
