@@ -139,7 +139,7 @@ plt.show()
 # Count the number of AIANNH per LSAD
 ```
 
-<img src="AIANNH_files/figure-gfm/unnamed-chunk-2-1.png" width="672" />
+![](AIANNH_files/figure-gfm/unnamed-chunk-2-1.png)
 
 ``` python
 state_counts = aiannh['LSAD'].value_counts().reset_index()
@@ -158,4 +158,4 @@ plt.xticks(rotation=90)
 plt.show()
 ```
 
-<img src="AIANNH_files/figure-gfm/unnamed-chunk-2-2.png" width="672" />
+![](AIANNH_files/figure-gfm/unnamed-chunk-2-2.png)

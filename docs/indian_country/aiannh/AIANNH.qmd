@@ -6,6 +6,7 @@ format: gfm
 editor_options: 
   markdown: 
     wrap: 72
+
 ---
 
 The National American Indian/Alaska Native/Native Hawaiian (AIANNH) Areas Shapefile is a dataset that provides a comprehensive view of the geographic, demographic, and cultural landscape of Indigenous communities in the United States. This unique resource comprises diverse legal entities, encompassing federally recognized American Indian reservations, off-reservation trust lands, Alaska Native regional corporations, and Native Hawaiian homelands.
@@ -30,8 +31,14 @@ For example, in the context of American Indian, Alaska Native, and Native Hawaii
 "RC" for Alaska Native Regional Corporation, and others.
 
 R code:
+```{r setup, include=FALSE}  
+library(knitr)  
+library(reticulate)  
+knitr::knit_engines$set(python = reticulate::eng_python)  
+```
 
-```{r, cache=TRUE, messages=FALSE, warnings=FALSE, results='hide'}
+
+```{r, cache=TRUE, messages=FALSE, warning=FALSE, results='hide'}
 # Install and load necessary libraries
 library(sf)
 library(dplyr)
@@ -77,6 +84,8 @@ ggplot(state_counts, aes(x = reorder(LSAD, -count), y = count)) +
 Python code:
 
 ```{python, cache=TRUE, messages=FALSE, warnings=FALSE, results='hide', width="100%"}
+#| fig-width: 8
+
 # Import necessary libraries
 import os
 import geopandas as gpd
