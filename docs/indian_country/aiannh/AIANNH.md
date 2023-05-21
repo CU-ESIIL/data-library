@@ -1,45 +1,49 @@
 American Indian and Alaska Native Areas
 ================
+Ty Tuff, ESIIL Data Scientist
+2023-05-21
 
 The National American Indian/Alaska Native/Native Hawaiian (AIANNH)
-Areas Shapefile encompasses the following legal entities: federally
-recognized American Indian reservations, off-reservation trust lands,
-Alaska Native regional corporations, and Native Hawaiian homelands. This
-comprehensive dataset offers valuable information on the geographic
-boundaries, demographic data, and cultural aspects of these distinct
-communities throughout the United States.
+Areas Shapefile is a dataset that provides a comprehensive view of the
+geographic, demographic, and cultural landscape of Indigenous
+communities in the United States. This unique resource comprises diverse
+legal entities, encompassing federally recognized American Indian
+reservations, off-reservation trust lands, Alaska Native regional
+corporations, and Native Hawaiian homelands.
 
-R: In R, we’ll use the ‘sf’ and ‘dplyr’ packages to read and process the
-Shapefile data.
+These entities hold a rich tapestry of diverse cultures, languages, and
+histories, each with unique stories to tell and invaluable wisdom to
+impart. The AIANNH Areas Shapefile is more than just a collection of
+data; it is a detailed map of vibrant communities and proud nations,
+embodying the resilience and enduring spirit of the Indigenous peoples
+of America.
+
+For researchers, policy makers, educators, and anyone with a vested
+interest in understanding these communities and their contributions to
+the broader cultural fabric of the United States, this dataset serves as
+a vital resource. Its depth and breadth offer unprecedented insights
+into the geographic boundaries that define these communities, the
+demographic characteristics that diversify them, and the cultural
+aspects that unify and distinguish them.
+
+From the wild expanses of Alaska to the lush tropical landscapes of
+Hawaii, and across the vast American mainland, the AIANNH Areas
+Shapefile traces the footsteps of the First Nations. By diving into this
+dataset, you are not only exploring data, but also appreciating the rich
+tapestry of cultures that form an integral part of the United States’
+historical, present, and future narrative.
+
+<https://catalog.data.gov/dataset/tiger-line-shapefile-2020-nation-u-s-american-indian-alaska-native-native-hawaiian-aiannh-areas>
 
 R code:
 
 ``` r
 # Install and load necessary libraries
 library(sf)
-```
-
-    Linking to GEOS 3.10.2, GDAL 3.4.2, PROJ 8.2.1; sf_use_s2() is TRUE
-
-``` r
 library(dplyr)
-```
-
-
-    Attaching package: 'dplyr'
-
-    The following objects are masked from 'package:stats':
-
-        filter, lag
-
-    The following objects are masked from 'package:base':
-
-        intersect, setdiff, setequal, union
-
-``` r
 library(knitr)
 
-# Download historic redlining data for Philadelphia
+# Download dataset from source
 url <- "https://www2.census.gov/geo/tiger/TIGER2020/AIANNH/tl_2020_us_aiannh.zip"
 temp_file <- tempfile(fileext = ".zip")
 download.file(url, temp_file, mode = "wb")
@@ -85,9 +89,6 @@ kable(state_counts[order(-state_counts$count),])
 | 99   |     1 | POLYGON ((-106.4424 35.6096… |
 | 9C   |     1 | POLYGON ((-106.0627 35.8852… |
 | 9D   |     1 | MULTIPOLYGON (((-92.61927 4… |
-
-Python: In Python, we’ll use the ‘geopandas’ library to read and process
-the Shapefile data.
 
 Python code:
 
@@ -151,13 +152,3 @@ print(state_counts_sorted)
     23   9C      1
     24   9D      1
     0    00      1
-
-In conclusion, both R and Python offer efficient ways to download and
-process AIANNH TIGER/Line Shapefile data from the U.S. Census Bureau.
-The ‘sf’ package in R provides a simple way to read and manipulate
-spatial data, while the ‘geopandas’ library in Python offers similar
-functionality. The ‘dplyr’ package in R can be used for data
-manipulation and analysis, and Python’s built-in functions like
-value_counts() can be used for aggregating data. Depending on your
-preferred programming language and environment, both options can be
-effective for working with AIANNH data.
