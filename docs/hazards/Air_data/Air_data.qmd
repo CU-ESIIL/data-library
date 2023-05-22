@@ -1,13 +1,25 @@
 ---
 title: "EPA air data"
+author: "Virginia Iglesias, ESIIL Data Scientist"
+date: "2023-05-21"
 format: gfm
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
 
-This data set developed by the Environmental Protection Agency (EPA) contains air quality data per county. Other related data sets are available [here](https://aqs.epa.gov/aqsweb/airdata/download_files.html#AQI).
+The United States Environmental Protection Agency (EPA) is at the forefront of monitoring and protecting the country's environment, and one of its critical areas of focus is air quality. As part of its efforts, the EPA has developed a comprehensive dataset that contains detailed information on air quality across the counties in the United States.
+
+This dataset provides an in-depth look at various air quality metrics at the county level, making it a rich source of information for researchers, policymakers, and environmentalists. The dataset includes data on pollutants such as particulate matter (PM2.5 and PM10), nitrogen dioxide, sulfur dioxide, carbon monoxide, and ozone, among others. These pollutants are key indicators of air quality and have direct implications for human health and environmental wellbeing.
+
+But the EPA's data offerings don't stop with this dataset. Several related datasets are readily available on the EPA's Air Quality System (AQS) site, which you can find [here](https://aqs.epa.gov/aqsweb/airdata/download_files.html#AQI). These additional resources provide further granularity and different perspectives on air quality, including data on the Air Quality Index (AQI), daily summaries, annual summaries, and more.
+
+These datasets offer a comprehensive suite of information for anyone interested in understanding the state of air quality in the United States. Whether for academic research, environmental policy development, public health studies, or personal interest, the EPA's air quality datasets provide valuable insights into the state of the nation's air and the challenges we face in keeping it clean.
+
 
 In R, we need 2 packages to download and visualize the data. First, check if the packages are already installed. Install them if they are not:
 
-```{r}
+```{r, cache=TRUE, message=FALSE, warning=FALSE, results='hide'}
 packages <- c("tidyverse", "httr") 
 new.packages <- packages[!(packages %in% installed.packages()[,"Package"])] 
 if(length(new.packages)>0) install.packages(new.packages) 
@@ -15,13 +27,13 @@ if(length(new.packages)>0) install.packages(new.packages)
 
 Then, load them:
 
-```{r}
+```{r, cache=TRUE, message=FALSE, warning=FALSE, results='hide'}
 lapply(packages, library, character.only = TRUE)
 ```
 
 Download the data set:
 
-```{r, cache = T}
+```{r, cache=TRUE, message=FALSE, warning=FALSE, results='hide'}
 url <- "https://aqs.epa.gov/aqsweb/airdata/annual_aqi_by_county_2022.zip" 
 aqi <- GET(url) 
 data_file <-"aqi.zip" 
@@ -33,13 +45,13 @@ unzip(data_file)
 
 Read the data set:
 
-```{r, cache = T}
+```{r, cache=TRUE, message=FALSE, warning=FALSE, results='hide'}
 aqi <- read_csv('annual_aqi_by_county_2022.csv')
 ```
 
 Select 5 states and make violin plots of the maximum air quality index per county in 2022:
 
-```{r, cache = T}
+```{r, cache=TRUE, message=FALSE, warning=FALSE, results='hide'}
 aqi_5_states <- aqi %>% 
   filter(State %in% c("Alabama", "Colorado", "New Jersey", "Rhode Island", "West Virginia")) 
 
@@ -51,7 +63,7 @@ ggplot(aqi_5_states) +
 
 In Python, we need 5 libraries to download and visualize the data.
 
-```{python, cache = T}
+```{python, cache=TRUE, message=FALSE, warning=FALSE, results='hide'}
 import requests 
 import zipfile
 import pandas as pd
@@ -61,7 +73,7 @@ import matplotlib.pyplot as plt
 
 Download the data set:
 
-```{python, cache = T}
+```{python, cache=TRUE, message=FALSE, warning=FALSE, results='hide'}
 url = "https://aqs.epa.gov/aqsweb/airdata/annual_aqi_by_county_2022.zip" 
 aqi = requests.get(url)
 data_file = "aqi.zip"
@@ -76,14 +88,14 @@ with zipfile.ZipFile(data_file, 'r') as zip_ref:
 
 Read it:
 
-```{python, cache = T}
+```{python, cache=TRUE, message=FALSE, warning=FALSE, results='hide'}
 csv_file = "annual_aqi_by_county_2022.csv" 
 aqi = pd.read_csv(csv_file)
 ```
 
 Select 5 states and make violin plots of the maximum air quality index per county in 2022:
 
-```{python, cache = T}
+```{python, cache=TRUE, message=FALSE, warning=FALSE, results='hide'}
 states = ["Alabama", "Colorado", "New Jersey", "Rhode Island", "West Virginia"]
 aqi_5_states = aqi[aqi['State'].isin(states)]
 

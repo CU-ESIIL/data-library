@@ -1,5 +1,7 @@
 Uranium Mines and Mills Location Database
 ================
+Virginia Iglesias, ESIIL Data Scientist
+2023-05-21
 
 Created by the EPA, the [Uranium Mines and Mills Location
 Database](https://www.epa.gov/radiation/uranium-mines-and-mills-location-database-0)
@@ -24,34 +26,6 @@ Then, load them:
 lapply(packages, library, character.only = TRUE)
 ```
 
-    ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-    ✔ dplyr     1.1.2     ✔ readr     2.1.4
-    ✔ forcats   1.0.0     ✔ stringr   1.5.0
-    ✔ ggplot2   3.4.2     ✔ tibble    3.2.1
-    ✔ lubridate 1.9.2     ✔ tidyr     1.3.0
-    ✔ purrr     1.0.1     
-    ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-    ✖ dplyr::filter() masks stats::filter()
-    ✖ dplyr::lag()    masks stats::lag()
-    ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
-    Linking to GEOS 3.10.2, GDAL 3.4.2, PROJ 8.2.1; sf_use_s2() is TRUE
-
-    [[1]]
-     [1] "lubridate" "forcats"   "stringr"   "dplyr"     "purrr"     "readr"    
-     [7] "tidyr"     "tibble"    "ggplot2"   "tidyverse" "stats"     "graphics" 
-    [13] "grDevices" "utils"     "datasets"  "methods"   "base"     
-
-    [[2]]
-     [1] "httr"      "lubridate" "forcats"   "stringr"   "dplyr"     "purrr"    
-     [7] "readr"     "tidyr"     "tibble"    "ggplot2"   "tidyverse" "stats"    
-    [13] "graphics"  "grDevices" "utils"     "datasets"  "methods"   "base"     
-
-    [[3]]
-     [1] "sf"        "httr"      "lubridate" "forcats"   "stringr"   "dplyr"    
-     [7] "purrr"     "readr"     "tidyr"     "tibble"    "ggplot2"   "tidyverse"
-    [13] "stats"     "graphics"  "grDevices" "utils"     "datasets"  "methods"  
-    [19] "base"     
-
 Download the data set:
 
 ``` r
@@ -69,15 +43,6 @@ Read the data set:
 ``` r
 mines <- st_read("Master_Database_and_Shape_Files/ULD_albers.shp")
 ```
-
-    Reading layer `ULD_albers' from data source 
-      `/Users/ty/Documents/Github/data-library/docs/hazards/Uranium_mines/Master_Database_and_Shape_Files/ULD_albers.shp' 
-      using driver `ESRI Shapefile'
-    Simple feature collection with 14810 features and 30 fields
-    Geometry type: MULTIPOINT
-    Dimension:     XY
-    Bounding box:  xmin: -3296195 ymin: -1542681 xmax: 1955673 ymax: 4183792
-    Projected CRS: North_America_Albers_Equal_Area_Conic
 
 Calculate number of mines per county in Colorado:
 
@@ -129,8 +94,6 @@ with open(data_file, 'wb') as f:
 # unzip file
 ```
 
-    222483119
-
 ``` python
 with zipfile.ZipFile(data_file, 'r') as zip_ref:
     zip_ref.extractall('.')
@@ -161,8 +124,6 @@ mines_co = mines_co.sort_values('mines', ascending=False).iloc[:10]
 plt.barh(y=mines_co.index, width=mines_co['mines'])
 ```
 
-    <BarContainer object of 10 artists>
-
 ``` python
 plt.xlabel('Number of Uranium mines')
 plt.ylabel('County')
@@ -170,5 +131,5 @@ plt.title('Top 10 counties with Uranium mines in Colorado')
 plt.gca().invert_yaxis()
 plt.show()
 ```
-![](Uranium_mines_files/figure-gfm/unnamed-chunk-11-1.png)
 
+![](Uranium_mines_files/figure-gfm/unnamed-chunk-11-1.png)

@@ -1,13 +1,18 @@
 ---
 title: "ICS-209-Plus"
+author: "Virginia Iglesias, ESIIL Data Scientist"
+date: "2023-05-21"
 format: gfm
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
 
 This is an all-hazards data set mined from the US National Incident Management System (1999-2020). You can find more information [here](https://www.nature.com/articles/s41597-023-01955-0#code-availability)).
 
 In R, we need 2 packages to download and visualize the data. First, check if the packages are already installed. Install them if they are not:
 
-```{r}
+```{r, cache=TRUE, message=FALSE, warning=FALSE, results='hide'}
 packages <- c("tidyverse", "httr") 
 new.packages <- packages[!(packages %in% installed.packages()[,"Package"])] 
 if(length(new.packages)>0) install.packages(new.packages) 
@@ -15,13 +20,13 @@ if(length(new.packages)>0) install.packages(new.packages)
 
 Then, load them:
 
-```{r}
+```{r, cache=TRUE, message=FALSE, warning=FALSE, results='hide'}
 lapply(packages, library, character.only = TRUE)
 ```
 
 Download the data set containing wildfire information:
 
-```{r}
+```{r, cache=TRUE, message=FALSE, warning=FALSE, results='hide'}
 url <- "https://figshare.com/ndownloader/articles/19858927/versions/3" 
 ics <- GET(url) 
 data_file <-"ics.zip" 
@@ -34,7 +39,7 @@ unzip('ics209plus-wildfire.zip')
 
 Read the data set:
 
-```{r}
+```{r, cache=TRUE, message=FALSE, warning=FALSE, results='hide'}
 csvs <- list.files('ics209plus-wildfire',
                    full.names = T)[5]
 ics <- read.csv(csvs)
@@ -42,7 +47,7 @@ ics <- read.csv(csvs)
 
 Calculate the annual cost of wildfires and plot:
 
-```{r}
+```{r, cache=TRUE, message=FALSE, warning=FALSE, results='hide'}
 ics_sum  <-  ics %>% 
   group_by(START_YEAR) %>% 
   summarise(cost = sum(PROJECTED_FINAL_IM_COST, na.rm = T)) 
@@ -57,7 +62,7 @@ ggplot(ics_sum) +
 
 In Python, we need 6 libraries to download and visualize the data.
 
-```{python}
+```{python, cache=TRUE, message=FALSE, warning=FALSE, results='hide'}
 import requests 
 import zipfile 
 import matplotlib.pyplot as plt
@@ -68,7 +73,7 @@ import glob
 
 Download the data set containing wildfire information:
 
-```{python}
+```{python, cache=TRUE, message=FALSE, warning=FALSE, results='hide'}
 url = "https://figshare.com/ndownloader/articles/19858927/versions/3" 
 ics = requests.get(url)
 data_file = "ics.zip"
@@ -85,7 +90,7 @@ with zipfile.ZipFile('ics209plus-wildfire.zip', 'r') as zip_ref:
 
 Read the data set:
 
-```{python}
+```{python, cache=TRUE, message=FALSE, warning=FALSE, results='hide'}
 csvs = glob.glob('ics209plus-wildfire' + '/*')[8]
 
 ics = pd.read_csv(csvs, low_memory = False)
@@ -93,7 +98,7 @@ ics = pd.read_csv(csvs, low_memory = False)
 
 Calculate the annual cost of wildfires and plot:
 
-```{python}
+```{python, cache=TRUE, message=FALSE, warning=FALSE, results='hide'}
 ics_sum = ics.groupby('START_YEAR').agg(cost=('PROJECTED_FINAL_IM_COST', 'sum')).reset_index()
 
 plt.figure()

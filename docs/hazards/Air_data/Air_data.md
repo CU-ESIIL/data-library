@@ -1,8 +1,41 @@
-# EPA air data
+EPA air data
+================
+Virginia Iglesias, ESIIL Data Scientist
+2023-05-21
 
-This data set developed by the Environmental Protection Agency (EPA) contains air quality data per county. Other related data sets are available [here](https://aqs.epa.gov/aqsweb/airdata/download_files.html#AQI).
+The United States Environmental Protection Agency (EPA) is at the
+forefront of monitoring and protecting the country’s environment, and
+one of its critical areas of focus is air quality. As part of its
+efforts, the EPA has developed a comprehensive dataset that contains
+detailed information on air quality across the counties in the United
+States.
 
-In R, we need 2 packages to download and visualize the data. First, check if the packages are already installed. Install them if they are not:
+This dataset provides an in-depth look at various air quality metrics at
+the county level, making it a rich source of information for
+researchers, policymakers, and environmentalists. The dataset includes
+data on pollutants such as particulate matter (PM2.5 and PM10), nitrogen
+dioxide, sulfur dioxide, carbon monoxide, and ozone, among others. These
+pollutants are key indicators of air quality and have direct
+implications for human health and environmental wellbeing.
+
+But the EPA’s data offerings don’t stop with this dataset. Several
+related datasets are readily available on the EPA’s Air Quality System
+(AQS) site, which you can find
+[here](https://aqs.epa.gov/aqsweb/airdata/download_files.html#AQI).
+These additional resources provide further granularity and different
+perspectives on air quality, including data on the Air Quality Index
+(AQI), daily summaries, annual summaries, and more.
+
+These datasets offer a comprehensive suite of information for anyone
+interested in understanding the state of air quality in the United
+States. Whether for academic research, environmental policy development,
+public health studies, or personal interest, the EPA’s air quality
+datasets provide valuable insights into the state of the nation’s air
+and the challenges we face in keeping it clean.
+
+In R, we need 2 packages to download and visualize the data. First,
+check if the packages are already installed. Install them if they are
+not:
 
 ``` r
 packages <- c("tidyverse", "httr") 
@@ -14,29 +47,6 @@ Then, load them:
 
 ``` r
 lapply(packages, library, character.only = TRUE)
-```
-
-```         
-── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──
-
-✔ ggplot2 3.4.1     ✔ purrr   0.3.4
-✔ tibble  3.2.1     ✔ dplyr   1.0.9
-✔ tidyr   1.1.2     ✔ stringr 1.4.0
-✔ readr   1.4.0     ✔ forcats 0.5.0
-
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-
-[[1]]
- [1] "forcats"   "stringr"   "dplyr"     "purrr"     "readr"     "tidyr"    
- [7] "tibble"    "ggplot2"   "tidyverse" "stats"     "graphics"  "grDevices"
-[13] "utils"     "datasets"  "methods"   "base"     
-
-[[2]]
- [1] "httr"      "forcats"   "stringr"   "dplyr"     "purrr"     "readr"    
- [7] "tidyr"     "tibble"    "ggplot2"   "tidyverse" "stats"     "graphics" 
-[13] "grDevices" "utils"     "datasets"  "methods"   "base"     
 ```
 
 Download the data set:
@@ -57,31 +67,8 @@ Read the data set:
 aqi <- read_csv('annual_aqi_by_county_2022.csv')
 ```
 
-```         
-── Column specification ────────────────────────────────────────────────────────
-cols(
-  State = col_character(),
-  County = col_character(),
-  Year = col_double(),
-  `Days with AQI` = col_double(),
-  `Good Days` = col_double(),
-  `Moderate Days` = col_double(),
-  `Unhealthy for Sensitive Groups Days` = col_double(),
-  `Unhealthy Days` = col_double(),
-  `Very Unhealthy Days` = col_double(),
-  `Hazardous Days` = col_double(),
-  `Max AQI` = col_double(),
-  `90th Percentile AQI` = col_double(),
-  `Median AQI` = col_double(),
-  `Days CO` = col_double(),
-  `Days NO2` = col_double(),
-  `Days Ozone` = col_double(),
-  `Days PM2.5` = col_double(),
-  `Days PM10` = col_double()
-)
-```
-
-Select 5 states and make violin plots of the maximum air quality index per county in 2022:
+Select 5 states and make violin plots of the maximum air quality index
+per county in 2022:
 
 ``` r
 aqi_5_states <- aqi %>% 
@@ -93,7 +80,7 @@ ggplot(aqi_5_states) +
   ylab("State")
 ```
 
-![](Air_data_files/figure-commonmark/unnamed-chunk-5-1.png)
+![](Air_data_files/figure-gfm/unnamed-chunk-5-1.png)
 
 In Python, we need 5 libraries to download and visualize the data.
 
@@ -118,10 +105,6 @@ with open(data_file, 'wb') as f:
 # Unzip the file
 ```
 
-```         
-20589
-```
-
 ``` python
 with zipfile.ZipFile(data_file, 'r') as zip_ref:
     zip_ref.extractall()
@@ -134,7 +117,8 @@ csv_file = "annual_aqi_by_county_2022.csv"
 aqi = pd.read_csv(csv_file)
 ```
 
-Select 5 states and make violin plots of the maximum air quality index per county in 2022:
+Select 5 states and make violin plots of the maximum air quality index
+per county in 2022:
 
 ``` python
 states = ["Alabama", "Colorado", "New Jersey", "Rhode Island", "West Virginia"]
@@ -144,4 +128,4 @@ plt.figure()
 sns.catplot(data=aqi_5_states, x='Max AQI', y='State', kind='violin', bw=.15)
 ```
 
-![](Air_data_files/figure-commonmark/unnamed-chunk-9-1.png)
+![](Air_data_files/figure-gfm/unnamed-chunk-9-1.png)
