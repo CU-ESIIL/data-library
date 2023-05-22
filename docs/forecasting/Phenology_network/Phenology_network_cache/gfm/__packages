@@ -11,3 +11,5 @@ lubridate
 usethis
 devtools
 rnpn
+knitr
+reticulate

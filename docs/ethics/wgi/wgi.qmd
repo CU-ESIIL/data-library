@@ -1,7 +1,19 @@
 ---
 title: "World Governance Indicators"
+author: "Ty Tuff, ESIIL Data Scientist"
+date: "2023-05-21"
 format: gfm
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
+```{r setup, include=FALSE}  
+library(knitr)  
+library(reticulate)  
+knitr::knit_engines$set(python = reticulate::eng_python)  
+knitr::opts_chunk$set(
+  cache=TRUE, message=FALSE, warning=FALSE, results='hide')  
+```
 
 The Worldwide Governance Indicators (WGI) dataset provides aggregate governance indicators for over 200 countries and territories for six dimensions of governance: voice and accountability, political stability, government effectiveness, regulatory quality, rule of law, and control of corruption. The dataset is updated annually and is available for download in various formats, including Excel and CSV.
 
@@ -9,12 +21,12 @@ https://info.worldbank.org/governance/wgi/
 https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1682130
 
 R code: 
-```{r, cache=TRUE}
+```{r, cache=TRUE, message=FALSE, warning=FALSE, results='hide'}
 library(knitr)
 ```
 
 List of possible indicators
-```{r, cache=TRUE}
+```{r, cache=TRUE, message=FALSE, warning=FALSE, results='hide'}
 library(httr)
 library(jsonlite)
 
@@ -46,7 +58,7 @@ if (http_status(response)$category == "Success") {
 ```
 
 Download one of those indicators and flatten into a table.
-```{r, cache=TRUE}
+```{r, cache=TRUE, message=FALSE, warning=FALSE, results='hide'E}
 library(httr)
 library(jsonlite)
 library(ggplot2)
@@ -93,14 +105,14 @@ if (http_status(response)$category == "Success") {
   cat("Failed to retrieve data:", http_status(response)$message, "\n")
 }
 ```
-```{r, cache=TRUE}
+```{r, cache=TRUE, message=FALSE, warning=FALSE, results='hide'}
 library(knitr)
 kable(indicators_filtered)
 ```
 
 Python code:
 
-```{python, cache=TRUE}
+```{python, cache=TRUE, message=FALSE, warning=FALSE, results='hide'}
 import requests
 import pandas as pd
 import matplotlib.pyplot as plt

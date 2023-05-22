@@ -12,3 +12,5 @@ lubridate
 sf
 RColorBrewer
 mapview
+knitr
+reticulate

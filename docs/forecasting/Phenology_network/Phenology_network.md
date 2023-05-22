@@ -1,5 +1,7 @@
 National phenology network
 ================
+Ty Tuff, ESIIL Data Scientist
+2023-05-21
 
 This data set contains data from the [USA National Phenology
 Network](https://www.usanpn.org/about).
@@ -43,12 +45,6 @@ interacting with the USA National Phenology Network data web services.
 ``` r
 lapply(packages, library, character.only = TRUE)
 install_github("usa-npn/rnpn")
-```
-
-    Skipping install of 'rnpn' from a github remote, the SHA1 (0dff444e) has not changed since last install.
-      Use `force = TRUE` to force installation
-
-``` r
 library(rnpn)
 ```
 
@@ -57,180 +53,6 @@ Download data about Woodhouse’s toads:
 ``` r
 toads <- npn_download_status_data(request_source='Your Name',years = c(2000:2020), species_id=c(237))
 ```
-
-    using a custom handler function.
-
-    opening curl input connection.
-
-    Service is currently unavailable. Please try again later!
-
-    using a custom handler function.
-
-    opening curl input connection.
-
-
-     Found 0 records...
-
-    closing curl input connection.
-
-    using a custom handler function.
-
-    opening curl input connection.
-
-
-     Found 0 records...
-
-    closing curl input connection.
-
-    using a custom handler function.
-
-    opening curl input connection.
-
-
-     Found 0 records...
-
-    closing curl input connection.
-
-    using a custom handler function.
-
-    opening curl input connection.
-
-
-     Found 0 records...
-
-    closing curl input connection.
-
-    using a custom handler function.
-
-    opening curl input connection.
-
-
-     Found 0 records...
-
-    closing curl input connection.
-
-    using a custom handler function.
-
-    opening curl input connection.
-
-
-     Found 0 records...
-
-    closing curl input connection.
-
-    using a custom handler function.
-
-    opening curl input connection.
-
-
-     Found 0 records...
-
-    closing curl input connection.
-
-    using a custom handler function.
-
-    opening curl input connection.
-
-    Service is currently unavailable. Please try again later!
-
-    using a custom handler function.
-
-    opening curl input connection.
-
-    Service is currently unavailable. Please try again later!
-
-    using a custom handler function.
-
-    opening curl input connection.
-
-
-     Found 5 records...
-
-    closing curl input connection.
-
-    using a custom handler function.
-
-    opening curl input connection.
-
-
-     Found 59 records...
-
-    closing curl input connection.
-
-    using a custom handler function.
-
-    opening curl input connection.
-
-
-     Found 0 records...
-
-    closing curl input connection.
-
-    using a custom handler function.
-
-    opening curl input connection.
-
-
-     Found 14 records...
-
-    closing curl input connection.
-
-    using a custom handler function.
-
-    opening curl input connection.
-
-
-     Found 7 records...
-
-    closing curl input connection.
-
-    using a custom handler function.
-
-    opening curl input connection.
-
-
-     Found 7 records...
-
-    closing curl input connection.
-
-    using a custom handler function.
-
-    opening curl input connection.
-
-    Service is currently unavailable. Please try again later!
-
-    using a custom handler function.
-
-    opening curl input connection.
-
-
-     Found 0 records...
-
-    closing curl input connection.
-
-    using a custom handler function.
-
-    opening curl input connection.
-
-
-     Found 0 records...
-
-    closing curl input connection.
-
-    using a custom handler function.
-
-    opening curl input connection.
-
-    Service is currently unavailable. Please try again later!
-
-    using a custom handler function.
-
-    opening curl input connection.
-
-
-     Found 0 records...
-
-    closing curl input connection.
 
 Plot phenophases as a function of DOY per state:
 

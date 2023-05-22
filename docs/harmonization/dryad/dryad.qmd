@@ -1,7 +1,21 @@
 ---
 title: "dryad"
+author: "Ty Tuff, ESIIL Data Scientist"
+date: "2023-05-21"
 format: gfm
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
+
+```{r setup, include=FALSE}  
+library(knitr)  
+library(reticulate)  
+knitr::knit_engines$set(python = reticulate::eng_python)  
+knitr::opts_chunk$set(
+  cache=TRUE, message=FALSE, warning=FALSE, results='hide')  
+```
+
 Dryad is a repository of curated, open access, data files associated with published articles in the sciences and social sciences. To access a dataset, you'll first need to choose a dataset and get its DOI (Digital Object Identifier) or a direct link to download the dataset. In this example, we'll use a dataset called "The phantom chorus: birdsong boosts human well-being in protected areas" by Dr. Clinton Francis with DOI: 10.5061/dryad.vmcvdncs3.
 
 https://datadryad.org/stash/dataset/doi:10.5061/dryad.wwpzgmsgx

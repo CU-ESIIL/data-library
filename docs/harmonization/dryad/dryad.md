@@ -1,5 +1,7 @@
 dryad
 ================
+Ty Tuff, ESIIL Data Scientist
+2023-05-21
 
 Dryad is a repository of curated, open access, data files associated
 with published articles in the sciences and social sciences. To access a
@@ -10,6 +12,35 @@ human well-being in protected areas” by Dr. Clinton Francis with DOI:
 10.5061/dryad.vmcvdncs3.
 
 https://datadryad.org/stash/dataset/doi:10.5061/dryad.wwpzgmsgx
+
+Citation
+
+Francis, Clinton (2020), The phantom chorus: birdsong boosts human
+well-being in protected areas, Dryad, Dataset,
+https://doi.org/10.5061/dryad.wwpzgmsgx
+
+Abstract
+
+Spending time in nature is known to benefit human health and well-being,
+but evidence is mixed as to whether biodiversity or perceptions of
+biodiversity contribute to these benefits. Perhaps more importantly,
+little is known about the sensory modalities by which humans perceive
+biodiversity and obtain benefits from their interactions with nature.
+Here, we used a “phantom bird song chorus” consisting of hidden speakers
+to experimentally increase audible birdsong biodiversity during “on” and
+“off” (i.e., ambient conditions) blocks on two trails to study the role
+of audition in biodiversity perception and self-reported well-being
+among hikers. Hikers exposed to the phantom chorus reported higher
+levels of restorative effects compared to those that experienced ambient
+conditions on both trails; however, increased restorative effects were
+directly linked to the phantom chorus on one trail and indirectly linked
+to the phantom chorus on the other trail through perceptions of avian
+biodiversity. Our findings add to a growing body of evidence linking
+mental health to nature experiences and suggest that audition is an
+important modality by which natural environments confer restorative
+effects. Finally, our results suggest that maintaining or improving
+natural soundscapes within protected areas may be an important component
+to maximizing human experiences.
 
 R code:
 
@@ -25,64 +56,13 @@ library(ggplot2)
 
 search_results <- dryad_datasets()
 print(search_results$data)
-```
 
-    # A tibble: 20 × 27
-       identifier       id storageSize relatedPublicationISSN title authors abstract
-       <chr>         <int>       <dbl> <chr>                  <chr> <list>  <chr>   
-     1 doi:10.5061/…    93   999931789 0960-9822              "Dis… <df>    "<p>Ove…
-     2 doi:10.5061/…    94   997532058 0960-9822              "Dat… <df>    "The st…
-     3 doi:10.5061/…    95   997366561 0962-1083              "Dat… <df>    "Adapti…
-     4 doi:10.5061/…    96   996067863 0003-0147              "Dat… <df>    "Unders…
-     5 doi:10.5061/…    97   994990868 1439-4227              "Dat… <df>    "[No ab…
-     6 doi:10.5061/…    98   994682183 1755-098X              "Dat… <df>    "To adv…
-     7 doi:10.5061/…    99   994533047 0305-0270              "Dat… <df>    "Aim: C…
-     8 doi:10.5061/…   100   992698314 2047-217X              "Dat… <df>    "Backgr…
-     9 doi:10.5061/…   101   991316188 2054-5703              "Dat… <df>    "Severa…
-    10 doi:10.5061/…   102   990328081 0014-3820              "Dat… <df>    "Groups…
-    11 doi:10.5061/…   103   989481164 0092-8674              "Dat… <df>    "Phenot…
-    12 doi:10.5061/…   104  9994758981 1932-6203              "Dat… <df>    "Backgr…
-    13 doi:10.5061/…   105  9924107495 2052-4463              "Dat… <df>    "The hi…
-    14 doi:10.5061/…   106  9921153994 1365-294X              "Dat… <df>    "Phylog…
-    15 doi:10.5061/…   107  9907875274 1091-6490              "Dat… <df>    "Modula…
-    16 doi:10.5061/…   108  9899272735 1755-098X              "Dat… <df>    "<p>Gra…
-    17 doi:10.5061/…   109  9891854826 0962-8452              "Dat… <df>    "When t…
-    18 doi:10.5061/…   110  9880500050 1544-9173              "Dat… <df>    "Given …
-    19 doi:10.5061/…   111  9876101678 0962-8452              "Dat… <df>    "Climat…
-    20 doi:10.5061/…   112  9858763736 2399-3421              "Dat… <df>    "Tens o…
-    # ℹ 20 more variables: funders <list>, keywords <list>, locations <list>,
-    #   relatedWorks <list>, versionNumber <int>, versionStatus <chr>,
-    #   curationStatus <chr>, versionChanges <chr>, publicationDate <chr>,
-    #   lastModificationDate <chr>, visibility <chr>, sharingLink <chr>,
-    #   userId <int>, license <chr>, usageNotes <chr>, `_links.curies` <list>,
-    #   `_links.self.href` <chr>, `_links.stash:versions.href` <chr>,
-    #   `_links.stash:version.href` <chr>, `_links.stash:download.href` <chr>
-
-``` r
 # Get the first DOI from the search results
 doi <-  "https://doi.org/10.5061/dryad.wwpzgmsgx"
 clean_doi <- gsub("https://doi.org/", "", doi)
 
 files <- dryad_download(clean_doi)
-```
-
-    using cached file: ~/Library/Caches/R/rdryad/10_5061_dryad_wwpzgmsgx.zip
-
-    date created (size, mb): 2023-05-03 21:55:53 (0.308)
-
-``` r
 print(files)
-```
-
-    $`10.5061/dryad.wwpzgmsgx`
-    [1] "/Users/ty/Library/Caches/R/rdryad/10_5061_dryad_wwpzgmsgx/Ferraro_etal_point_count_readme.rtf"            
-    [2] "/Users/ty/Library/Caches/R/rdryad/10_5061_dryad_wwpzgmsgx/Ferraro_etal_pointcounts.csv"                   
-    [3] "/Users/ty/Library/Caches/R/rdryad/10_5061_dryad_wwpzgmsgx/Ferraro_etal_survey_IdentifyerMasked_readme.rtf"
-    [4] "/Users/ty/Library/Caches/R/rdryad/10_5061_dryad_wwpzgmsgx/Ferraro_etal_survey_IdentifyerMasked.csv"       
-    [5] "/Users/ty/Library/Caches/R/rdryad/10_5061_dryad_wwpzgmsgx/Ferraro_PhanChorus_Sound.csv"                   
-    [6] "/Users/ty/Library/Caches/R/rdryad/10_5061_dryad_wwpzgmsgx/ReadMe_Ferraro_PhanChorus_Sound.rtf"            
-
-``` r
 a <- unlist(files)
 short_files <- as.data.frame(a)[,1]
 
