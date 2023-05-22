@@ -1,10 +1,30 @@
 ---
 title: "WeatherBench"
+author: "Ty Tuff, ESIIL Data Scientist"
+date: "2023-05-21"
 format: gfm
 editor_options: 
   markdown: 
     wrap: 72
 ---
+
+```{r setup, include=FALSE}  
+library(knitr)  
+library(reticulate)  
+knitr::knit_engines$set(python = reticulate::eng_python)  
+knitr::opts_chunk$set(
+  cache=TRUE, message=FALSE, warning=FALSE, results='hide')
+```
+
+WeatherBench is a valuable resource housed on GitHub, aimed at fostering the development and evaluation of machine learning models in the field of weather prediction. Developed by Pangeo Data, a community-driven and open-source project focused on data-intensive earth science, WeatherBench seeks to address the current gap in benchmark datasets specifically designed for weather forecasting.
+
+The WeatherBench repository is centered around a comprehensive dataset derived from the ERA5 reanalysis data provided by the European Centre for Medium-Range Weather Forecasts (ECMWF). This data spans several decades and includes a variety of key atmospheric variables, such as temperature, pressure, and precipitation, among others. The high spatial and temporal resolution of the data makes it an excellent resource for developing and testing weather prediction models.
+
+A unique feature of WeatherBench is that it is not just a dataset, but a comprehensive benchmarking system. It includes a scoring function to evaluate predictions, following the common practices in weather forecasting. This allows for a standardized evaluation of models, ensuring that different methods can be fairly and directly compared.
+
+Moreover, the repository includes example code using state-of-the-art machine learning techniques for weather forecasting. This provides a helpful starting point for those new to the field or looking to compare their own approaches with established methods.
+
+In summary, WeatherBench represents a significant contribution to the meteorological and machine learning communities by providing a robust, standardized platform for the development and comparison of weather forecasting models. Whether you are a researcher, data scientist, meteorologist, or student, WeatherBench offers a rich resource to explore and contribute to this exciting intersection of disciplines.
 
 ```{python, cache=TRUE, warnings=FALSE, messages=FALSE, results='hide'}
 import xarray as xr
@@ -19,7 +39,7 @@ wget "https://dataserv.ub.tum.de/s/m1524895/download?path=%2F5.625deg%2Fgeopoten
 ```
 
 
-```{bash, cache=TRUE, warnings=FALSE, messages=FALSE, results='hide', eval=FALSE}
+```{bash}
 mkdir -p geopotential_500
 unzip -d geopotential_500/ geopotential_500_5.625deg.zip
 ```
