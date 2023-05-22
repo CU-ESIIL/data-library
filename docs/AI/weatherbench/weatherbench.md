@@ -1,23 +1,56 @@
 WeatherBench
 ================
+Ty Tuff, ESIIL Data Scientist
+2023-05-21
+
+WeatherBench is a valuable resource housed on GitHub, aimed at fostering
+the development and evaluation of machine learning models in the field
+of weather prediction. Developed by Pangeo Data, a community-driven and
+open-source project focused on data-intensive earth science,
+WeatherBench seeks to address the current gap in benchmark datasets
+specifically designed for weather forecasting.
+
+The WeatherBench repository is centered around a comprehensive dataset
+derived from the ERA5 reanalysis data provided by the European Centre
+for Medium-Range Weather Forecasts (ECMWF). This data spans several
+decades and includes a variety of key atmospheric variables, such as
+temperature, pressure, and precipitation, among others. The high spatial
+and temporal resolution of the data makes it an excellent resource for
+developing and testing weather prediction models.
+
+A unique feature of WeatherBench is that it is not just a dataset, but a
+comprehensive benchmarking system. It includes a scoring function to
+evaluate predictions, following the common practices in weather
+forecasting. This allows for a standardized evaluation of models,
+ensuring that different methods can be fairly and directly compared.
+
+Moreover, the repository includes example code using state-of-the-art
+machine learning techniques for weather forecasting. This provides a
+helpful starting point for those new to the field or looking to compare
+their own approaches with established methods.
+
+In summary, WeatherBench represents a significant contribution to the
+meteorological and machine learning communities by providing a robust,
+standardized platform for the development and comparison of weather
+forecasting models. Whether you are a researcher, data scientist,
+meteorologist, or student, WeatherBench offers a rich resource to
+explore and contribute to this exciting intersection of disciplines.
 
 ``` python
 import xarray as xr
 import matplotlib.pyplot as plt
 ```
 
-\`\`\`{bash, cache=TRUE, warnings=FALSE, messages=FALSE, results=‘hide’}
+``` bash
 
 # This might take a few minutes
+wget "https://dataserv.ub.tum.de/s/m1524895/download?path=%2F5.625deg%2Fgeopotential_500&files=geopotential_500_5.625deg.zip" -O geopotential_500_5.625deg.zip --no-check-certificate
+```
 
-wget
-“https://dataserv.ub.tum.de/s/m1524895/download?path=%2F5.625deg%2Fgeopotential_500&files=geopotential_500_5.625deg.zip”
--O geopotential_500_5.625deg.zip –no-check-certificate
-
-
-    ```{bash, cache=TRUE, warnings=FALSE, messages=FALSE, results='hide'}
-    mkdir -p geopotential_500
-    unzip -d geopotential_500/ geopotential_500_5.625deg.zip
+``` bash
+mkdir -p geopotential_500
+unzip -d geopotential_500/ geopotential_500_5.625deg.zip
+```
 
 ``` python
 z500 = xr.open_mfdataset('geopotential_500/*.nc', combine='by_coords')
@@ -386,21 +419,21 @@ Data variables:
     z        (time, lat, lon) float32 dask.array&lt;chunksize=(8760, 32, 64), meta=np.ndarray&gt;
 Attributes:
     Conventions:  CF-1.6
-    history:      2019-11-10 20:33:23 GMT by grib_to_netcdf-2.14.0: /opt/ecmw...</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-982f5edb-99aa-461c-90ea-88ac8e62d9ff' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-982f5edb-99aa-461c-90ea-88ac8e62d9ff' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>lon</span>: 64</li><li><span class='xr-has-index'>lat</span>: 32</li><li><span class='xr-has-index'>time</span>: 350640</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-b2f097d0-cb4c-45bd-8ef9-ea171f9bd7b5' class='xr-section-summary-in' type='checkbox'  checked><label for='section-b2f097d0-cb4c-45bd-8ef9-ea171f9bd7b5' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>level</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>int32</div><div class='xr-var-preview xr-preview'>500</div><input id='attrs-e8a1d305-8ac4-4527-87c4-e5d36371a778' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e8a1d305-8ac4-4527-87c4-e5d36371a778' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0ca4ae02-a3ed-4af4-a08d-49def56a83c1' class='xr-var-data-in' type='checkbox'><label for='data-0ca4ae02-a3ed-4af4-a08d-49def56a83c1' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>millibars</dd><dt><span>long_name :</span></dt><dd>pressure_level</dd></dl></div><div class='xr-var-data'><pre>array(500, dtype=int32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lon</span></div><div class='xr-var-dims'>(lon)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.0 5.625 11.25 ... 348.8 354.4</div><input id='attrs-e6401586-4bed-42d4-9dee-4c9e727192b0' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-e6401586-4bed-42d4-9dee-4c9e727192b0' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-19e2edad-7369-47ec-9b59-5daec7f59d40' class='xr-var-data-in' type='checkbox'><label for='data-19e2edad-7369-47ec-9b59-5daec7f59d40' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([  0.   ,   5.625,  11.25 ,  16.875,  22.5  ,  28.125,  33.75 ,  39.375,
+    history:      2019-11-10 20:33:23 GMT by grib_to_netcdf-2.14.0: /opt/ecmw...</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-a649ef6f-7f5f-4c86-81f0-ea4b97a56fa8' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-a649ef6f-7f5f-4c86-81f0-ea4b97a56fa8' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>lon</span>: 64</li><li><span class='xr-has-index'>lat</span>: 32</li><li><span class='xr-has-index'>time</span>: 350640</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-36c244fa-64b5-4672-a3d6-45254597c2c8' class='xr-section-summary-in' type='checkbox'  checked><label for='section-36c244fa-64b5-4672-a3d6-45254597c2c8' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>level</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>int32</div><div class='xr-var-preview xr-preview'>500</div><input id='attrs-1c5d7ee5-9765-45e5-a9bc-ebda41f2b3ea' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-1c5d7ee5-9765-45e5-a9bc-ebda41f2b3ea' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0d9d0aeb-bb4d-4fed-8b1e-a1b498a9b7eb' class='xr-var-data-in' type='checkbox'><label for='data-0d9d0aeb-bb4d-4fed-8b1e-a1b498a9b7eb' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>millibars</dd><dt><span>long_name :</span></dt><dd>pressure_level</dd></dl></div><div class='xr-var-data'><pre>array(500, dtype=int32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lon</span></div><div class='xr-var-dims'>(lon)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.0 5.625 11.25 ... 348.8 354.4</div><input id='attrs-78c43323-e605-41cd-ba03-61950efda707' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-78c43323-e605-41cd-ba03-61950efda707' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a24d889b-6b3b-447b-9d3a-528d150b5633' class='xr-var-data-in' type='checkbox'><label for='data-a24d889b-6b3b-447b-9d3a-528d150b5633' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([  0.   ,   5.625,  11.25 ,  16.875,  22.5  ,  28.125,  33.75 ,  39.375,
         45.   ,  50.625,  56.25 ,  61.875,  67.5  ,  73.125,  78.75 ,  84.375,
         90.   ,  95.625, 101.25 , 106.875, 112.5  , 118.125, 123.75 , 129.375,
        135.   , 140.625, 146.25 , 151.875, 157.5  , 163.125, 168.75 , 174.375,
        180.   , 185.625, 191.25 , 196.875, 202.5  , 208.125, 213.75 , 219.375,
        225.   , 230.625, 236.25 , 241.875, 247.5  , 253.125, 258.75 , 264.375,
        270.   , 275.625, 281.25 , 286.875, 292.5  , 298.125, 303.75 , 309.375,
-       315.   , 320.625, 326.25 , 331.875, 337.5  , 343.125, 348.75 , 354.375])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lat</span></div><div class='xr-var-dims'>(lat)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-87.19 -81.56 ... 81.56 87.19</div><input id='attrs-0771e7a6-1daa-41af-a4ca-8de3095f269b' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-0771e7a6-1daa-41af-a4ca-8de3095f269b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-57e042de-7bb3-4546-a979-97825492d960' class='xr-var-data-in' type='checkbox'><label for='data-57e042de-7bb3-4546-a979-97825492d960' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([-87.1875, -81.5625, -75.9375, -70.3125, -64.6875, -59.0625, -53.4375,
+       315.   , 320.625, 326.25 , 331.875, 337.5  , 343.125, 348.75 , 354.375])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lat</span></div><div class='xr-var-dims'>(lat)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-87.19 -81.56 ... 81.56 87.19</div><input id='attrs-a722f25a-2087-4050-b052-cdfbafd396ed' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-a722f25a-2087-4050-b052-cdfbafd396ed' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-69ccf7bb-e8da-438d-9f84-44e69f4ddf90' class='xr-var-data-in' type='checkbox'><label for='data-69ccf7bb-e8da-438d-9f84-44e69f4ddf90' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([-87.1875, -81.5625, -75.9375, -70.3125, -64.6875, -59.0625, -53.4375,
        -47.8125, -42.1875, -36.5625, -30.9375, -25.3125, -19.6875, -14.0625,
         -8.4375,  -2.8125,   2.8125,   8.4375,  14.0625,  19.6875,  25.3125,
         30.9375,  36.5625,  42.1875,  47.8125,  53.4375,  59.0625,  64.6875,
-        70.3125,  75.9375,  81.5625,  87.1875])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>1979-01-01 ... 2018-12-31T23:00:00</div><input id='attrs-89c0a11b-9fbc-419a-88c7-086f060a0c7a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-89c0a11b-9fbc-419a-88c7-086f060a0c7a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-24084438-047e-44da-b6a1-149074f35da8' class='xr-var-data-in' type='checkbox'><label for='data-24084438-047e-44da-b6a1-149074f35da8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>time</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;1979-01-01T00:00:00.000000000&#x27;, &#x27;1979-01-01T01:00:00.000000000&#x27;,
+        70.3125,  75.9375,  81.5625,  87.1875])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>1979-01-01 ... 2018-12-31T23:00:00</div><input id='attrs-dd83334d-8227-4e10-9aaf-f42aaf511946' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-dd83334d-8227-4e10-9aaf-f42aaf511946' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-993d17f5-25d4-413f-bc58-f15dc3a4ac9c' class='xr-var-data-in' type='checkbox'><label for='data-993d17f5-25d4-413f-bc58-f15dc3a4ac9c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>time</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;1979-01-01T00:00:00.000000000&#x27;, &#x27;1979-01-01T01:00:00.000000000&#x27;,
        &#x27;1979-01-01T02:00:00.000000000&#x27;, ..., &#x27;2018-12-31T21:00:00.000000000&#x27;,
        &#x27;2018-12-31T22:00:00.000000000&#x27;, &#x27;2018-12-31T23:00:00.000000000&#x27;],
-      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-8fbe0b34-7fdd-49c7-9d3e-0cd186c5f77c' class='xr-section-summary-in' type='checkbox'  checked><label for='section-8fbe0b34-7fdd-49c7-9d3e-0cd186c5f77c' class='xr-section-summary' >Data variables: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>z</span></div><div class='xr-var-dims'>(time, lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(8760, 32, 64), meta=np.ndarray&gt;</div><input id='attrs-0fe7e6e7-2cc9-441f-aa1b-e60e40253baa' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-0fe7e6e7-2cc9-441f-aa1b-e60e40253baa' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-6268afcb-cc37-4e05-8d22-bba0faf3c142' class='xr-var-data-in' type='checkbox'><label for='data-6268afcb-cc37-4e05-8d22-bba0faf3c142' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>m**2 s**-2</dd><dt><span>long_name :</span></dt><dd>Geopotential</dd><dt><span>standard_name :</span></dt><dd>geopotential</dd></dl></div><div class='xr-var-data'><table>
+      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-258c27bb-f9be-4b56-a0e3-a63a4f17b7cf' class='xr-section-summary-in' type='checkbox'  checked><label for='section-258c27bb-f9be-4b56-a0e3-a63a4f17b7cf' class='xr-section-summary' >Data variables: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>z</span></div><div class='xr-var-dims'>(time, lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(8760, 32, 64), meta=np.ndarray&gt;</div><input id='attrs-143784fb-25f8-4764-8b60-f93b6220ceab' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-143784fb-25f8-4764-8b60-f93b6220ceab' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c234a454-13e7-41fe-b576-ddf038e19ab4' class='xr-var-data-in' type='checkbox'><label for='data-c234a454-13e7-41fe-b576-ddf038e19ab4' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>m**2 s**-2</dd><dt><span>long_name :</span></dt><dd>Geopotential</dd><dt><span>standard_name :</span></dt><dd>geopotential</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -516,16 +549,17 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-8a81d121-d170-40da-b1d6-04e854558de8' class='xr-section-summary-in' type='checkbox'  checked><label for='section-8a81d121-d170-40da-b1d6-04e854558de8' class='xr-section-summary' >Attributes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>Conventions :</span></dt><dd>CF-1.6</dd><dt><span>history :</span></dt><dd>2019-11-10 20:33:23 GMT by grib_to_netcdf-2.14.0: /opt/ecmwf/eccodes/bin/grib_to_netcdf -o /cache/data5/adaptor.mars.internal-1573408778.8616278-11514-5-32bb1559-bce6-4a86-9ae4-60f0d33d9246.nc /cache/tmp/32bb1559-bce6-4a86-9ae4-60f0d33d9246-adaptor.mars.internal-1573408778.8624167-11514-2-tmp.grib</dd></dl></div></li></ul></div></div>
+</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-59145d09-3860-47b5-8df8-400ee0732438' class='xr-section-summary-in' type='checkbox'  checked><label for='section-59145d09-3860-47b5-8df8-400ee0732438' class='xr-section-summary' >Attributes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>Conventions :</span></dt><dd>CF-1.6</dd><dt><span>history :</span></dt><dd>2019-11-10 20:33:23 GMT by grib_to_netcdf-2.14.0: /opt/ecmwf/eccodes/bin/grib_to_netcdf -o /cache/data5/adaptor.mars.internal-1573408778.8616278-11514-5-32bb1559-bce6-4a86-9ae4-60f0d33d9246.nc /cache/tmp/32bb1559-bce6-4a86-9ae4-60f0d33d9246-adaptor.mars.internal-1573408778.8624167-11514-2-tmp.grib</dd></dl></div></li></ul></div></div>
 
 ``` python
+
 plt.clf()
 # Plot an example
 z500.z.isel(time=1500).plot();
 plt.show()
 ```
 
-![](weatherbench_files/figure-gfm/cell-4-output-1.png)
+![](weatherbench_files/figure-gfm/unnamed-chunk-5-1.png)
 
 ``` python
 plt.clf()
@@ -536,4 +570,43 @@ climatology.z.plot()
 plt.show()
 ```
 
-![](weatherbench_files/figure-gfm/cell-5-output-1.png)
+![](weatherbench_files/figure-gfm/unnamed-chunk-6-3.png)
+
+``` r
+library(RCurl)
+library(ncdf4)
+library(ggplot2)
+library(reshape2)
+library(tidync)
+
+# Set options to skip SSL verification
+download_opts <- list(ssl.verifypeer = FALSE, ssl.verifyhost = FALSE)
+
+# Download the dataset
+bin_data <- getBinaryURL("https://dataserv.ub.tum.de/s/m1524895/download?path=%2F5.625deg%2Fgeopotential_500&files=geopotential_500_5.625deg.zip", .opts = download_opts)
+
+# Write the downloaded data to a file
+writeBin(bin_data, "geopotential_500_5.625deg.zip")
+
+# Unzip the downloaded file
+unzip("geopotential_500_5.625deg.zip", exdir = "geopotential_500/")
+
+# Load multiple NetCDF files into R
+filenames <- list.files(path = "geopotential_500", full.names = TRUE, pattern = "*.nc")
+
+# Use tidync to read the first NetCDF file
+z500_first <- tidync(filenames[[1]]) %>% hyper_tibble()
+
+# Melt the data frame to make it compatible with ggplot2
+z500_melt <- melt(z500_first, id.vars = c("lon", "lat")) 
+
+ggplot(z500_melt, aes(lon, lat, fill = value)) + 
+   geom_tile() +
+   scale_fill_gradientn(colors = terrain.colors(1000)) +
+   theme_minimal() +
+   theme(axis.text = element_blank(),
+         axis.ticks = element_blank(),
+         panel.grid = element_blank())
+```
+
+![](weatherbench_files/figure-gfm/unnamed-chunk-7-5.png)
