@@ -12,21 +12,27 @@ library(knitr)
 library(reticulate)  
 knitr::knit_engines$set(python = reticulate::eng_python)  
 knitr::opts_chunk$set(
-  cache=TRUE, message=FALSE, warning=FALSE, results='hide')  
+  cache=TRUE, message=FALSE, warning=FALSE, results='hide')
 ```
 
-The Worldwide Governance Indicators (WGI) dataset provides aggregate governance indicators for over 200 countries and territories for six dimensions of governance: voice and accountability, political stability, government effectiveness, regulatory quality, rule of law, and control of corruption. The dataset is updated annually and is available for download in various formats, including Excel and CSV.
 
-https://info.worldbank.org/governance/wgi/
-https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1682130
+The Worldwide Governance Indicators (WGI) dataset is an influential resource in the realm of political science, economics, and international development. It offers comprehensive and comparable data on various dimensions of governance for over 200 countries and territories around the globe.
+
+Compiled by a network of scholars and practitioners, the WGI dataset provides indicators that reflect perceptions of governance in six key dimensions. These dimensions include voice and accountability, political stability and absence of violence, government effectiveness, regulatory quality, rule of law, and control of corruption. Together, these metrics provide a holistic picture of a nation's governance, taking into account aspects of civil liberties, political processes, institutional quality, and the efficacy of laws and regulations.
+
+The WGI dataset is updated annually, reflecting changes in governance conditions over time. This temporal aspect makes it a valuable tool for studying trends and patterns in global governance. The data's standardized format allows for comparisons between countries and regions, contributing to its wide use in comparative political and economic analysis.
+
+Data from the WGI is readily available for download in various formats, including Excel and CSV, enabling easy integration into a multitude of data analysis tools and platforms. The WGI data has been instrumental in a variety of scholarly and policy-oriented research, and its open availability continues to facilitate robust debate about the nature of governance around the world.
+
+
+<https://info.worldbank.org/governance/wgi/>
+<https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1682130>
 
 R code: 
-```{r, cache=TRUE, message=FALSE, warning=FALSE, results='hide'}
-library(knitr)
-```
+
 
 List of possible indicators
-```{r, cache=TRUE, message=FALSE, warning=FALSE, results='hide'}
+```{r}
 library(httr)
 library(jsonlite)
 
@@ -58,7 +64,7 @@ if (http_status(response)$category == "Success") {
 ```
 
 Download one of those indicators and flatten into a table.
-```{r, cache=TRUE, message=FALSE, warning=FALSE, results='hide'E}
+```{r}
 library(httr)
 library(jsonlite)
 library(ggplot2)
@@ -105,14 +111,14 @@ if (http_status(response)$category == "Success") {
   cat("Failed to retrieve data:", http_status(response)$message, "\n")
 }
 ```
-```{r, cache=TRUE, message=FALSE, warning=FALSE, results='hide'}
+```{r}
 library(knitr)
 kable(indicators_filtered)
 ```
 
 Python code:
 
-```{python, cache=TRUE, message=FALSE, warning=FALSE, results='hide'}
+```{python}
 import requests
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -159,11 +165,5 @@ else:
     print("Failed to retrieve data:", response.status_code)
 ```
 
-Both the R and Python code achieve the same goal of fetching GDP data for the year 2020, processing the data, and plotting a bar chart. However, there are some differences in terms of libraries and syntax:
 
-Libraries: In R, we used the httr, jsonlite, ggplot2, and tidyverse packages to handle HTTP requests, JSON parsing, data manipulation, and plotting. In Python, we used the requests, pandas, and matplotlib libraries for similar tasks.
-Data manipulation: In R, we used the unnest() function from the tidyverse package to flatten the data frame, while in Python, we used the pd.json_normalize() function from the pandas library. Both methods provide a convenient way to flatten nested JSON data into a tabular format.
-Plotting: In R, we used the ggplot2 package to create the bar plot, while in Python, we used matplotlib. The syntax and structure of the plotting code differ between the two languages, but they both produce similar visualizations.
-Error handling: In R, we used the http_status() function to check the status of the response, whereas in Python, we used the status_code attribute of the response object. Both methods allow for checking the success of the API request.
-In summary, both R and Python offer powerful tools and libraries for working with API data, data manipulation, and visualization. The choice between the two languages depends on personal preferences, the specific use case, and the existing skill set of the user.
 

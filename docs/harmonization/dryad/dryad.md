@@ -3,13 +3,38 @@ dryad
 Ty Tuff, ESIIL Data Scientist
 2023-05-21
 
-Dryad is a repository of curated, open access, data files associated
-with published articles in the sciences and social sciences. To access a
-dataset, you’ll first need to choose a dataset and get its DOI (Digital
-Object Identifier) or a direct link to download the dataset. In this
-example, we’ll use a dataset called “The phantom chorus: birdsong boosts
-human well-being in protected areas” by Dr. Clinton Francis with DOI:
-10.5061/dryad.vmcvdncs3.
+Dryad is a general-purpose open-access repository that makes the data
+underlying scientific publications discoverable, freely reusable, and
+citable. Hosted by the California Digital Library (CDL), Dryad has been
+a pioneer in the movement to make scientific research data openly
+available for researchers, students, and the public since its inception.
+
+In the spirit of promoting open science, Dryad aims to preserve and
+provide access to data that underpins findings in peer-reviewed
+publications in the natural sciences, as well as certain areas of the
+social sciences and clinical studies. Its primary goal is to facilitate
+data reuse and new discoveries while giving proper credit to the data
+authors and ensuring data preservation.
+
+The repository accepts data submissions associated with any
+peer-reviewed manuscript. It supports a wide variety of data types and
+formats, making it an extremely versatile resource for researchers from
+various fields. Dryad uniquely assigns Digital Object Identifiers (DOIs)
+to datasets to ensure that data can be correctly cited.
+
+In addition to providing access to data, Dryad also provides a platform
+for researchers to comply with funder and journal data archiving
+policies. By promoting data archiving best practices, Dryad contributes
+to the broader movement of responsible data management in the scientific
+community.
+
+## The phantom chorus
+
+To access a dataset, you’ll first need to choose a dataset and get its
+DOI (Digital Object Identifier) or a direct link to download the
+dataset. In this example, we’ll use a dataset called “The phantom
+chorus: birdsong boosts human well-being in protected areas” by
+Dr. Clinton Francis with DOI: 10.5061/dryad.vmcvdncs3.
 
 https://datadryad.org/stash/dataset/doi:10.5061/dryad.wwpzgmsgx
 
@@ -41,6 +66,9 @@ important modality by which natural environments confer restorative
 effects. Finally, our results suggest that maintaining or improving
 natural soundscapes within protected areas may be an important component
 to maximizing human experiences.
+
+<iframe width="100%" height="700" src="https://doi.org/10.5061/dryad.wwpzgmsgx" style="border:none" title="Contributed by NEON">
+</iframe>
 
 R code:
 

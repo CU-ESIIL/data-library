@@ -16,13 +16,13 @@ knitr::opts_chunk$set(
   cache=TRUE, message=FALSE, warning=FALSE, results='hide')
 ```
 
-## Get data
+The United States Census is an invaluable resource, providing extensive data about the population of the United States, its demographic characteristics, economic activities, and housing characteristics, among other categories. Conducted every ten years, the Census provides a comprehensive snapshot of the country, and is an essential tool for policymakers, researchers, businesses, and anyone seeking to understand more about the nation and its people.
 
-Retrieving USA census data in R, R Tidy, and Python can be done using different packages and libraries. Here are some working examples in code for each language:
+Working with Census data, however, can sometimes be complex due to the sheer size and complexity of the datasets. That's where the tidycensus package in R comes in. The tidycensus package is a powerful tool that simplifies the process of downloading and working with Census data directly within R, making it easier to access and analyze this rich source of information.
 
-R:
+The tidycensus package provides a direct interface to the US Census Bureau's APIs, allowing users to efficiently load data from the Decennial Census, the American Community Survey (ACS), the Bureau of Economic Analysis (BEA), and other resources directly into R. The returned data is tidy, meaning it's ready to use with the other packages in the tidyverse ecosystem for data manipulation, analysis, and visualization.
 
-To retrieve census data in R, we can use the tidycensus package. Here's an example of how to retrieve the total population for the state of California:
+Not only does tidycensus streamline the data retrieval process, but it also helps with other aspects of working with Census data, including handling of Census geographies and variable selection. Moreover, it can return spatial objects that can be easily used for mapping and spatial analysis.
 
 R code:
 
