@@ -29,39 +29,39 @@ nav:
   - Nature-based solutions and Human development: 
       - Open Street Map: solutions/osm/osm.md
   - Extreme events and hazards: 
-      - EPA air data: hazards/Air_data/Air_data.md
-      - FIRED: hazards/FIRED/FIRED.md
-      - ICS-209-Plus: hazards/ICS209_plus/ICS209_Plus.md
+      - EPA air quality data: hazards/Air_data/Air_data.md
+      - Fire Event Delineation: hazards/FIRED/FIRED.md
+      - US National Incident Management System: hazards/ICS209_plus/ICS209_Plus.md
       - Uranium mines: hazards/Uranium_mines/Uranium_mines.md
   - Spatial scale: 
-      - iNaturalist: scale/iNaturalist/iNaturalist.md
+      - Species Occurrence as points: scale/iNaturalist/iNaturalist.md
   - Data ethics: 
       - World Governance Indicators: ethics/wgi/wgi.md
   - Ecological forecasting: 
       - National Ecological Observation Network: forecasting/neon/neon.md
       - USA phenology network: forecasting/Phenology_network/Phenology_network.md
-      - neon4cast: https://github.com/eco4cast/neon4cast-example 
-      - recovery after fire: https://github.com/NEONScience/NEON-Data-Skills/blob/main/tutorials-in-development/ESIIL_InnovationSummit_2023/Python/wildfire/fire_effects_on_veg_structure_using_lidar.ipynb
+      - Forecasting NEON data: https://github.com/eco4cast/neon4cast-example 
+      - NEON lidar after fire: https://github.com/NEONScience/NEON-Data-Skills/blob/main/tutorials-in-development/ESIIL_InnovationSummit_2023/Python/wildfire/fire_effects_on_veg_structure_using_lidar.ipynb
   - Data harmonization: 
-      - Dryad: harmonization/dryad/dryad.md
+      - Data cataloged with publications: harmonization/dryad/dryad.md
       - NEON and LTER: harmonization/neon_and_lter/neon_and_lter.md
       - NEON lidar and organismal data: harmonization/neon_lidar_and_organismal/neon_lidar_and_organismal.md
   - Food supply:
-      - United Nations Food and Agriculture: food/FAOSTAT/FAO.md
+      - UN Food and Agriculture: food/FAOSTAT/FAO.md
   - Social justice:
       - Redlining: justice/redlining/redlining.md
       - Congressional voting: justice/congress/congress.md
   - Data science in decision making and policy:
       - US Census: policy/census/US_Census.md
-      - FDIC Failed Banks: policy/bank_fail/FDIC_Failed_Bank.md
+      - FDIC Failed Banks list: policy/bank_fail/FDIC_Failed_Bank.md
   - AI in environmental data science: 
       - WeatherBench: AI/weatherbench/weatherbench.md
   - Math, modeling, statistics: 
-      - Neon tick pathogen data: math/neon_pathogen/neon_pathogen.md
+      - NEON tick pathogen data: math/neon_pathogen/neon_pathogen.md
       - Everglades food network: math/foodweb/foodweb.md
       - Mammal Primate association network: math/mammal_primate_association/mammal_primate_associations.md
   - EDS education: 
-      - NCES: education/NCES/NCES.md
+      - Education Statistics: education/NCES/NCES.md
       - Nonprofit explorer: education/nonprofit_explorer/nonprofit_explorer.md
 
 # Configuration
