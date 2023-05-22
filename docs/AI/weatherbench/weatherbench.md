@@ -42,8 +42,6 @@ import matplotlib.pyplot as plt
 ```
 
 ``` bash
-
-# This might take a few minutes
 wget "https://dataserv.ub.tum.de/s/m1524895/download?path=%2F5.625deg%2Fgeopotential_500&files=geopotential_500_5.625deg.zip" -O geopotential_500_5.625deg.zip --no-check-certificate
 ```
 
