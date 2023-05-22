@@ -9,3 +9,5 @@ stringr
 forcats
 lubridate
 curl
+knitr
+reticulate

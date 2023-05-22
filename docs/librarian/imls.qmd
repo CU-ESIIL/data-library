@@ -63,7 +63,7 @@ ggplot(state_counts, aes(x = reorder(STABR, -n), y = n)) +
 
 Python code:
 
-```{python, cache=TRUE, message=FALSE, warning=FALSE, results='hide'}
+```{python, cache=TRUE, message=FALSE, warning=FALSE, results='hide', eval=FALSE}
 
 import requests
 import pandas as pd

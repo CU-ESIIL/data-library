@@ -1,12 +1,41 @@
 Institute of Museum and Library Services (IMLS) Data Catalog
 ================
+Ty Tuff, ESIIL Data Scientist
+2023-05-21
 
-The Institute of Museum and Library Services (IMLS) Data Catalog
-provides datasets related to libraries, museums, and their services in
-the United States. One such dataset is the Public Libraries Survey (PLS)
-dataset, which includes information on library usage, staffing, budgets,
-and other aspects of library operations. The PLS dataset can be used to
-study the librarian profession and library practices across the country.
+The Institute of Museum and Library Services (IMLS) is a key source of
+data and research pertaining to libraries and museums in the United
+States. The IMLS Data Catalog, an invaluable tool for professionals,
+researchers, and policymakers, provides comprehensive datasets that
+offer deep insights into these cultural institutions and their impact on
+their communities.
+
+<https://www.imls.gov/research-tools/data-collection>
+
+A significant contribution within this catalog is the Public Libraries
+Survey (PLS) dataset. The PLS is a yearly national census of public
+libraries in the U.S., aiming to provide reliable and detailed
+information concerning the state of public libraries nationwide. This
+dataset collects and compiles data about crucial aspects of library
+operations, including library usage, staffing levels, operating
+finances, types of services offered, and collection sizes.
+
+The PLS dataset serves as a vital tool for studying the librarian
+profession and understanding library practices across the country. For
+instance, it can help identify trends in library service delivery,
+evaluate the efficiency of different libraries, and assess the impact of
+budgetary changes on library operations and services.
+
+Moreover, it enables comparison of libraries of different sizes, types,
+and geographical locations, assisting in benchmarking and best practice
+identification. It also provides researchers and policymakers with the
+data needed to make informed decisions about library funding, strategic
+planning, and policy development.
+
+In summary, the IMLS Data Catalog, and particularly the PLS dataset, is
+a rich resource for anyone interested in understanding the current state
+of libraries in the United States, their operations, their challenges,
+and their contributions to their communities.
 
 Here’s how to download the Public Libraries Survey dataset and create a
 plot using R and Python:
@@ -16,33 +45,9 @@ R code:
 ``` r
 # Load required libraries
 library(tidyverse)
-```
-
-    ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-    ✔ dplyr     1.1.2     ✔ readr     2.1.4
-    ✔ forcats   1.0.0     ✔ stringr   1.5.0
-    ✔ ggplot2   3.4.2     ✔ tibble    3.2.1
-    ✔ lubridate 1.9.2     ✔ tidyr     1.3.0
-    ✔ purrr     1.0.1     
-    ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-    ✖ dplyr::filter() masks stats::filter()
-    ✖ dplyr::lag()    masks stats::lag()
-    ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
-
-``` r
 library(readr)
 library(curl)
-```
 
-    Using libcurl 7.87.0 with LibreSSL/3.3.6
-
-    Attaching package: 'curl'
-
-    The following object is masked from 'package:readr':
-
-        parse_date
-
-``` r
 # Download the dataset
 url <- "https://www.imls.gov/sites/default/files/2022-07/pls_fy2020_csv.zip"
 temp_file <- tempfile(fileext = ".zip")
@@ -55,18 +60,7 @@ unzip(temp_file, exdir = temp_dir)
 # Read the CSV file
 csv_file <- list.files(temp_dir, pattern = "*.csv", full.names = TRUE)
 data <- read_csv(csv_file[1]) # Corrected this line
-```
 
-    Rows: 9245 Columns: 179
-    ── Column specification ────────────────────────────────────────────────────────
-    Delimiter: ","
-    chr (106): STABR, FSCSKEY, LIBID, LIBNAME, ADDRESS, CITY, ZIP, ZIP4, ADDRES_...
-    dbl  (73): PHONE, POPU_LSA, POPU_UND, CENTLIB, BRANLIB, BKMOB, MASTER, LIBRA...
-
-    ℹ Use `spec()` to retrieve the full column specification for this data.
-    ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-
-``` r
 # Create a plot (example: number of libraries by state)
 state_counts <- data %>% count(STABR)
 ggplot(state_counts, aes(x = reorder(STABR, -n), y = n)) +
@@ -83,37 +77,37 @@ ggplot(state_counts, aes(x = reorder(STABR, -n), y = n)) +
 Python code:
 
 ``` python
-import pandas as pd
 import requests
-import zipfile
-import io
-import os
+import pandas as pd
 import matplotlib.pyplot as plt
+import zipfile
+import os
+from io import BytesIO
 
 # Download the dataset
 url = "https://www.imls.gov/sites/default/files/2022-07/pls_fy2020_csv.zip"
 response = requests.get(url)
-temp_file = io.BytesIO(response.content)
 
 # Unzip the dataset
-with zipfile.ZipFile(temp_file, 'r') as zf:
-    zf.extractall()
+with zipfile.ZipFile(BytesIO(response.content)) as zip_ref:
+    zip_ref.extractall()
 
 # Find the CSV file
-csv_file = [f for f in os.listdir() if f.endswith('.csv')][0]
+csv_file = next(file for file in os.listdir() if file.endswith(".csv"))
 
 # Read the CSV file
 data = pd.read_csv(csv_file)
 
-# Create a plot (example: number of libraries by state)
-state_counts = data['STABR'].value_counts().sort_values(ascending=False)
+# Count the number of libraries by state
+state_counts = data['STABR'].value_counts()
 
-plt.figure(figsize=(12, 6))
-plt.bar(state_counts.index, state_counts.values)
-plt.xticks(rotation=45, ha='right')
+# Create a plot
+plt.figure(figsize=(10,8))
+state_counts.sort_values().plot(kind = 'barh')
 plt.title('Number of Libraries by State')
-plt.xlabel('State')
-plt.ylabel('Number of Libraries')
+plt.xlabel('Number of Libraries')
+plt.ylabel('State')
+plt.grid(axis='x')
 plt.show()
 ```
 
