@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>v gdal</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="STAC_files/libs/clipboard/clipboard.min.js"></script>
+<script src="STAC_files/libs/quarto-html/quarto.js"></script>
+<script src="STAC_files/libs/quarto-html/popper.min.js"></script>
+<script src="STAC_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="STAC_files/libs/quarto-html/anchor.min.js"></script>
+<link href="STAC_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="STAC_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="STAC_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="STAC_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="STAC_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#vectors" id="toc-vectors" class="nav-link active" data-scroll-target="#vectors"> <span class="header-section-number">1</span> Vectors</a></li>
+  <li><a href="#data-cube" id="toc-data-cube" class="nav-link" data-scroll-target="#data-cube"> <span class="header-section-number">2</span> Data cube</a></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">v gdal</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<div class="cell" data-hash="STAC_cache/html/unnamed-chunk-1_e51964575ee4128e2ea4a872052c6aa5">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rstac)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gdalcubes)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(osmdata)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glue)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gdalUtils)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stars)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(colorspace)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Install gdalUtils package if not already installed</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"gdalUtils"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"gdalUtils"</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glue)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the gdalUtils library</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gdalUtils)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(osmdata)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">gdalcubes_options</span>(<span class="at">parallel =</span> <span class="dv">8</span>)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>sf<span class="sc">::</span><span class="fu">sf_extSoftVersion</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          GEOS           GDAL         proj.4 GDAL_with_GEOS     USE_PROJ_H 
+      "3.10.2"        "3.4.2"        "8.2.1"        "false"         "true" 
+          PROJ 
+       "8.2.1" </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gdalcubes_gdal_has_geos</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+<section id="vectors" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="vectors"><span class="header-section-number">1</span> Vectors</h2>
+<div class="cell" data-hash="STAC_cache/html/unnamed-chunk-2_d4e2220022b4ff30e0b6e6107fc58ac7">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>base <span class="ot">&lt;-</span> <span class="st">"https://datadownload-production.s3.amazonaws.com"</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>y2017 <span class="ot">&lt;-</span> <span class="st">"GMW_v3_2017.zip"</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>y2020 <span class="ot">&lt;-</span> <span class="st">"GMW_v3_2020.zip"</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>Mountains_and_forests <span class="ot">&lt;-</span> <span class="st">"Generalised_Biogeographic_Realms_2004.zip"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="STAC_cache/html/unnamed-chunk-3_292828371687f9bbc6b6db6dac85d227">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>india <span class="ot">&lt;-</span> spData<span class="sc">::</span>world <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(name_long <span class="sc">==</span> <span class="st">"India"</span>) <span class="sc">|&gt;</span> <span class="fu">vect</span>()</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>USA <span class="ot">&lt;-</span> spData<span class="sc">::</span>world <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(name_long <span class="sc">==</span> <span class="st">"United States"</span>) <span class="sc">|&gt;</span> <span class="fu">vect</span>()</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>gmw2017_india <span class="ot">&lt;-</span> <span class="fu">glue</span>(<span class="st">"/vsizip/vsicurl/{base}/{y2017}"</span>) <span class="sc">|&gt;</span> <span class="fu">vect</span>(<span class="at">filter =</span> india) </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>gmw2020_india <span class="ot">&lt;-</span><span class="fu">glue</span>(<span class="st">"/vsizip/vsicurl/{base}/{y2020}"</span>) <span class="sc">|&gt;</span> <span class="fu">vect</span>()</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>MaF <span class="ot">&lt;-</span><span class="fu">glue</span>(<span class="st">"/vsizip/vsicurl/{base}/{Mountains_and_forests}"</span>) <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(india)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="STAC_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(gmw2017_india)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="STAC_files/figure-html/unnamed-chunk-3-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(gmw2020_india)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="STAC_files/figure-html/unnamed-chunk-3-3.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="data-cube" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="data-cube"><span class="header-section-number">2</span> Data cube</h2>
+<p>A “data cube” (x,y,time) is a common metaphor here. An abstract may have a particular spatial and temporal resolution that need not match the underlying data – for instance, satellite images may be taken every few days, but a cube may use monthly time step – all images in this interval will then be averaged. This can leverage clever things like first masking out clouds, such that the monthly average creates a ‘cloudless’ composite. Similarly, spatial resolution can be lower (allowing for rapid computation and visualization) or higher (using a range of interpolation methods) than the underlying data. Obviously analysts must be mindful of these effects.</p>
+<div class="cell" data-hash="STAC_cache/html/unnamed-chunk-4_4316a95f652363314366661c59f171fb">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>osm_bbox <span class="ot">&lt;-</span> osmdata<span class="sc">::</span><span class="fu">getbb</span>(<span class="st">"Boulder,CO"</span>, <span class="at">format_out =</span> <span class="st">"sf_polygon"</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(osm_bbox<span class="sc">$</span>multipolygon[<span class="dv">1</span>,])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="STAC_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>osm_bbox<span class="sc">$</span>multipolygon[<span class="dv">1</span>,] <span class="sc">|&gt;</span> <span class="fu">st_transform</span>(<span class="st">"EPSG:4326"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_bbox</span>() <span class="ot">-&gt;</span> bbox_4326</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>osm_bbox<span class="sc">$</span>multipolygon[<span class="dv">1</span>,] <span class="sc">|&gt;</span> <span class="fu">st_transform</span>(<span class="st">"EPSG:32618"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_bbox</span>() <span class="ot">-&gt;</span> bbox_32618</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="STAC_cache/html/unnamed-chunk-5_4962fbf538a23a7e095b4247f166a56d">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>s <span class="ot">=</span> <span class="fu">stac</span>(<span class="st">"https://earth-search.aws.element84.com/v0"</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  items <span class="ot">=</span> s <span class="sc">|&gt;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stac_search</span>(<span class="at">collections =</span> <span class="st">"sentinel-s2-l2a-cogs"</span>,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">bbox =</span> <span class="fu">c</span>(bbox_4326[<span class="st">"xmin"</span>],bbox_4326[<span class="st">"ymin"</span>],</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>                         bbox_4326[<span class="st">"xmax"</span>],bbox_4326[<span class="st">"ymax"</span>]), </span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">datetime =</span> <span class="st">"2021-06-01/2021-07-30"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">post_request</span>() <span class="sc">|&gt;</span> <span class="fu">items_fetch</span>(<span class="at">progress =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">length</span>(items<span class="sc">$</span>features)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 23</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(gdalcubes)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>assets <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"B01"</span>,<span class="st">"B02"</span>,<span class="st">"B03"</span>,<span class="st">"B04"</span>,<span class="st">"B05"</span>,<span class="st">"B06"</span>, <span class="st">"B07"</span>,<span class="st">"B08"</span>,<span class="st">"B8A"</span>,<span class="st">"B09"</span>,<span class="st">"B11"</span>,<span class="st">"SCL"</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>s2_collection <span class="ot">=</span> <span class="fu">stac_image_collection</span>(items<span class="sc">$</span>features, <span class="at">asset_names =</span> assets)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>s2_collection</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Image collection object, referencing 23 images with 12 bands
+Images:
+                      name      left      top   bottom     right
+1 S2A_13TDE_20210730_0_L2A -106.1832 40.65079 39.65576 -104.8846
+2 S2A_13TDE_20210727_0_L2A -105.3595 40.65083 39.66106 -104.8846
+3 S2B_13TDE_20210725_0_L2A -106.1832 40.65079 39.65576 -104.8846
+4 S2B_13TDE_20210722_0_L2A -105.3653 40.65083 39.66104 -104.8846
+5 S2A_13TDE_20210720_0_L2A -106.1832 40.65079 39.65576 -104.8846
+6 S2A_13TDE_20210717_0_L2A -105.3595 40.65083 39.66106 -104.8846
+             datetime        srs
+1 2021-07-30T18:02:58 EPSG:32613
+2 2021-07-27T17:53:02 EPSG:32613
+3 2021-07-25T18:02:57 EPSG:32613
+4 2021-07-22T17:53:01 EPSG:32613
+5 2021-07-20T18:02:58 EPSG:32613
+6 2021-07-17T17:53:02 EPSG:32613
+[ omitted 17 images ] 
+
+Bands:
+   name offset scale unit nodata image_count
+1   B01      0     1                      23
+2   B02      0     1                      23
+3   B03      0     1                      23
+4   B04      0     1                      23
+5   B05      0     1                      23
+6   B06      0     1                      23
+7   B07      0     1                      23
+8   B08      0     1                      23
+9   B09      0     1                      23
+10  B11      0     1                      23
+11  B8A      0     1                      23
+12  SCL      0     1                      23</code></pre>
+</div>
+</div>
+<div class="cell" data-hash="STAC_cache/html/unnamed-chunk-6_34f1e4f538966c85efa1a6249556fe65">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>v <span class="ot">=</span> <span class="fu">cube_view</span>(<span class="at">srs=</span><span class="st">"EPSG:32618"</span>, <span class="at">dx=</span><span class="dv">20</span>, <span class="at">dy=</span><span class="dv">20</span>, <span class="at">dt=</span><span class="st">"P1D"</span>, </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>                           <span class="at">aggregation=</span><span class="st">"median"</span>, <span class="at">resampling =</span> <span class="st">"average"</span>,</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">extent=</span><span class="fu">list</span>(<span class="at">t0 =</span> <span class="st">"2021-06-01"</span>, <span class="at">t1 =</span> <span class="st">"2021-07-30"</span>,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">left=</span>bbox_32618[<span class="st">"xmin"</span>], <span class="at">right=</span>bbox_32618[<span class="st">"xmax"</span>],</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">top=</span>bbox_32618[<span class="st">"ymax"</span>], <span class="at">bottom=</span>bbox_32618[<span class="st">"ymin"</span>]))</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>v</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>A data cube view object
+
+Dimensions:
+                low              high count       pixel_size
+t        2021-06-01        2021-07-30    60              P1D
+y  4888331.09301011  4902971.09301011   732               20
+x -2102910.18631556 -2089230.18631556   684 19.9999999999997
+
+SRS: "EPSG:32618"
+Temporal aggregation method: "median"
+Spatial resampling method: "average"</code></pre>
+</div>
+</div>
+<div class="cell" data-hash="STAC_cache/html/unnamed-chunk-7_8930284b0532b3c5c900ac56aead6ce4">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">raster_cube</span>(s2_collection, v) <span class="sc">|&gt;</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select_bands</span>(<span class="fu">c</span>(<span class="st">"B02"</span>,<span class="st">"B03"</span>,<span class="st">"B04"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">reduce_time</span>(<span class="fu">c</span>(<span class="st">"median(B02)"</span>, <span class="st">"median(B03)"</span>, <span class="st">"median(B04)"</span>))  <span class="sc">|&gt;</span> </span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="at">rgb=</span><span class="dv">3</span><span class="sc">:</span><span class="dv">1</span>, <span class="at">na.color =</span> <span class="st">"white"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">system.time</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="STAC_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   user  system elapsed 
+ 35.484   2.569 106.788 </code></pre>
+</div>
+</div>
+<div class="cell" data-hash="STAC_cache/html/unnamed-chunk-8_1528bb92f8ee33532d4946478f1f4d24">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>ndvi.col <span class="ot">=</span> <span class="cf">function</span>(n) {</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rev</span>(<span class="fu">sequential_hcl</span>(n, <span class="st">"Green-Yellow"</span>))</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>S2.mask <span class="ot">=</span> <span class="fu">image_mask</span>(<span class="st">"SCL"</span>, <span class="at">values=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">8</span>,<span class="dv">9</span>)) <span class="co"># clouds and cloud shadows</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="fu">raster_cube</span>(s2_collection, v, <span class="at">mask =</span> S2.mask) <span class="sc">%&gt;%</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select_bands</span>(<span class="fu">c</span>(<span class="st">"B04"</span>, <span class="st">"B08"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">apply_pixel</span>(<span class="st">"(B08-B04)/(B08+B04)"</span>, <span class="st">"NDVI"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">reduce_time</span>(<span class="fu">c</span>(<span class="st">"median(NDVI)"</span>))  <span class="sc">%&gt;%</span> </span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="at">col=</span>ndvi.col, <span class="at">zlim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.2</span>,<span class="dv">1</span>), <span class="at">na.color =</span> <span class="st">"white"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">system.time</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="STAC_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   user  system elapsed 
+ 28.797   1.718  81.597 </code></pre>
+</div>
+</div>
+<div class="cell" data-hash="STAC_cache/html/unnamed-chunk-9_6d55c6f157a1df7cbaf3b82f761f09b9">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">raster_cube</span>(s2_collection, v, <span class="at">mask =</span> S2.mask) <span class="sc">%&gt;%</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select_bands</span>(<span class="fu">c</span>(<span class="st">"B04"</span>, <span class="st">"B08"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">apply_pixel</span>(<span class="st">"(B08-B04)/(B08+B04)"</span>, <span class="st">"NDVI"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">reduce_time</span>(<span class="fu">c</span>(<span class="st">"median(NDVI)"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_tif</span>()</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>new_star <span class="ot">&lt;-</span> stars<span class="sc">::</span><span class="fu">read_stars</span>(output, <span class="at">proxy =</span> T)</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a> <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_stars</span>(<span class="at">data =</span> new_star) <span class="sc">+</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_continuous_sequential</span>(<span class="at">palette =</span> <span class="st">"Green-Yellow"</span>, <span class="at">rev =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="STAC_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell" data-hash="STAC_cache/html/unnamed-chunk-10_47fbe14c3dec616d11f1c42b241d21d2">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>ndvi.col <span class="ot">=</span> <span class="cf">function</span>(n) {</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rev</span>(<span class="fu">sequential_hcl</span>(n, <span class="st">"Green-Yellow"</span>))</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>S2.mask <span class="ot">=</span> <span class="fu">image_mask</span>(<span class="st">"SCL"</span>, <span class="at">values=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">8</span>,<span class="dv">9</span>)) <span class="co"># clouds and cloud shadows</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="fu">raster_cube</span>(s2_collection, v, <span class="at">mask =</span> S2.mask) <span class="sc">|&gt;</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select_bands</span>(<span class="fu">c</span>(<span class="st">"B04"</span>, <span class="st">"B08"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">apply_pixel</span>(<span class="st">"(B08-B04)/(B08+B04)"</span>, <span class="st">"NDVI"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    gdalcubes<span class="sc">::</span><span class="fu">animate</span>(<span class="at">col =</span> ndvi.col, <span class="at">zlim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.2</span>,<span class="dv">1</span>), <span class="at">key.pos =</span> <span class="dv">1</span>, <span class="at">save_as =</span> <span class="st">"anim.gif"</span>, <span class="at">fps =</span> <span class="dv">4</span>, <span class="at">na.color =</span> <span class="st">"white"</span>)<span class="sc">|&gt;</span> <span class="fu">system.time</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   user  system elapsed 
+149.412  14.029 199.455 </code></pre>
+</div>
+</div>
+<div class="cell" data-hash="STAC_cache/html/unnamed-chunk-11_7b7b0780bfa86bf98359926ceefc7a34">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">raster_cube</span>(s2_collection, v) <span class="sc">|&gt;</span> <span class="co"># no mask</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select_bands</span>(<span class="fu">c</span>(<span class="st">"B02"</span>,<span class="st">"B03"</span>,<span class="st">"B04"</span>,<span class="st">"B08"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">apply_pixel</span>(<span class="st">"(B08-B04)/(B08+B04)"</span>, <span class="st">"NDVI"</span>, <span class="at">keep_bands =</span> <span class="cn">TRUE</span>) <span class="ot">-&gt;</span> ms_cube</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>ms_cube</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">extract_geom</span>(ms_cube, osm_bbox<span class="sc">$</span>multipolygon[<span class="dv">1</span>,], <span class="at">FUN =</span> median)</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="STAC_cache/html/unnamed-chunk-12_990a23c35cb62eb941e61a3ae5cf54c3">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>items_2019 <span class="ot">&lt;-</span> s <span class="sc">%&gt;%</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stac_search</span>(<span class="at">collections =</span> <span class="st">"sentinel-s2-l2a-cogs"</span>,</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">bbox =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">66.2</span>,<span class="sc">-</span><span class="fl">9.3</span>, <span class="sc">-</span><span class="fl">65.5</span>, <span class="sc">-</span><span class="fl">8.7</span>),</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">datetime =</span> <span class="st">"2019-05-01/2019-06-30"</span>,</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">limit =</span> <span class="dv">500</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">post_request</span>() </span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>items_2020 <span class="ot">&lt;-</span> s <span class="sc">%&gt;%</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stac_search</span>(<span class="at">collections =</span> <span class="st">"sentinel-s2-l2a-cogs"</span>,</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>                <span class="at">bbox =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">66.2</span>,<span class="sc">-</span><span class="fl">9.3</span>, <span class="sc">-</span><span class="fl">65.5</span>, <span class="sc">-</span><span class="fl">8.7</span>),</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>                <span class="at">datetime =</span> <span class="st">"2020-05-01/2020-06-30"</span>,</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>                <span class="at">limit =</span> <span class="dv">500</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">post_request</span>() </span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>col_2019 <span class="ot">=</span> <span class="fu">stac_image_collection</span>(items_2019<span class="sc">$</span>features, <span class="at">asset_names =</span> assets, </span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>                            <span class="at">property_filter =</span> <span class="cf">function</span>(x) {x[[<span class="st">"eo:cloud_cover"</span>]] <span class="sc">&lt;</span> <span class="dv">10</span>})</span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>col_2020 <span class="ot">=</span> <span class="fu">stac_image_collection</span>(items_2020<span class="sc">$</span>features, <span class="at">asset_names =</span> assets, </span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>                            <span class="at">property_filter =</span> <span class="cf">function</span>(x) {x[[<span class="st">"eo:cloud_cover"</span>]] <span class="sc">&lt;</span> <span class="dv">10</span>})</span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a>v_2019 <span class="ot">=</span> <span class="fu">cube_view</span>(<span class="at">srs =</span> <span class="st">"EPSG:32720"</span>,  <span class="at">extent =</span> <span class="fu">list</span>(<span class="at">t0 =</span> <span class="st">"2019-05-01"</span>, <span class="at">t1 =</span> <span class="st">"2019-06-30"</span>,</span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a>              <span class="at">left =</span> <span class="dv">143510</span>, <span class="at">right =</span> <span class="dv">226241</span>,  <span class="at">top =</span> <span class="dv">9037300</span>, <span class="at">bottom =</span> <span class="dv">8972318</span>),</span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a>              <span class="at">dx =</span> <span class="dv">100</span>, <span class="at">dy =</span> <span class="dv">100</span>, <span class="at">dt =</span> <span class="st">"P1D"</span>, <span class="at">aggregation =</span> <span class="st">"median"</span>, <span class="at">resampling =</span> <span class="st">"bilinear"</span>)</span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a>v_2020 <span class="ot">=</span> <span class="fu">cube_view</span>(v_2019, <span class="at">extent =</span> <span class="fu">list</span>(<span class="at">t0 =</span> <span class="st">"2020-05-01"</span>, <span class="at">t1 =</span> <span class="st">"2020-06-30"</span>))</span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a>max_ndvi_mosaic <span class="ot">&lt;-</span> <span class="cf">function</span>(col, v) {</span>
+<span id="cb25-28"><a href="#cb25-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">raster_cube</span>(col, v, <span class="at">mask =</span> S2.mask) <span class="sc">%&gt;%</span></span>
+<span id="cb25-29"><a href="#cb25-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select_bands</span>(<span class="fu">c</span>(<span class="st">"B04"</span>, <span class="st">"B08"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb25-30"><a href="#cb25-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">apply_pixel</span>(<span class="fu">c</span>(<span class="st">"(B08-B04)/(B08+B04)"</span>), <span class="at">names=</span><span class="st">"NDVI"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb25-31"><a href="#cb25-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">reduce_time</span>(<span class="st">"max(NDVI)"</span>)</span>
+<span id="cb25-32"><a href="#cb25-32" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb25-33"><a href="#cb25-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-34"><a href="#cb25-34" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>(<span class="fu">library</span>(stars))</span>
+<span id="cb25-35"><a href="#cb25-35" aria-hidden="true" tabindex="-1"></a><span class="fu">max_ndvi_mosaic</span>(col_2019, v_2019) <span class="sc">%&gt;%</span></span>
+<span id="cb25-36"><a href="#cb25-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">st_as_stars</span>() <span class="ot">-&gt;</span> maxndvi_2019</span>
+<span id="cb25-37"><a href="#cb25-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-38"><a href="#cb25-38" aria-hidden="true" tabindex="-1"></a><span class="fu">max_ndvi_mosaic</span>(col_2020, v_2020) <span class="sc">%&gt;%</span></span>
+<span id="cb25-39"><a href="#cb25-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">st_as_stars</span>() <span class="ot">-&gt;</span> maxndvi_2020</span>
+<span id="cb25-40"><a href="#cb25-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-41"><a href="#cb25-41" aria-hidden="true" tabindex="-1"></a>difference <span class="ot">=</span> maxndvi_2020 <span class="sc">-</span> maxndvi_2019</span>
+<span id="cb25-42"><a href="#cb25-42" aria-hidden="true" tabindex="-1"></a>difference[difference <span class="sc">&gt;</span> <span class="sc">-</span><span class="fl">0.15</span>] <span class="ot">=</span> <span class="cn">NA</span></span>
+<span id="cb25-43"><a href="#cb25-43" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(difference) <span class="ot">&lt;-</span> <span class="st">"Difference of max NDVI (2020 - 2019)"</span></span>
+<span id="cb25-44"><a href="#cb25-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-45"><a href="#cb25-45" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tmap)</span>
+<span id="cb25-46"><a href="#cb25-46" aria-hidden="true" tabindex="-1"></a><span class="fu">tmap_mode</span>(<span class="st">"view"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

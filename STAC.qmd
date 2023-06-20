@@ -1,0 +1,258 @@
+---
+title: "v gdal"
+format:
+  html:
+    theme: default
+    toc: true
+    number-sections: true
+---
+
+```{r, cache=TRUE, message=FALSE, warning=FALSE}
+library(rstac)
+library(gdalcubes)
+library(osmdata)
+library(terra)
+library(dplyr)
+library(glue)
+library(gdalUtils)
+library(stars)
+library(ggplot2)
+library(colorspace)
+# Install gdalUtils package if not already installed
+if (!requireNamespace("gdalUtils", quietly = TRUE)) {
+  install.packages("gdalUtils")
+}
+
+library(glue)
+# Load the gdalUtils library
+library(gdalUtils)
+library(sf)
+library(osmdata)
+gdalcubes_options(parallel = 8)
+
+sf::sf_extSoftVersion()
+gdalcubes_gdal_has_geos()
+```
+
+## Vectors
+
+
+
+
+
+```{r, cache=TRUE, message=FALSE, warning=FALSE}
+base <- "https://datadownload-production.s3.amazonaws.com"
+y2017 <- "GMW_v3_2017.zip"
+y2020 <- "GMW_v3_2020.zip"
+
+
+Mountains_and_forests <- "Generalised_Biogeographic_Realms_2004.zip"
+```
+
+
+```{r, cache=TRUE, message=FALSE, warning=FALSE}
+
+india <- spData::world |> dplyr::filter(name_long == "India") |> vect()
+USA <- spData::world |> dplyr::filter(name_long == "United States") |> vect()
+
+gmw2017_india <- glue("/vsizip/vsicurl/{base}/{y2017}") |> vect(filter = india) 
+gmw2020_india <-glue("/vsizip/vsicurl/{base}/{y2020}") |> vect(filter = india)
+
+
+
+
+plot(gmw2017_india)
+plot(gmw2020_india)
+```
+
+
+
+
+## Data cube
+ A "data cube" (x,y,time) is a common metaphor here.  An abstract may have a particular spatial and temporal resolution that need not match the underlying data -- for instance, satellite images may be taken every few days, but a cube may use monthly time step -- all images in this interval will then be averaged.  This can leverage clever things like first masking out clouds, such that the monthly average creates a 'cloudless' composite.  Similarly, spatial resolution can be lower (allowing for rapid computation and visualization) or higher (using a range of interpolation methods) than the underlying data.  Obviously analysts must be mindful of these effects.
+
+
+
+
+```{r, cache=TRUE, message=FALSE, warning=FALSE}
+
+osm_bbox <- osmdata::getbb("Boulder,CO", format_out = "sf_polygon")
+plot(osm_bbox$multipolygon[1,])
+
+
+osm_bbox$multipolygon[1,] |> st_transform("EPSG:4326") |>
+  st_bbox() -> bbox_4326
+
+osm_bbox$multipolygon[1,] |> st_transform("EPSG:32618") |>
+  st_bbox() -> bbox_32618
+
+```
+
+```{r, cache=TRUE, message=FALSE, warning=FALSE}
+s = stac("https://earth-search.aws.element84.com/v0")
+  items = s |>
+    stac_search(collections = "sentinel-s2-l2a-cogs",
+                bbox = c(bbox_4326["xmin"],bbox_4326["ymin"],
+                         bbox_4326["xmax"],bbox_4326["ymax"]), 
+                datetime = "2021-06-01/2021-07-30") |>
+    post_request() |> items_fetch(progress = FALSE)
+  length(items$features)
+
+
+  library(gdalcubes)
+assets = c("B01","B02","B03","B04","B05","B06", "B07","B08","B8A","B09","B11","SCL")
+s2_collection = stac_image_collection(items$features, asset_names = assets)
+s2_collection
+
+```
+
+```{r, cache=TRUE, message=FALSE, warning=FALSE}
+v = cube_view(srs="EPSG:32618", dx=1, dy=1, dt="P1D", 
+                           aggregation="median", resampling = "average",
+                           extent=list(t0 = "2021-06-01", t1 = "2021-07-30",
+                                       left=bbox_32618["xmin"], right=bbox_32618["xmax"],
+                                       top=bbox_32618["ymax"], bottom=bbox_32618["ymin"]))
+v
+```
+
+```{r, cache=TRUE, message=FALSE, warning=FALSE}
+raster_cube(s2_collection, v) |>
+  select_bands(c("B02","B03","B04")) |>
+  reduce_time(c("median(B02)", "median(B03)", "median(B04)"))  |> 
+  plot(rgb=3:1, na.color = "white") |> 
+  system.time()
+```
+
+```{r, cache=TRUE, message=FALSE, warning=FALSE}
+ndvi.col = function(n) {
+  rev(sequential_hcl(n, "Green-Yellow"))
+}
+
+S2.mask = image_mask("SCL", values=c(3,8,9)) # clouds and cloud shadows
+raster_cube(s2_collection, v, mask = S2.mask) %>%
+    select_bands(c("B04", "B08")) %>%
+    apply_pixel("(B08-B04)/(B08+B04)", "NDVI") %>%
+  reduce_time(c("median(NDVI)"))  %>% 
+  plot(col=ndvi.col, zlim=c(-0.2,1), na.color = "white") %>% 
+  system.time() 
+```
+
+
+```{r, cache=TRUE, message=FALSE, warning=FALSE}
+
+output <- raster_cube(s2_collection, v, mask = S2.mask) %>%
+    select_bands(c("B04", "B08")) %>%
+    apply_pixel("(B08-B04)/(B08+B04)", "NDVI") %>%
+  reduce_time(c("median(NDVI)")) |>
+  write_tif()
+
+new_star <- stars::read_stars(output, proxy = T)
+
+
+ ggplot() + 
+   geom_stars(data = new_star) +
+  theme_minimal() + 
+  scale_fill_continuous_sequential(palette = "Green-Yellow", rev = TRUE)
+```
+
+
+```{r, cache=TRUE, message=FALSE, warning=FALSE}
+
+ndvi.col = function(n) {
+  rev(sequential_hcl(n, "Green-Yellow"))
+}
+
+S2.mask = image_mask("SCL", values=c(3,8,9)) # clouds and cloud shadows
+raster_cube(s2_collection, v, mask = S2.mask) |>
+    select_bands(c("B04", "B08")) |>
+    apply_pixel("(B08-B04)/(B08+B04)", "NDVI") |>
+    gdalcubes::animate(col = ndvi.col, zlim=c(-0.2,1), key.pos = 1, save_as = "anim.gif", fps = 4, na.color = "white")|> system.time()
+```
+
+
+
+
+
+
+```{r, eval=FALSE, cache=TRUE, message=FALSE, warning=FALSE}
+raster_cube(s2_collection, v) |> # no mask
+  select_bands(c("B02","B03","B04","B08")) |>
+  apply_pixel("(B08-B04)/(B08+B04)", "NDVI", keep_bands = TRUE) -> ms_cube
+ms_cube
+x = extract_geom(ms_cube, osm_bbox$multipolygon[1,], FUN = median)
+x
+```
+
+
+
+
+
+
+
+
+
+
+
+
+```{r, eval=FALSE, cache=TRUE, message=FALSE, warning=FALSE}
+items_2019 <- s %>%
+    stac_search(collections = "sentinel-s2-l2a-cogs",
+                bbox = c(-66.2,-9.3, -65.5, -8.7),
+                datetime = "2019-05-01/2019-06-30",
+                limit = 500) %>% 
+    post_request() 
+
+items_2020 <- s %>%
+    stac_search(collections = "sentinel-s2-l2a-cogs",
+                bbox = c(-66.2,-9.3, -65.5, -8.7),
+                datetime = "2020-05-01/2020-06-30",
+                limit = 500) %>% 
+    post_request() 
+
+
+col_2019 = stac_image_collection(items_2019$features, asset_names = assets, 
+                            property_filter = function(x) {x[["eo:cloud_cover"]] < 10})
+col_2020 = stac_image_collection(items_2020$features, asset_names = assets, 
+                            property_filter = function(x) {x[["eo:cloud_cover"]] < 10})
+
+v_2019 = cube_view(srs = "EPSG:32720",  extent = list(t0 = "2019-05-01", t1 = "2019-06-30",
+              left = 143510, right = 226241,  top = 9037300, bottom = 8972318),
+              dx = 100, dy = 100, dt = "P1D", aggregation = "median", resampling = "bilinear")
+v_2020 = cube_view(v_2019, extent = list(t0 = "2020-05-01", t1 = "2020-06-30"))
+
+
+max_ndvi_mosaic <- function(col, v) {
+    raster_cube(col, v, mask = S2.mask) %>%
+    select_bands(c("B04", "B08")) %>%
+    apply_pixel(c("(B08-B04)/(B08+B04)"), names="NDVI") %>%
+    reduce_time("max(NDVI)")
+}
+
+suppressPackageStartupMessages(library(stars))
+max_ndvi_mosaic(col_2019, v_2019) %>%
+    st_as_stars() -> maxndvi_2019
+
+max_ndvi_mosaic(col_2020, v_2020) %>%
+    st_as_stars() -> maxndvi_2020
+
+difference = maxndvi_2020 - maxndvi_2019
+difference[difference > -0.15] = NA
+names(difference) <- "Difference of max NDVI (2020 - 2019)"
+
+library(tmap)
+tmap_mode("view")
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
