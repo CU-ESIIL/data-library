@@ -1,0 +1,68 @@
+National phenology network
+================
+Ty Tuff, ESIIL Data Scientist
+2023-05-21
+
+This data set contains data from the [USA National Phenology
+Network](https://www.usanpn.org/about).
+
+The USA National Phenology Network (USA-NPN) is an organization that
+monitors the influence of climate on the phenology of plants, animals,
+and landscapes. Phenology is the study of cyclic and seasonal natural
+phenomena, especially in relation to climate and plant and animal life.
+
+The USA-NPN brings together citizen scientists, government agencies,
+non-profit groups, educators, and students of all ages to monitor the
+impacts of climate change on plants and animals in the United States.
+
+The data set collected by the USA-NPN, which you mentioned, contains a
+wide array of information about phenological trends and patterns across
+the country. This data can be critical in understanding the impact of
+climate change on various species and ecosystems. It provides invaluable
+information that helps scientists predict trends and potentially develop
+strategies for mitigating the effects of climate change on our
+environment.
+
+The data set can include data on the timing of leaf-out, flowering, and
+fruiting of plants; the emergence of insects and the migration of birds;
+the peak of allergy season; the timing of agricultural crop stages; and
+many other biological events.
+
+In R, we need 2 packages to download and visualize the data. First,
+check if the packages are already installed. Install them if they are
+not:
+
+``` r
+packages <- c("tidyverse", "devtools") 
+new.packages <- packages[!(packages %in% installed.packages()[,"Package"])] 
+if(length(new.packages)>0) install.packages(new.packages)
+```
+
+Then, load them and install
+‘[rnpn](https://rdrr.io/cran/rnpn/f/README.md)’, an R client for
+interacting with the USA National Phenology Network data web services.
+
+``` r
+lapply(packages, library, character.only = TRUE)
+install_github("usa-npn/rnpn")
+library(rnpn)
+```
+
+Download data about Woodhouse’s toads:
+
+``` r
+toads <- npn_download_status_data(request_source='Your Name',years = c(2000:2020), species_id=c(237))
+```
+
+Plot phenophases as a function of DOY per state:
+
+``` r
+ggplot(toads) +
+  geom_point(aes(day_of_year, phenophase_description)) +
+  facet_wrap(.~state) +
+  theme_bw() +
+  xlab('Day of year') +
+  ylab('Phenophase')
+```
+
+![](Phenology_network_files/figure-gfm/unnamed-chunk-4-1.png)
