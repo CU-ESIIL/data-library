@@ -1,4 +1,4 @@
-Sentinel2 Hyperspectral Data on AWS
+Sentinel2 Multispectral Data on AWS
 ================
 Erick Verleye, ESIIL Software Developer
 2023-08-08
@@ -44,34 +44,26 @@ from shapely.geometry import Polygon
 ```
 
 Next, we must use boto3 to create a connection to our AWS account. The 
-initialization of the boto3.client object will be different depending on the environment you are running this code in:  
+initialization of the boto3.session object will be different depending on the environment you are running this code in:  
 
-- Using the AWS CLI from a personal computer to log in, the aws_access_key_id 
-and aws_secret_access_key arguments are required.  
-- Using a federated access login like saml2aws, the aws_access_key_id, aws_secret_access_key, and aws_session_token are required.  
-- From an EC2 instance with an IAM profile configured with s3 permissions,
-none of the optional arguments are required.  
+- Using the AWS CLI from a personal computer to log in, the profile name will typically be default. 
+- Using a federated access login, the profile name will typically be the name of the software. 
+- Using S3 configured IAM profile, no profile name is required.  
 
 Each of these arguments, if applicable, can be found in the aws credentials
 file typically found at ~/.aws/credentials
 
 ``` {python}
-def intialize_client(aws_access_key_id: str = None, aws_secret_access_key: str = None, aws_session_token: str = None):
-    return boto3.client(
-        's3',
-        aws_access_key_id=aws_access_key_id,
-        aws_secret_access_key=aws_secret_access_key,
-        aws_session_token=aws_session_token
-    )
+session = boto3.Session(profile_name=profile)
 
 # AWS CLI
-s3_client = initialize_client(aws_access_key_id='my_access_key', aws_secret_access_key='my_secret_access_key')
+session = boto3.Session(profile_name='default')
 
-# Federated login
-s3_client = initialize_client(aws_access_key_id='my_access_key', aws_secret_access_key='my_secret_access_key', aws_session_token='my_session_token')
+# Federated login (saml2aws example)
+session = boto3.Session(profile_name='saml')
 
 # S3 configured IAM profile on EC2 instance
-s3_client = initialize_client()
+session = boto3.Session()
 
 ```
 
@@ -88,7 +80,11 @@ make downloading the data easier:
   square that it belongs to. This function converts a bounding box defined in
   lat/lon as [min_lon, min_lat, max_lon, max_lat] to the military grid squares that is overlaps.
   More information on the MGRS can be found at https://www.maptools.com/tutorials/mgrs/quick_guide
+  
 
+NOTE: You will have to download the mgrs_lookup.geojson file from 
+https://github.com/CU-ESIIL/data-library/blob/main/docs/remote_sensing/sentinel2_aws/mgrs_lookup.geojson
+and place it into the working directory that this code is being run from.
 
 
 ``` {python}
@@ -112,8 +108,8 @@ def find_overlapping_mgrs(bounds: List[float]) -> List[str]:
                 input_bounds.intersects(Polygon(i['geometry']['coordinates'][0]))]
 
 
-def find_available_files(self, bounds: List[float], start_date: datetime, end_date: datetime,
-bands: List[str]) -> List[Tuple[str, str]]:
+def find_available_files(s3_client, bounds: List[float], start_date: datetime, end_date: datetime,
+                         bands: List[str]) -> List[Tuple[str, str]]:
     """
     Given a bounding box and start / end date, finds which files are available on the bucket and
     meet the search criteria
@@ -136,8 +132,8 @@ bands: List[str]) -> List[Tuple[str, str]]:
         latitude_band = grid_string[2]
         square = grid_string[3:5]
         grid = f'tiles/{utm_code}/{latitude_band}/{square}'
-        response = self._s3.list_objects_v2(
-            Bucket=self._bucket_name,
+        response = s3_client.list_objects_v2(
+            Bucket=SENTINEL_2_BUCKET_NAME,
             Prefix=grid + '/',
             MaxKeys=300,
             RequestPayer='requester'
@@ -146,8 +142,8 @@ bands: List[str]) -> List[Tuple[str, str]]:
             continue
 
         for date in date_paths:
-            response = self._s3.list_objects_v2(
-                Bucket=self._bucket_name,
+            response = s3_client.list_objects_v2(
+                Bucket=SENTINEL_2_BUCKET_NAME,
                 Prefix=grid + date + '0/',  # '0/' is for the sequence, which in most cases will be 0
                 MaxKeys=100,
                 RequestPayer='requester'
@@ -161,5 +157,96 @@ bands: List[str]) -> List[Tuple[str, str]]:
     return info
 ```
 
+Next we will define the download function which will bring everything together and start
+requesting data from s3. This function is designed to download the files in parallel, so a download_task
+function is defined as well.
+
+``` {python} 
+def download_task(namespace: Namespace) -> None:
+    """
+    Downloads a single file from the indicated s3 bucket. This function is intended to be spawned in parallel from the
+    parent process.
+    Args:
+        namespace (Namespace): Contains the bucket name, s3 file name, and destination required for s3 download request.
+        Each value in the namespace must be a pickle-izable type (i.e. str).
+    """
+    session = boto3.Session(profile_name=namespace.profile_name)
+    s3 = session.client('s3')
+    s3.download_file(namespace.bucket_name, namespace.available_file,
+                     namespace.dest,
+                     ExtraArgs={'RequestPayer': 'requester'}
+                     )
+
+
+def download(session, bounds: List[float], start_date: datetime, end_date: datetime,
+             bands: List[float], out_dir: str, buffer: float = None) -> None:
+    """
+    Downloads a list of .jp2 files from the Sinergise Sentinel2 LC1 bucket given a bounding box defined in lat/long,
+     a buffer in meters, and a start and end date . Only Bands 2-4 are requested.
+     Args:
+         bounds (list): Bounding box defined in lat / lon [min_lon, min_lat, max_lon, max_lat]
+         buffer (float): Amount by which to extend the bounding box by, in meters
+         start_date (str): Beginning of requested data creation date YYYY-MM-DD
+         end_date (str): End of requested data creation date YYYY-MM-DD
+         bands (list): The bands to download for each file. Ex. ['B02', 'B03', 'B04', 'B08'] for R, G, B, and
+         near wave IR, respectively
+         out_dir (str): Path to directory where downloaded files will be written to
+    """
+    # Convert the buffer from meters to degrees lat/long at the equator
+    if buffer is not None:
+      buffer /= 111000
+
+      # Adjust the bounding box to include the buffer (subtract from min lat/long values, add to max lat/long values)
+      bounds[0] -= buffer
+      bounds[1] -= buffer
+      bounds[2] += buffer
+      bounds[3] += buffer
+    
+    s3_client = session.client('s3')
+    available_files = find_available_files(s3_client, bounds, start_date, end_date, bands)
+
+    args = []
+    total_data = 0
+    for file_info in available_files:
+        file_path = file_info[0]
+        if '/preview/' in file_path:
+            continue
+
+        created_file_path = os.path.join(out_dir, file_path.replace('_qi_', '').replace('/', '_').replace('tiles_', ''))
+
+        # Skip if file is already local
+        if os.path.exists(created_file_path):
+            continue
+
+        total_data += file_info[1]
+
+        args.append(Namespace(available_file=file_path, bucket_name=SENTINEL_2_BUCKET_NAME, profile_name=session.profile_name,
+                              dest=created_file_path))
+
+    total_data /= 1E9
+    print(f'Found {len(args)} files for download. Total size of files is'
+          f' {round(total_data, 2)}GB and estimated cost will be ${round(0.09 * total_data, 2)}'
+          )
+
+    with mp.Pool(mp.cpu_count() - 1) as pool:
+        for _ in tqdm.tqdm(pool.imap_unordered(_download_task, args), total=len(args)):
+            pass
+```
+
+Once all of the above functions and variables are defined, we can now run download for a certain time range and region.
+First make sure the directory corresponding to the out_dir parameter you pass in already exists. If not, create the directory.
+
+``` {python}
+out_dir = 'Uganda'
+os.makedirs(out_dir, exist_ok=True)
+
+# Download RGB band data from the Kibaale district of Uganda from June 15, 2017 - August 15, 2017  
+download(session=session, bounds=[30.5887, 0.0536, 31.7697, 1.8028], start_date=datetime(2017, 6, 15),
+         end_date=datetime(2017, 8, 15), bands=['B02', 'B03', B04'], out_dir=out_dir)
+
+```
+
+Cloud files will be downloaded alongside the band data. These cloud files can be used to create 
+cloud-corrected composite images over a region. To learn more about creating cloud corrected composites, check out our tutorial on ESIIL's Analytics Library: 
 
 
