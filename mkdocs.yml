@@ -26,6 +26,7 @@ nav:
   - Cutting-edge remote sensing: 
       - NEON Hyperspectral Data: remote_sensing/neon_hyperspectral/neon_hyperspectral.md
       - Lidar-based Canopy Height: remote_sensing/lidar_canopy_height/lidar_canopy_height.md
+      - Multispectral Sentinel-2 on AWS: remote_sensing/sentinel2_aws/sentinel2_aws.md 
   - Nature-based solutions and Human development: 
       - Open Street Map: solutions/osm/osm.md
   - Extreme events and hazards: 
