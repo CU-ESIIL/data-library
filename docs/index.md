@@ -1,7 +1,3 @@
-<head>
-    <meta name="google-site-verification" content="zuDAVj60mN5FV2Ujhrn0MbhUF6w0k2W7US8ztne1cuY" />
-</head>
-
 ESIIL data library and vignette repository
 ================
 
