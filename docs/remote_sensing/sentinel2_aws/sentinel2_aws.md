@@ -120,13 +120,14 @@ def find_available_files(s3_client, bounds: List[float], start_date: datetime, e
         end_date (str): End of requested data creation date YYYY-MM-DD
     """
     date_paths = []
-    while start_date <= end_date:
+    ref_date = start_date
+    while ref_date <= end_date:
         tt = ref_date.timetuple()
         date_paths.append(f'/{tt.tm_year}/{tt.tm_mon}/{tt.tm_mday}/')
         ref_date = ref_date + timedelta(days=1)
 
     info = []
-    mgrs_grids = self.find_overlapping_mgrs(bounds)
+    mgrs_grids = find_overlapping_mgrs(bounds)
     for grid_string in mgrs_grids:
         utm_code = grid_string[:2]
         latitude_band = grid_string[2]
@@ -159,7 +160,11 @@ def find_available_files(s3_client, bounds: List[float], start_date: datetime, e
 
 Next we will define the download function which will bring everything together and start
 requesting data from s3. This function is designed to download the files in parallel, so a download_task
-function is defined as well.
+function is defined as well. 
+Note that multiprocessing will not work as implemented here in
+iPython (Jupyter notebooks, etc.) and so that block of code is commented out. If you are 
+running this in a different environment and would like to download in parallel, un-comment this block 
+and comment the sequential block below.
 
 ``` {python} 
 def download_task(namespace: Namespace) -> None:
@@ -194,13 +199,13 @@ def download(session, bounds: List[float], start_date: datetime, end_date: datet
     """
     # Convert the buffer from meters to degrees lat/long at the equator
     if buffer is not None:
-      buffer /= 111000
+        buffer /= 111000
 
-      # Adjust the bounding box to include the buffer (subtract from min lat/long values, add to max lat/long values)
-      bounds[0] -= buffer
-      bounds[1] -= buffer
-      bounds[2] += buffer
-      bounds[3] += buffer
+        # Adjust the bounding box to include the buffer (subtract from min lat/long values, add to max lat/long values)
+        bounds[0] -= buffer
+        bounds[1] -= buffer
+        bounds[2] += buffer
+        bounds[3] += buffer
     
     s3_client = session.client('s3')
     available_files = find_available_files(s3_client, bounds, start_date, end_date, bands)
@@ -227,10 +232,16 @@ def download(session, bounds: List[float], start_date: datetime, end_date: datet
     print(f'Found {len(args)} files for download. Total size of files is'
           f' {round(total_data, 2)}GB and estimated cost will be ${round(0.09 * total_data, 2)}'
           )
-
-    with mp.Pool(mp.cpu_count() - 1) as pool:
-        for _ in tqdm.tqdm(pool.imap_unordered(_download_task, args), total=len(args)):
-            pass
+  
+    # For multiprocessing when being run in iPython (Jupyter notebook, etc.)
+    # with mp.Pool(mp.cpu_count() - 1) as pool:
+        # for _ in tqdm.tqdm(pool.imap_unordered(download_task, args), total=len(args)):
+            # pass
+            
+    # Sequential download for use in iPython (Jupyter notebooks, etc.) 
+    for _ in tqdm.tqdm(args, total=len(args)):
+        download_task(args)
+    
 ```
 
 Once all of the above functions and variables are defined, we can now run download for a certain time range and region.
@@ -240,9 +251,9 @@ First make sure the directory corresponding to the out_dir parameter you pass in
 out_dir = 'Uganda'
 os.makedirs(out_dir, exist_ok=True)
 
-# Download RGB band data from the Kibaale district of Uganda from June 15, 2017 - August 15, 2017  
+# Download RGB band data from the Kibaale district of Uganda from June 15, 2017 - June 30, 2017  
 download(session=session, bounds=[30.5887, 0.0536, 31.7697, 1.8028], start_date=datetime(2017, 6, 15),
-         end_date=datetime(2017, 8, 15), bands=['B02', 'B03', B04'], out_dir=out_dir)
+         end_date=datetime(2017, 6, 30), bands=['B02', 'B03', 'B04'], out_dir=out_dir)
 
 ```
 
