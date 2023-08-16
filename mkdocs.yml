@@ -69,8 +69,6 @@ imgwidth: 700px;
 theme:
   highlightjs: true
   name: material
-  analytics:
-    gtag: G-XVJDRK40MK
   font:
     text: 'Open Sans'
     code: 'Roboto Mono'
@@ -108,7 +106,23 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/cu-esiil/
-      
+  analytics:
+    provider: google
+    property: G-XVJDRK40MK
+    feedback:
+      title: Was this page helpful?
+      ratings:
+        - icon: material/thumb-up-outline
+          name: This page was helpful
+          data: 1
+          note: >-
+            Thanks for your feedback!
+        - icon: material/thumb-down-outline
+          name: This page could be improved
+          data: 0
+          note: >- 
+            Thanks for your feedback! Help us improve this page by
+            using our <a href="..." target="_blank" rel="noopener">feedback form</a>.  
 extra_css:
   - stylesheets/extra.css
 
