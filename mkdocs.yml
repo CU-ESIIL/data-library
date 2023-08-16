@@ -69,6 +69,8 @@ imgwidth: 700px;
 theme:
   highlightjs: true
   name: material
+  analytics:
+    gtag: G-XVJDRK40MK
   font:
     text: 'Open Sans'
     code: 'Roboto Mono'
