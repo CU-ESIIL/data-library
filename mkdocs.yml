@@ -127,6 +127,9 @@ extra:
 extra_css:
   - stylesheets/extra.css
 
+extra_files:
+  - docs/sitemap.xml
+
 plugins:
     - search
     - mkdocstrings
