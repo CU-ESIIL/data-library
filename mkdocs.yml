@@ -66,7 +66,6 @@ nav:
       - Nonprofit explorer: education/nonprofit_explorer/nonprofit_explorer.md
 
 # Configuration
-imgwidth: 700px;
 theme:
   highlightjs: true
   name: material
@@ -126,9 +125,6 @@ extra:
             using our <a href="..." target="_blank" rel="noopener">feedback form</a>.  
 extra_css:
   - stylesheets/extra.css
-
-extra_files:
-  - docs/sitemap.xml
 
 plugins:
     - search
