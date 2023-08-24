@@ -31,8 +31,8 @@ Each module folder requires a markdown file which includes the module content an
 You must add your module to the nav tree in the mkdocs.yml file so that it is shown on the site. Find the top level section that pertains to your modules subject (i.e. "EDS in indian country", "Solving water"). If you are creating a new subject, create a new top level entry in the nav tree. Next, add an entry to the nav tree under the top level section for your new module. The key value will be the name that will show up on the site. The value is the path from the project repo to your module's markdown file. 
 
 ## Sitemap 
-In order for Google to index your new page, it must be included in the sitemap.xml file. Copy and paste one of the existing link entries, and then change the URL to the URL that your new module will have.
+In order for Google to index your new page, it must be included in the docs/sitemap.xml file. Copy and paste one of the existing link entries, and then change the URL to the URL that your new module will have.
 
 ## Index
 If you are creating a new subject for your module, add the subject and its description to the 
-data/index.md file. 
+docs/index.md file. 
