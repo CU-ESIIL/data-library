@@ -186,8 +186,7 @@ def download_task(namespace: Namespace) -> None:
 def download(session, bounds: List[float], start_date: datetime, end_date: datetime,
              bands: List[float], out_dir: str, buffer: float = None) -> None:
     """
-    Downloads a list of .jp2 files from the Sinergise Sentinel2 LC1 bucket given a bounding box defined in lat/long,
-     a buffer in meters, and a start and end date . Only Bands 2-4 are requested.
+    Downloads a list of .jp2 files from the Sinergise Sentinel2 LC1 bucket given a bounding box defined in lat/long, a buffer in meters, and a start and end date. Only Bands 2-4 are requested.
      Args:
          bounds (list): Bounding box defined in lat / lon [min_lon, min_lat, max_lon, max_lat]
          buffer (float): Amount by which to extend the bounding box by, in meters

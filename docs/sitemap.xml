@@ -1,14 +1,14 @@
-<urlset xmlns="http: //www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://data-library.esiil.org/indian_country/native_lands_digital/native_lands_digital/</loc>
     </url>
     <url>
          <loc>https://data-library.esiil.org/indian_country/national_atlas_of_indian_lands/National_atlas_of_indian_lands/</loc>
     </url>
-    </url>
+    <url>
         <loc>https://data-library.esiil.org/indian_country/aiannh/AIANNH/</loc>
     </url>
-    </url>
+    <url>
         <loc>https://data-library.esiil.org/indian_country/aiannh/AIANNH/</loc>
     </url>
     <url>
@@ -90,6 +90,12 @@
         <loc>https://data-library.esiil.org/math/mammal_primate_association/mammal_primate_associations/</loc>
     </url>
     <url>
-        <loc>https://data-library.esiil.org/math/mammal_primate_association/mammal_primate_associations/</loc>
+        <loc>https://data-library.esiil.org/education/NCES/NCES/</loc>
     </url>
-<urlset/>
+    <url>
+        <loc>https://data-library.esiil.org/education/nonprofit_explorer/nonprofit_explorer/</loc>
+    </url>
+    <url>
+        <loc>https://data-library.esiil.org/remote_sensing/sentinel2_aws/sentinel2_aws/</loc>
+    </url>
+</urlset>
