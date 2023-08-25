@@ -166,7 +166,7 @@ iPython (Jupyter notebooks, etc.) and so that block of code is commented out. If
 running this in a different environment and would like to download in parallel, un-comment this block 
 and comment the sequential block below.
 
-``` {python} 
+``` {python}
 def download_task(namespace: Namespace) -> None:
     """
     Downloads a single file from the indicated s3 bucket. This function is intended to be spawned in parallel from the
