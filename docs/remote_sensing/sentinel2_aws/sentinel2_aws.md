@@ -257,6 +257,6 @@ download(session=session, bounds=[30.5887, 0.0536, 31.7697, 1.8028], start_date=
 ```
 
 Cloud files will be downloaded alongside the band data. These cloud files can be used to create 
-cloud-corrected composite images over a region. To learn more about creating cloud corrected composites, check out our tutorial on ESIIL's Analytics Library: 
+cloud-corrected composite images over a region. To learn more about creating cloud corrected composites, check out our tutorial on ESIIL's Analytics Library: https://analytics-library.esiil.org/remote_sensing/sentinel2_cloud_correction/sentinel_2_cloud_correction/
 
 
