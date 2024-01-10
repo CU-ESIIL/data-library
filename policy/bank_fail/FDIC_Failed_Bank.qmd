@@ -1,0 +1,28 @@
+---
+title: "FDIC Failed Banks"
+format: gfm
+---
+
+
+The FDIC Failed Bank List dataset from data.gov provides a list of banks that have failed since October 1, 2000. The Federal Deposit Insurance Corporation (FDIC) is a United States government corporation providing deposit insurance to depositors in U.S. commercial banks and savings institutions. This dataset includes details such as the bank name, city, state, certification number, acquisition institution, closing date, and updated date.
+
+Here is the code in R and Python to download and wrangle this dataset:
+
+R code:
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+library(dplyr)
+# Define dataset URL
+data <- read.csv("https://www.fdic.gov/resources/resolutions/bank-failures/failed-bank-list/banklist.csv", check.names = F)
+
+names(data) <- c("Bank Name","City","State","Cert","Acquiring Institution", "Closing Date","Fund" )
+
+filtered_data <- data %>%
+  dplyr::filter(State == "CO")
+
+filtered_data
+```
+
+
+
+

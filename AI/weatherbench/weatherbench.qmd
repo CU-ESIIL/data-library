@@ -1,0 +1,106 @@
+---
+title: "WeatherBench"
+author: "Ty Tuff, ESIIL Data Scientist"
+date: "2023-05-21"
+format: gfm
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include=FALSE}  
+library(knitr)  
+library(reticulate)  
+knitr::knit_engines$set(python = reticulate::eng_python)  
+knitr::opts_chunk$set(
+  cache=TRUE, message=FALSE, warning=FALSE, results='hide')
+```
+
+WeatherBench is a valuable resource housed on GitHub, aimed at fostering the development and evaluation of machine learning models in the field of weather prediction. Developed by Pangeo Data, a community-driven and open-source project focused on data-intensive earth science, WeatherBench seeks to address the current gap in benchmark datasets specifically designed for weather forecasting.
+
+The WeatherBench repository is centered around a comprehensive dataset derived from the ERA5 reanalysis data provided by the European Centre for Medium-Range Weather Forecasts (ECMWF). This data spans several decades and includes a variety of key atmospheric variables, such as temperature, pressure, and precipitation, among others. The high spatial and temporal resolution of the data makes it an excellent resource for developing and testing weather prediction models.
+
+A unique feature of WeatherBench is that it is not just a dataset, but a comprehensive benchmarking system. It includes a scoring function to evaluate predictions, following the common practices in weather forecasting. This allows for a standardized evaluation of models, ensuring that different methods can be fairly and directly compared.
+
+Moreover, the repository includes example code using state-of-the-art machine learning techniques for weather forecasting. This provides a helpful starting point for those new to the field or looking to compare their own approaches with established methods.
+
+In summary, WeatherBench represents a significant contribution to the meteorological and machine learning communities by providing a robust, standardized platform for the development and comparison of weather forecasting models. Whether you are a researcher, data scientist, meteorologist, or student, WeatherBench offers a rich resource to explore and contribute to this exciting intersection of disciplines.
+
+```{python, cache=TRUE, warnings=FALSE, messages=FALSE, results='hide'}
+import xarray as xr
+import matplotlib.pyplot as plt
+```
+
+```{bash, cache=TRUE, warnings=FALSE, messages=FALSE, results='hide'}
+
+# This might take a few minutes
+wget "https://dataserv.ub.tum.de/s/m1524895/download?path=%2F5.625deg%2Fgeopotential_500&files=geopotential_500_5.625deg.zip" -O geopotential_500_5.625deg.zip --no-check-certificate
+
+```
+
+
+```{bash}
+mkdir -p geopotential_500
+unzip -d geopotential_500/ geopotential_500_5.625deg.zip
+```
+
+
+```{python, cache=TRUE, warnings=FALSE, messages=FALSE, results='hide'}
+z500 = xr.open_mfdataset('geopotential_500/*.nc', combine='by_coords')
+z500
+```
+```{python, cache=TRUE, warnings=FALSE, messages=FALSE, results='hide'}
+
+plt.clf()
+# Plot an example
+z500.z.isel(time=1500).plot();
+plt.show()
+```
+
+```{python, cache=TRUE, warnings=FALSE, messages=FALSE, results='hide'}
+plt.clf()
+# To speed things up we will just take the mean for 2016
+climatology = z500.sel(time=slice('2016', '2018')).mean('time').load()
+climatology.z.plot()
+
+plt.show()
+```
+
+
+
+```{r, cache=TRUE, warnings=FALSE, messages=FALSE, results='hide'}
+library(RCurl)
+library(ncdf4)
+library(ggplot2)
+library(reshape2)
+library(tidync)
+
+# Set options to skip SSL verification
+download_opts <- list(ssl.verifypeer = FALSE, ssl.verifyhost = FALSE)
+
+# Download the dataset
+bin_data <- getBinaryURL("https://dataserv.ub.tum.de/s/m1524895/download?path=%2F5.625deg%2Fgeopotential_500&files=geopotential_500_5.625deg.zip", .opts = download_opts)
+
+# Write the downloaded data to a file
+writeBin(bin_data, "geopotential_500_5.625deg.zip")
+
+# Unzip the downloaded file
+unzip("geopotential_500_5.625deg.zip", exdir = "geopotential_500/")
+
+# Load multiple NetCDF files into R
+filenames <- list.files(path = "geopotential_500", full.names = TRUE, pattern = "*.nc")
+
+# Use tidync to read the first NetCDF file
+z500_first <- tidync(filenames[[1]]) %>% hyper_tibble()
+
+# Melt the data frame to make it compatible with ggplot2
+z500_melt <- melt(z500_first, id.vars = c("lon", "lat")) 
+
+ggplot(z500_melt, aes(lon, lat, fill = value)) + 
+   geom_tile() +
+   scale_fill_gradientn(colors = terrain.colors(1000)) +
+   theme_minimal() +
+   theme(axis.text = element_blank(),
+         axis.ticks = element_blank(),
+         panel.grid = element_blank())
+```

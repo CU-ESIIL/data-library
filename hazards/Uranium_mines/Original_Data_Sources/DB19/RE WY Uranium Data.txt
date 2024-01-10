@@ -1,0 +1,119 @@
+From: Hermann.Karl@epamail.epa.gov
+Sent: Thursday, March 07, 2002 1:12 PM
+To: Balassiano, Kim
+Cc: Shroff.Behram@epamail.epa.gov
+Subject: RE: WY Uranium Data
+
+
+----- Forwarded by Karl Hermann/TMS/R8/USEPA/US on 03/07/2002 11:10 AM
+-----
+                                                                                                                   
+                    Brian Wood                                                                                     
+                    <BRW@LIDSTONE        To:     Karl Hermann/TMS/R8/USEPA/US@EPA                                  
+                    .com>                cc:                                                                       
+                                         Subject:     RE: WY Uranium Data                                          
+                    03/07/2002                                                                                     
+                    09:39 AM                                                                                       
+                                                                                                                   
+                                                                                                                   
+
+
+
+
+The lat-long data is reported on the NAD-83 datum.
+
+Brian
+
+-----Original Message-----
+From: Hermann.Karl@epamail.epa.gov [mailto:Hermann.Karl@epamail.epa.gov]
+Sent: Thursday, March 07, 2002 8:14 AM
+To: Johnson.Douglas@epamail.epa.gov
+Cc: Brian Wood
+Subject: RE: WY Uranium Data
+
+
+
+Brian, thanks for the data.  I'd like to confirm that the lat/long data
+are referenced by the NAD27 datum (or NAD83 datum).
+
+Karl Hermann
+303-312-6628
+
+
+
+
+
+                    Douglas
+
+                    Johnson              To:     Brian Wood
+<BRW@LIDSTONE.com>
+                                         cc:     Karl
+Hermann/TMS/R8/USEPA/US@EPA
+                    02/01/2002           Subject:     RE: WY Uranium
+Data(Document link: Karl Hermann)
+                    07:43 AM
+
+
+
+
+
+
+
+
+Hi, Brian,
+
+Thank you for the additional information and the quick response.  The
+long./lat. information is critical.   Karl Hermann of our staff may have
+additional questions for  you.
+
+We appreciate all of your efforts.  Best Regards!  Doug
+
+
+
+
+
+                    Brian Wood
+
+                    <BRW@LIDSTONE        To:     Douglas
+Johnson/EPR/R8/USEPA/US@EPA
+                    .com>                cc:
+
+                                         Subject:     RE: WY Uranium
+Data
+
+                    01/31/02
+
+                    05:30 PM
+
+
+
+
+
+
+
+
+
+Doug
+
+The data I sent previous had any known mine names.  Some of the names,
+such
+as "The Pile" are names applied to the site by the Wyoming AML.  I am
+attaching another spreadsheet with the same data as before, but also a
+decimal lat and long.
+
+Brian
+
+
+
+
+
+
+
+
+(See attached file: wyo_uranium.zip)
+
+
+
+
+
+
