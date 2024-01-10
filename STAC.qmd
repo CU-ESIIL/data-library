@@ -8,13 +8,19 @@ format:
 ---
 
 ```{r, cache=TRUE, message=FALSE, warning=FALSE}
-library(rstac)
+library(Rcpp)
+library(sf)
 library(gdalcubes)
+library(rstac)
+library(gdalUtils)
+library(terra)
+
+
 library(osmdata)
 library(terra)
 library(dplyr)
 library(glue)
-library(gdalUtils)
+#library(gdalUtils)
 library(stars)
 library(ggplot2)
 library(colorspace)
@@ -22,11 +28,11 @@ library(colorspace)
 if (!requireNamespace("gdalUtils", quietly = TRUE)) {
   install.packages("gdalUtils")
 }
-
+library(geos)
 library(glue)
-# Load the gdalUtils library
-library(gdalUtils)
-library(sf)
+
+
+
 library(osmdata)
 gdalcubes_options(parallel = 8)
 
@@ -36,30 +42,32 @@ gdalcubes_gdal_has_geos()
 
 ## Vectors
 
-
-
-
-
 ```{r, cache=TRUE, message=FALSE, warning=FALSE}
 base <- "https://datadownload-production.s3.amazonaws.com"
 y2017 <- "GMW_v3_2017.zip"
 y2020 <- "GMW_v3_2020.zip"
 
 
-Mountains_and_forests <- "Generalised_Biogeographic_Realms_2004.zip"
+```
+
+
+```{r}
+library(rgdal)
+# GDAL
+gdal_setInstallation()
+getOption("gdal")
+# GEOS
+sf::sf_extSoftVersion()["GEOS"]
 ```
 
 
 ```{r, cache=TRUE, message=FALSE, warning=FALSE}
 
 india <- spData::world |> dplyr::filter(name_long == "India") |> vect()
-USA <- spData::world |> dplyr::filter(name_long == "United States") |> vect()
+#USA <- spData::world |> dplyr::filter(name_long == "United States") |> vect()
 
 gmw2017_india <- glue("/vsizip/vsicurl/{base}/{y2017}") |> vect(filter = india) 
-gmw2020_india <-glue("/vsizip/vsicurl/{base}/{y2020}") |> vect(filter = india)
-
-
-
+gmw2020_india <-glue("/vsizip/vsicurl/{base}/{y2020}") |> vect()
 
 plot(gmw2017_india)
 plot(gmw2020_india)
@@ -75,7 +83,7 @@ plot(gmw2020_india)
 
 
 ```{r, cache=TRUE, message=FALSE, warning=FALSE}
-
+library(osmdata)
 osm_bbox <- osmdata::getbb("Boulder,CO", format_out = "sf_polygon")
 plot(osm_bbox$multipolygon[1,])
 
@@ -107,7 +115,7 @@ s2_collection
 ```
 
 ```{r, cache=TRUE, message=FALSE, warning=FALSE}
-v = cube_view(srs="EPSG:32618", dx=1, dy=1, dt="P1D", 
+v = cube_view(srs="EPSG:32618", dx=200, dy=200, dt="P1D", 
                            aggregation="median", resampling = "average",
                            extent=list(t0 = "2021-06-01", t1 = "2021-07-30",
                                        left=bbox_32618["xmin"], right=bbox_32618["xmax"],
