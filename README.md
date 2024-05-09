@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/634943265.svg)](https://zenodo.org/doi/10.5281/zenodo.11166874)
+
 ESIIL Data Library
 ================
 
