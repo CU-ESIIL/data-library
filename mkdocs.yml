@@ -52,6 +52,7 @@ nav:
       - Global forest change: maka-sitomniya/global_forest_change/global_forest_change.md
       - National Land Cover Database (NLCD): maka-sitomniya/NLCD/NLCD.md
       - Digital Elevation Map (DEM): maka-sitomniya/LandFire/landfireelevation.md
+      - Watershed Boundaries: maka-sitomniya/watershed_boundaries/watershed_boundaries.md
       
 # Configuration
 theme:
