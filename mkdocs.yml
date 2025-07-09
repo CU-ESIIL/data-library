@@ -50,7 +50,9 @@ nav:
       - Education Statistics: education/NCES/NCES.md
       - Nonprofit explorer: education/nonprofit_explorer/nonprofit_explorer.md
       - Global forest change: maka-sitomniya/global_forest_change/global_forest_change.md
-
+      - National Land Cover Database (NLCD): maka-sitomniya/NLCD/NLCD.md
+      - Digital Elevation Map (DEM): maka-sitomniya/LandFire/landfireelevation.md
+      
 # Configuration
 theme:
   highlightjs: true
