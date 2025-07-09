@@ -49,6 +49,7 @@ nav:
       - Mammal Primate association network: math/mammal_primate_association/mammal_primate_associations.md
       - Education Statistics: education/NCES/NCES.md
       - Nonprofit explorer: education/nonprofit_explorer/nonprofit_explorer.md
+      - Global forest change: maka-sitomniya/global_forest_change/global_forest_change.md
 
 # Configuration
 theme:
