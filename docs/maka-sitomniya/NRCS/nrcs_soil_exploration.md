@@ -18,8 +18,7 @@ We need to install the necessary Python libraries to work with spatial data and 
 
 ```python
 # uncomment the following code
-# !pip install pandas geopandas matplotlib requests seaborn
-!pip install pandas==2.2.2 geopandas==0.14.3 fiona==1.9.6 matplotlib==3.8.4 requests==2.32.3 seaborn==0.13.2
+#!pip install pandas==2.2.2 geopandas==0.14.3 fiona==1.9.6 matplotlib==3.8.4 requests==2.32.3 seaborn==0.13.2
 ```
 
     Requirement already satisfied: pandas==2.2.2 in /usr/local/lib/python3.11/dist-packages (2.2.2)
@@ -111,7 +110,6 @@ with open(zip_path, 'wb') as f:
         f.write(chunk)
 
 print(f" Downloaded: {zip_path}")
-
 ```
 
     Downloading zip file...
@@ -126,8 +124,7 @@ print(f"\nExtracting to: {extract_dir}")
 
 with zipfile.ZipFile(zip_path, 'r') as zip_ref:
     zip_ref.extractall(extract_dir)
-print("✅ Extraction complete")
-
+print("Extraction complete")
 ```
 
     
@@ -234,13 +231,12 @@ To get a little background on the files and data we can view the readme file
 
 
 ```python
-readme_file_path = os.path.join(extract_dir, "wss_gsmsoil_SD_[2016-10-13]", "readme.txt")
+# Umcomment the following code to see the readme
+# readme_file_path = os.path.join(extract_dir, "wss_gsmsoil_SD_[2016-10-13]", "readme.txt")
 
-
-with open(readme_file_path, 'r') as f:
-    readme_content = f.read()
-print(readme_content)
-
+# with open(readme_file_path, 'r') as f:
+#     readme_content = f.read()
+# print(readme_content)
 ```
 
     ********************************************************************************
@@ -1018,7 +1014,6 @@ ax.legend(handles=legend_elements, loc='upper right',
 
 plt.tight_layout()
 plt.show()
-
 ```
 
 
@@ -1049,7 +1044,6 @@ columns = [
 # Load the muaggatt.csv file (update the path if needed)
 muaggatt_path = r"soil_data_sd/wss_gsmsoil_SD_[2016-10-13]/tabular/muaggatt.txt"  # or .txt if that's your file extension
 df = pd.read_csv(muaggatt_path, sep="|", engine="python", header=None, names=columns, dtype=str)
-
 ```
 
 Now that the data is loaded, let's inspect the first few rows and check the column names to ensure everything loaded correctly.
@@ -1586,7 +1580,6 @@ gdf = gdf.merge(df, on="mukey", how="left")
 pd.set_option('display.max_columns', None)  #Show all columns
 display(gdf.head(5))  # Show only the first 5 rows
 print("geojson columns before standardizing:", gdf.columns.tolist())
-
 ```
 
 
