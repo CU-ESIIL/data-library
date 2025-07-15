@@ -53,6 +53,7 @@ nav:
       - National Land Cover Database (NLCD): maka-sitomniya/NLCD/NLCD.md
       - Digital Elevation Map (DEM): maka-sitomniya/LandFire/landfireelevation.md
       - Watershed Boundaries: maka-sitomniya/watershed_boundaries/watershed_boundaries.md
+      - NRCS Soil Survey: maka-sitomniya/NRCS/nrcs_soil_exploration.md
       
 # Configuration
 theme:
