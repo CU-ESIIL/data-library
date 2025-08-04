@@ -1,7 +1,7 @@
 ESIIL data library and vignette repository
 ================
 
-Welcome to the Environmental Data Science Innovation and Inclusion Lab
+Welcome to the Environmental Data Science Innovation and Impact Lab
 (ESIIL) Data Library! As an NSF-funded national synthesis center, ESIIL
 is dedicated to fostering collaboration between biological and computer
 sciences to drive innovation and inclusivity across the two diciplines.
