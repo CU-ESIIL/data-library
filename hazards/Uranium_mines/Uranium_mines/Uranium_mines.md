@@ -1,0 +1,135 @@
+Uranium Mines and Mills Location Database
+================
+Virginia Iglesias, ESIIL Data Scientist
+2023-05-21
+
+Created by the EPA, the [Uranium Mines and Mills Location
+Database](https://www.epa.gov/radiation/uranium-mines-and-mills-location-database-0)
+is comprised of information regarding known or potential mine and mill
+locations and mine features from federal, state, and Tribal agencies
+into a single database. More information can be found
+[here](https://www.epa.gov/sites/default/files/2015-05/documents/402-r-05-009.pdf).
+
+In R, we need 3 packages to download and visualize the data. First,
+check if the packages are already installed. Install them if they are
+not:
+
+``` r
+packages <- c("tidyverse", "httr", "sf") 
+new.packages <- packages[!(packages %in% installed.packages()[,"Package"])] 
+if(length(new.packages)>0) install.packages(new.packages)
+```
+
+Then, load them:
+
+``` r
+lapply(packages, library, character.only = TRUE)
+```
+
+Download the data set:
+
+``` r
+url <- "https://www.epa.gov/sites/default/files/2015-03/uld-ii_gis.zip" 
+Uranium <- GET(url)
+data_file <- "Uranium_mines.zip"
+writeBin(content(Uranium, "raw"), data_file)
+
+# Unzip the file 
+unzip(data_file)
+```
+
+Read the data set:
+
+``` r
+mines <- st_read("Master_Database_and_Shape_Files/ULD_albers.shp")
+```
+
+Calculate number of mines per county in Colorado:
+
+``` r
+mines_co <- mines %>% 
+  filter(STATE_NAME %in% 'Colorado') %>% 
+  group_by(COUNTY_NAM) %>% 
+  summarise(mines = n())
+```
+
+And plot them (top ten):
+
+``` r
+mines_co <- mines_co[order(-mines_co$mines),][1:10,] %>% 
+  mutate(COUNTY_NAM = factor(COUNTY_NAM))
+ggplot(mines_co) +
+  geom_bar(aes(y = fct_reorder(COUNTY_NAM, mines), x = mines), stat = "identity") +
+  xlab("Number of Uranium mines") +
+  ylab("") +
+  theme_bw() +
+  ggtitle("Top 10 counties with Uranium mines in Colorado")
+```
+
+![](Uranium_mines_files/figure-gfm/unnamed-chunk-6-1.png)
+
+In Python, we need 4 libraries to download and visualize the data. You
+can find data definitions and sources
+[here](https://www.epa.gov/sites/default/files/2015-05/documents/402-r-05-009.pdf).
+
+``` python
+import requests
+import zipfile
+import geopandas as gpd
+import matplotlib.pyplot as plt
+```
+
+Download the data set:
+
+``` python
+# download file
+url = "https://www.epa.gov/sites/default/files/2015-03/uld-ii_gis.zip"
+response = requests.get(url)
+
+# save to file
+data_file = "Uranium_mines.zip"
+with open(data_file, 'wb') as f:
+    f.write(response.content)
+
+# unzip file
+```
+
+``` python
+with zipfile.ZipFile(data_file, 'r') as zip_ref:
+    zip_ref.extractall('.')
+```
+
+Read the data set:
+
+``` python
+mines = gpd.read_file("Master_Database_and_Shape_Files/ULD_albers.shp")
+```
+
+Calculate number of mines per county in Colorado:
+
+``` python
+mines_co = (
+    mines
+    .loc[mines['STATE_NAME'] == 'Colorado']
+    .groupby('COUNTY_NAM')
+    .agg(mines=('COUNTY_NAM', 'size'))
+)
+```
+
+And plot them (top ten):
+
+``` python
+mines_co = mines_co.sort_values('mines', ascending=False).iloc[:10]
+
+plt.barh(y=mines_co.index, width=mines_co['mines'])
+```
+
+``` python
+plt.xlabel('Number of Uranium mines')
+plt.ylabel('County')
+plt.title('Top 10 counties with Uranium mines in Colorado')
+plt.gca().invert_yaxis()
+plt.show()
+```
+
+![](Uranium_mines_files/figure-gfm/unnamed-chunk-11-1.png)
