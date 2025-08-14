@@ -200,4 +200,4 @@ plt.ylim(0, 100)
 plt.show()
 ```
 
-![](NCES_files/figure-gfm/unnamed-chunk-3-1.png" width="960)
+![](NCES_files/figure-gfm/unnamed-chunk-3-1.png){width="960"}
