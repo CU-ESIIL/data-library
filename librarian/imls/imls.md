@@ -1,0 +1,118 @@
+Institute of Museum and Library Services (IMLS) Data Catalog
+================
+Ty Tuff, ESIIL Data Scientist
+2023-05-21
+
+The Institute of Museum and Library Services (IMLS) is a key source of
+data and research pertaining to libraries and museums in the United
+States. The IMLS Data Catalog, an invaluable tool for professionals,
+researchers, and policymakers, provides comprehensive datasets that
+offer deep insights into these cultural institutions and their impact on
+their communities.
+
+<https://www.imls.gov/research-tools/data-collection>
+
+A significant contribution within this catalog is the Public Libraries
+Survey (PLS) dataset. The PLS is a yearly national census of public
+libraries in the U.S., aiming to provide reliable and detailed
+information concerning the state of public libraries nationwide. This
+dataset collects and compiles data about crucial aspects of library
+operations, including library usage, staffing levels, operating
+finances, types of services offered, and collection sizes.
+
+The PLS dataset serves as a vital tool for studying the librarian
+profession and understanding library practices across the country. For
+instance, it can help identify trends in library service delivery,
+evaluate the efficiency of different libraries, and assess the impact of
+budgetary changes on library operations and services.
+
+Moreover, it enables comparison of libraries of different sizes, types,
+and geographical locations, assisting in benchmarking and best practice
+identification. It also provides researchers and policymakers with the
+data needed to make informed decisions about library funding, strategic
+planning, and policy development.
+
+In summary, the IMLS Data Catalog, and particularly the PLS dataset, is
+a rich resource for anyone interested in understanding the current state
+of libraries in the United States, their operations, their challenges,
+and their contributions to their communities.
+
+Here’s how to download the Public Libraries Survey dataset and create a
+plot using R and Python:
+
+R code:
+
+``` r
+# Load required libraries
+library(tidyverse)
+library(readr)
+library(curl)
+
+# Download the dataset
+url <- "https://www.imls.gov/sites/default/files/2022-07/pls_fy2020_csv.zip"
+temp_file <- tempfile(fileext = ".zip")
+curl_download(url, temp_file)
+
+# Unzip the dataset
+temp_dir <- tempdir()
+unzip(temp_file, exdir = temp_dir)
+
+# Read the CSV file
+csv_file <- list.files(temp_dir, pattern = "*.csv", full.names = TRUE)
+data <- read_csv(csv_file[1]) # Corrected this line
+
+# Create a plot (example: number of libraries by state)
+state_counts <- data %>% count(STABR)
+ggplot(state_counts, aes(x = reorder(STABR, -n), y = n)) +
+  geom_bar(stat = "identity") +
+  theme_minimal() +
+  labs(title = "Number of Libraries by State",
+       x = "State",
+       y = "Number of Libraries") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+![](imls_files/figure-gfm/unnamed-chunk-1-1.png)
+
+Python code:
+
+``` python
+import requests
+import pandas as pd
+import matplotlib.pyplot as plt
+import zipfile
+import os
+from io import BytesIO
+
+# Download the dataset
+url = "https://www.imls.gov/sites/default/files/2022-07/pls_fy2020_csv.zip"
+response = requests.get(url)
+
+# Unzip the dataset
+with zipfile.ZipFile(BytesIO(response.content)) as zip_ref:
+    zip_ref.extractall()
+
+# Find the CSV file
+csv_file = next(file for file in os.listdir() if file.endswith(".csv"))
+
+# Read the CSV file
+data = pd.read_csv(csv_file)
+
+# Count the number of libraries by state
+state_counts = data['STABR'].value_counts()
+
+# Create a plot
+plt.figure(figsize=(10,8))
+state_counts.sort_values().plot(kind = 'barh')
+plt.title('Number of Libraries by State')
+plt.xlabel('Number of Libraries')
+plt.ylabel('State')
+plt.grid(axis='x')
+plt.show()
+```
+
+Both the R and Python code above download the Public Libraries Survey
+dataset, convert it to a data frame, and create a bar plot of the total
+library staff by state. Note that the dataset provided by the IMLS Data
+Catalog API might have a limit on the number of records returned, so you
+may need to adjust the API request to retrieve a more extensive dataset.

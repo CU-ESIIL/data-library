@@ -1,0 +1,179 @@
+World Governance Indicators
+================
+Ty Tuff, ESIIL Data Scientist
+2023-05-21
+
+The Worldwide Governance Indicators (WGI) dataset is an influential
+resource in the realm of political science, economics, and international
+development. It offers comprehensive and comparable data on various
+dimensions of governance for over 200 countries and territories around
+the globe.
+
+Compiled by a network of scholars and practitioners, the WGI dataset
+provides indicators that reflect perceptions of governance in six key
+dimensions. These dimensions include voice and accountability, political
+stability and absence of violence, government effectiveness, regulatory
+quality, rule of law, and control of corruption. Together, these metrics
+provide a holistic picture of a nation’s governance, taking into account
+aspects of civil liberties, political processes, institutional quality,
+and the efficacy of laws and regulations.
+
+The WGI dataset is updated annually, reflecting changes in governance
+conditions over time. This temporal aspect makes it a valuable tool for
+studying trends and patterns in global governance. The data’s
+standardized format allows for comparisons between countries and
+regions, contributing to its wide use in comparative political and
+economic analysis.
+
+Data from the WGI is readily available for download in various formats,
+including Excel and CSV, enabling easy integration into a multitude of
+data analysis tools and platforms. The WGI data has been instrumental in
+a variety of scholarly and policy-oriented research, and its open
+availability continues to facilitate robust debate about the nature of
+governance around the world.
+
+<https://info.worldbank.org/governance/wgi/>
+<https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1682130>
+
+R code:
+
+List of possible indicators
+
+``` r
+library(httr)
+library(jsonlite)
+
+# Define the base URL and parameters
+base_url <- "https://api.worldbank.org/v2/indicators"
+format <- "json"
+per_page <- 1000
+
+# Create the full URL
+url <- paste0(base_url, "?format=", format, "&per_page=", per_page)
+
+# Make an API request
+response <- GET(url)
+
+# Check the status of the response
+if (http_status(response)$category == "Success") {
+  # Parse the response
+  data <- content(response, "text", encoding = "UTF-8")
+  data_json <- fromJSON(data)
+  
+  # Extract the relevant data
+  indicators <- data.frame(data_json[[2]])
+  
+  # Print the first few rows of the data
+  kable(head(indicators))
+} else {
+  cat("Failed to retrieve data:", http_status(response)$message, "\n")
+}
+```
+
+Download one of those indicators and flatten into a table.
+
+``` r
+library(httr)
+library(jsonlite)
+library(ggplot2)
+library(tidyverse)
+
+# Define the base URL and parameters
+base_url <- "https://api.worldbank.org/v2/country/all/indicator"
+indicator <- "NY.GDP.MKTP.CD" # Example indicator (GDP in current US dollars)
+date_range <- "2020:2020" # Filter only for the year 2020
+format <- "json"
+per_page <- 1000
+
+# Create the full URL
+url <- paste0(base_url, "/", indicator, "?date=", date_range, "&format=", format, "&per_page=", per_page)
+
+# Make an API request
+response <- GET(url)
+
+# Check the status of the response
+if (http_status(response)$category == "Success") {
+  # Parse the response
+  data <- content(response, "text", encoding = "UTF-8")
+  data_json <- fromJSON(data)
+  
+  # Extract the relevant data and flatten the data frame
+  indicators <- data.frame(data_json[[2]])
+  indicators_flat <- indicators %>% 
+    unnest(cols = c(country, indicator), names_sep = "_") %>%
+    select(countryiso3code, country_value, date, value)
+
+  # Remove rows with missing values
+  indicators_filtered <- indicators_flat[!is.na(indicators_flat$value),]
+
+  
+  
+  # Create a plot for GDP in 2020
+  ggplot(indicators_filtered, aes(x = reorder(country_value, -value), y = value)) +
+    geom_bar(stat = "identity") +
+    theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+    labs(title = "GDP in current US dollars (2020)", x = "Country", y = "GDP (current US$)") +
+    coord_flip() +
+    scale_y_continuous(labels = scales::comma)
+} else {
+  cat("Failed to retrieve data:", http_status(response)$message, "\n")
+}
+```
+
+![](wgi_files/figure-gfm/unnamed-chunk-2-1.png)
+
+``` r
+library(knitr)
+kable(indicators_filtered)
+```
+
+Python code:
+
+``` python
+import requests
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Define the base URL and parameters
+base_url = "https://api.worldbank.org/v2/country/all/indicator"
+indicator = "NY.GDP.MKTP.CD"  # Example indicator (GDP in current US dollars)
+date_range = "2020:2020"  # Filter only for the year 2020
+params = {
+    "format": "json",
+    "date": date_range,
+    "per_page": 1000,
+}
+
+# Create the full URL
+url = f"{base_url}/{indicator}"
+
+# Make an API request
+response = requests.get(url, params=params)
+
+# Check the status of the response
+if response.status_code == 200:
+    # Parse the response
+    data_json = response.json()
+
+    # Extract the relevant data and flatten the data frame
+    indicators = pd.json_normalize(data_json[1])
+    indicators_flat = indicators[["countryiso3code", "country.value", "date", "value"]]
+
+    # Remove rows with missing values
+    indicators_filtered = indicators_flat.dropna(subset=["value"])
+
+    # Create a plot for GDP in 2020
+    indicators_filtered = indicators_filtered.sort_values(by="value", ascending=False)
+    plot = indicators_filtered.plot.bar(
+        x="country.value", y="value", figsize=(15, 8), legend=None
+    )
+    plot.set_title("GDP in current US dollars (2020)")
+    plot.set_xlabel("Country")
+    plot.set_ylabel("GDP (current US$)")
+    plt.xticks(rotation=90)
+    plt.show()
+else:
+    print("Failed to retrieve data:", response.status_code)
+```
+
+![](wgi_files/figure-gfm/unnamed-chunk-4-1.png)

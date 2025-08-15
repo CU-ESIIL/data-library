@@ -1,0 +1,85 @@
+U.S. Congress members and their voting records
+================
+
+## Propublica Congress API
+
+The ProPublica Congress API provides information about the U.S. Congress
+members and their voting records. In this example, we’ll fetch data
+about the current Senate members and calculate the number of members in
+each party.
+
+R: In R, we’ll use the ‘httr’ and ‘jsonlite’ packages to fetch and
+process data from the ProPublica Congress API.
+
+R code:
+
+``` r
+# load necessary libraries
+library(httr)
+library(jsonlite)
+
+# Replace 'your_api_key' with your ProPublica API key
+
+#
+
+# Fetch data about the current Senate members
+url <- "https://api.propublica.org/congress/v1/117/senate/members.json"
+response <- GET(url, add_headers(`X-API-Key` = api_key))
+
+# Check if the request was successful
+if (http_status(response)$category == "Success") {
+  data <- content(response, "parsed")
+  members <- data$results[[1]]$members
+  
+  # Calculate the number of members in each party
+  party_counts <- table(sapply(members, function(x) x$party))
+  print(party_counts)
+} else {
+  print(http_status(response)$message)
+}
+```
+
+
+     D  I ID  R 
+    49  1  2 51 
+
+Python: In Python, we’ll use the ‘requests’ library to fetch data from
+the ProPublica Congress API and ‘pandas’ library to process the data.
+
+python code:
+
+``` python
+# Install necessary libraries
+
+import requests
+import pandas as pd
+
+# Replace 'your_api_key' with your ProPublica API key
+api_key = "your_api_key"
+headers = {"X-API-Key": api_key}
+
+# Fetch data about the current Senate members
+url = "https://api.propublica.org/congress/v1/117/senate/members.json"
+response = requests.get(url, headers=headers)
+
+# Check if the request was successful
+if response.status_code == 200:
+    data = response.json()
+    members = data["results"][0]["members"]
+    
+    # Calculate the number of members in each party
+    party_counts = pd.DataFrame(members)["party"].value_counts()
+    print(party_counts)
+else:
+    print(f"Error: {response.status_code}")
+```
+
+In conclusion, both R and Python offer efficient ways to fetch and
+process data from APIs like the ProPublica Congress API. The ‘httr’ and
+‘jsonlite’ libraries in R provide a straightforward way to make HTTP
+requests and parse JSON data, while the ‘requests’ library in Python
+offers similar functionality. The ‘pandas’ library in Python can be used
+for data manipulation and analysis, and R provides built-in functions
+like table() for aggregating data. Depending on your preferred
+programming language and environment, both options can be effective for
+working with the ProPublica Congress API.
