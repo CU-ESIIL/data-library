@@ -1,3 +1,9 @@
+---
+tags:
+- ethics
+- wgi
+---
+
 World Governance Indicators
 ================
 Ty Tuff, ESIIL Data Scientist

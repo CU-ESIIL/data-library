@@ -1,3 +1,9 @@
+---
+tags:
+- hazards
+- fired
+---
+
 FIRED
 ================
 Virginia Iglesias, ESIIL Data Scientist

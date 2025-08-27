@@ -1,3 +1,9 @@
+---
+tags:
+- harmonization
+- neon_lidar_and_organismal
+---
+
 Fusing NEON LiDAR and Organismal Data
 ================
 Sydne Record & Isaac Shepard of NEON

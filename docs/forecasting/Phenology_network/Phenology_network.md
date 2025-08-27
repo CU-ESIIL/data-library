@@ -1,3 +1,9 @@
+---
+tags:
+- forecasting
+- phenology_network
+---
+
 National phenology network
 ================
 Ty Tuff, ESIIL Data Scientist

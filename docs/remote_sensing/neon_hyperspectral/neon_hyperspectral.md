@@ -1,3 +1,9 @@
+---
+tags:
+- remote_sensing
+- neon_hyperspectral
+---
+
 NEON Hyperspectral Data
 ================
 , NEON

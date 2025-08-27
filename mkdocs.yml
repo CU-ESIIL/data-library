@@ -13,6 +13,7 @@ copyright: 'Copyright &copy; 2023 University of Colorado Boulder'
 # Page tree
 nav:
   - Home: index.md
+  - Tags: tags.md
   - More data:
       - Global native homelands: indian_country/native_lands_digital/native_lands_digital.md
       - USA Federal tribal reservations: indian_country/national_atlas_of_indian_lands/National_atlas_of_indian_lands.md

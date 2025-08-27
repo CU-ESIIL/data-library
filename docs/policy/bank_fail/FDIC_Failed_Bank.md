@@ -1,3 +1,9 @@
+---
+tags:
+- policy
+- bank_fail
+---
+
 FDIC Failed Banks
 ================
 

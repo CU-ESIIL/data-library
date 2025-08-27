@@ -1,3 +1,9 @@
+---
+tags:
+- education
+- nonprofit_explorer
+---
+
 Nonprofit organizations
 ================
 Ty Tuff, ESIIL Data Scientist

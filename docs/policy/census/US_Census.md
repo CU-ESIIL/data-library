@@ -1,3 +1,9 @@
+---
+tags:
+- policy
+- census
+---
+
 US Census
 ================
 Ty Tuff, ESIIL Data Scientist

@@ -1,3 +1,9 @@
+---
+tags:
+- scale
+- inaturalist
+---
+
 Species Occurrence as points
 ================
 

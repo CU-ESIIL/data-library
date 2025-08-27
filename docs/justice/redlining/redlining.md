@@ -1,3 +1,9 @@
+---
+tags:
+- justice
+- redlining
+---
+
 Historic Redlining
 ================
 

@@ -1,3 +1,9 @@
+---
+tags:
+- hazards
+- ics209_plus
+---
+
 ICS-209-Plus
 ================
 Virginia Iglesias, ESIIL Data Scientist
