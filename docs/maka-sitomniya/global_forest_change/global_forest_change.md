@@ -1,3 +1,9 @@
+---
+tags:
+- maka-sitomniya
+- global_forest_change
+---
+
 # Global Forest Change
 
 ### Overview 

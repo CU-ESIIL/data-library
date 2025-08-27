@@ -1,3 +1,9 @@
+---
+tags:
+- justice
+- redlining
+---
+
 ﻿#HOLC Polygons and 2020 CensusTracts
 
 Census Tracts were intersected with HOLC Polygons. Census information can be joined via the "nhgis_join" field. The field "perc_tract" gives you the proportion of a given Census Tract in the HOLC Polygon. Assuming equal distribution, you can calculate any variable within a particular graded HOLC neighborhood.

@@ -1,3 +1,9 @@
+---
+tags:
+- justice
+- redlining
+---
+
 ﻿#HOLC Polygons and 2010 CensusTracts
 
 Census Tracts were intersected with HOLC Polygons. Census information can be joined via the "geoid" field. There are two field "holc_prop" and "tract_prop" which give the proportion of the HOLC polygon in the Census Tract and the proportion of Census Tract in the HOLC Polygon respectively. 

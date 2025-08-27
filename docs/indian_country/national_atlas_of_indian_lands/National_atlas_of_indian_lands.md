@@ -1,3 +1,9 @@
+---
+tags:
+- indian_country
+- national_atlas_of_indian_lands
+---
+
 National Atlas - Indian Lands of the United States dataset
 ================
 Ty Tuff, ESIIL Data Scientist

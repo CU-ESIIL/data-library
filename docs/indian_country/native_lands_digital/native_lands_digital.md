@@ -1,3 +1,9 @@
+---
+tags:
+- indian_country
+- native_lands_digital
+---
+
 Native lands Digital
 ================
 Ty Tuff, ESIIL Data Scientist

@@ -1,3 +1,9 @@
+---
+tags:
+- remote_sensing
+- sentinel2_aws
+---
+
 Sentinel2 Multispectral Data on AWS
 ================
 Erick Verleye, ESIIL Software Developer

@@ -1,3 +1,9 @@
+---
+tags:
+- justice
+- congress
+---
+
 U.S. Congress members and their voting records
 ================
 

@@ -1,3 +1,9 @@
+---
+tags:
+- solutions
+- osm
+---
+
 Open Street Map vectors
 ================
 Ty Tuff, ESIIL Data Scientist

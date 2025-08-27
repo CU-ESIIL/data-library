@@ -1,3 +1,9 @@
+---
+tags:
+- maka-sitomniya
+- nrcs
+---
+
 ## Tutorial: Exploring Soil Data from the NRCS Web Soil Survey (WSS)
 
 This notebook demonstrates how to download, extract, and visualize soil data from the Natural Resources Conservation Service (NRCS) Web Soil Survey (WSS). We will focus on the STATSGO2 dataset for South Dakota.

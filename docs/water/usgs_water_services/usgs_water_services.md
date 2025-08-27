@@ -1,3 +1,9 @@
+---
+tags:
+- water
+- usgs_water_services
+---
+
 USGS Water Services
 ================
 Ty Tuff, ESIIL Data Scientist

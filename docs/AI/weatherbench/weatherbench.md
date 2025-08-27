@@ -1,3 +1,9 @@
+---
+tags:
+- ai
+- weatherbench
+---
+
 WeatherBench
 ================
 Ty Tuff, ESIIL Data Scientist

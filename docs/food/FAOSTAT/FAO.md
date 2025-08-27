@@ -1,3 +1,9 @@
+---
+tags:
+- food
+- faostat
+---
+
 Food Balance Sheets
 ================
 

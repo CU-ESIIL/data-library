@@ -1,3 +1,9 @@
+---
+tags:
+- hazards
+- uranium_mines
+---
+
 Uranium Mines and Mills Location Database
 ================
 Virginia Iglesias, ESIIL Data Scientist
