@@ -2,6 +2,7 @@
 tags:
 - ai
 - weatherbench
+- innovation-summit-2025
 ---
 
 WeatherBench

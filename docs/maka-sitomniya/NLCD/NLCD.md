@@ -2,6 +2,7 @@
 tags:
 - maka-sitomniya
 - nlcd
+- innovation-summit-2025
 ---
 
 # National Land Cover Database (NLCD)

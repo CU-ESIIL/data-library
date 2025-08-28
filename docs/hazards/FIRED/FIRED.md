@@ -2,6 +2,7 @@
 tags:
 - hazards
 - fired
+- innovation-summit-2025
 ---
 
 FIRED
