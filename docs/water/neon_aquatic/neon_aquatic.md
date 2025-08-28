@@ -2,6 +2,7 @@
 tags:
 - water
 - neon_aquatic
+- innovation-summit-2025
 ---
 
 Neon aquatic data

@@ -2,6 +2,7 @@
 tags:
 - food
 - faostat
+- innovation-summit-2025
 ---
 
 Food Balance Sheets

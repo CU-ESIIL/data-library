@@ -2,6 +2,7 @@
 tags:
 - solutions
 - osm
+- innovation-summit-2025
 ---
 
 Open Street Map vectors

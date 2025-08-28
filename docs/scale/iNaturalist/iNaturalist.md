@@ -2,6 +2,7 @@
 tags:
 - scale
 - inaturalist
+- innovation-summit-2025
 ---
 
 Species Occurrence as points

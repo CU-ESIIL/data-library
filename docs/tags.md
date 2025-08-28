@@ -93,6 +93,27 @@
 - [National atlas of indian lands](indian_country/national_atlas_of_indian_lands/National_atlas_of_indian_lands.md)
 - [native lands digital](indian_country/native_lands_digital/native_lands_digital.md)
 
+## innovation-summit-2025
+
+- [Air data](hazards/Air_data/Air_data.md)
+- [FAO](food/FAOSTAT/FAO.md)
+- [FIRED](hazards/FIRED/FIRED.md)
+- [NLCD](maka-sitomniya/NLCD/NLCD.md)
+- [Phenology network](forecasting/Phenology_network/Phenology_network.md)
+- [epa water quality](water/epa_water_quality/epa_water_quality.md)
+- [global forest change](maka-sitomniya/global_forest_change/global_forest_change.md)
+- [iNaturalist](scale/iNaturalist/iNaturalist.md)
+- [lidar canopy height](remote_sensing/lidar_canopy_height/lidar_canopy_height.md)
+- [neon and lter](harmonization/neon_and_lter/neon_and_lter.md)
+- [neon aquatic](water/neon_aquatic/neon_aquatic.md)
+- [neon hyperspectral](remote_sensing/neon_hyperspectral/neon_hyperspectral.md)
+- [neon lidar and organismal](harmonization/neon_lidar_and_organismal/neon_lidar_and_organismal.md)
+- [nrcs soil exploration](maka-sitomniya/NRCS/nrcs_soil_exploration.md)
+- [osm](solutions/osm/osm.md)
+- [usgs water services](water/usgs_water_services/usgs_water_services.md)
+- [watershed boundaries](maka-sitomniya/watershed_boundaries/watershed_boundaries.md)
+- [weatherbench](AI/weatherbench/weatherbench.md)
+
 ## justice
 
 - [README](justice/redlining/Census_HOLC_Research/Census_HOLC_Research-main/2000_Census_Tracts/README.md)

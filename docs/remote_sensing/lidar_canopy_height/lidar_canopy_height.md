@@ -2,6 +2,7 @@
 tags:
 - remote_sensing
 - lidar_canopy_height
+- innovation-summit-2025
 ---
 
 Neon Lidar

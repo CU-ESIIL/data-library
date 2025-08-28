@@ -2,6 +2,7 @@
 tags:
 - maka-sitomniya
 - global_forest_change
+- innovation-summit-2025
 ---
 
 # Global Forest Change

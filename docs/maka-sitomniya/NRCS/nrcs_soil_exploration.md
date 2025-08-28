@@ -2,6 +2,7 @@
 tags:
 - maka-sitomniya
 - nrcs
+- innovation-summit-2025
 ---
 
 ## Tutorial: Exploring Soil Data from the NRCS Web Soil Survey (WSS)

@@ -2,6 +2,7 @@
 tags:
 - harmonization
 - neon_and_lter
+- innovation-summit-2025
 ---
 
 NEON and LTER macroinverts powered by ecocomDP
