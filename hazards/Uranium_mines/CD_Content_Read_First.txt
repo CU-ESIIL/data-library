@@ -1,0 +1,16 @@
+CD Content: Uranium Location Database Compilation
+
+This CD contains information on EPA's Uranium Location Database Compilation.  This information consists of a master database, the component databases, shape files, and supporting documentation, including an overview document which provides background information and reports provided with the individual databases.  The "Uranium_Location_Database_Overview.pdf" file contains an edited form of several background documents to facilitate the use of the database and we highly recommend that it be reviewed before using the database(s).  The file also discusses individual databases and background on uranium and the methodology used in the development of the databases.  Some information is the same as in the metadata for the ULD, but is more "reader friendly." 
+
+
+Directories
+
+GIS_Data:  Contains database (.dbf) files that can be used in GIS (geographic information system) software.  The folder "StatusEnd2005" contains a Microsoft Access database with files that list mines and mills that EPA believes were operating, pending or on standby at the end of 2005.  One new in-situ leach mine is included as it’s own database and is not in the master database.  This directory also includes older versions of the master shape file.
+
+Metadata:  Contains metadata for the master database and individual databases.  This also includes ULD metadata.htm, a file which contains a processing description and data dictionary.  
+
+Original_Data_Sources:  Includes individual databases and related information.
+
+Master_Database_and_Shape_Files:  Includes geographic and Albers projected shape files of the ULD (ULD_II.shp and ULD_albers.shp).  These files and their associated files are the files that can be used to plot what EPA believes are the most valid uranium locations.  Also includes the master database: Master03.mdb -- the Microsoft Access 2000 table that contains the final composite mines database (uld), its constituent parts (dbx), the full composite with duplicate records (uld_dupes_flagged), and a data source reference table (database reference).  Constituent databases are included here and can be associated with the ULD shape files via the ICF_ID field. ER_diagram.jpg -- Entity relationship diagram of Access version of database.
+
+For more information, contact Tom Peake, US EPA Radiation Protection Division, at 202-343-9765 or peake.tom@epa.gov.
