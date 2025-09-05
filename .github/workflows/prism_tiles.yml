@@ -1,0 +1,59 @@
+name: Build PRISM tiles
+on:
+  workflow_dispatch:
+    inputs:
+      variable:   { description: "ppt|tmax|tmin|tmean|tdmean|vpdmin|vpdmax", required: true,  default: "tmax" }
+      date:       { description: "YYYY-MM-DD (daily) | YYYY-MM (monthly) | YYYY (annual)", required: true, default: "2025-07-15" }
+      freq:       { description: "daily|monthly|annual", required: true, default: "daily" }
+      resolution: { description: "800m|4km|400m", required: true, default: "800m" }
+      dataset:    { description: "an or lt (lt only for monthly 800m)", required: true, default: "an" }
+      tag:        { description: "tile folder name", required: true, default: "tmax_2025-07-15_800m" }
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install GDAL
+        run: sudo apt-get update && sudo apt-get install -y gdal-bin python3-gdal curl unzip
+      - name: Make tiles
+        shell: bash
+        run: |
+          set -euo pipefail
+          VAR="${{ inputs.variable }}"
+          DATE="${{ inputs.date }}"
+          FREQ="${{ inputs.freq }}"
+          RES="${{ inputs.resolution }}"
+          DATASET="${{ inputs.dataset }}"
+          TAG="${{ inputs.tag }}"
+          case "$RES" in
+            800m) RESIN="30s";;
+            4km)  RESIN="25m";;
+            400m) RESIN="15s";;
+            *) echo "bad resolution"; exit 1;;
+          esac
+          # Build datecode
+          DATECODE="$DATE"
+          if [ "$FREQ" = "daily" ]; then DATECODE="${DATE//-/}"; fi
+          if [ "$FREQ" = "monthly" ]; then DATECODE="${DATE:0:7}"; DATECODE="${DATECODE/-/}"; fi
+          if [ "$FREQ" = "annual" ]; then DATECODE="${DATE:0:4}"; fi
+          # LT only for monthly 800m
+          TAIL=""
+          if [ "$DATASET" = "lt" ]; then
+            if [ "$FREQ" != "monthly" ] || [ "$RES" != "800m" ]; then echo "lt only for monthly 800m"; exit 1; fi
+            TAIL="/lt"
+          fi
+          BASE="https://services.nacse.org/prism/data/get/us/$RES/$VAR/$DATECODE$TAIL"
+          INNER="prism_${VAR}_us_${RESIN}_${DATECODE}.tif"
+          mkdir -p /tmp/prism && cd /tmp/prism
+          echo "Fetching $BASE"
+          curl -sS -L -o prism.zip "$BASE"
+          unzip -o prism.zip "$INNER"
+          mkdir -p "$GITHUB_WORKSPACE/docs/assets/prism_tiles/$TAG"
+          gdal2tiles.py -z 0-8 -r near "$INNER" "$GITHUB_WORKSPACE/docs/assets/prism_tiles/$TAG"
+      - name: Commit tiles
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@users.noreply.github.com"
+          git add docs/assets/prism_tiles
+          git commit -m "Add PRISM tiles ${{ inputs.tag }}" || echo "No changes"
+          git push

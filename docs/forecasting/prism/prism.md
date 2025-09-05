@@ -7,6 +7,8 @@ tags:
 
 PRISM (U.S. Gridded Climate)
 ================
+[▶ Open Interactive Map](../../prism-map.html){ .md-button .md-button--primary }
+
 Ty Tuff, ESIIL
 2025-09-05
 
@@ -20,6 +22,13 @@ PRISM is a widely used U.S. climate surface: terrain‑aware, quality‑controll
 * **Variables:** `ppt, tmin, tmax, tmean, tdmean, vpdmin, vpdmax` (plus radiation components in normals products).
 * **Streamable:** each file is a **Cloud‑Optimized GeoTIFF** packaged in a **.zip** with predictable names; works cleanly with GDAL’s `/vsizip//vsicurl/`.
 * **Freshness signals:** the web service exposes endpoints for `releaseDate` and `gridCount` so you can decide when to refresh.
+
+## Interactive preview
+
+<iframe src="../../prism-map.html" title="PRISM Interactive Map"
+        style="width:100%;height:70vh;border:1px solid #e5e7eb;border-radius:12px"></iframe>
+
+[🧱 View Pre-tiled Demo](../../prism-tiles-demo.html){ .md-button }
 
 ---
 
