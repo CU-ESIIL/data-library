@@ -72,6 +72,7 @@
     let currentLayer = null;
     const RES_IN = { "4km":"25m", "800m":"30s", "400m":"15s" }; // filename tag INSIDE ZIP
     const RES_WS = { "4km":"4km", "800m":"800m", "400m":"400m" }; // web-service param
+    const CORS_PROXY = "https://cors.isomorphic-git.org/"; // allow cross-origin requests
 
     function ymd(d){ return d.replaceAll('-',''); }
     function ym(d){  return d.slice(0,7).replace('-',''); }
@@ -85,7 +86,7 @@
         throw new Error("dataset='lt' is only valid for monthly 800 m.");
       }
       const tail = (dataset==="lt") ? "/lt" : "";
-      const base = `https://services.nacse.org/prism/data/get/${region}/${RES_WS[resolution]}/${variable}/${datecode}${tail}`;
+      const base = `${CORS_PROXY}https://services.nacse.org/prism/data/get/${region}/${RES_WS[resolution]}/${variable}/${datecode}${tail}`;
       const inner = `prism_${variable}_${region}_${RES_IN[resolution]}_${datecode}.tif`;
       return { zipUrl: base, innerName: inner };
     }
@@ -111,7 +112,7 @@
       try {
         const { zipUrl, innerName } = buildUrlAndInnerName({variable, date, freq, resolution, dataset});
         msg.textContent = "Fetching grid package…";
-        const resp = await fetch(zipUrl); // may fail if CORS is denied by server
+        const resp = await fetch(zipUrl); // proxied to handle CORS
         if (!resp.ok) throw new Error(`HTTP ${resp.status} fetching ${zipUrl}`);
         const buf = await resp.arrayBuffer();
 

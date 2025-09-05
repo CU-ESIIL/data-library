@@ -7,7 +7,7 @@ tags:
 
 PRISM (U.S. Gridded Climate)
 ================
-[▶ Open Interactive Map](../../prism-map.html){ .md-button .md-button--primary }
+[▶ Open Interactive Map](../../../prism-map.html){ .md-button .md-button--primary }
 
 Ty Tuff, ESIIL
 2025-09-05
@@ -25,10 +25,10 @@ PRISM is a widely used U.S. climate surface: terrain‑aware, quality‑controll
 
 ## Interactive preview
 
-<iframe src="../../prism-map.html" title="PRISM Interactive Map"
+<iframe src="../../../prism-map.html" title="PRISM Interactive Map"
         style="width:100%;height:70vh;border:1px solid #e5e7eb;border-radius:12px"></iframe>
 
-[🧱 View Pre-tiled Demo](../../prism-tiles-demo.html){ .md-button }
+[🧱 View Pre-tiled Demo](../../../prism-tiles-demo.html){ .md-button }
 
 ---
 
