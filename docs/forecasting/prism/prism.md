@@ -28,6 +28,8 @@ PRISM is a widely used U.S. climate surface: terrain‑aware, quality‑controll
 <iframe src="../../../prism-map.html" title="PRISM Interactive Map"
         style="width:100%;height:70vh;border:1px solid #e5e7eb;border-radius:12px"></iframe>
 
+*Zoom or pan to your area of interest, then press **Load** to fetch only that extent.*
+
 [🧱 View Pre-tiled Demo](../../../prism-tiles-demo.html){ .md-button }
 
 ---
