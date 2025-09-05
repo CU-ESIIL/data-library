@@ -1,0 +1,3312 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Data for May 2023 ESIIL Innovation Summit">
+      
+      
+        <meta name="author" content="ESIIL CI team (lead = Ty Tuff)">
+      
+      
+        <link rel="canonical" href="https://cu-esiil.github.io/data-library/maka-sitomniya/NRCS/nrcs_soil_exploration/">
+      
+      <link rel="icon" href="../../../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-8.5.10">
+    
+    
+      
+        <title>NRCS Soil Survey - ESIIL Data Library</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.975780f9.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Open Sans";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+
+  <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-C88FVQM27T"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-C88FVQM27T",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-C88FVQM27T",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tutorial-exploring-soil-data-from-the-nrcs-web-soil-survey-wss" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="ESIIL Data Library" class="md-header__button md-logo" aria-label="ESIIL Data Library" data-md-component="logo">
+      
+  <img src="../../../assets/ESIIL_logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ESIIL Data Library
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              NRCS Soil Survey
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: white)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+            </label>
+          
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/cu-esiil/data-library" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    data-library
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="ESIIL Data Library" class="md-nav__button md-logo" aria-label="ESIIL Data Library" data-md-component="logo">
+      
+  <img src="../../../assets/ESIIL_logo.png" alt="logo">
+
+    </a>
+    ESIIL Data Library
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/cu-esiil/data-library" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    data-library
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tags/" class="md-nav__link">
+        Tags
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Vegetation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Vegetation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Vegetation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../vegetation/rap-tiles/rap-tiles/" class="md-nav__link">
+        RAP Tiles
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          More data
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="More data" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          More data
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../indian_country/native_lands_digital/native_lands_digital/" class="md-nav__link">
+        Global native homelands
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../indian_country/national_atlas_of_indian_lands/National_atlas_of_indian_lands/" class="md-nav__link">
+        USA Federal tribal reservations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../indian_country/aiannh/AIANNH/" class="md-nav__link">
+        All types of tribal land in USA
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../water/neon_aquatic/neon_aquatic/" class="md-nav__link">
+        NEON Aquatic Instrument Data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../water/epa_water_quality/epa_water_quality/" class="md-nav__link">
+        EPA water quality
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../water/usgs_water_services/usgs_water_services/" class="md-nav__link">
+        USGS water services
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../librarian/imls/" class="md-nav__link">
+        Public Libraries Survey
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../remote_sensing/neon_hyperspectral/neon_hyperspectral/" class="md-nav__link">
+        NEON Hyperspectral Data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../remote_sensing/lidar_canopy_height/lidar_canopy_height/" class="md-nav__link">
+        Lidar-based Canopy Height
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../remote_sensing/sentinel2_aws/sentinel2_aws/" class="md-nav__link">
+        Multispectral Sentinel-2 on AWS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../solutions/osm/osm/" class="md-nav__link">
+        Open Street Map
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hazards/Air_data/Air_data/" class="md-nav__link">
+        EPA air quality data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hazards/FIRED/FIRED/" class="md-nav__link">
+        Fire Event Delineation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hazards/ICS209_plus/ICS209_Plus/" class="md-nav__link">
+        US National Incident Management System
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hazards/Uranium_mines/Uranium_mines/" class="md-nav__link">
+        Uranium mines
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../scale/iNaturalist/iNaturalist/" class="md-nav__link">
+        Species Occurrence as points
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ethics/wgi/wgi/" class="md-nav__link">
+        World Governance Indicators
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../forecasting/neon/neon/" class="md-nav__link">
+        National Ecological Observation Network
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../forecasting/Phenology_network/Phenology_network/" class="md-nav__link">
+        USA phenology network
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/eco4cast/neon4cast-example" class="md-nav__link">
+        Forecasting NEON data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/NEONScience/NEON-Data-Skills/blob/main/tutorials-in-development/ESIIL_InnovationSummit_2023/Python/wildfire/fire_effects_on_veg_structure_using_lidar.ipynb" class="md-nav__link">
+        NEON lidar after fire
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../harmonization/dryad/dryad/" class="md-nav__link">
+        Data cataloged with publications
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../harmonization/neon_and_lter/neon_and_lter/" class="md-nav__link">
+        NEON and LTER
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../harmonization/neon_lidar_and_organismal/neon_lidar_and_organismal/" class="md-nav__link">
+        NEON lidar and organismal data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../food/FAOSTAT/FAO/" class="md-nav__link">
+        UN Food and Agriculture
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../justice/redlining/redlining/" class="md-nav__link">
+        Redlining
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../justice/congress/congress/" class="md-nav__link">
+        Congressional voting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../policy/census/US_Census/" class="md-nav__link">
+        US Census
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../policy/bank_fail/FDIC_Failed_Bank/" class="md-nav__link">
+        FDIC Failed Banks list
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AI/weatherbench/weatherbench/" class="md-nav__link">
+        WeatherBench
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../math/neon_pathogen/neon_pathogen/" class="md-nav__link">
+        NEON tick pathogen data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../math/foodweb/foodweb/" class="md-nav__link">
+        Everglades food network
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../math/mammal_primate_association/mammal_primate_associations/" class="md-nav__link">
+        Mammal Primate association network
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../education/NCES/NCES/" class="md-nav__link">
+        Education Statistics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../education/nonprofit_explorer/nonprofit_explorer/" class="md-nav__link">
+        Nonprofit explorer
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../global_forest_change/global_forest_change/" class="md-nav__link">
+        Global forest change
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NLCD/NLCD/" class="md-nav__link">
+        National Land Cover Database (NLCD)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../watershed_boundaries/watershed_boundaries/" class="md-nav__link">
+        Watershed Boundaries
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          NRCS Soil Survey
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        NRCS Soil Survey
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tutorial-exploring-soil-data-from-the-nrcs-web-soil-survey-wss" class="md-nav__link">
+    Tutorial: Exploring Soil Data from the NRCS Web Soil Survey (WSS)
+  </a>
+  
+    <nav class="md-nav" aria-label="Tutorial: Exploring Soil Data from the NRCS Web Soil Survey (WSS)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-dependencies" class="md-nav__link">
+    Installing dependencies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import-packages" class="md-nav__link">
+    Import packages
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#read-in-data-from-wss" class="md-nav__link">
+    Read in Data from WSS
+  </a>
+  
+    <nav class="md-nav" aria-label="Read in Data from WSS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#find-shapefiles-in-the-extracted-directory" class="md-nav__link">
+    Find shapefiles in the extracted directory
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#load-the-soil-shapefile" class="md-nav__link">
+    Load the soil shapefile
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examine-the-data" class="md-nav__link">
+    Examine the Data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visualize-soil-data" class="md-nav__link">
+    Visualize Soil Data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loading-and-examining-tabular-data" class="md-nav__link">
+    Loading and Examining Tabular Data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visualizing-soil-attributes" class="md-nav__link">
+    Visualizing Soil Attributes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <a href="https://github.com/cu-esiil/data-library/edit/main/docs/maka-sitomniya/NRCS/nrcs_soil_exploration.md" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+  <h1>NRCS Soil Survey</h1>
+
+<h2 id="tutorial-exploring-soil-data-from-the-nrcs-web-soil-survey-wss">Tutorial: Exploring Soil Data from the NRCS Web Soil Survey (WSS)</h2>
+<p>This notebook demonstrates how to download, extract, and visualize soil data from the Natural Resources Conservation Service (NRCS) Web Soil Survey (WSS). We will focus on the STATSGO2 dataset for South Dakota.</p>
+<p>The Web Soil Survey (WSS) is a valuable resource for accessing soil data and information compiled by the National Cooperative Soil Survey.</p>
+<p>Here are the links to the data we will be using:</p>
+<ul>
+<li><strong>Link to Data:</strong> https://websoilsurvey.sc.egov.usda.gov/DSD/Download/Cache/STATSGO2/wss_gsmsoil_SD_[2016-10-13].zip</li>
+<li><strong>Description of Data:</strong> https://www.nrcs.usda.gov/sites/default/files/2022-08/SSURGO-Metadata-Table-Column-Descriptions-Report.pdf</li>
+</ul>
+<p>The data is provided as a zip file containing spatial data (shapefiles) and tabular data (text files).</p>
+<h3 id="installing-dependencies">Installing dependencies</h3>
+<p>We need to install the necessary Python libraries to work with spatial data and dataframes. We will use <code>pandas</code> for data manipulation, <code>geopandas</code> for working with geospatial data, and <code>matplotlib</code> for plotting.</p>
+<pre><code class="language-python"># uncomment the following code
+#!pip install pandas==2.2.2 geopandas==0.14.3 fiona==1.9.6 matplotlib==3.8.4 requests==2.32.3 seaborn==0.13.2
+</code></pre>
+<pre><code>Requirement already satisfied: pandas==2.2.2 in /usr/local/lib/python3.11/dist-packages (2.2.2)
+Requirement already satisfied: geopandas==0.14.3 in /usr/local/lib/python3.11/dist-packages (0.14.3)
+Requirement already satisfied: fiona==1.9.6 in /usr/local/lib/python3.11/dist-packages (1.9.6)
+Requirement already satisfied: matplotlib==3.8.4 in /usr/local/lib/python3.11/dist-packages (3.8.4)
+Requirement already satisfied: requests==2.32.3 in /usr/local/lib/python3.11/dist-packages (2.32.3)
+Requirement already satisfied: seaborn==0.13.2 in /usr/local/lib/python3.11/dist-packages (0.13.2)
+Requirement already satisfied: numpy&gt;=1.23.2 in /usr/local/lib/python3.11/dist-packages (from pandas==2.2.2) (2.0.2)
+Requirement already satisfied: python-dateutil&gt;=2.8.2 in /usr/local/lib/python3.11/dist-packages (from pandas==2.2.2) (2.9.0.post0)
+Requirement already satisfied: pytz&gt;=2020.1 in /usr/local/lib/python3.11/dist-packages (from pandas==2.2.2) (2025.2)
+Requirement already satisfied: tzdata&gt;=2022.7 in /usr/local/lib/python3.11/dist-packages (from pandas==2.2.2) (2025.2)
+Requirement already satisfied: packaging in /usr/local/lib/python3.11/dist-packages (from geopandas==0.14.3) (24.2)
+Requirement already satisfied: pyproj&gt;=3.3.0 in /usr/local/lib/python3.11/dist-packages (from geopandas==0.14.3) (3.7.1)
+Requirement already satisfied: shapely&gt;=1.8.0 in /usr/local/lib/python3.11/dist-packages (from geopandas==0.14.3) (2.1.1)
+Requirement already satisfied: attrs&gt;=19.2.0 in /usr/local/lib/python3.11/dist-packages (from fiona==1.9.6) (25.3.0)
+Requirement already satisfied: certifi in /usr/local/lib/python3.11/dist-packages (from fiona==1.9.6) (2025.7.9)
+Requirement already satisfied: click~=8.0 in /usr/local/lib/python3.11/dist-packages (from fiona==1.9.6) (8.2.1)
+Requirement already satisfied: click-plugins&gt;=1.0 in /usr/local/lib/python3.11/dist-packages (from fiona==1.9.6) (1.1.1.2)
+Requirement already satisfied: cligj&gt;=0.5 in /usr/local/lib/python3.11/dist-packages (from fiona==1.9.6) (0.7.2)
+Requirement already satisfied: six in /usr/local/lib/python3.11/dist-packages (from fiona==1.9.6) (1.17.0)
+Requirement already satisfied: contourpy&gt;=1.0.1 in /usr/local/lib/python3.11/dist-packages (from matplotlib==3.8.4) (1.3.2)
+Requirement already satisfied: cycler&gt;=0.10 in /usr/local/lib/python3.11/dist-packages (from matplotlib==3.8.4) (0.12.1)
+Requirement already satisfied: fonttools&gt;=4.22.0 in /usr/local/lib/python3.11/dist-packages (from matplotlib==3.8.4) (4.58.5)
+Requirement already satisfied: kiwisolver&gt;=1.3.1 in /usr/local/lib/python3.11/dist-packages (from matplotlib==3.8.4) (1.4.8)
+Requirement already satisfied: pillow&gt;=8 in /usr/local/lib/python3.11/dist-packages (from matplotlib==3.8.4) (11.2.1)
+Requirement already satisfied: pyparsing&gt;=2.3.1 in /usr/local/lib/python3.11/dist-packages (from matplotlib==3.8.4) (3.2.3)
+Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /usr/local/lib/python3.11/dist-packages (from requests==2.32.3) (3.4.2)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.11/dist-packages (from requests==2.32.3) (3.10)
+Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /usr/local/lib/python3.11/dist-packages (from requests==2.32.3) (2.4.0)
+</code></pre>
+<h3 id="import-packages">Import packages</h3>
+<p>Now, let's import the necessary libraries into our notebook.</p>
+<pre><code class="language-python">import os
+import zipfile
+import pandas as pd
+import geopandas as gpd
+import matplotlib.pyplot as plt
+import requests
+import numpy as np
+import matplotlib.patches as mpatches
+import seaborn as sns
+from IPython.display import display
+import matplotlib as mpl
+</code></pre>
+<h2 id="read-in-data-from-wss">Read in Data from WSS</h2>
+<p>We will now download the data from the Web Soil Survey.</p>
+<p>Set the URL of the zip file and the desired local path for the downloaded file and the extraction directory.</p>
+<pre><code class="language-python">url = &quot;https://websoilsurvey.sc.egov.usda.gov/DSD/Download/Cache/STATSGO2/wss_gsmsoil_SD_[2016-10-13].zip&quot;
+zip_path = &quot;wss_gsmsoil_SD.zip&quot;
+extract_dir = &quot;soil_data_sd&quot;
+</code></pre>
+<p>Display the paths to confirm they are set correctly.</p>
+<pre><code class="language-python">print(f&quot;Downloading from: {url}&quot;)
+print(f&quot;Local zip file: {zip_path}&quot;)
+print(f&quot;Extract directory: {extract_dir}&quot;)
+</code></pre>
+<pre><code>Downloading from: https://websoilsurvey.sc.egov.usda.gov/DSD/Download/Cache/STATSGO2/wss_gsmsoil_SD_[2016-10-13].zip
+Local zip file: wss_gsmsoil_SD.zip
+Extract directory: soil_data_sd
+</code></pre>
+<p>Download the zip file from the specified URL.</p>
+<pre><code class="language-python">print(&quot;Downloading zip file...&quot;)
+
+response = requests.get(url, stream=True)
+
+with open(zip_path, 'wb') as f:
+    for chunk in response.iter_content(chunk_size=8192):
+        f.write(chunk)
+
+print(f&quot; Downloaded: {zip_path}&quot;)
+</code></pre>
+<pre><code>Downloading zip file...
+ Downloaded: wss_gsmsoil_SD.zip
+</code></pre>
+<p>Extract the contents of the downloaded zip file to the specified directory.</p>
+<pre><code class="language-python">print(f&quot;\nExtracting to: {extract_dir}&quot;)
+
+with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+    zip_ref.extractall(extract_dir)
+print(&quot;Extraction complete&quot;)
+</code></pre>
+<pre><code>Extracting to: soil_data_sd
+✅ Extraction complete
+</code></pre>
+<p>List the files within the extracted directory to see the dataset structure.</p>
+<pre><code class="language-python">print(&quot;\nFiles in extracted directory:&quot;)
+print(&quot;-&quot; * 40)
+for root, dirs, files in os.walk(extract_dir):
+    for file in files:
+        file_path = os.path.join(root, file)
+        rel_path = os.path.relpath(file_path, extract_dir)
+        print(f&quot;  {rel_path}&quot;)
+</code></pre>
+<pre><code>Files in extracted directory:
+----------------------------------------
+  wss_gsmsoil_SD_[2016-10-13]/soil_metadata_us.txt
+  wss_gsmsoil_SD_[2016-10-13]/readme.txt
+  wss_gsmsoil_SD_[2016-10-13]/soildb_US_2003.mdb
+  wss_gsmsoil_SD_[2016-10-13]/soil_metadata_us.xml
+  wss_gsmsoil_SD_[2016-10-13]/spatial/gsmsoilmu_a_sd.dbf
+  wss_gsmsoil_SD_[2016-10-13]/spatial/version.txt
+  wss_gsmsoil_SD_[2016-10-13]/spatial/gsmsoilmu_a_sd.shp
+  wss_gsmsoil_SD_[2016-10-13]/spatial/gsmsoilmu_a_sd.prj
+  wss_gsmsoil_SD_[2016-10-13]/spatial/gsmsoilmu_a_sd.shx
+  wss_gsmsoil_SD_[2016-10-13]/tabular/chstrgrp.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/mstab.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/sdvattribute.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/cfprod.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/cpmat.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/ctxfmoth.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/msrsdet.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/csmoist.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/chfrags.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/cerosnac.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/cstemp.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/sainterp.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/csmorhpp.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/version.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/chaashto.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/muareao.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/csfrags.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/sdvfolder.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/cpwndbrk.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/ltext.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/csmorgc.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/crstrcts.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/chydcrit.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/chtexmod.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/ceplants.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/mucrpyd.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/sacatlog.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/mstabcol.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/chtextur.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/chunifie.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/ctxmoicl.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/chdsuffx.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/chtexgrp.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/sdvfolderattribute.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/ctext.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/cinterp.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/chconsis.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/distlmd.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/cecoclas.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/ccancov.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/comp.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/chstr.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/muaggatt.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/msidxmas.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/csmormr.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/distimd.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/lareao.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/csmorss.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/msidxdet.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/cfprodo.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/legend.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/msrsmas.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/ctreestm.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/ccrpyd.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/cgeomord.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/msdomdet.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/cpmatgrp.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/chpores.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/chorizon.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/msdommas.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/cmonth.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/distmd.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/sdvalgorithm.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/ctxfmmin.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/chtext.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/mutext.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/mapunit.txt
+  wss_gsmsoil_SD_[2016-10-13]/tabular/cdfeat.txt
+</code></pre>
+<p>To get a little background on the files and data we can view the readme file</p>
+<pre><code class="language-python"># Umcomment the following code to see the readme
+# readme_file_path = os.path.join(extract_dir, &quot;wss_gsmsoil_SD_[2016-10-13]&quot;, &quot;readme.txt&quot;)
+
+# with open(readme_file_path, 'r') as f:
+#     readme_content = f.read()
+# print(readme_content)
+</code></pre>
+<pre><code>********************************************************************************
+****  Index
+********************************************************************************
+
+Export Contents
+Export Types
+      Area of Interest (AOI)
+      SSURGO
+      STATSGO2
+Unzipping Your Export
+Importing the Tabular Data into a SSURGO Template Database
+      Why Import the Tabular Data into a SSURGO Template Database?
+      Microsoft Access Version Considerations and Security Related Issues
+            Trusted Locations
+            Macro Settings
+      Importing Tabular Data
+Spatial Data
+      Spatial Data Format and Coordinate System
+      Utilizing Soil Spatial Data
+Terminology
+      Area of Interest (AOI)
+      Soil Survey Area
+      SSURGO Template Database
+      SSURGO
+      STATSGO2
+Obtaining Help
+
+********************************************************************************
+****  Export Contents
+********************************************************************************
+
+This export includes the following U.S. General Soil Map data:
+
+Spatial extent:         South Dakota
+SSA symbol:             US
+SSA name:               United States
+SSA version:            3
+SSA version est.:       10/13/2016 12:28:22 PM
+Spatial format:         ESRI Shapefile
+Coordinate system:      Geographic Coordinate System (WGS84)
+
+This export also includes the following MS Access SSURGO template database:
+
+Template DB name:       soildb_US_2003.mdb
+Template DB version:    36
+Template DB state:      US
+MS Access version:      Access 2003
+
+
+********************************************************************************
+****  Export Types
+********************************************************************************
+
+Three types of data exports are available.  See the "Terminology" section for 
+descriptions of "Area of Interest," "SSURGO," and "STATSGO2."
+
+    ****************************************************************************
+    ****  Area of Interest (AOI)
+    ****************************************************************************
+
+    The data in an Area of Interest export include the following for a 
+    user-defined area of interest:
+
+          Soil Tabular Data
+          Map Unit Polygons (where available)
+          Map Unit Lines (where available)
+          Map Unit Points (where available)
+          Special Feature Lines (where available)
+          Special Feature Points (where available)
+          Special Feature Descriptions (where available)
+          Soil Thematic Map Data (where available)
+
+    An AOI export can be downloaded from the "Your AOI (SSURGO)" section under 
+    the "Download Soils Data" tab in the Web Soil Survey.
+
+    The name of the export zip file will be in the form 
+    wss_aoi_YYYY-MM-DD_HH-MM-SS.zip, e.g. wss_aoi_2012-09-24_12-59-37.zip.
+
+    Note that the data for an Area of Interest is always SSURGO data.  
+    Currently, the Web Soil Survey does not include an option to create an area 
+    of interest for STATSGO2 data.
+
+    ****************************************************************************
+    ****  SSURGO
+    ****************************************************************************
+
+    The data in a SSURGO export include the following for a soil survey area:
+
+          Soil Tabular Data
+          Soil Survey Area Boundary Polygon
+          Map Unit Polygons (where available)
+          Map Unit Lines (where available)
+          Map Unit Points (where available)
+          Special Feature Lines (where available)
+          Special Feature Points (where available)
+          Special Feature Descriptions (where available)
+
+    A SSURGO export can be downloaded from the "Soil Survey Area (SSURGO)" 
+    section under the "Download Soils Data" tab in the Web Soil Survey.
+
+    The export zip file will be named in the form soil_**###.zip, where ** is 
+    a two character state or territory Federal Information Processing Standard 
+    (FIPS) code, in uppercase, and ### is a three digit, zero-filled integer, 
+    e.g. soil_NE079.zip.
+
+    ****************************************************************************
+    ****  STATSGO2
+    ****************************************************************************
+
+    The data included in a STATSGO2 export include the following:
+
+          Soil Tabular Data
+          Map Unit Polygons
+
+    A STATSGO2 export can be downloaded from the "U.S. General Soil Map 
+    (STATSGO2)" section under the "Download Soils Data" tab in the Web Soil 
+    Survey.
+
+    If data for the entire STATSGO2 coverage is downloaded, the export zip file 
+    will be named gmsoil_us.zip.
+
+    If data for only a single state is downloaded, the export zip file will be 
+    named in the form gmsoil_**.zip, where ** is a two character state FIPS 
+    code in lowercase, e.g. gmsoil_ne.zip.
+
+********************************************************************************
+****  Unzipping Your Export
+********************************************************************************
+
+See the "Terminology" section for descriptions of a "Soil Survey Area" and a 
+"SSURGO template database."
+
+Each data export (see "Export Types" section) is provided in a single zip file.  
+The file unzips to a set of directories and files.  The following example is 
+typical (a copy of soil_metadata_*.txt and soil_metadata_*.xml will be present 
+for each SSURGO soil survey area included in an export):
+
+      spatial (a directory)
+      tabular (a directory)
+      thematic (a directory, only present in AOI exports)
+      readme.txt (an instance of this document)
+      soil_metadata_*.txt
+      soil_metadata_*.xml
+      soildb_*.mdb (a conditionally present SSURGO template database)
+
+The spatial data files for your export, if any, will reside in a directory 
+named "spatial."
+
+The tabular data files for your export will reside in a directory named 
+"tabular."
+
+The thematic map data files for your export, if any, will reside in a directory 
+named "thematic."
+
+The readme.txt file is an instance of the file you are currently reading.  
+Except for the "Export Contents" section, this file is identical for all 
+exports.
+
+The soil_metadata_*.txt file contains Federal Geographic Data Committee (FGDC) 
+metadata (http://www.fgdc.gov/metadata) for each soil survey area, state, or 
+country for which data was included in your export.  The file is in text 
+(ASCII) format.  The "*" will be replaced by a soil survey area symbol 
+(e.g. "ne079"), "us," or a two character U.S. state FIPS code in lowercase.  
+Your export may include more than one of these files.
+
+The soil_metadata_*.xml file contains Federal Geographic Data Committee (FGDC) 
+metadata (http://www.fgdc.gov/metadata) for each soil survey area, state, or 
+country for which data was included in your export.  The file is in XML format. 
+The "*" will be replaced by either a soil survey area symbol (e.g. "ne079"), 
+"us," or a two character U.S. state FIPS code in lowercase.  Your export may 
+include more than one of these files.
+
+The soildb_*.mdb file is an instance of a SSURGO template database.  The "*" 
+will be replaced by either "US" or a two character state or territory FIPS code 
+in uppercase.  This file will be present unless you specifically requested an 
+export that doesn't include a SSURGO template database.
+
+********************************************************************************
+****  Importing the Tabular Data into a SSURGO Template Database
+********************************************************************************
+
+See the "Terminology" section for a description of "SSURGO template database."
+
+    ****************************************************************************
+    ****  Why Import the Tabular Data into a SSURGO Template Database?
+    ****************************************************************************
+
+    The tabular data is exported as a set of files in "ASCII delimited" format. 
+    These ASCII delimited files do not include column headers.  Typically, it 
+    is not feasible to work with the tabular data in this format.  Instead, you 
+    should import the data from these files into the accompanying SSURGO 
+    template database.
+
+    Importing the data into a SSURGO template database establishes the proper 
+    relationships between the various soil survey data entities.  It also 
+    provides access to a number of prewritten reports that display related data 
+    in a meaningful way and gives you the option to create your own queries and 
+    reports.  Creating queries and reports requires additional knowledge by the 
+    user.
+
+    ****************************************************************************
+    ****  Microsoft Access Version Considerations and Security Related Issues
+    ****************************************************************************
+
+    All SSURGO template databases are in Microsoft Access 2002/2003 format.  
+    Although this doesn't prevent you from opening them in Access 2007 or 
+    Access 2010, the default security settings for Access 2007 or 2010 may 
+    initially prevent the macros in the template database from working.  If you 
+    get a security warning when you open a SSURGO template database, e.g. a 
+    warning that the database is read-only, you may need to change your 
+    Microsoft Access security settings.
+
+    To check and/or adjust your Microsoft Access security settings in Access 
+    2007 or 2010, start Access, click the Office Button at the top left of the 
+    Access window, and then click the button labeled "Access Options" at the 
+    bottom of the form.  From the "Access Options" dialog, select 
+    "Trust Center" from the options to the left, and then select the button 
+    labeled "Trust Center Settings" to the right.
+
+    After selecting "Trusted Center Settings," you can address a security issue 
+    two different ways.  From the left side of the Trust Center dialog, select 
+    "Trusted Locations" or "Macro Settings."
+
+        ************************************************************************
+        ****  Trusted Locations
+        ************************************************************************
+
+        You can move the SSURGO template database to an existing trusted 
+        location (if a trusted location has already been created), or you can 
+        add a new trusted location and move the SSURGO template database to 
+        that new trusted location.
+
+        ************************************************************************
+        ****  Macro Settings
+        ************************************************************************
+
+        Selecting "Enable All Macros" will allow the macros in the SSURGO 
+        template database to run, but not without hazard.  Note the associated 
+        warning: "not recommended; potentially dangerous code can run."  The 
+        SSURGO template database does not contain hazardous code, but other 
+        databases might.
+
+        If you have trouble using the SSURGO template database, see the 
+        "Obtaining Help" section for information on how to contact the Soils 
+        Hotline.
+
+    ****************************************************************************
+    ****  Importing Tabular Data
+    ****************************************************************************
+
+    When you open a SSURGO template database, the Import Form should display 
+    automatically if there are no Microsoft Access security related issues.  
+    To import the soil tabular data into the SSURGO template database, enter 
+    the location of the "tabular" directory into the blank in the Import Form.  
+    Use the fully qualified pathname to the "tabular" directory that you 
+    unzipped from your export file.
+
+    For example, if your export file was named wss_aoi_2012-09-24_12-59-37.zip 
+    and you unzipped the file to C:\soildata\, the fully qualified pathname 
+    would be C:\soildata\wss_aoi_2012-09-24_12-59-37\tabular.
+
+    The pathname between C:\soildata\ and \tabular varies by export type.  It 
+    also varies:
+
+          for Area of Interest exports by export date and time,
+          for SSURGO exports by the selected soil survey area, and
+          for STATSGO2 exports by your selection of data for the entire U.S. or
+          for a single state.
+
+    After entering the fully qualified pathname, click the "OK" button.  The 
+    import process will start.  The duration of the import process depends on 
+    the amount of data being imported.  Most imports take less than 5 minutes, 
+    and many take less than 1 minute.  The import for STATSGO2 data for the 
+    entire United States takes longer.
+
+    Once the import process completes, the Soil Reports Form should display.
+
+********************************************************************************
+****  Spatial Data
+********************************************************************************
+
+    ****************************************************************************
+    ****  Spatial Data Format and Coordinate System
+    ****************************************************************************
+
+    All spatial data is provided in ESRI Shapefile format in WGS84 geographic 
+    coordinates.
+
+    ****************************************************************************
+    ****  Utilizing Soil Spatial Data
+    ****************************************************************************
+
+    Utilizing soil spatial data without having access to Geographic Information 
+    System (GIS) software is effectively impossible.  Even if you have access 
+    to GIS software, relating the soil spatial data to the corresponding soil 
+    tabular data can be complicated.
+
+    For people who have access to supported versions of ESRI's ArcGIS software, 
+    we provide a Windows client application that is capable of creating soil 
+    thematic maps using ArcMap and the Windows client application.  The name of 
+    the application is "Soil Data Viewer."  For additional information see 
+    http://www.nrcs.usda.gov/wps/portal/nrcs/detailfull/soils/home/?cid=nrcs142p2_053620.
+
+    An AOI export may contain thematic map data from Web Soil Survey. Each 
+    thematic map (soil property or interpretation) that was created for the AOI 
+    generates a set of files in the "thematic" directory of the export. An 
+    experienced GIS user can join a ratings file from the export with the
+    mapunits in the spatial data to reproduce the colored thematic map.
+
+********************************************************************************
+****  Terminology
+********************************************************************************
+
+    ****************************************************************************
+    ****  Area of Interest (AOI)
+    ****************************************************************************
+
+    In the Web Soil Survey, you can create an ad hoc "area of interest" by 
+    using the navigation map and its associated tools.  You can pan and zoom to 
+    a desired geographic location and then use the AOI drawing tools to 
+    manually select an "area of interest."  An "area of interest" must be a 
+    single polygon and the maximum area of that polygon (measured in acres) is 
+    limited.
+
+    ****************************************************************************
+    ****  Soil Survey Area
+    ****************************************************************************
+
+    The SSURGO soil data for the U.S. and its territories are broken up into 
+    over 3,000 soil survey areas.  A soil survey area commonly coincides with a 
+    single county but may coincide with all or part of multiple counties and 
+    may span more than one state.
+
+    A soil survey area is identified by a "survey area symbol."  The symbol is 
+    a two character state or territory FIPS code combined with a zero-filled, 
+    three digit number.  For example, "NE079" is the survey area symbol for 
+    Hall County, Nebraska.
+
+    Although the STATSGO2 soil data is not partitioned into soil survey areas, 
+    STATSGO2 soil data can be downloaded for a particular state or territory.
+
+    ****************************************************************************
+    ****  SSURGO Template Database
+    ****************************************************************************
+
+    A SSURGO template database is a Microsoft Access database in which the 
+    tables and columns conform to the current SSURGO standard.  Exported soil 
+    tabular data can be imported into a SSURGO template database.
+
+    A SSURGO template database includes a number of prewritten reports that 
+    display related data in a meaningful way.  You also have the option of 
+    creating your own queries and reports in the database.  Creating queries 
+    and reports requires additional knowledge.
+
+    In addition to the national SSURGO template database, many state-specific 
+    SSURGO template databases are available.  They typically include additional 
+    state-specific reports.
+
+    Whenever you export data from the Web Soil Survey, the most appropriate 
+    SSURGO template database is automatically included.
+
+    ****************************************************************************
+    ****  SSURGO
+    ****************************************************************************
+
+    The SSURGO standard encompasses both tabular and spatial data.  SSURGO 
+    spatial data duplicates the original soil survey maps.  This level of 
+    mapping is designed for use by landowners and townships and for 
+    county-based natural resource planning and management.  The original 
+    mapping scales generally ranged from 1:12,000 to 1:63,360.  The original 
+    maps from soil survey manuscripts were recompiled to scales of 1:12,000 or 
+    1:24,000 for digitizing into the SSURGO format.  SSURGO is the most 
+    detailed level of soil mapping published by the National Cooperative Soil 
+    Survey.
+
+    ****************************************************************************
+    ****  STATSGO2
+    ****************************************************************************
+
+    The U.S. General Soil Map consists of general soil association units.  It 
+    was developed by the National Cooperative Soil Survey and supersedes the 
+    State Soil Geographic (STATSGO) dataset published in 1994.  STATSGO2 was 
+    released in July 2006 and differs from the original STATSGO in that 
+    individual state legends were merged into a single national legend, 
+    line-join issues at state boundaries were resolved, and some attribute 
+    updates and area updates were made.  STATSGO2 consists of a broad-based 
+    inventory of soils and nonsoil areas that occur in a repeatable pattern on 
+    the landscape and that can be cartographically shown at the scale used for 
+    mapping (1:250,000 in the continental U.S., Hawaii, Puerto Rico, and the 
+    Virgin Islands and 1:1,000,000 in Alaska).
+
+    The same tabular data model is used by both SSURGO and STATSGO2.  STATSGO2, 
+    however, does not include soil interpretations.  The "cointerp" table in 
+    STATSGO2 will therefore always be empty.
+
+********************************************************************************
+****  Obtaining Help
+********************************************************************************
+
+To learn about the capabilities of a SSURGO template database, open the 
+database, select the Microsoft Access "Reports" tab, and then double click the 
+report titled "How to Understand and Use this Database."
+
+If you require additional assistance, or have any questions whatsoever, please 
+contact the Soils Hotline (soilshotline@lin.usda.gov).
+</code></pre>
+<h3 id="find-shapefiles-in-the-extracted-directory">Find shapefiles in the extracted directory</h3>
+<p>We are interested in the spatial data, which is typically stored in shapefiles (<code>.shp</code>). Let's find the shapefiles within the extracted data.</p>
+<p>You can run the below code to find the shapefiles (<code>.shp</code>) or you can look throught the outputed information above for files ending in (<code>.shp</code>)</p>
+<pre><code class="language-python">shapefiles = []
+for root, dirs, files in os.walk(extract_dir):
+    for file in files:
+        if file.endswith('.shp'):
+            shapefiles.append(os.path.join(root, file))
+print(f&quot;Found {len(shapefiles)} shapefiles:&quot;)
+for shp in shapefiles:
+    print(f&quot;  - {os.path.relpath(shp, extract_dir)}&quot;)
+</code></pre>
+<pre><code>Found 1 shapefiles:
+  - wss_gsmsoil_SD_[2016-10-13]/spatial/gsmsoilmu_a_sd.shp
+</code></pre>
+<h3 id="load-the-soil-shapefile">Load the soil shapefile</h3>
+<p>The main soil data is usually contained in a shapefile with a name indicating the spatial extent (e.g., <code>gsmsoilmu_a_sd.shp</code> for South Dakota). We will load this shapefile into a GeoDataFrame using <code>geopandas</code>.</p>
+<pre><code class="language-python">main_shp = os.path.join(extract_dir, &quot;wss_gsmsoil_SD_[2016-10-13]&quot;, &quot;spatial&quot;, &quot;gsmsoilmu_a_sd.shp&quot;)
+gdf = gpd.read_file(main_shp)
+</code></pre>
+<h3 id="examine-the-data">Examine the Data</h3>
+<p>Let's take a closer look at the data we loaded into the GeoDataFrame.</p>
+<p>Display the first few rows of the GeoDataFrame to get a quick preview of the data.</p>
+<pre><code class="language-python">pd.set_option('display.max_columns', None)  #Show all columns
+display(gdf.head(5))  # Show only the first 5 rows
+</code></pre>
+<div id="df-99767d89-ca2b-4672-ba6c-a0d81098ebae" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>AREASYMBOL</th>
+      <th>SPATIALVER</th>
+      <th>MUSYM</th>
+      <th>MUKEY</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>US</td>
+      <td>3</td>
+      <td>s6871</td>
+      <td>672359</td>
+      <td>POLYGON ((-96.75075 43.50416, -96.75365 43.504...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>US</td>
+      <td>3</td>
+      <td>s6793</td>
+      <td>672281</td>
+      <td>POLYGON ((-103.49977 43.32849, -103.50432 43.3...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>US</td>
+      <td>3</td>
+      <td>s6792</td>
+      <td>672280</td>
+      <td>POLYGON ((-102.95403 44.33908, -102.95738 44.3...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>US</td>
+      <td>3</td>
+      <td>s6792</td>
+      <td>672280</td>
+      <td>POLYGON ((-102.69247 44.36311, -102.69413 44.3...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>US</td>
+      <td>3</td>
+      <td>s6861</td>
+      <td>672349</td>
+      <td>POLYGON ((-97.37897 42.86556, -97.38019 42.868...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-99767d89-ca2b-4672-ba6c-a0d81098ebae')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-99767d89-ca2b-4672-ba6c-a0d81098ebae button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-99767d89-ca2b-4672-ba6c-a0d81098ebae');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+    <div id="df-82268efc-f720-46ec-add5-1119b2beddb6">
+      <button class="colab-df-quickchart" onclick="quickchart('df-82268efc-f720-46ec-add5-1119b2beddb6')"
+                title="Suggest charts"
+                style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+      </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+      <script>
+        async function quickchart(key) {
+          const quickchartButtonEl =
+            document.querySelector('#' + key + ' button');
+          quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+          quickchartButtonEl.classList.add('colab-df-spinner');
+          try {
+            const charts = await google.colab.kernel.invokeFunction(
+                'suggestCharts', [key], {});
+          } catch (error) {
+            console.error('Error during call to suggestCharts:', error);
+          }
+          quickchartButtonEl.classList.remove('colab-df-spinner');
+          quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+        }
+        (() => {
+          let quickchartButtonEl =
+            document.querySelector('#df-82268efc-f720-46ec-add5-1119b2beddb6 button');
+          quickchartButtonEl.style.display =
+            google.colab.kernel.accessAllowed ? 'block' : 'none';
+        })();
+      </script>
+    </div>
+
+    </div>
+  </div>
+
+<p>We can look throught this description of the data: https://www.nrcs.usda.gov/sites/default/files/2022-08/SSURGO-Metadata-Table-Column-Descriptions-Report.pdf to find what each column means</p>
+<h3 id="visualize-soil-data">Visualize Soil Data</h3>
+<p>Let's create a basic map of the soil map units (<code>MUSYM</code>) in South Dakota.</p>
+<pre><code class="language-python"># Create the map
+soil_column = &quot;MUSYM&quot;
+fig, ax = plt.subplots(1, 1, figsize=(16, 12))
+
+# Get unique soil types and create color map
+unique_soils = gdf[soil_column].unique()
+colors = plt.cm.Set3(np.linspace(0, 1, len(unique_soils)))
+color_dict = dict(zip(unique_soils, colors))
+
+# Plot soil polygons
+gdf.plot(ax=ax, legend=False,
+            color=[color_dict.get(x, 'gray') for x in gdf[soil_column]],
+            edgecolor='black', linewidth=0.3)
+
+# Customize the map
+ax.set_title('STATSGO2 Soil Map Units - South Dakota',
+            fontsize=18, fontweight='bold', pad=20)
+ax.set_xlabel('Longitude', fontsize=12)
+ax.set_ylabel('Latitude', fontsize=12)
+ax.grid(True, alpha=0.3)
+
+# Add legend (top 25 soil types)
+legend_elements = [mpatches.Patch(color=color_dict[soil], label=soil)
+                    for soil in sorted(unique_soils)[:25]]
+ax.legend(handles=legend_elements, loc='upper right',
+            bbox_to_anchor=(1.15, 1), fontsize=8, title=f'{soil_column}')
+
+plt.tight_layout()
+plt.show()
+</code></pre>
+<p><img alt="png" src="../nrcs_soil_exploration_files/nrcs_soil_exploration_29_0.png" /></p>
+<h3 id="loading-and-examining-tabular-data">Loading and Examining Tabular Data</h3>
+<p>In addition to the spatial data, the WSS provides tabular data with detailed soil properties. We'll load the <code>muaggatt.txt</code> file, which contains aggregated attribute data for the map units.</p>
+<p>Since this file does not have a header row, we need to provide the column names manually. These names are based on the data description link provided earlier in the notebook.</p>
+<pre><code class="language-python"># Define the column names for muaggatt.csv (no headers in file)
+columns = [
+    &quot;musym&quot;, &quot;muname&quot;, &quot;mustatus&quot;, &quot;slopegraddcp&quot;, &quot;slopegradwta&quot;, &quot;brockdepmin&quot;,
+    &quot;wtdepannmin&quot;, &quot;wtdepaprjunmin&quot;, &quot;flodfreqdcd&quot;, &quot;flodfreqmax&quot;, &quot;pondfreqprs&quot;,
+    &quot;aws025wta&quot;, &quot;aws050wta&quot;, &quot;aws0100wta&quot;, &quot;aws0150wta&quot;, &quot;drclassdcd&quot;, &quot;drclasswettest&quot;,
+    &quot;hydgrpdcd&quot;, &quot;iccdcd&quot;, &quot;iccdcdpct&quot;, &quot;niccdcd&quot;, &quot;niccdcdpct&quot;, &quot;engdwobdcd&quot;,
+    &quot;engdwbdcd&quot;, &quot;engdwbll&quot;, &quot;engdwbml&quot;, &quot;engstafdcd&quot;, &quot;engstafll&quot;, &quot;engstafml&quot;,
+    &quot;engsldcd&quot;, &quot;engsldcp&quot;, &quot;englrsdcd&quot;, &quot;engcmssdcd&quot;, &quot;engcmssmp&quot;, &quot;urbrecptdcd&quot;,
+    &quot;urbrecptwta&quot;, &quot;forpehrtdcp&quot;, &quot;hydclprs&quot;, &quot;awmmfpwwta&quot;, &quot;mukey&quot;
+]
+
+# Load the muaggatt.csv file (update the path if needed)
+muaggatt_path = r&quot;soil_data_sd/wss_gsmsoil_SD_[2016-10-13]/tabular/muaggatt.txt&quot;  # or .txt if that's your file extension
+df = pd.read_csv(muaggatt_path, sep=&quot;|&quot;, engine=&quot;python&quot;, header=None, names=columns, dtype=str)
+</code></pre>
+<p>Now that the data is loaded, let's inspect the first few rows and check the column names to ensure everything loaded correctly.</p>
+<pre><code class="language-python"># Show the first 5 rows of the DataFrame with all columns
+print(&quot;First 5 rows of df with all columns:&quot;)
+pd.set_option('display.max_columns', None)  #Show all columns
+display(df.head(5))  # Show only the first 5 rows
+</code></pre>
+<pre><code>First 5 rows of df with all columns:
+</code></pre>
+<div id="df-d5d585dc-b962-4f7a-91b7-16d8caf17652" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>musym</th>
+      <th>muname</th>
+      <th>mustatus</th>
+      <th>slopegraddcp</th>
+      <th>slopegradwta</th>
+      <th>brockdepmin</th>
+      <th>wtdepannmin</th>
+      <th>wtdepaprjunmin</th>
+      <th>flodfreqdcd</th>
+      <th>flodfreqmax</th>
+      <th>pondfreqprs</th>
+      <th>aws025wta</th>
+      <th>aws050wta</th>
+      <th>aws0100wta</th>
+      <th>aws0150wta</th>
+      <th>drclassdcd</th>
+      <th>drclasswettest</th>
+      <th>hydgrpdcd</th>
+      <th>iccdcd</th>
+      <th>iccdcdpct</th>
+      <th>niccdcd</th>
+      <th>niccdcdpct</th>
+      <th>engdwobdcd</th>
+      <th>engdwbdcd</th>
+      <th>engdwbll</th>
+      <th>engdwbml</th>
+      <th>engstafdcd</th>
+      <th>engstafll</th>
+      <th>engstafml</th>
+      <th>engsldcd</th>
+      <th>engsldcp</th>
+      <th>englrsdcd</th>
+      <th>engcmssdcd</th>
+      <th>engcmssmp</th>
+      <th>urbrecptdcd</th>
+      <th>urbrecptwta</th>
+      <th>forpehrtdcp</th>
+      <th>hydclprs</th>
+      <th>awmmfpwwta</th>
+      <th>mukey</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>s8369</td>
+      <td>Water (s8369)</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>100</td>
+      <td>NaN</td>
+      <td>100</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>657964</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>s4003</td>
+      <td>Pring-Assinniboine-Archin (s4003)</td>
+      <td>NaN</td>
+      <td>5</td>
+      <td>7.5</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>3.83</td>
+      <td>7.21</td>
+      <td>12.48</td>
+      <td>16.89</td>
+      <td>Well drained</td>
+      <td>NaN</td>
+      <td>B</td>
+      <td>NaN</td>
+      <td>46</td>
+      <td>4</td>
+      <td>41</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>664040</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>s4360</td>
+      <td>Neldore-Marvan-Bascovy (s4360)</td>
+      <td>NaN</td>
+      <td>4</td>
+      <td>7.4</td>
+      <td>38</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>3.76</td>
+      <td>7.01</td>
+      <td>10.61</td>
+      <td>13.28</td>
+      <td>Well drained</td>
+      <td>Well drained</td>
+      <td>D</td>
+      <td>NaN</td>
+      <td>60</td>
+      <td>6</td>
+      <td>42</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>664397</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>s4653</td>
+      <td>Winler-Orella-Epsie (s4653)</td>
+      <td>NaN</td>
+      <td>17</td>
+      <td>18.4</td>
+      <td>38</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>2.64</td>
+      <td>4.66</td>
+      <td>5.33</td>
+      <td>5.69</td>
+      <td>Well drained</td>
+      <td>Well drained</td>
+      <td>D</td>
+      <td>NaN</td>
+      <td>98</td>
+      <td>6</td>
+      <td>54</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>664690</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>s4721</td>
+      <td>Peever-Overly-Nutley-Fargo-Dovray (s4721)</td>
+      <td>NaN</td>
+      <td>2</td>
+      <td>1.7</td>
+      <td>NaN</td>
+      <td>153</td>
+      <td>153</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>4.43</td>
+      <td>8.44</td>
+      <td>16.15</td>
+      <td>23.39</td>
+      <td>Well drained</td>
+      <td>Moderately well drained</td>
+      <td>C</td>
+      <td>NaN</td>
+      <td>100</td>
+      <td>2</td>
+      <td>82</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>36</td>
+      <td>NaN</td>
+      <td>665014</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-d5d585dc-b962-4f7a-91b7-16d8caf17652')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-d5d585dc-b962-4f7a-91b7-16d8caf17652 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-d5d585dc-b962-4f7a-91b7-16d8caf17652');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+    <div id="df-bf42d223-c803-4f79-b746-6131f594e485">
+      <button class="colab-df-quickchart" onclick="quickchart('df-bf42d223-c803-4f79-b746-6131f594e485')"
+                title="Suggest charts"
+                style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+      </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+      <script>
+        async function quickchart(key) {
+          const quickchartButtonEl =
+            document.querySelector('#' + key + ' button');
+          quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+          quickchartButtonEl.classList.add('colab-df-spinner');
+          try {
+            const charts = await google.colab.kernel.invokeFunction(
+                'suggestCharts', [key], {});
+          } catch (error) {
+            console.error('Error during call to suggestCharts:', error);
+          }
+          quickchartButtonEl.classList.remove('colab-df-spinner');
+          quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+        }
+        (() => {
+          let quickchartButtonEl =
+            document.querySelector('#df-bf42d223-c803-4f79-b746-6131f594e485 button');
+          quickchartButtonEl.style.display =
+            google.colab.kernel.accessAllowed ? 'block' : 'none';
+        })();
+      </script>
+    </div>
+
+    </div>
+  </div>
+
+<p>We can see from the output that the <code>muaggatt.txt</code> file has been loaded into a pandas DataFrame and the columns are named according to the list we provided. The <code>mukey</code> column is the unique identifier for each map unit and will be used to link this tabular data to the spatial data.</p>
+<p>Before merging the tabular data with the spatial GeoDataFrame, let's standardize the column names in both DataFrames by converting them to lowercase and removing leading/trailing whitespace. This helps prevent issues during the merge operation.</p>
+<p>Now, let's merge the <code>muaggatt</code> DataFrame (<code>df</code>) with the <code>soil_gdf</code> GeoDataFrame (<code>gdf</code>) based on the common <code>mukey</code> column. We will use a left merge to keep all the spatial features and add the corresponding soil attributes.</p>
+<p>After merging, we will display the first few rows of the merged GeoDataFrame to see the added columns.</p>
+<pre><code class="language-python">df.columns = df.columns.str.lower().str.strip()
+gdf.columns = gdf.columns.str.lower().str.strip()
+print(&quot;muaggatt columns before standardizing:&quot;, df.columns.tolist())
+print(&quot;geojson columns before standardizing:&quot;, gdf.columns.tolist())
+
+gdf = gdf.merge(df, on=&quot;mukey&quot;, how=&quot;left&quot;)
+</code></pre>
+<pre><code>muaggatt columns before standardizing: ['musym', 'muname', 'mustatus', 'slopegraddcp', 'slopegradwta', 'brockdepmin', 'wtdepannmin', 'wtdepaprjunmin', 'flodfreqdcd', 'flodfreqmax', 'pondfreqprs', 'aws025wta', 'aws050wta', 'aws0100wta', 'aws0150wta', 'drclassdcd', 'drclasswettest', 'hydgrpdcd', 'iccdcd', 'iccdcdpct', 'niccdcd', 'niccdcdpct', 'engdwobdcd', 'engdwbdcd', 'engdwbll', 'engdwbml', 'engstafdcd', 'engstafll', 'engstafml', 'engsldcd', 'engsldcp', 'englrsdcd', 'engcmssdcd', 'engcmssmp', 'urbrecptdcd', 'urbrecptwta', 'forpehrtdcp', 'hydclprs', 'awmmfpwwta', 'mukey']
+geojson columns before standardizing: ['areasymbol', 'spatialver', 'musym', 'mukey', 'geometry']
+</code></pre>
+<pre><code class="language-python">pd.set_option('display.max_columns', None)  #Show all columns
+display(gdf.head(5))  # Show only the first 5 rows
+print(&quot;geojson columns before standardizing:&quot;, gdf.columns.tolist())
+</code></pre>
+<div id="df-08e29370-575a-47a3-99cd-b507129b1bd7" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>areasymbol</th>
+      <th>spatialver</th>
+      <th>musym_x</th>
+      <th>mukey</th>
+      <th>geometry</th>
+      <th>musym_y</th>
+      <th>muname</th>
+      <th>mustatus</th>
+      <th>slopegraddcp</th>
+      <th>slopegradwta</th>
+      <th>brockdepmin</th>
+      <th>wtdepannmin</th>
+      <th>wtdepaprjunmin</th>
+      <th>flodfreqdcd</th>
+      <th>flodfreqmax</th>
+      <th>pondfreqprs</th>
+      <th>aws025wta</th>
+      <th>aws050wta</th>
+      <th>aws0100wta</th>
+      <th>aws0150wta</th>
+      <th>drclassdcd</th>
+      <th>drclasswettest</th>
+      <th>hydgrpdcd</th>
+      <th>iccdcd</th>
+      <th>iccdcdpct</th>
+      <th>niccdcd</th>
+      <th>niccdcdpct</th>
+      <th>engdwobdcd</th>
+      <th>engdwbdcd</th>
+      <th>engdwbll</th>
+      <th>engdwbml</th>
+      <th>engstafdcd</th>
+      <th>engstafll</th>
+      <th>engstafml</th>
+      <th>engsldcd</th>
+      <th>engsldcp</th>
+      <th>englrsdcd</th>
+      <th>engcmssdcd</th>
+      <th>engcmssmp</th>
+      <th>urbrecptdcd</th>
+      <th>urbrecptwta</th>
+      <th>forpehrtdcp</th>
+      <th>hydclprs</th>
+      <th>awmmfpwwta</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>US</td>
+      <td>3</td>
+      <td>s6871</td>
+      <td>672359</td>
+      <td>POLYGON ((-96.75075 43.50416, -96.75365 43.504...</td>
+      <td>s6871</td>
+      <td>Graceville-Dempster (s6871)</td>
+      <td>NaN</td>
+      <td>1</td>
+      <td>1.5</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>5.21</td>
+      <td>10.22</td>
+      <td>19.29</td>
+      <td>26.29</td>
+      <td>Well drained</td>
+      <td>Well drained</td>
+      <td>B</td>
+      <td>NaN</td>
+      <td>96</td>
+      <td>2</td>
+      <td>50</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>8</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>US</td>
+      <td>3</td>
+      <td>s6793</td>
+      <td>672281</td>
+      <td>POLYGON ((-103.49977 43.32849, -103.50432 43.3...</td>
+      <td>s6793</td>
+      <td>Tilford-Nevee (s6793)</td>
+      <td>NaN</td>
+      <td>5</td>
+      <td>14</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>4.6</td>
+      <td>8.67</td>
+      <td>16.17</td>
+      <td>23.26</td>
+      <td>Well drained</td>
+      <td>Well drained</td>
+      <td>B</td>
+      <td>NaN</td>
+      <td>100</td>
+      <td>3</td>
+      <td>36</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>US</td>
+      <td>3</td>
+      <td>s6792</td>
+      <td>672280</td>
+      <td>POLYGON ((-102.95403 44.33908, -102.95738 44.3...</td>
+      <td>s6792</td>
+      <td>Satanta-Pierre-Nunn (s6792)</td>
+      <td>NaN</td>
+      <td>4</td>
+      <td>6.8</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>4.16</td>
+      <td>7.94</td>
+      <td>14.91</td>
+      <td>21.24</td>
+      <td>Well drained</td>
+      <td>Well drained</td>
+      <td>C</td>
+      <td>NaN</td>
+      <td>81</td>
+      <td>3</td>
+      <td>61</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>US</td>
+      <td>3</td>
+      <td>s6792</td>
+      <td>672280</td>
+      <td>POLYGON ((-102.69247 44.36311, -102.69413 44.3...</td>
+      <td>s6792</td>
+      <td>Satanta-Pierre-Nunn (s6792)</td>
+      <td>NaN</td>
+      <td>4</td>
+      <td>6.8</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>4.16</td>
+      <td>7.94</td>
+      <td>14.91</td>
+      <td>21.24</td>
+      <td>Well drained</td>
+      <td>Well drained</td>
+      <td>C</td>
+      <td>NaN</td>
+      <td>81</td>
+      <td>3</td>
+      <td>61</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>US</td>
+      <td>3</td>
+      <td>s6861</td>
+      <td>672349</td>
+      <td>POLYGON ((-97.37897 42.86556, -97.38019 42.868...</td>
+      <td>s6861</td>
+      <td>Wentworth-Ethan-Egan (s6861)</td>
+      <td>NaN</td>
+      <td>4</td>
+      <td>3.6</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>5.01</td>
+      <td>9.74</td>
+      <td>19.04</td>
+      <td>28.13</td>
+      <td>Well drained</td>
+      <td>Well drained</td>
+      <td>B</td>
+      <td>NaN</td>
+      <td>92</td>
+      <td>2</td>
+      <td>36</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>13</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-08e29370-575a-47a3-99cd-b507129b1bd7')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-08e29370-575a-47a3-99cd-b507129b1bd7 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-08e29370-575a-47a3-99cd-b507129b1bd7');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+    <div id="df-c1011c32-a507-4d4a-9001-634c73ea77cb">
+      <button class="colab-df-quickchart" onclick="quickchart('df-c1011c32-a507-4d4a-9001-634c73ea77cb')"
+                title="Suggest charts"
+                style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+      </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+      <script>
+        async function quickchart(key) {
+          const quickchartButtonEl =
+            document.querySelector('#' + key + ' button');
+          quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+          quickchartButtonEl.classList.add('colab-df-spinner');
+          try {
+            const charts = await google.colab.kernel.invokeFunction(
+                'suggestCharts', [key], {});
+          } catch (error) {
+            console.error('Error during call to suggestCharts:', error);
+          }
+          quickchartButtonEl.classList.remove('colab-df-spinner');
+          quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+        }
+        (() => {
+          let quickchartButtonEl =
+            document.querySelector('#df-c1011c32-a507-4d4a-9001-634c73ea77cb button');
+          quickchartButtonEl.style.display =
+            google.colab.kernel.accessAllowed ? 'block' : 'none';
+        })();
+      </script>
+    </div>
+
+    </div>
+  </div>
+
+<pre><code>geojson columns before standardizing: ['areasymbol', 'spatialver', 'musym_x', 'mukey', 'geometry', 'musym_y', 'muname', 'mustatus', 'slopegraddcp', 'slopegradwta', 'brockdepmin', 'wtdepannmin', 'wtdepaprjunmin', 'flodfreqdcd', 'flodfreqmax', 'pondfreqprs', 'aws025wta', 'aws050wta', 'aws0100wta', 'aws0150wta', 'drclassdcd', 'drclasswettest', 'hydgrpdcd', 'iccdcd', 'iccdcdpct', 'niccdcd', 'niccdcdpct', 'engdwobdcd', 'engdwbdcd', 'engdwbll', 'engdwbml', 'engstafdcd', 'engstafll', 'engstafml', 'engsldcd', 'engsldcp', 'englrsdcd', 'engcmssdcd', 'engcmssmp', 'urbrecptdcd', 'urbrecptwta', 'forpehrtdcp', 'hydclprs', 'awmmfpwwta']
+</code></pre>
+<p>As you can see in the output above, the GeoDataFrame now includes the attribute columns from the <code>muaggatt.txt</code> file, appended to the original spatial data. We can now use these attributes for mapping and analysis.</p>
+<h3 id="visualizing-soil-attributes">Visualizing Soil Attributes</h3>
+<p>With the merged data, we can now create maps that visualize specific soil attributes across South Dakota. Let's create a map showing the available water storage at 0-150 cm depth (<code>aws0150wta</code>). This attribute is important for understanding soil moisture availability for plants.</p>
+<pre><code class="language-python">soil_column = 'aws0150wta'
+gdf_overlay = gdf[~gdf[soil_column].isna()].copy()
+
+# Bin the data into 25 ranges (optional, for discrete bins)
+num_bins = 25
+gdf_overlay['binned'] = pd.cut(
+    gdf_overlay[soil_column].astype(float),
+    bins=num_bins,
+    include_lowest=True
+)
+
+# Set up colormap and normalization
+cmap = plt.cm.viridis
+norm = mpl.colors.Normalize(
+    vmin=gdf_overlay[soil_column].astype(float).min(),
+    vmax=gdf_overlay[soil_column].astype(float).max()
+)
+
+# Plot base map
+fig, ax = plt.subplots(1, 1, figsize=(12, 8))
+gdf.boundary.plot(ax=ax, color='black', linewidth=0.5)
+
+# Plot overlay (use the original column for a smooth colorbar)
+gdf_overlay.plot(
+    column=soil_column,
+    ax=ax,
+    legend=False,  # We'll add a custom colorbar
+    cmap=cmap,
+    edgecolor='pink'
+)
+
+# Create ScalarMappable and add colorbar
+sm = mpl.cm.ScalarMappable(cmap=cmap, norm=norm)
+sm._A = []  # Required for older matplotlib versions
+
+cbar = fig.colorbar(sm, ax=ax, fraction=0.03, pad=0.04)
+cbar.set_label(soil_column)
+
+ax.set_title(f'South Dakota Map with {soil_column} Overlay')
+ax.set_axis_off()
+plt.show()
+</code></pre>
+<p><img alt="png" src="../nrcs_soil_exploration_files/nrcs_soil_exploration_40_0.png" /></p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      2025-09-05
+    
+  </small>
+</div>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9h4m4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21H9m0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03V19Z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="-1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12h-4M15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3h9m0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97V5Z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+                Thanks for your feedback!
+              
+            </div>
+          
+            <div data-md-value="-1" hidden>
+              
+              
+                
+              
+              
+                Thanks for your feedback! Help us improve this page by using our <a href="..." target="_blank" rel="noopener">feedback form</a>.  
+              
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../../watershed_boundaries/watershed_boundaries/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Watershed Boundaries" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Watershed Boundaries
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2023 University of Colorado Boulder
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/cu-esiil/" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.sections", "navigation.instant", "navigation.tracking", "navigation.indexes", "navigation.top", "toc.integrate", "toc.follow", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      
+    
+    
+  </body>
+</html>

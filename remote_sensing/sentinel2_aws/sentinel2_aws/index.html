@@ -1,0 +1,1429 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Data for May 2023 ESIIL Innovation Summit">
+      
+      
+        <meta name="author" content="ESIIL CI team (lead = Ty Tuff)">
+      
+      
+        <link rel="canonical" href="https://cu-esiil.github.io/data-library/remote_sensing/sentinel2_aws/sentinel2_aws/">
+      
+      <link rel="icon" href="../../../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-8.5.10">
+    
+    
+      
+        <title>Multispectral Sentinel-2 on AWS - ESIIL Data Library</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.975780f9.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Open Sans";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+
+  <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-C88FVQM27T"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-C88FVQM27T",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-C88FVQM27T",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#sentinel2-multispectral-data-on-aws" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="ESIIL Data Library" class="md-header__button md-logo" aria-label="ESIIL Data Library" data-md-component="logo">
+      
+  <img src="../../../assets/ESIIL_logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ESIIL Data Library
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Multispectral Sentinel-2 on AWS
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: white)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+            </label>
+          
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/cu-esiil/data-library" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    data-library
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="ESIIL Data Library" class="md-nav__button md-logo" aria-label="ESIIL Data Library" data-md-component="logo">
+      
+  <img src="../../../assets/ESIIL_logo.png" alt="logo">
+
+    </a>
+    ESIIL Data Library
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/cu-esiil/data-library" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    data-library
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tags/" class="md-nav__link">
+        Tags
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Vegetation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Vegetation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Vegetation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../vegetation/rap-tiles/rap-tiles/" class="md-nav__link">
+        RAP Tiles
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          More data
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="More data" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          More data
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../indian_country/native_lands_digital/native_lands_digital/" class="md-nav__link">
+        Global native homelands
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../indian_country/national_atlas_of_indian_lands/National_atlas_of_indian_lands/" class="md-nav__link">
+        USA Federal tribal reservations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../indian_country/aiannh/AIANNH/" class="md-nav__link">
+        All types of tribal land in USA
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../water/neon_aquatic/neon_aquatic/" class="md-nav__link">
+        NEON Aquatic Instrument Data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../water/epa_water_quality/epa_water_quality/" class="md-nav__link">
+        EPA water quality
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../water/usgs_water_services/usgs_water_services/" class="md-nav__link">
+        USGS water services
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../librarian/imls/" class="md-nav__link">
+        Public Libraries Survey
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../neon_hyperspectral/neon_hyperspectral/" class="md-nav__link">
+        NEON Hyperspectral Data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lidar_canopy_height/lidar_canopy_height/" class="md-nav__link">
+        Lidar-based Canopy Height
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Multispectral Sentinel-2 on AWS
+      </a>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../solutions/osm/osm/" class="md-nav__link">
+        Open Street Map
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hazards/Air_data/Air_data/" class="md-nav__link">
+        EPA air quality data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hazards/FIRED/FIRED/" class="md-nav__link">
+        Fire Event Delineation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hazards/ICS209_plus/ICS209_Plus/" class="md-nav__link">
+        US National Incident Management System
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hazards/Uranium_mines/Uranium_mines/" class="md-nav__link">
+        Uranium mines
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../scale/iNaturalist/iNaturalist/" class="md-nav__link">
+        Species Occurrence as points
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ethics/wgi/wgi/" class="md-nav__link">
+        World Governance Indicators
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../forecasting/neon/neon/" class="md-nav__link">
+        National Ecological Observation Network
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../forecasting/Phenology_network/Phenology_network/" class="md-nav__link">
+        USA phenology network
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/eco4cast/neon4cast-example" class="md-nav__link">
+        Forecasting NEON data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/NEONScience/NEON-Data-Skills/blob/main/tutorials-in-development/ESIIL_InnovationSummit_2023/Python/wildfire/fire_effects_on_veg_structure_using_lidar.ipynb" class="md-nav__link">
+        NEON lidar after fire
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../harmonization/dryad/dryad/" class="md-nav__link">
+        Data cataloged with publications
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../harmonization/neon_and_lter/neon_and_lter/" class="md-nav__link">
+        NEON and LTER
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../harmonization/neon_lidar_and_organismal/neon_lidar_and_organismal/" class="md-nav__link">
+        NEON lidar and organismal data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../food/FAOSTAT/FAO/" class="md-nav__link">
+        UN Food and Agriculture
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../justice/redlining/redlining/" class="md-nav__link">
+        Redlining
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../justice/congress/congress/" class="md-nav__link">
+        Congressional voting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../policy/census/US_Census/" class="md-nav__link">
+        US Census
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../policy/bank_fail/FDIC_Failed_Bank/" class="md-nav__link">
+        FDIC Failed Banks list
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AI/weatherbench/weatherbench/" class="md-nav__link">
+        WeatherBench
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../math/neon_pathogen/neon_pathogen/" class="md-nav__link">
+        NEON tick pathogen data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../math/foodweb/foodweb/" class="md-nav__link">
+        Everglades food network
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../math/mammal_primate_association/mammal_primate_associations/" class="md-nav__link">
+        Mammal Primate association network
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../education/NCES/NCES/" class="md-nav__link">
+        Education Statistics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../education/nonprofit_explorer/nonprofit_explorer/" class="md-nav__link">
+        Nonprofit explorer
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../maka-sitomniya/global_forest_change/global_forest_change/" class="md-nav__link">
+        Global forest change
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../maka-sitomniya/NLCD/NLCD/" class="md-nav__link">
+        National Land Cover Database (NLCD)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../maka-sitomniya/watershed_boundaries/watershed_boundaries/" class="md-nav__link">
+        Watershed Boundaries
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../maka-sitomniya/NRCS/nrcs_soil_exploration/" class="md-nav__link">
+        NRCS Soil Survey
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <a href="https://github.com/cu-esiil/data-library/edit/main/docs/remote_sensing/sentinel2_aws/sentinel2_aws.md" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+<h1 id="sentinel2-multispectral-data-on-aws">Sentinel2 Multispectral Data on AWS</h1>
+<p>Erick Verleye, ESIIL Software Developer
+2023-08-08</p>
+<p>SENTINEL-2 is a high-resolution, multi-spectral Earth imaging mission comprised
+of twin satellites. Together their payloads sample 13 different spectral bands:
+four bands at 10 m, six bands at 20 m and three bands at 60 m spatial
+resolution. Sentinel2 data is particularly useful for mapping changes
+or cloud corrected swaths of land cover. </p>
+<p>SENTINEL-2 data can be accessed on the web at the Copernicus Open Access Hub,
+however data rate limits can significantly increase download times for large requests. 
+Alternatively, Sentinel-2 data can be downloaded from publicly available AWS S3 buckets much faster, 
+but for a small data transfer cost.</p>
+<p>This write up will show how to download Sentinel Level-1 C data from S3 with 
+Python for a given latitude, longitude, and date range. Please note that as the 
+download charges are 'Requester-pays', you will need an AWS account and will be charged (a small amount)
+for any data downloaded.</p>
+<p>We must first import some packages, the versions for the non-native packages
+used at the time of writing are:  </p>
+<ul>
+<li>boto3==1.26.131  </li>
+<li>geojson==3.0.1  </li>
+<li>tqdm==4.65.0  </li>
+<li>shapely==2.0.1  </li>
+</ul>
+<pre><code>import json
+
+import multiprocessing as mp
+import os
+
+from argparse import Namespace
+from datetime import datetime, timedelta
+from typing import List, Tuple, Union
+
+import boto3
+import geojson
+import tqdm
+from shapely.geometry import Polygon
+</code></pre>
+<p>Next, we must use boto3 to create a connection to our AWS account. The 
+initialization of the boto3.session object will be different depending on the environment you are running this code in:  </p>
+<ul>
+<li>Using the AWS CLI from a personal computer to log in, the profile name will typically be default. </li>
+<li>Using a federated access login, the profile name will typically be the name of the software. </li>
+<li>Using S3 configured IAM profile, no profile name is required.  </li>
+</ul>
+<p>Each of these arguments, if applicable, can be found in the aws credentials
+file typically found at ~/.aws/credentials</p>
+<pre><code>session = boto3.Session(profile_name=profile)
+
+# AWS CLI
+session = boto3.Session(profile_name='default')
+
+# Federated login (saml2aws example)
+session = boto3.Session(profile_name='saml')
+
+# S3 configured IAM profile on EC2 instance
+session = boto3.Session()
+
+</code></pre>
+<p>Now that a connection to the AWS account has been created through the client 
+object, let's define some constants. We will also define several functions to
+make downloading the data easier:  </p>
+<ul>
+<li>
+<p>find_available_files <br />
+  -- finds the set of available files in the s3 bucket given a date range,
+  lat/lon bounds, and list of bands.  </p>
+</li>
+<li>
+<p>find_overlapping_mgrs<br />
+  -- The Sentinel-2 data is organized depending on which Military Grid Reference System (MGRS)
+  square that it belongs to. This function converts a bounding box defined in
+  lat/lon as [min_lon, min_lat, max_lon, max_lat] to the military grid squares that is overlaps.
+  More information on the MGRS can be found at https://www.maptools.com/tutorials/mgrs/quick_guide</p>
+</li>
+</ul>
+<p>NOTE: You will have to download the mgrs_lookup.geojson file from 
+https://github.com/CU-ESIIL/data-library/blob/main/docs/remote_sensing/sentinel2_aws/mgrs_lookup.geojson
+and place it into the working directory that this code is being run from.</p>
+<pre><code>SENTINEL_2_BUCKET_NAME = 'sentinel-s2-l1c'  # Name of the s3 bucket on AWS hosting the sentinel-2 data
+
+
+def find_overlapping_mgrs(bounds: List[float]) -&gt; List[str]:
+    &quot;&quot;&quot;
+    Files in the Sinergise Sentinel2 S3 bucket are organized by which military grid they overlap. Thus, the
+    military grids that overlap the input bounding box defined in lat / lon must be found. A lookup table that
+    includes each grid name and its geometry is used to find the overlapping grids.
+    Args:
+        bounds (list): Bounding box definition as [min_lon, min_lat, max_lon, max_lat]
+    &quot;&quot;&quot;
+    print('Finding overlapping tiles... ')
+    input_bounds = Polygon([(bounds[0], bounds[1]), (bounds[2], bounds[1]), (bounds[2], bounds[3]),
+                            (bounds[0], bounds[3]), (bounds[0], bounds[1])])
+    with open('mgrs_lookup.geojson', 'r') as f:
+        ft = geojson.load(f)
+        return [i['properties']['mgs'] for i in ft[1:] if
+                input_bounds.intersects(Polygon(i['geometry']['coordinates'][0]))]
+
+
+def find_available_files(s3_client, bounds: List[float], start_date: datetime, end_date: datetime,
+                         bands: List[str]) -&gt; List[Tuple[str, str]]:
+    &quot;&quot;&quot;
+    Given a bounding box and start / end date, finds which files are available on the bucket and
+    meet the search criteria
+    Args:
+        bounds (list): Lower left and top right corner of bounding box defined in 
+        lat / lon [min_lon, min_lat, max_lon, max_lat]
+        start_date (str): Beginning of requested data creation date YYYY-MM-DD
+        end_date (str): End of requested data creation date YYYY-MM-DD
+    &quot;&quot;&quot;
+    date_paths = []
+    ref_date = start_date
+    while ref_date &lt;= end_date:
+        tt = ref_date.timetuple()
+        date_paths.append(f'/{tt.tm_year}/{tt.tm_mon}/{tt.tm_mday}/')
+        ref_date = ref_date + timedelta(days=1)
+
+    info = []
+    mgrs_grids = find_overlapping_mgrs(bounds)
+    for grid_string in mgrs_grids:
+        utm_code = grid_string[:2]
+        latitude_band = grid_string[2]
+        square = grid_string[3:5]
+        grid = f'tiles/{utm_code}/{latitude_band}/{square}'
+        response = s3_client.list_objects_v2(
+            Bucket=SENTINEL_2_BUCKET_NAME,
+            Prefix=grid + '/',
+            MaxKeys=300,
+            RequestPayer='requester'
+        )
+        if 'Contents' not in list(response.keys()):
+            continue
+
+        for date in date_paths:
+            response = s3_client.list_objects_v2(
+                Bucket=SENTINEL_2_BUCKET_NAME,
+                Prefix=grid + date + '0/',  # '0/' is for the sequence, which in most cases will be 0
+                MaxKeys=100,
+                RequestPayer='requester'
+            )
+            if 'Contents' in list(response.keys()):
+                info += [
+                    (v['Key'], v['Size']) for v in response['Contents'] if
+                    any([band + '.jp2' in v['Key'] for band in bands]) or 'MSK_CLOUDS_B00.gml' in v['Key']
+                ]
+
+    return info
+</code></pre>
+<p>Next we will define the download function which will bring everything together and start
+requesting data from s3. This function is designed to download the files in parallel, so a download_task
+function is defined as well. 
+Note that multiprocessing will not work as implemented here in
+iPython (Jupyter notebooks, etc.) and so that block of code is commented out. If you are 
+running this in a different environment and would like to download in parallel, un-comment this block 
+and comment the sequential block below.</p>
+<pre><code>def download_task(namespace: Namespace) -&gt; None:
+    &quot;&quot;&quot;
+    Downloads a single file from the indicated s3 bucket. This function is intended to be spawned in parallel from the
+    parent process.
+    Args:
+        namespace (Namespace): Contains the bucket name, s3 file name, and destination required for s3 download request.
+        Each value in the namespace must be a pickle-izable type (i.e. str).
+    &quot;&quot;&quot;
+    session = boto3.Session(profile_name=namespace.profile_name)
+    s3 = session.client('s3')
+    s3.download_file(namespace.bucket_name, namespace.available_file,
+                     namespace.dest,
+                     ExtraArgs={'RequestPayer': 'requester'}
+                     )
+
+
+def download(session, bounds: List[float], start_date: datetime, end_date: datetime,
+             bands: List[float], out_dir: str, buffer: float = None) -&gt; None:
+    &quot;&quot;&quot;
+    Downloads a list of .jp2 files from the Sinergise Sentinel2 LC1 bucket given a bounding box defined in lat/long, a buffer in meters, and a start and end date. Only Bands 2-4 are requested.
+     Args:
+         bounds (list): Bounding box defined in lat / lon [min_lon, min_lat, max_lon, max_lat]
+         buffer (float): Amount by which to extend the bounding box by, in meters
+         start_date (str): Beginning of requested data creation date YYYY-MM-DD
+         end_date (str): End of requested data creation date YYYY-MM-DD
+         bands (list): The bands to download for each file. Ex. ['B02', 'B03', 'B04', 'B08'] for R, G, B, and
+         near wave IR, respectively
+         out_dir (str): Path to directory where downloaded files will be written to
+    &quot;&quot;&quot;
+    # Convert the buffer from meters to degrees lat/long at the equator
+    if buffer is not None:
+        buffer /= 111000
+
+        # Adjust the bounding box to include the buffer (subtract from min lat/long values, add to max lat/long values)
+        bounds[0] -= buffer
+        bounds[1] -= buffer
+        bounds[2] += buffer
+        bounds[3] += buffer
+
+    s3_client = session.client('s3')
+    available_files = find_available_files(s3_client, bounds, start_date, end_date, bands)
+
+    args = []
+    total_data = 0
+    for file_info in available_files:
+        file_path = file_info[0]
+        if '/preview/' in file_path:
+            continue
+
+        created_file_path = os.path.join(out_dir, file_path.replace('_qi_', '').replace('/', '_').replace('tiles_', ''))
+
+        # Skip if file is already local
+        if os.path.exists(created_file_path):
+            continue
+
+        total_data += file_info[1]
+
+        args.append(Namespace(available_file=file_path, bucket_name=SENTINEL_2_BUCKET_NAME, profile_name=session.profile_name,
+                              dest=created_file_path))
+
+    total_data /= 1E9
+    print(f'Found {len(args)} files for download. Total size of files is'
+          f' {round(total_data, 2)}GB and estimated cost will be ${round(0.09 * total_data, 2)}'
+          )
+
+    # For multiprocessing when being run in iPython (Jupyter notebook, etc.)
+    # with mp.Pool(mp.cpu_count() - 1) as pool:
+        # for _ in tqdm.tqdm(pool.imap_unordered(download_task, args), total=len(args)):
+            # pass
+
+    # Sequential download for use in iPython (Jupyter notebooks, etc.) 
+    for _ in tqdm.tqdm(args, total=len(args)):
+        download_task(args)
+
+</code></pre>
+<p>Once all of the above functions and variables are defined, we can now run download for a certain time range and region.
+First make sure the directory corresponding to the out_dir parameter you pass in already exists. If not, create the directory.</p>
+<pre><code>out_dir = 'Uganda'
+os.makedirs(out_dir, exist_ok=True)
+
+# Download RGB band data from the Kibaale district of Uganda from June 15, 2017 - June 30, 2017  
+download(session=session, bounds=[30.5887, 0.0536, 31.7697, 1.8028], start_date=datetime(2017, 6, 15),
+         end_date=datetime(2017, 6, 30), bands=['B02', 'B03', 'B04'], out_dir=out_dir)
+
+</code></pre>
+<p>Cloud files will be downloaded alongside the band data. These cloud files can be used to create 
+cloud-corrected composite images over a region. To learn more about creating cloud corrected composites, check out our tutorial on ESIIL's Analytics Library: https://analytics-library.esiil.org/remote_sensing/sentinel2_cloud_correction/sentinel_2_cloud_correction/</p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      2025-09-05
+    
+  </small>
+</div>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9h4m4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21H9m0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03V19Z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="-1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12h-4M15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3h9m0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97V5Z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+                Thanks for your feedback!
+              
+            </div>
+          
+            <div data-md-value="-1" hidden>
+              
+              
+                
+              
+              
+                Thanks for your feedback! Help us improve this page by using our <a href="..." target="_blank" rel="noopener">feedback form</a>.  
+              
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../../lidar_canopy_height/lidar_canopy_height/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Lidar-based Canopy Height" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Lidar-based Canopy Height
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../../solutions/osm/osm/" class="md-footer__link md-footer__link--next" aria-label="Next: Open Street Map" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Open Street Map
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2023 University of Colorado Boulder
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/cu-esiil/" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.sections", "navigation.instant", "navigation.tracking", "navigation.indexes", "navigation.top", "toc.integrate", "toc.follow", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      
+    
+    
+  </body>
+</html>
