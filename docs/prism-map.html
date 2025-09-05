@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>PRISM Interactive Map (streamed)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <style>
+    :root { --shadow: 0 1px 4px rgba(0,0,0,.1); }
+    body {margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
+    .toolbar {padding:10px; display:flex; gap:8px; align-items:center; flex-wrap:wrap; box-shadow:var(--shadow);}
+    #map {width:100vw; height: calc(100vh - 62px);}
+    label {font-size:14px; color:#333;}
+    select, input[type="date"], button {padding:4px 6px; font-size:14px;}
+    .msg {margin-left:auto; font-size:13px; color:#666}
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <label>Variable
+      <select id="var">
+        <option value="tmax">tmax (°C×10)</option>
+        <option value="tmin">tmin (°C×10)</option>
+        <option value="tmean">tmean (°C×10)</option>
+        <option value="ppt">ppt (mm)</option>
+        <option value="tdmean">tdmean (°C×10)</option>
+        <option value="vpdmin">vpdmin (hPa)</option>
+        <option value="vpdmax">vpdmax (hPa)</option>
+      </select>
+    </label>
+    <label>Frequency
+      <select id="freq">
+        <option value="daily" selected>daily</option>
+        <option value="monthly">monthly</option>
+        <option value="annual">annual</option>
+      </select>
+    </label>
+    <label>Date
+      <!-- Daily uses YYYY-MM-DD; monthly choose any day in target month -->
+      <input id="date" type="date" value="2025-07-15">
+    </label>
+    <label>Resolution
+      <select id="res">
+        <option value="800m" selected>800 m</option>
+        <option value="4km">4 km</option>
+        <option value="400m">400 m</option>
+      </select>
+    </label>
+    <label>Dataset
+      <select id="dataset" title="LT only valid for monthly 800 m">
+        <option value="an" selected>an (all networks)</option>
+        <option value="lt">lt (monthly 800 m only)</option>
+      </select>
+    </label>
+    <button id="load" title="Fetch zipped COG → unzip → draw">Load</button>
+    <div class="msg" id="msg">Tip: temperatures are °C × 10</div>
+  </div>
+
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="https://unpkg.com/geotiff@2.0.7/dist-browser/geotiff.min.js"></script>
+  <script src="https://unpkg.com/georaster/dist/georaster.browser.min.js"></script>
+  <script src="https://unpkg.com/georaster-layer-for-leaflet/dist/georaster-layer-for-leaflet.min.js"></script>
+
+  <script>
+    // Basemap
+    const map = L.map('map', { preferCanvas: true }).setView([39, -98], 5);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution:'&copy; OpenStreetMap' }).addTo(map);
+
+    let currentLayer = null;
+    const RES_IN = { "4km":"25m", "800m":"30s", "400m":"15s" }; // filename tag INSIDE ZIP
+    const RES_WS = { "4km":"4km", "800m":"800m", "400m":"400m" }; // web-service param
+
+    function ymd(d){ return d.replaceAll('-',''); }
+    function ym(d){  return d.slice(0,7).replace('-',''); }
+
+    function buildUrlAndInnerName({variable, date, freq, resolution, dataset}) {
+      const region = "us";
+      const datecode = (freq==="daily") ? ymd(date)
+                      : (freq==="monthly") ? ym(date)
+                      : date.slice(0,4);
+      if (dataset==="lt" && !(freq==="monthly" && resolution==="800m")) {
+        throw new Error("dataset='lt' is only valid for monthly 800 m.");
+      }
+      const tail = (dataset==="lt") ? "/lt" : "";
+      const base = `https://services.nacse.org/prism/data/get/${region}/${RES_WS[resolution]}/${variable}/${datecode}${tail}`;
+      const inner = `prism_${variable}_${region}_${RES_IN[resolution]}_${datecode}.tif`;
+      return { zipUrl: base, innerName: inner };
+    }
+
+    function rampRGBA(min, max) {
+      return (v) => {
+        if (v==null || isNaN(v)) return [0,0,0,0];
+        const t = Math.min(1, Math.max(0, (v - min) / (max - min || 1)));
+        const r = Math.round(255 * t);
+        const b = Math.round(255 * (1 - t));
+        return [r, 0, b, 190];
+      };
+    }
+
+    async function loadRaster() {
+      const variable   = document.getElementById('var').value;
+      const freq       = document.getElementById('freq').value;
+      const date       = document.getElementById('date').value;
+      const resolution = document.getElementById('res').value;
+      const dataset    = document.getElementById('dataset').value;
+      const msg        = document.getElementById('msg');
+
+      try {
+        const { zipUrl, innerName } = buildUrlAndInnerName({variable, date, freq, resolution, dataset});
+        msg.textContent = "Fetching grid package…";
+        const resp = await fetch(zipUrl); // may fail if CORS is denied by server
+        if (!resp.ok) throw new Error(`HTTP ${resp.status} fetching ${zipUrl}`);
+        const buf = await resp.arrayBuffer();
+
+        msg.textContent = "Unzipping…";
+        const zip = await JSZip.loadAsync(buf);
+        const entry = zip.file(innerName);
+        if (!entry) throw new Error(`Inner file not found: ${innerName}`);
+
+        msg.textContent = "Parsing GeoTIFF…";
+        const tiffArrayBuf = await entry.async("arraybuffer");
+        const georaster = await parseGeoraster(tiffArrayBuf);
+
+        const isTemp = ["tmin","tmax","tmean"].includes(variable);
+        const min = (georaster.mins?.[0] ?? 0) / (isTemp ? 10 : 1);
+        const max = (georaster.maxs?.[0] ?? 1) / (isTemp ? 10 : 1);
+        const colorFnRaw = rampRGBA(min, max);
+        const colorFn = (val) => colorFnRaw(isTemp && typeof val==="number" ? val/10.0 : val);
+
+        if (currentLayer) { map.removeLayer(currentLayer); currentLayer = null; }
+        currentLayer = new GeoRasterLayer({
+          georaster,
+          pixelValuesToColorFn: colorFn,
+          resolution: 256,
+          opacity: 0.8
+        }).addTo(map);
+
+        map.fitBounds(currentLayer.getBounds());
+        msg.textContent = `Drawn: ${variable} ${freq} ${date} (${resolution})`;
+      } catch (err) {
+        console.error(err);
+        msg.textContent = "Could not load (likely CORS or bad parameters). See console for details.";
+        if (currentLayer) { map.removeLayer(currentLayer); currentLayer = null; }
+      }
+    }
+
+    document.getElementById('load').addEventListener('click', loadRaster);
+    loadRaster(); // initial draw
+  </script>
+</body>
+</html>
