@@ -33,13 +33,13 @@
 - [NCES](education/NCES/NCES.md)
 - [nonprofit explorer](education/nonprofit_explorer/nonprofit_explorer.md)
 
-## epica_dome_c_ch4
-
-- [EPICA Dome C Methane Record](hazards/epica_dome_c_ch4/epica_dome_c_ch4.md)
-
 ## epa_water_quality
 
 - [epa water quality](water/epa_water_quality/epa_water_quality.md)
+
+## epica_dome_c_ch4
+
+- [epica dome c ch4](hazards/epica_dome_c_ch4/epica_dome_c_ch4.md)
 
 ## ethics
 
@@ -65,6 +65,7 @@
 
 - [Phenology network](forecasting/Phenology_network/Phenology_network.md)
 - [neon](forecasting/neon/neon.md)
+- [prism](forecasting/prism/prism.md)
 
 ## global_forest_change
 
@@ -79,10 +80,10 @@
 ## hazards
 
 - [Air data](hazards/Air_data/Air_data.md)
-- [EPICA Dome C Methane Record](hazards/epica_dome_c_ch4/epica_dome_c_ch4.md)
 - [FIRED](hazards/FIRED/FIRED.md)
 - [ICS209 Plus](hazards/ICS209_plus/ICS209_Plus.md)
 - [Uranium mines](hazards/Uranium_mines/Uranium_mines.md)
+- [epica dome c ch4](hazards/epica_dome_c_ch4/epica_dome_c_ch4.md)
 
 ## ics209_plus
 
@@ -101,12 +102,12 @@
 ## innovation-summit-2025
 
 - [Air data](hazards/Air_data/Air_data.md)
-- [EPICA Dome C Methane Record](hazards/epica_dome_c_ch4/epica_dome_c_ch4.md)
 - [FAO](food/FAOSTAT/FAO.md)
 - [FIRED](hazards/FIRED/FIRED.md)
 - [NLCD](maka-sitomniya/NLCD/NLCD.md)
 - [Phenology network](forecasting/Phenology_network/Phenology_network.md)
 - [epa water quality](water/epa_water_quality/epa_water_quality.md)
+- [epica dome c ch4](hazards/epica_dome_c_ch4/epica_dome_c_ch4.md)
 - [global forest change](maka-sitomniya/global_forest_change/global_forest_change.md)
 - [iNaturalist](scale/iNaturalist/iNaturalist.md)
 - [lidar canopy height](remote_sensing/lidar_canopy_height/lidar_canopy_height.md)
@@ -116,6 +117,7 @@
 - [neon lidar and organismal](harmonization/neon_lidar_and_organismal/neon_lidar_and_organismal.md)
 - [nrcs soil exploration](maka-sitomniya/NRCS/nrcs_soil_exploration.md)
 - [osm](solutions/osm/osm.md)
+- [prism](forecasting/prism/prism.md)
 - [usgs water services](water/usgs_water_services/usgs_water_services.md)
 - [watershed boundaries](maka-sitomniya/watershed_boundaries/watershed_boundaries.md)
 - [weatherbench](AI/weatherbench/weatherbench.md)
@@ -215,6 +217,10 @@
 - [FDIC Failed Bank](policy/bank_fail/FDIC_Failed_Bank.md)
 - [US Census](policy/census/US_Census.md)
 
+## prism
+
+- [prism](forecasting/prism/prism.md)
+
 ## redlining
 
 - [README](justice/redlining/Census_HOLC_Research/Census_HOLC_Research-main/2000_Census_Tracts/README.md)
@@ -266,3 +272,4 @@
 ## wgi
 
 - [wgi](ethics/wgi/wgi.md)
+
