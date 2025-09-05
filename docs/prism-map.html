@@ -53,7 +53,7 @@
       </select>
     </label>
     <button id="load" title="Fetch zipped COG → unzip → draw">Load</button>
-    <div class="msg" id="msg">Tip: temperatures are °C × 10</div>
+    <div class="msg" id="msg">Zoom to a region, then press Load (temperatures are °C × 10)</div>
   </div>
 
   <div id="map"></div>
@@ -66,7 +66,7 @@
 
   <script>
     // Basemap
-    const map = L.map('map', { preferCanvas: true }).setView([39, -98], 5);
+    const map = L.map('map', { preferCanvas: true }).setView([40, -105], 7);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution:'&copy; OpenStreetMap' }).addTo(map);
 
     let currentLayer = null;
@@ -102,6 +102,30 @@
       };
     }
 
+    function cropGeoraster(georaster, bounds) {
+      const xmin = georaster.xmin;
+      const ymax = georaster.ymax;
+      const pixelWidth = georaster.pixelWidth;
+      const pixelHeight = Math.abs(georaster.pixelHeight);
+      const minCol = Math.max(0, Math.floor((bounds.getWest() - xmin) / pixelWidth));
+      const maxCol = Math.min(georaster.width, Math.ceil((bounds.getEast() - xmin) / pixelWidth));
+      const minRow = Math.max(0, Math.floor((ymax - bounds.getNorth()) / pixelHeight));
+      const maxRow = Math.min(georaster.height, Math.ceil((ymax - bounds.getSouth()) / pixelHeight));
+      const values = georaster.values.map(band =>
+        band.slice(minRow, maxRow).map(row => row.slice(minCol, maxCol))
+      );
+      return {
+        ...georaster,
+        xmin: xmin + minCol * pixelWidth,
+        xmax: xmin + maxCol * pixelWidth,
+        ymax: ymax - minRow * pixelHeight,
+        ymin: ymax - maxRow * pixelHeight,
+        width: maxCol - minCol,
+        height: maxRow - minRow,
+        values
+      };
+    }
+
     async function loadRaster() {
       const variable   = document.getElementById('var').value;
       const freq       = document.getElementById('freq').value;
@@ -133,7 +157,9 @@
 
         msg.textContent = "Parsing GeoTIFF…";
         const tiffArrayBuf = await entry.async("arraybuffer");
-        const georaster = await parseGeoraster(tiffArrayBuf);
+        const fullRaster = await parseGeoraster(tiffArrayBuf);
+        const mapBounds = map.getBounds();
+        const georaster = cropGeoraster(fullRaster, mapBounds);
 
         const isTemp = ["tmin","tmax","tmean"].includes(variable);
         const min = (georaster.mins?.[0] ?? 0) / (isTemp ? 10 : 1);
