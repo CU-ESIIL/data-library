@@ -118,16 +118,13 @@
 - [nrcs soil exploration](maka-sitomniya/NRCS/nrcs_soil_exploration.md)
 - [osm](solutions/osm/osm.md)
 - [prism](forecasting/prism/prism.md)
+- [rap-tiles](vegetation/rap-tiles/rap-tiles.md)
 - [usgs water services](water/usgs_water_services/usgs_water_services.md)
 - [watershed boundaries](maka-sitomniya/watershed_boundaries/watershed_boundaries.md)
 - [weatherbench](AI/weatherbench/weatherbench.md)
 
 ## justice
 
-- [README](justice/redlining/Census_HOLC_Research/Census_HOLC_Research-main/2000_Census_Tracts/README.md)
-- [README](justice/redlining/Census_HOLC_Research/Census_HOLC_Research-main/2010_Census_Tracts/README.md)
-- [README](justice/redlining/Census_HOLC_Research/Census_HOLC_Research-main/2020_Census_Tracts/README.md)
-- [README](justice/redlining/Census_HOLC_Research/Census_HOLC_Research-main/README.md)
 - [congress](justice/congress/congress.md)
 - [redlining](justice/redlining/redlining.md)
 
@@ -212,6 +209,10 @@
 
 - [Phenology network](forecasting/Phenology_network/Phenology_network.md)
 
+## png
+
+- [rap-tiles](vegetation/rap-tiles/rap-tiles.md)
+
 ## policy
 
 - [FDIC Failed Bank](policy/bank_fail/FDIC_Failed_Bank.md)
@@ -221,12 +222,20 @@
 
 - [prism](forecasting/prism/prism.md)
 
+## quicklook
+
+- [rap-tiles](vegetation/rap-tiles/rap-tiles.md)
+
+## rangeland
+
+- [rap-tiles](vegetation/rap-tiles/rap-tiles.md)
+
+## rap
+
+- [rap-tiles](vegetation/rap-tiles/rap-tiles.md)
+
 ## redlining
 
-- [README](justice/redlining/Census_HOLC_Research/Census_HOLC_Research-main/2000_Census_Tracts/README.md)
-- [README](justice/redlining/Census_HOLC_Research/Census_HOLC_Research-main/2010_Census_Tracts/README.md)
-- [README](justice/redlining/Census_HOLC_Research/Census_HOLC_Research-main/2020_Census_Tracts/README.md)
-- [README](justice/redlining/Census_HOLC_Research/Census_HOLC_Research-main/README.md)
 - [redlining](justice/redlining/redlining.md)
 
 ## remote_sensing
@@ -247,6 +256,18 @@
 
 - [osm](solutions/osm/osm.md)
 
+## streamable
+
+- [rap-tiles](vegetation/rap-tiles/rap-tiles.md)
+
+## teaching
+
+- [rap-tiles](vegetation/rap-tiles/rap-tiles.md)
+
+## tiles
+
+- [rap-tiles](vegetation/rap-tiles/rap-tiles.md)
+
 ## uranium_mines
 
 - [Uranium mines](hazards/Uranium_mines/Uranium_mines.md)
@@ -254,6 +275,10 @@
 ## usgs_water_services
 
 - [usgs water services](water/usgs_water_services/usgs_water_services.md)
+
+## vegetation
+
+- [rap-tiles](vegetation/rap-tiles/rap-tiles.md)
 
 ## water
 
