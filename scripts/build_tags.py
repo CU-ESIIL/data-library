@@ -9,6 +9,56 @@ tag_page = docs_dir / 'tags.md'
 topic_dir = docs_dir / 'topic'
 mkdocs_path = Path('mkdocs.yml')
 
+# Descriptions for Innovation Summit datasets
+summit_descriptions = {
+    'Air data':
+        'EPA county-level air quality metrics track pollution-driven tipping points.',
+    'FAO':
+        'Global food balance sheets reveal agricultural trends linked to ecological transitions.',
+    'FIRED':
+        'Wildfire event polygons highlight landscapes nearing fire-driven tipping points.',
+    'NLCD':
+        'National land cover maps expose land-use changes that can trigger ecosystem shifts.',
+    'Phenology network':
+        'Seasonal plant and animal observations signal climate-driven ecological transitions.',
+    'epa water quality':
+        'Water-quality monitoring helps detect aquatic systems approaching degradation thresholds.',
+    'epica dome c ch4':
+        'Antarctic methane records provide context for modern atmospheric tipping points.',
+    'global forest change':
+        'Landsat-based forest loss and gain reveal deforestation tipping points worldwide.',
+    'iNaturalist':
+        'Citizen-science species occurrences capture biodiversity shifts near critical thresholds.',
+    'lidar canopy height':
+        'NEON lidar canopy models track forest structure changes preceding regime shifts.',
+    'nclimgrid':
+        'NOAA gridded climate normals show trends that may push regions past climate tipping points.',
+    'neon and lter':
+        'Integrated macroinvertebrate data uncover aquatic community transitions.',
+    'neon aquatic':
+        'Sensor-based water data monitor freshwater systems for early warning signs.',
+    'neon hyperspectral':
+        'High-resolution spectral imagery detects vegetation stress before ecosystem tipping.',
+    'neon lidar and organismal':
+        'Fusing structural and biological data links habitat change to ecological thresholds.',
+    'nrcs soil exploration':
+        'Soil survey attributes illuminate land degradation tipping points.',
+    'osm':
+        'OpenStreetMap vectors map human pressures that drive ecological tipping dynamics.',
+    'prism':
+        'Gridded temperature and precipitation normals track climate trends toward tipping points.',
+    'rap-tiles':
+        'Rangeland Analysis Platform tiles reveal vegetation transitions and desertification risk.',
+    'sentinel streaming':
+        'Sentinel-2 quicklooks enable rapid detection of landscape changes near thresholds.',
+    'usgs water services':
+        'Streamflow and groundwater APIs flag hydrologic systems near critical limits.',
+    'watershed boundaries':
+        'Hydrologic unit maps frame catchments vulnerable to ecological shifts.',
+    'weatherbench':
+        'Benchmark datasets support models predicting extreme events and tipping points.',
+}
+
 def derive_tags(md_path):
     parts = md_path.relative_to(docs_dir).parts[:-1]
     tags = []
@@ -53,7 +103,11 @@ with tag_page.open('a', encoding='utf-8') as f:
             f.write('[Visit the Innovation Summit website](https://www.colorado.edu/esiil/)\n\n')
             f.write('![Innovation Summit 2025](assets/pre-summit-training-header.png)\n\n')
         for title, path in sorted(tags_map[tag]):
-            f.write(f'- [{title}]({path})\n')
+            desc = summit_descriptions.get(title)
+            if tag == 'innovation-summit-2025' and desc:
+                f.write(f'- [{title}]({path}) - {desc}\n')
+            else:
+                f.write(f'- [{title}]({path})\n')
         f.write('\n')
 
 tag_counts = {tag: len(paths) for tag, paths in tags_map.items()}
@@ -78,7 +132,11 @@ with summit_page.open('w', encoding='utf-8') as f:
     f.write('[Visit the Innovation Summit website](https://www.colorado.edu/esiil/)\n\n')
     f.write('![Innovation Summit 2025](assets/pre-summit-training-header.png)\n\n')
     for title, path in sorted(tags_map.get('innovation-summit-2025', [])):
-        f.write(f'- [{title}]({path})\n')
+        desc = summit_descriptions.get(title)
+        if desc:
+            f.write(f'- [{title}]({path}) - {desc}\n')
+        else:
+            f.write(f'- [{title}]({path})\n')
     f.write('\n')
 
 if mkdocs_path.exists():
