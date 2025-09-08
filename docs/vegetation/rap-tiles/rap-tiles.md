@@ -114,6 +114,11 @@ plt.axis("off"); plt.title("RAP tiles — PFG 2011 (masked)")
 plt.show()
 ```
 
+<!-- Place the sample mosaic image at rap_tiles_preview.png to display it below. -->
+![RAP tiles mosaic over Boulder, Colorado (perennial forbs and grasses, 2011)](rap_tiles_preview.png){ width=600 }
+
+*RAP tiles mosaic for perennial forbs and grasses (2011), masked, over Boulder, Colorado.*
+
 ## What you get (content & format)
 
 * **Products:** cover (fractional %) and biomass (lbs/acre) series; versioning and scope are documented in RAP 3.0 notes.  

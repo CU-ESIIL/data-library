@@ -41,6 +41,9 @@ presentation patterns.
 ## 6. Visual confirmation
 * After a data connection is established, provide a quick visual check:
   * **Maps:** render a static PNG map that can display in the documentation.
+    * Save the image in the same folder as the Markdown file and reference it with a relative path.
+    * Keep images roughly 600–800 px wide so they are clear but lightweight.
+    * Provide descriptive alt text and follow the image with an *italicized caption* explaining what is shown.
   * **Tables:** print the first 10 rows using `head()` or equivalent.
 * Avoid interactive widgets that fail in static build environments.
 
@@ -93,7 +96,9 @@ Plain‑language paragraph...
 ```
 
 ## Visualization
-![](path/to/preview.png)  <!-- or -->
+![](path/to/preview.png){ width=600 }
+*Short caption describing the preview image.*
+<!-- or -->
 ```python
 # show first 10 rows for tabular data
 ```
