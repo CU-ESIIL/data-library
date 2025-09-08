@@ -2,13 +2,19 @@
 
 This guide describes how to structure a dataset entry in the data library.
 It expands on repository conventions and highlights preferred tooling and
-presentation patterns.
+presentation patterns. Each entry should open with a plain-language
+descriptor of the dataset followed immediately by a self-contained,
+copy-and-paste-ready code example. Additional sections come **after** these
+two elements so users can quickly understand the data and run the example
+without hunting for prerequisites.
 
 ## 1. Plain‑language overview
 * Start every entry with a short, jargon‑free description of the dataset.
 * Explain what the data represent, who created them, and why they exist.
 * Describe how the data help answer real‑world questions or support
   professional decisions.
+* Present this overview before any code or metadata so users understand the
+  dataset before diving into examples or details.
 
 ## 2. Use cases and citations
 * List several ways the dataset has been or could be used.
@@ -37,6 +43,8 @@ presentation patterns.
 * Use [lexcube](https://github.com/earthdata/lexcube) for interactive Python
   sessions when possible.
 * Keep code blocks minimal, runnable, and commented.
+* Make each example self-contained so it runs exactly as shown without
+  external files or prior setup.
 
 ## 6. Visual confirmation
 * After a data connection is established, provide a quick visual check:
@@ -87,12 +95,12 @@ presentation patterns.
 ## Why it matters
 Plain‑language paragraph...
 
-## Example usage
+## Copy-and-paste example
 ```python
-# Python (lexcube-friendly)
+# Self-contained Python example (lexcube-friendly)
 ```
 ```r
-# R equivalent
+# Self-contained R equivalent
 ```
 
 ## Visualization
