@@ -98,4 +98,7 @@
     <url>
         <loc>https://data-library.esiil.org/remote_sensing/sentinel2_aws/sentinel2_aws/</loc>
     </url>
+    <url>
+        <loc>https://data-library.esiil.org/remote_sensing/sentinel_streaming/sentinel_streaming/</loc>
+    </url>
 </urlset>
