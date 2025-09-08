@@ -10,7 +10,7 @@ EPICA Dome C Methane (CH₄) Records
 
 The EPICA Dome C ice core, drilled in East Antarctica, preserves greenhouse gas concentrations across the last ~800,000 years. Methane (CH₄) trapped in air bubbles provides a high-resolution record of atmospheric composition that links climate shifts, glacial–interglacial cycles, and biogeochemical processes. These long records are foundational for paleoclimate research and critical for contextualizing modern greenhouse gas trends.
 
-![EPICA Dome C Methane Record plot](epica_ch4.svg)
+![EPICA Dome C Methane Record plot](epica_dome_c_ch4_files/epica_ch4.svg)
 
 ## Why this matters
 
