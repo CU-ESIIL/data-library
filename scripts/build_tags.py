@@ -49,6 +49,9 @@ tag_page.write_text('# Tags\n\n', encoding='utf-8')
 with tag_page.open('a', encoding='utf-8') as f:
     for tag in sorted(tags_map):
         f.write(f'## {tag}\n\n')
+        if tag == 'innovation-summit-2025':
+            f.write('[Visit the Innovation Summit website](https://www.colorado.edu/esiil/)\n\n')
+            f.write('![Innovation Summit 2025](assets/pre-summit-training-header.png)\n\n')
         for title, path in sorted(tags_map[tag]):
             f.write(f'- [{title}]({path})\n')
         f.write('\n')
@@ -68,9 +71,20 @@ for tag in top_tags:
         for title, path in sorted(tags_map.get(tag, [])):
             f.write(f'- [{title}](../{path})\n')
 
+# Custom standalone page for Innovation Summit 2025 tag
+summit_page = docs_dir / 'innovation-summit-2025.md'
+with summit_page.open('w', encoding='utf-8') as f:
+    f.write('# Innovation Summit 2025\n\n')
+    f.write('[Visit the Innovation Summit website](https://www.colorado.edu/esiil/)\n\n')
+    f.write('![Innovation Summit 2025](assets/pre-summit-training-header.png)\n\n')
+    for title, path in sorted(tags_map.get('innovation-summit-2025', [])):
+        f.write(f'- [{title}]({path})\n')
+    f.write('\n')
+
 if mkdocs_path.exists():
     cfg = yaml.safe_load(mkdocs_path.read_text(encoding='utf-8'))
     cfg['nav'] = [
+        {'Innovation Summit 2025': 'innovation-summit-2025.md'},
         {'Home': 'index.md'},
         {'Topics': [{tag: f'topic/{tag}.md'} for tag in top_tags]},
         {'Tags': 'tags.md'},

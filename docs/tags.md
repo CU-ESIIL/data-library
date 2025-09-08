@@ -101,6 +101,10 @@
 
 ## innovation-summit-2025
 
+[Visit the Innovation Summit website](https://www.colorado.edu/esiil/)
+
+![Innovation Summit 2025](assets/pre-summit-training-header.png)
+
 - [Air data](hazards/Air_data/Air_data.md)
 - [FAO](food/FAOSTAT/FAO.md)
 - [FIRED](hazards/FIRED/FIRED.md)
