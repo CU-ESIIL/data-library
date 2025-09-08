@@ -1,0 +1,7 @@
+/* Custom styles for documentation */
+
+/* Highlight Innovation Summit 2025 nav link */
+a.md-nav__link[href$="innovation-summit-2025/"] {
+    color: #ff4081;
+    font-weight: bold;
+}

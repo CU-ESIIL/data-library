@@ -7,6 +7,7 @@ repo_url: https://github.com/cu-esiil/data-library
 edit_uri: edit/main/docs/
 copyright: Copyright &copy; 2023 University of Colorado Boulder
 nav:
+- Innovation Summit 2025: innovation-summit-2025.md
 - Home: index.md
 - Topics:
   - hazards: topic/hazards.md
