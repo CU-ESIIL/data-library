@@ -1,128 +1,80 @@
-site_name: 'ESIIL Data Library'
-site_description: 'Data for May 2023 ESIIL Innovation Summit'
+site_name: ESIIL Data Library
+site_description: Data for May 2023 ESIIL Innovation Summit
 site_author: ESIIL CI team (lead = Ty Tuff)
 site_url: https://cu-esiil.github.io/data-library
-
-# Repository
 repo_name: data-library
 repo_url: https://github.com/cu-esiil/data-library
 edit_uri: edit/main/docs/
-# Copyright
-copyright: 'Copyright &copy; 2023 University of Colorado Boulder'
-
-# Page tree
+copyright: Copyright &copy; 2023 University of Colorado Boulder
 nav:
-  - Home: index.md
-  - Tags: tags.md
-  - Vegetation:
-      - RAP Tiles: vegetation/rap-tiles/rap-tiles.md
-  - More data:
-      - Global native homelands: indian_country/native_lands_digital/native_lands_digital.md
-      - USA Federal tribal reservations: indian_country/national_atlas_of_indian_lands/National_atlas_of_indian_lands.md
-      - All types of tribal land in USA: indian_country/aiannh/AIANNH.md
-      - NEON Aquatic Instrument Data: water/neon_aquatic/neon_aquatic.md
-      - EPA water quality: water/epa_water_quality/epa_water_quality.md
-      - USGS water services: water/usgs_water_services/usgs_water_services.md
-      - Public Libraries Survey: librarian/imls.md 
-      - NEON Hyperspectral Data: remote_sensing/neon_hyperspectral/neon_hyperspectral.md
-      - Lidar-based Canopy Height: remote_sensing/lidar_canopy_height/lidar_canopy_height.md
-      - Multispectral Sentinel-2 on AWS: remote_sensing/sentinel2_aws/sentinel2_aws.md 
-      - Open Street Map: solutions/osm/osm.md
-      - EPA air quality data: hazards/Air_data/Air_data.md
-      - Fire Event Delineation: hazards/FIRED/FIRED.md
-      - US National Incident Management System: hazards/ICS209_plus/ICS209_Plus.md
-      - Uranium mines: hazards/Uranium_mines/Uranium_mines.md
-      - Species Occurrence as points: scale/iNaturalist/iNaturalist.md
-      - World Governance Indicators: ethics/wgi/wgi.md
-      - National Ecological Observation Network: forecasting/neon/neon.md
-      - USA phenology network: forecasting/Phenology_network/Phenology_network.md
-      - Forecasting NEON data: https://github.com/eco4cast/neon4cast-example 
-      - NEON lidar after fire: https://github.com/NEONScience/NEON-Data-Skills/blob/main/tutorials-in-development/ESIIL_InnovationSummit_2023/Python/wildfire/fire_effects_on_veg_structure_using_lidar.ipynb
-      - Data cataloged with publications: harmonization/dryad/dryad.md
-      - NEON and LTER: harmonization/neon_and_lter/neon_and_lter.md
-      - NEON lidar and organismal data: harmonization/neon_lidar_and_organismal/neon_lidar_and_organismal.md
-      - UN Food and Agriculture: food/FAOSTAT/FAO.md
-      - Redlining: justice/redlining/redlining.md
-      - Congressional voting: justice/congress/congress.md
-      - US Census: policy/census/US_Census.md
-      - FDIC Failed Banks list: policy/bank_fail/FDIC_Failed_Bank.md
-      - WeatherBench: AI/weatherbench/weatherbench.md
-      - NEON tick pathogen data: math/neon_pathogen/neon_pathogen.md
-      - Everglades food network: math/foodweb/foodweb.md
-      - Mammal Primate association network: math/mammal_primate_association/mammal_primate_associations.md
-      - Education Statistics: education/NCES/NCES.md
-      - Nonprofit explorer: education/nonprofit_explorer/nonprofit_explorer.md
-      - Global forest change: maka-sitomniya/global_forest_change/global_forest_change.md
-      - National Land Cover Database (NLCD): maka-sitomniya/NLCD/NLCD.md
-      - Watershed Boundaries: maka-sitomniya/watershed_boundaries/watershed_boundaries.md
-      - NRCS Soil Survey: maka-sitomniya/NRCS/nrcs_soil_exploration.md
-      
-# Configuration
+- Home: index.md
+- Topics:
+  - hazards: topic/hazards.md
+  - maka-sitomniya: topic/maka-sitomniya.md
+  - forecasting: topic/forecasting.md
+  - harmonization: topic/harmonization.md
+  - indian_country: topic/indian_country.md
+  - math: topic/math.md
+  - remote_sensing: topic/remote_sensing.md
+  - water: topic/water.md
+  - education: topic/education.md
+  - justice: topic/justice.md
+- Tags: tags.md
 theme:
   highlightjs: true
   name: material
   font:
-    text: 'Open Sans'
-    code: 'Roboto Mono'
-  logo: 'assets/ESIIL_logo.png'
-  favicon: 'assets/favicon.ico'
-  # setting features for the navigation tab
+    text: Open Sans
+    code: Roboto Mono
+  logo: assets/ESIIL_logo.png
+  favicon: assets/favicon.ico
   features:
-    - navigation.sections
-    - navigation.instant
-    - navigation.tracking
-    - navigation.indexes
-    - navigation.top
-    - toc.integrate
-    - toc.follow
-    - content.code.copy
-  # Default values, taken from mkdocs_theme.yml
+  - navigation.sections
+  - navigation.instant
+  - navigation.tracking
+  - navigation.indexes
+  - navigation.top
+  - toc.integrate
+  - toc.follow
+  - content.code.copy
   language: en
   palette:
-    # Palette toggle for light mode
-    - media: "(prefers-color-scheme: white)"
-      primary: 'white'
-      toggle:
-        icon: material/weather-night
-        name: Switch to dark mode
-
-    # Palette toggle for dark mode
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      toggle:
-        icon: material/weather-sunny
-        name: Switch to system preference
-
-# Options
+  - media: '(prefers-color-scheme: white)'
+    primary: white
+    toggle:
+      icon: material/weather-night
+      name: Switch to dark mode
+  - media: '(prefers-color-scheme: dark)'
+    scheme: slate
+    toggle:
+      icon: material/weather-sunny
+      name: Switch to system preference
 extra:
   social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/cu-esiil/
+  - icon: fontawesome/brands/github
+    link: https://github.com/cu-esiil/
   analytics:
     provider: google
     property: G-C88FVQM27T
     feedback:
       title: Was this page helpful?
       ratings:
-        - icon: material/thumb-up-outline
-          name: This page was helpful
-          data: 1
-          note: >-
-            Thanks for your feedback!
-        - icon: material/thumb-down-outline
-          name: This page could be improved
-          data: -1
-          note: >- 
-            Thanks for your feedback! Help us improve this page by
-            using our <a href="..." target="_blank" rel="noopener">feedback form</a>.  
+      - icon: material/thumb-up-outline
+        name: This page was helpful
+        data: 1
+        note: Thanks for your feedback!
+      - icon: material/thumb-down-outline
+        name: This page could be improved
+        data: -1
+        note: 'Thanks for your feedback! Help us improve this page by using our <a
+          href="..." target="_blank" rel="noopener">feedback form</a>.  '
 extra_css:
-  - stylesheets/extra.css
-
+- stylesheets/extra.css
 plugins:
-    - search
-    - mkdocstrings
-    - git-revision-date
-    - mkdocs-jupyter:
-          include_source: True
-          ignore_h1_titles: True
-    - no-sitemap
+- search
+- mkdocstrings
+- git-revision-date
+- mkdocs-jupyter:
+    include_source: true
+    ignore_h1_titles: true
+- no-sitemap
