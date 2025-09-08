@@ -123,6 +123,7 @@
 - [osm](solutions/osm/osm.md)
 - [prism](forecasting/prism/prism.md)
 - [rap-tiles](vegetation/rap-tiles/rap-tiles.md)
+- [sentinel streaming](remote_sensing/sentinel_streaming/sentinel_streaming.md)
 - [usgs water services](water/usgs_water_services/usgs_water_services.md)
 - [watershed boundaries](maka-sitomniya/watershed_boundaries/watershed_boundaries.md)
 - [weatherbench](AI/weatherbench/weatherbench.md)
@@ -247,6 +248,7 @@
 - [lidar canopy height](remote_sensing/lidar_canopy_height/lidar_canopy_height.md)
 - [neon hyperspectral](remote_sensing/neon_hyperspectral/neon_hyperspectral.md)
 - [sentinel2 aws](remote_sensing/sentinel2_aws/sentinel2_aws.md)
+- [sentinel streaming](remote_sensing/sentinel_streaming/sentinel_streaming.md)
 
 ## scale
 
@@ -256,6 +258,10 @@
 
 - [sentinel2 aws](remote_sensing/sentinel2_aws/sentinel2_aws.md)
 
+## sentinel_streaming
+
+- [sentinel streaming](remote_sensing/sentinel_streaming/sentinel_streaming.md)
+
 ## solutions
 
 - [osm](solutions/osm/osm.md)
@@ -263,6 +269,7 @@
 ## streamable
 
 - [rap-tiles](vegetation/rap-tiles/rap-tiles.md)
+- [sentinel streaming](remote_sensing/sentinel_streaming/sentinel_streaming.md)
 
 ## teaching
 

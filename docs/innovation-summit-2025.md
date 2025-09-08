@@ -22,6 +22,7 @@
 - [osm](solutions/osm/osm.md)
 - [prism](forecasting/prism/prism.md)
 - [rap-tiles](vegetation/rap-tiles/rap-tiles.md)
+- [sentinel streaming](remote_sensing/sentinel_streaming/sentinel_streaming.md)
 - [usgs water services](water/usgs_water_services/usgs_water_services.md)
 - [watershed boundaries](maka-sitomniya/watershed_boundaries/watershed_boundaries.md)
 - [weatherbench](AI/weatherbench/weatherbench.md)
