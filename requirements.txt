@@ -32,3 +32,7 @@ colorama>=0.4
 regex>=2022.4.24
 requests>=2.26
 mkdocs-no-sitemap-plugin>=0.0.1
+
+numpy
+pillow
+matplotlib
