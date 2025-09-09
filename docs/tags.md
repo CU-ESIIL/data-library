@@ -102,7 +102,7 @@
 
 ## innovation-summit-2025
 
-[Visit the Innovation Summit website](https://www.colorado.edu/esiil/)
+[Visit the Innovation Summit website](https://cu-esiil.github.io/Innovation-Summit-2025/)
 
 ![Innovation Summit 2025](assets/pre-summit-training-header.png)
 
