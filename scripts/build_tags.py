@@ -100,7 +100,7 @@ with tag_page.open('a', encoding='utf-8') as f:
     for tag in sorted(tags_map):
         f.write(f'## {tag}\n\n')
         if tag == 'innovation-summit-2025':
-            f.write('[Visit the Innovation Summit website](https://www.colorado.edu/esiil/)\n\n')
+            f.write('[Visit the Innovation Summit website](https://cu-esiil.github.io/Innovation-Summit-2025/)\n\n')
             f.write('![Innovation Summit 2025](assets/pre-summit-training-header.png)\n\n')
         for title, path in sorted(tags_map[tag]):
             desc = summit_descriptions.get(title)
@@ -129,7 +129,7 @@ for tag in top_tags:
 summit_page = docs_dir / 'innovation-summit-2025.md'
 with summit_page.open('w', encoding='utf-8') as f:
     f.write('# Innovation Summit 2025\n\n')
-    f.write('[Visit the Innovation Summit website](https://www.colorado.edu/esiil/)\n\n')
+    f.write('[Visit the Innovation Summit website](https://cu-esiil.github.io/Innovation-Summit-2025/)\n\n')
     f.write('![Innovation Summit 2025](assets/pre-summit-training-header.png)\n\n')
     for title, path in sorted(tags_map.get('innovation-summit-2025', [])):
         desc = summit_descriptions.get(title)
