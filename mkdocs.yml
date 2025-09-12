@@ -21,7 +21,7 @@ nav:
   - education: topic/education.md
   - justice: topic/justice.md
 - Tags: tags.md
-- How to Contribute: how-to-contribute.md
+- How to Contribute: https://cu-esiil.github.io/how_to_contribute/
 theme:
   highlightjs: true
   name: material
