@@ -21,6 +21,7 @@ nav:
   - education: topic/education.md
   - justice: topic/justice.md
 - Tags: tags.md
+- How to Contribute: how-to-contribute.md
 theme:
   highlightjs: true
   name: material
