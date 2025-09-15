@@ -52,6 +52,7 @@ theme:
       icon: material/weather-sunny
       name: Switch to system preference
 extra:
+  homepage: https://cu-esiil.github.io/home/
   social:
   - icon: fontawesome/brands/github
     link: https://github.com/cu-esiil/
