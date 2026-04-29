@@ -1,7 +1,76 @@
-/* Custom styles for documentation */
+/* ESIIL/OASIS alignment for the Data Library. */
 
-/* Highlight Innovation Summit 2025 nav link */
-a.md-nav__link[href$="innovation-summit-2025/"] {
-    color: #ff4081;
-    font-weight: bold;
+:root {
+    --esiil-primary-blue: #234A65;
+    --esiil-accent-blue: #42BCDC;
+    --esiil-accent-green: #007135;
+    --esiil-light-green: #007135;
+    --esiil-body-text: #161A19;
+    --esiil-gray-relief: #E3E3E3;
+    --md-primary-fg-color: var(--esiil-primary-blue);
+    --md-accent-fg-color: var(--esiil-accent-green);
+    --md-typeset-a-color: var(--esiil-primary-blue);
+}
+
+.md-typeset {
+    color: var(--esiil-body-text);
+}
+
+.md-typeset h1 {
+    color: var(--esiil-primary-blue);
+    font-weight: 800;
+}
+
+.md-typeset h2 {
+    color: var(--esiil-primary-blue);
+    font-weight: 750;
+}
+
+.md-typeset h3,
+.md-typeset h4 {
+    color: var(--esiil-body-text);
+    font-weight: 700;
+}
+
+.md-typeset a {
+    font-weight: 600;
+}
+
+.md-typeset .md-button,
+.md-typeset a.md-button {
+    background: linear-gradient(135deg, var(--esiil-accent-blue), var(--esiil-accent-green));
+    border: 0;
+    border-radius: 4px;
+    color: #ffffff;
+    font-weight: 800;
+    padding: 0.7rem 1rem;
+}
+
+.md-typeset .md-button:hover,
+.md-typeset a.md-button:hover,
+.md-typeset .md-button:focus,
+.md-typeset a.md-button:focus {
+    background: var(--esiil-primary-blue);
+    color: #ffffff;
+}
+
+.md-typeset table:not([class]) {
+    border: 1px solid var(--esiil-gray-relief);
+}
+
+.md-typeset table:not([class]) th {
+    background-color: var(--esiil-primary-blue);
+    color: #ffffff;
+}
+
+.md-typeset .admonition,
+.md-typeset details {
+    border-color: var(--esiil-accent-blue);
+    border-radius: 4px;
+}
+
+.md-nav__link[href$="innovation-summit-2026/"],
+.md-nav__link[href$="style-guide/"] {
+    color: var(--esiil-accent-green);
+    font-weight: 700;
 }

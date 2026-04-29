@@ -18,6 +18,25 @@ environmental data for your research today!
 Click on this link to go to our data library website:
 https://cu-esiil.github.io/data-library/
 
+# Local site checks
+
+Build the MkDocs site locally with:
+
+```bash
+pip install -r requirements.txt
+mkdocs build --clean --site-dir site
+```
+
+Run the lightweight Playwright site health checks with:
+
+```bash
+npm install
+npx playwright install chromium
+npm test
+```
+
+The Playwright checks serve the built `site/` directory and verify that the homepage and core navigation are usable. They do not run notebooks, execute dataset scripts, or download data.
+
 # Contributing
 If you have a module you would like to add, fork this repo, create a new branch with your desired changes, and then submit a pull request. Review the [STYLE_SHEET](STYLE_SHEET.md) for expectations on dataset entries. The main components of a successful pull request are the following:
 

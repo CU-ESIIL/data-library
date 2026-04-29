@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "test": "playwright test",
+    "test:ui": "playwright test --ui"
+  },
+  "devDependencies": {
+    "@playwright/test": "latest"
+  }
+}

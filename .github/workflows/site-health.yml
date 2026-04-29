@@ -1,0 +1,31 @@
+name: Site Health
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Build site and run Playwright health checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install MkDocs dependencies
+        run: pip install -r requirements.txt
+      - name: Build site
+        run: mkdocs build --clean --site-dir site
+      - name: Install Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+          cache: "npm"
+      - name: Install Playwright
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+      - name: Run Playwright health checks
+        run: npx playwright test
