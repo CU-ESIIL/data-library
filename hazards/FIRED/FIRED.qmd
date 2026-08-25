@@ -1,0 +1,168 @@
+---
+title: "FIRED"
+author: "Virginia Iglesias, ESIIL Data Scientist"
+date: "2023-05-21"
+format: gfm
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+The Fire Event Delineation (FIRED) data set is a significant contribution to the field of environmental science, specifically in the study and monitoring of wildfires. Covering an extensive period from November 2001 to January 2022, this data set provides comprehensive spatial information about wildfire events in the conterminous United States, making it an invaluable resource for researchers, policymakers, and environmental practitioners alike.
+
+The FIRED product is unique as it offers both event-level and daily-level polygons of wildfire incidents. This dual-level detail allows for precise spatial and temporal mapping and tracking of wildfire occurrences. Event-level polygons encapsulate the entire spatial extent of individual fire events, whereas daily-level polygons provide day-to-day progression information for each fire, effectively illustrating the development and spread of fires over time.
+
+This data set contains event- and daily-level polygons for the [Fire Event Delineation](https://scholar.colorado.edu/concern/datasets/d504rm74m) (FIRED) product for the conterminous US from November 2001 to January 2022. You can find more information [here](https://www.mdpi.com/2072-4292/12/21/3498).
+
+In R, we need 3 packages to download and visualize the data. First, check if the packages are already installed. Install them if they are not:
+
+```{r, cache=TRUE, message=FALSE, warning=FALSE, results='hide'}
+packages <- c("tidyverse", "httr", "sf") 
+new.packages <- packages[!(packages %in% installed.packages()[,"Package"])] 
+if(length(new.packages)>0) install.packages(new.packages) 
+```
+
+Then, load them:
+
+```{r, cache=TRUE, message=FALSE, warning=FALSE, results='hide'}
+lapply(packages, library, character.only = TRUE)
+```
+
+Download the data set:
+
+```{r, cache=TRUE, message=FALSE, warning=FALSE, results='hide'}
+url <- "https://scholar.colorado.edu/downloads/zw12z650d" 
+fired <- GET(url) 
+data_file <-"fired.zip" 
+writeBin(content(fired, "raw"), data_file)
+
+# Unzip the file
+unzip(data_file)
+```
+
+Read the data set:
+
+```{r, cache=TRUE, message=FALSE, warning=FALSE, results='hide'}
+fired <- st_read("fired_conus_ak_to_January_2022_gpkg_shp/conus_ak_to2022001_events.shp") 
+```
+
+Plot fire duration as a function of ignition day:
+
+```{r, cache=TRUE, message=FALSE, warning=FALSE, results='hide'}
+ggplot(fired) +
+  geom_point(aes(ig_day, event_dur)) +
+  theme_bw() +
+  xlab('Day') +
+  ylab('Event duration (days)')
+```
+
+In Python, the following code downloads the FIRED data set from CU Scholar using a
+session to avoid 403 errors and loads it into a GeoDataFrame. The snippet also
+shows how to access event- and daily-level layers.
+
+```{python, cache=TRUE, message=FALSE, warning=FALSE}
+# Programmatically fetch FIRED from CU Scholar (handles 403) and load as GeoDataFrame.
+# No firedpy fallback.
+
+import os, io, zipfile, tempfile, warnings
+from pathlib import Path
+import requests
+import geopandas as gpd
+
+def load_fired_conus_ak(
+    dataset_page: str = "https://scholar.colorado.edu/concern/datasets/d504rm74m",
+    download_id: str = "h702q749s",           # file id (works for Nov 2001–Mar 2021 CONUS+AK events/daily)
+    which: str = "events",                    # "events" or "daily"
+    prefer: str = "gpkg",                     # "gpkg" or "shp"
+    timeout: int = 180,
+) -> gpd.GeoDataFrame:
+    """
+    Returns a GeoDataFrame with FIRED polygons (CONUS+AK, Nov 2001–Mar 2021) in EPSG:4326.
+    Downloads the ZIP from CU Scholar using a session + referer to avoid 403,
+    extracts in a temporary directory, and reads the requested layer.
+
+    Parameters
+    ----------
+    dataset_page : str
+        CU Scholar dataset landing page (used as Referer).
+    download_id : str
+        The /downloads/<id> token for the ZIP on that page.
+    which : {"events","daily"}
+        Choose event-level polygons or daily polygons.
+    prefer : {"gpkg","shp"}
+        Prefer GeoPackage or Shapefile when both exist.
+    timeout : int
+        Seconds for HTTP requests.
+
+    Raises
+    ------
+    RuntimeError if the download or layer selection fails.
+    """
+    assert which in ("events", "daily")
+    assert prefer in ("gpkg", "shp")
+
+    inner = {
+        ("events","gpkg"): "fired_conus-ak_events_nov2001-march2021.gpkg",
+        ("events","shp") : "fired_conus-ak_events_nov2001-march2021.shp",
+        ("daily","gpkg") : "fired_conus-ak_daily_nov2001-march2021.gpkg",
+        ("daily","shp")  : "fired_conus-ak_daily_nov2001-march2021.shp",
+    }
+    want_primary   = inner[(which, prefer)]
+    want_alternate = inner[(which, "shp" if prefer=="gpkg" else "gpkg")]
+
+    sess = requests.Session()
+    headers = {
+        "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
+                      "(KHTML, like Gecko) Chrome/125.0 Safari/537.36",
+        "Accept": "*/*",
+        "Referer": dataset_page,
+        "Connection": "keep-alive",
+    }
+    r0 = sess.get(dataset_page, headers=headers, timeout=timeout)
+    r0.raise_for_status()
+
+    zip_url = f"https://scholar.colorado.edu/downloads/{download_id}"
+    resp = sess.get(zip_url, headers=headers, stream=True, timeout=timeout, allow_redirects=True)
+    resp.raise_for_status()
+
+    ct = resp.headers.get("Content-Type", "")
+    cd = resp.headers.get("Content-Disposition", "")
+    if ("zip" not in ct.lower()) and (".zip" not in cd.lower()):
+        warnings.warn("Response did not clearly indicate a ZIP; proceeding anyway.")
+
+    with tempfile.TemporaryDirectory() as td:
+        zpath = Path(td) / "fired.zip"
+        with open(zpath, "wb") as f:
+            for chunk in resp.iter_content(chunk_size=1<<20):
+                if chunk:
+                    f.write(chunk)
+
+        with zipfile.ZipFile(zpath, "r") as z:
+            names = z.namelist()
+            chosen = None
+            for n in (want_primary, want_alternate):
+                if n in names:
+                    chosen = n
+                    break
+            if chosen is None:
+                for n in names:
+                    if which in n and (n.endswith(".gpkg") or n.endswith(".shp")):
+                        chosen = n
+                        break
+            if chosen is None:
+                raise RuntimeError("Could not find a FIRED layer inside the ZIP "
+                                   f"(looked for '{want_primary}' / '{want_alternate}').")
+
+            z.extract(chosen, path=td)
+            gdf = gpd.read_file(Path(td) / chosen)
+            if gdf.crs:
+                gdf = gdf.to_crs("EPSG:4326")
+            else:
+                gdf.set_crs("EPSG:4326", inplace=True)
+            return gdf
+
+# -------------------- Example usage --------------------
+fired_events = load_fired_conus_ak(which="events", prefer="gpkg")
+fired_daily  = load_fired_conus_ak(which="daily",  prefer="gpkg")
+print(fired_events.head())
+```

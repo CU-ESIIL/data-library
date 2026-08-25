@@ -1,0 +1,638 @@
+Identification_Information
+  Citation
+    Citation_Information
+      Originator:        Montana State Library
+      Publication_Date:  19921101
+      Title:             Abandoned Mines
+      Geospatial_Data_Presentation_Form:  map
+      Publication_Information
+        Publication_Place:  Helena, Montana
+        Publisher:          Montana State Library
+      Online_Linkage: http://nris.mt.gov/nsdi/nris/ms5.e00.zip
+  Description
+    Abstract:
+        This data was generated from the Abandoned Mines Bureau
+        database in January, 1992.  Of the 3156 sites, 496
+        had no coordinates and are not included in the GIS coverage.
+        REQUESTS FOR THIS DATA SHOULD BE REFERRED TO THE ABANDONED
+        MINES BUREAU.  It is believed that the coordinates were
+        generated from quarter/quarter/quarter section
+        descriptions.
+    Purpose:
+        Display of mining sites.
+  Time_Period_of_Content
+    Time_Period_Information
+      Single_Date/Time
+        Calendar_Date:  19920101
+    Currentness_Reference:  Publication Date
+  Status
+    Progress:  Complete
+    Maintenance_and_Update_Frequency:  Unknown
+  Spatial_Domain
+    Bounding_Coordinates
+      West_Bounding_Coordinate:    -115.533600
+      East_Bounding_Coordinate:    -104.048897
+      North_Bounding_Coordinate:     49.012001
+      South_Bounding_Coordinate:     44.341900
+    Data_Set_G-Polygon
+      Data_Set_G-Polygon_Outer_G-Ring
+        G-Ring_Latitude:   49.02441787719
+        G-Ring_Longitude:  -116.0748825073
+        G-Ring_Latitude:   47.93949127197
+        G-Ring_Longitude:  -116.0513381958
+        G-Ring_Latitude:   47.45859146118
+        G-Ring_Longitude:  -115.7472457885
+        G-Ring_Latitude:   46.60823059082
+        G-Ring_Longitude:  -114.6641998291
+        G-Ring_Latitude:   46.61886978149
+        G-Ring_Longitude:  -114.424659729
+        G-Ring_Latitude:   45.60388565063
+        G-Ring_Longitude:  -114.5483016967
+        G-Ring_Latitude:   45.43321228027
+        G-Ring_Longitude:  -114.3186950683
+        G-Ring_Latitude:   45.58434677124
+        G-Ring_Longitude:  -113.9458312988
+        G-Ring_Latitude:   44.86284637451
+        G-Ring_Longitude:  -113.5072631835
+        G-Ring_Latitude:   44.31266784668
+        G-Ring_Longitude:  -112.8395233154
+        G-Ring_Latitude:   44.44471740722
+        G-Ring_Longitude:  -110.9373550415
+        G-Ring_Latitude:   44.95633697509
+        G-Ring_Longitude:  -110.950553894
+        G-Ring_Latitude:   44.98777389526
+        G-Ring_Longitude:  -108.1549987793
+        G-Ring_Latitude:   44.98892211914
+        G-Ring_Longitude:  -103.8922653198
+        G-Ring_Latitude:   49.05199050903
+        G-Ring_Longitude:  -103.7473602294
+        G-Ring_Latitude:   49.08559036254
+        G-Ring_Longitude:  -109.5802764892
+        G-Ring_Latitude:   49.02441787719
+        G-Ring_Longitude:  -116.0748825073
+  Keywords
+    Theme
+      Theme_Keyword_Thesaurus:  None
+      Theme_Keyword:  mines
+      Theme_Keyword:  mine
+      Theme_Keyword:  mining
+    Place
+      Place_Keyword_Thesaurus:  None
+      Place_Keyword:  Montana
+  Access_Constraints:
+        None
+  Use_Constraints:
+        Not for use at scales greater than 1:200000.
+  Point_of_Contact
+    Contact_Information
+      Contact_Organization_Primary
+        Contact_Organization:  Montana State Library
+        Contact_Person:        Fred Gifford
+      Contact_Position:        GIS Coordinator
+      Contact_Address
+        Address_Type:  mailing and physical address
+        Address:            1515 East 6th Avenue
+        City:               Helena
+        State_or_Province:  Montana
+        Postal_Code:        59620-1800
+        Country:            USA
+      Contact_Voice_Telephone:          (406) 444-5357
+      Contact_Facsimile_Telephone:      (406) 444-0581
+      Contact_Electronic_Mail_Address:  fgifford@nris.mt.gov
+      Hours_of_Service:  Monday-Friday, 8-5, Mountain Time
+  Native_Data_Set_Environment:
+    Arc/Info version 6.1.1, SunOS version 4.1.3
+    Pathname = /montana/human/mine_dsl
+ 
+Data_Quality_Information:
+  Attribute_Accuracy
+    Attribute_Accuracy_Report:
+        Unknown
+  Logical_Consistency_Report:
+        None
+  Completeness_Report:
+        Unknown
+  Positional_Accuracy
+    Horizontal_Positional_Accuracy
+      Horizontal_Positional_Accuracy_Report:
+        If the coordinates were all generated from quarter/quarter/
+        quarter section descriptions, they can not be more accurate
+        than the nearest 330 feet.
+  Lineage
+    Source_Information
+      Source_Citation
+        Citation_Information
+          Originator:
+            Montana Dept. of Environmental Quality
+            Abandoned Mines Bureau
+          Publication_Date:  19920101
+          Title:  Abandoned Mines Database
+          Geospatial_Data_Presentation_Form:  map
+          Publication_Information
+            Publication_Place:  Helena, MT
+            Publisher:  Montana State Library
+          Other_Citation_Details:
+            Formerly Abandoned Mines Reclamation Burea, Dept. of State
+            Lands.
+      Source_Scale_Denominator:  0
+      Type_of_Source_Media:  3.5-inch diskette
+      Source_Time_Period_of_Content
+        Time_Period_Information
+          Single_Date/Time
+            Calendar_Date:  19920101
+        Source_Currentness_Reference:  Publication Date
+      Source_Citation_Abbreviation:  s1
+      Source_Contribution:
+          The data set is a copy of this source.
+ 
+Spatial_Data_Organization_Information:
+  Direct_Spatial_Reference_Method:  Point
+  Point_and_Vector_Object_Information
+    SDTS_Terms_Description
+      SDTS_Point_and_Vector_Object_Type:  Point
+      Point_and_Vector_Object_Count:   2660
+ 
+Spatial_Reference_Information
+  Horizontal_Coordinate_System_Definition
+    Planar
+      Grid_Coordinate_System
+        Grid_Coordinate_System_Name: State Plane Coordinate System 1983
+        State_Plane_Coordinate_System
+          SPCS_Zone_Identifier: 2500
+          Lambert_Conformal_Conic
+            Standard_Parallel:  45
+            Standard_Parallel:  49
+            Longitude_of_Central_Meridian:  -109.5
+            Latitude_of_Projection_Origin:  44.25
+            False_Easting:   600000.00000
+            False_Northing:  0.00000
+      Planar_Coordinate_Information
+        Planar_Coordinate_Encoding_Method:  coordinate pair
+        Coordinate_Representation
+          Abscissa_Resolution:  .1
+          Ordinate_Resolution:  .1
+        Planar_Distance_Units:  meters
+    Geodetic_Model
+      Horizontal_Datum_Name:  North American Datum of 1983
+      Ellipsoid_Name:   Geodetic Reference System 80
+      Semi-major_Axis:  6378137.0
+      Denominator_of_Flattening_Ratio:  298.257
+Entity_and_Attribute_Information:
+  Detailed_Description
+    Entity_Type
+      Entity_Type_Label:  MINE_DSL.PAT
+      Entity_Type_Definition:  Point Attribute Table
+      Entity_Type_Definition_Source:  None
+    Attribute
+      Attribute_Label:  SITE
+      Attribute_Definition:
+        Name of Site
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Unrepresentable_Domain:  Character field
+      Beginning_Date_of_Attribute_Values:  19921101
+    Attribute
+      Attribute_Label:  PA
+      Attribute_Definition:
+        Identification number
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Unrepresentable_Domain:  Character field
+      Beginning_Date_of_Attribute_Values:  19921101
+    Attribute
+      Attribute_Label:  CNTY
+      Attribute_Definition:
+        Name of county
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Unrepresentable_Domain:  Character field
+      Beginning_Date_of_Attribute_Values:  19921101
+    Attribute
+      Attribute_Label:  HUC
+      Attribute_Definition:
+        Hydrologic Unit Code
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Unrepresentable_Domain:  Character field
+      Beginning_Date_of_Attribute_Values:  19921101
+    Attribute
+      Attribute_Label:  DLAT
+      Attribute_Definition:
+        Location, degrees of latitude
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Range_Domain
+          Range_Domain_Minimum:  44
+          Range_Domain_Maximum:  49
+      Attribute_Units_of_Measure:  degrees
+      Beginning_Date_of_Attribute_Values:  19921101
+    Attribute
+      Attribute_Label:  MLAT
+      Attribute_Definition:
+        Location, minutes of Latitude
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Range_Domain
+          Range_Domain_Minimum:  0
+          Range_Domain_Maximum:  59
+      Attribute_Units_of_Measure:  minutes
+      Beginning_Date_of_Attribute_Values:  19921101
+    Attribute
+      Attribute_Label:  SLAT
+      Attribute_Definition:
+        Location, seconds of Latitude
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Range_Domain
+          Range_Domain_Minimum:  0
+          Range_Domain_Maximum:  59
+      Attribute_Units_of_Measure:  seconds
+      Beginning_Date_of_Attribute_Values:  19921101
+    Attribute
+      Attribute_Label:  LONGW
+      Attribute_Definition:
+        Indicator for West Longitude
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Enumerated_Domain
+          Enumerated_Domain_Value:  W
+          Enumerated_Domain_Value_Definition:  West longitude
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  N
+          Enumerated_Domain_Value_Definition:  North longitude
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  E
+          Enumerated_Domain_Value_Definition:  East longitude
+          Enumerated_Domain_Value_Definition_Source:  none
+      Beginning_Date_of_Attribute_Values:  19921101
+    Attribute
+      Attribute_Label:  DLONG
+      Attribute_Definition:
+        Location, degrees of longitude
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Range_Domain
+          Range_Domain_Minimum:  104
+          Range_Domain_Maximum:  115
+      Attribute_Units_of_Measure:  degrees
+      Beginning_Date_of_Attribute_Values:  19921101
+    Attribute
+      Attribute_Label:  MLONG
+      Attribute_Definition:
+        Location, minutes of Longitude
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Range_Domain
+          Range_Domain_Minimum:  0
+          Range_Domain_Maximum:  59
+      Attribute_Units_of_Measure:  minutes
+      Beginning_Date_of_Attribute_Values:  19921101
+    Attribute
+      Attribute_Label:  SLONG
+      Attribute_Definition:
+        Location, seconds of Longitude
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Range_Domain
+          Range_Domain_Minimum:  0
+          Range_Domain_Maximum:  59
+      Attribute_Units_of_Measure:  seconds
+      Beginning_Date_of_Attribute_Values:  19921101
+    Attribute
+      Attribute_Label:  TYPE
+      Attribute_Definition:
+        Type of mine
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Enumerated_Domain
+          Enumerated_Domain_Value:  Talc
+          Enumerated_Domain_Value_Definition:  Talc mine
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  Hardrock
+          Enumerated_Domain_Value_Definition:  Hard rock mine
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  Millsite
+          Enumerated_Domain_Value_Definition:  Site of an ore mill
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  Placer
+          Enumerated_Domain_Value_Definition:  Placer mine
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  Phosphate
+          Enumerated_Domain_Value_Definition:  Phosphate mine
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  Quarry
+          Enumerated_Domain_Value_Definition:  Stone quarry
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  Tungsten
+          Enumerated_Domain_Value_Definition:  Tungsten mine
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  Graphite
+          Enumerated_Domain_Value_Definition:  Graphite mine
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  Limestone
+          Enumerated_Domain_Value_Definition:  Limestone quarry
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  Bentonite
+          Enumerated_Domain_Value_Definition:  Bentonite mine
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  Barite
+          Enumerated_Domain_Value_Definition:  Barite mine
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  Uranium
+          Enumerated_Domain_Value_Definition:  Uranium mine
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  Vermiculite
+          Enumerated_Domain_Value_Definition:  Vermiculite mine
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  Calcite
+          Enumerated_Domain_Value_Definition:  Calcite mine
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  Rhyolite
+          Enumerated_Domain_Value_Definition:  Rhyolite mine
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  Asbestos
+          Enumerated_Domain_Value_Definition:  Asbestos mine
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  Mica
+          Enumerated_Domain_Value_Definition:  Mica mine
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  Corundum
+          Enumerated_Domain_Value_Definition:  Sapphire/Ruby mine
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  Gypsum
+          Enumerated_Domain_Value_Definition:  Gypsum mine
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  Thorium
+          Enumerated_Domain_Value_Definition:  Thorium mine
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  Iron
+          Enumerated_Domain_Value_Definition:  Iron mine
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  Powder Mag.
+          Enumerated_Domain_Value_Definition:  Powder magazine?
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  Hardrock?
+          Enumerated_Domain_Value_Definition:  Probable Hardrock mine
+          Enumerated_Domain_Value_Definition_Source:  none
+      Beginning_Date_of_Attribute_Values:  19921101
+    Attribute
+      Attribute_Label:  CONSTRUCT
+      Attribute_Definition:
+        Data source?
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Enumerated_Domain
+          Enumerated_Domain_Value:  Complete
+          Enumerated_Domain_Value_Definition:  complete
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  Partial
+          Enumerated_Domain_Value_Definition:  partial
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  No Problem
+          Enumerated_Domain_Value_Definition:  no problem
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  Aerial
+          Enumerated_Domain_Value_Definition:  aerial
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  Snowshoer
+          Enumerated_Domain_Value_Definition:  snowshoer
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  Pre-Design
+          Enumerated_Domain_Value_Definition:  pre-design
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  1989 Bid
+          Enumerated_Domain_Value_Definition:  1989 bid
+          Enumerated_Domain_Value_Definition_Source:  none
+      Beginning_Date_of_Attribute_Values:  19921101
+    Attribute
+      Attribute_Label:  ACTIVITY
+      Attribute_Definition:
+        Current mining activity
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Enumerated_Domain
+          Enumerated_Domain_Value:  Abandoned
+          Enumerated_Domain_Value_Definition:  abandoned
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  Inactive
+          Enumerated_Domain_Value_Definition:  inactive
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  Exploration
+          Enumerated_Domain_Value_Definition:  exploration
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  Operating
+          Enumerated_Domain_Value_Definition:  operating
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  Partial
+          Enumerated_Domain_Value_Definition:  partial
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  Abandone
+          Enumerated_Domain_Value_Definition:  abandoned
+          Enumerated_Domain_Value_Definition_Source:  none
+      Beginning_Date_of_Attribute_Values:  19921101
+    Attribute
+      Attribute_Label:  OPENINGS
+      Attribute_Definition:
+        Number of Openings
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Range_Domain
+          Range_Domain_Minimum:  0
+          Range_Domain_Maximum:  26
+      Beginning_Date_of_Attribute_Values:  19921101
+    Attribute
+      Attribute_Label:  CLOSED
+      Attribute_Definition:
+        Number of closed openings
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Range_Domain
+          Range_Domain_Minimum:  0
+          Range_Domain_Maximum:  20
+      Beginning_Date_of_Attribute_Values:  19921101
+    Attribute
+      Attribute_Label:  HAZSTRUC
+      Attribute_Definition:
+        Number of hazardous structures
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Unrepresentable_Domain:  Character field
+      Beginning_Date_of_Attribute_Values:  19921101
+    Attribute
+      Attribute_Label:  PH
+      Attribute_Definition:
+        pH of water sample
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Unrepresentable_Domain:  Character field
+      Beginning_Date_of_Attribute_Values:  19921101
+    Attribute
+      Attribute_Label:  SC
+      Attribute_Definition:
+        Specific conductance of water sample
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Unrepresentable_Domain:  Character field
+      Beginning_Date_of_Attribute_Values:  19921101
+    Attribute
+      Attribute_Label:  FLOW
+      Attribute_Definition:
+        Water Flow Volume?
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Unrepresentable_Domain:  Character field
+      Attribute_Units_of_Measure:  Gallons per minute?
+      Beginning_Date_of_Attribute_Values:  19921101
+    Attribute
+      Attribute_Label:  MIN-DIST
+      Attribute_Definition:
+        Distance to nearest stream
+          Distance to nearest stream from 100K USGS DLG data.
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Range_Domain
+          Range_Domain_Minimum:  0.0799999982118
+          Range_Domain_Maximum:  999999
+      Attribute_Units_of_Measure:  meters
+      Beginning_Date_of_Attribute_Values:  19921101
+ 
+Distribution_Information:
+  Distributor
+    Contact_Information
+      Contact_Organization_Primary
+        Contact_Organization:  Montana State Library
+        Contact_Person:        Fred Gifford
+      Contact_Position:        GIS Coordinator
+      Contact_Address
+        Address_Type:  mailing and physical address
+        Address:            1515 East 6th Avenue
+        City:               Helena
+        State_or_Province:  Montana
+        Postal_Code:        59620-1800
+        Country:            USA
+      Contact_Voice_Telephone:          (406) 444-5357
+      Contact_Facsimile_Telephone:      (406) 444-0581
+      Contact_Electronic_Mail_Address:  fgifford@nris.mt.gov
+      Hours_of_Service:  Monday-Friday, 8-5, Mountain Time
+  Distribution_Liability:
+    Users must assume responsibility to determine the
+    usability of this data for their purposes.
+  Standard_Order_Process
+    Non-digital_Form:
+      Contact the State Library to see if the data is
+      available as hardcopy maps.
+    Fees:
+      For-profit organizations must pay our costs to reproduce the
+      data.  Fees can be waived if doing Government work.
+  Standard_Order_Process
+    Digital_Form
+      Digital_Transfer_Information
+        Format_Name:            Arc/Info Export
+        Format_Version_Number:  7.0.2
+        Format_Version_Date:    19940915
+      Digital_Transfer_Option
+        Online_Option
+          Computer_Contact_Information
+            Network_Address
+              Network_Resource_Name:  http://nris.mt.gov/nsdi/nris/ms5.e00.zip
+      Digital_Transfer_Option
+        Offline_Option
+          Offline_Media:     8mm tape cartridge
+          Recording_Format:  tar
+      Digital_Transfer_Option
+        Offline_Option
+          Offline_Media:     quarter-inch tape cartridge
+          Recording_Format:  tar
+      Digital_Transfer_Option
+        Offline_Option
+          Offline_Media:     3.5-inch floppy disk
+          Recording_Format:  DOS
+    Digital_Form
+      Digital_Transfer_Information
+        Format_Name:            DXF
+        Format_Version_Number:  Unknown
+      Digital_Transfer_Option
+        Offline_Option
+          Offline_Media:     8mm tape cartridge
+          Recording_Format:  tar
+      Digital_Transfer_Option
+        Offline_Option
+          Offline_Media:     quarter-inch tape cartridge
+          Recording_Format:  tar
+      Digital_Transfer_Option
+        Offline_Option
+          Offline_Media:     3.5-inch floppy disk
+          Recording_Format:  DOS
+    Digital_Form
+      Digital_Transfer_Information
+        Format_Name:            DLG
+        Format_Version_Number:  Unknown
+      Digital_Transfer_Option
+        Offline_Option
+          Offline_Media:     8mm tape cartridge
+          Recording_Format:  tar
+      Digital_Transfer_Option
+        Offline_Option
+          Offline_Media:     quarter-inch tape cartridge
+          Recording_Format:  tar
+      Digital_Transfer_Option
+        Offline_Option
+          Offline_Media:     3.5-inch floppy disk
+          Recording_Format:  DOS
+    Digital_Form
+      Digital_Transfer_Information
+        Format_Name:            MOSS
+        Format_Version_Number:  Unknown
+      Digital_Transfer_Option
+        Offline_Option
+          Offline_Media:     8mm tape cartridge
+          Recording_Format:  tar
+      Digital_Transfer_Option
+        Offline_Option
+          Offline_Media:     quarter-inch tape cartridge
+          Recording_Format:  tar
+      Digital_Transfer_Option
+        Offline_Option
+          Offline_Media:     3.5-inch floppy disk
+          Recording_Format:  DOS
+    Digital_Form
+      Digital_Transfer_Information
+        Format_Name:            IGDS
+        Format_Version_Number:  Unknown
+      Digital_Transfer_Option
+        Offline_Option
+          Offline_Media:     8mm tape cartridge
+          Recording_Format:  tar
+      Digital_Transfer_Option
+        Offline_Option
+          Offline_Media:     quarter-inch tape cartridge
+          Recording_Format:  tar
+      Digital_Transfer_Option
+        Offline_Option
+          Offline_Media:     3.5-inch floppy disk
+          Recording_Format:  DOS
+    Fees:
+      For-profit organizations must pay our costs to reproduce the
+      data.  Fees can be waived if doing Government work.
+ 
+Metadata_Reference_Information:
+  Metadata_Date:  19930708
+  Metadata_Review_Date:  19970222
+  Metadata_Contact
+    Contact_Information
+      Contact_Organization_Primary
+        Contact_Organization:  Montana State Library
+        Contact_Person:        John Jarvie
+      Contact_Address
+        Address_Type:  mailing and physical address
+        Address:            1515 East 6th Avenue
+        City:               Helena
+        State_or_Province:  Montana
+        Postal_Code:        59620-1800
+        Country:            USA
+      Contact_Voice_Telephone:          (406) 444-5357
+      Contact_Facsimile_Telephone:      (406) 444-0581
+      Contact_Electronic_Mail_Address:  fgifford@nris.mt.gov
+      Hours_of_Service:  Monday-Friday, 8-5, Mountain Time
+  Metadata_Standard_Name:  FGDC Content Standards for Digital Geospatial Metadata
+  Metadata_Standard_Version:  19940608

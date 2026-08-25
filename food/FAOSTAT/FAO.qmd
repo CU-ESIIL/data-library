@@ -1,0 +1,67 @@
+---
+title: "Food Balance Sheets"
+format: gfm
+---
+
+FAOSTAT, maintained by the Food and Agriculture Organization (FAO) of the United Nations, is the world's largest and most comprehensive statistical database on food, agriculture, and hunger. Its goal is to provide high-quality and accessible data to promote better understanding and informed decision-making regarding food security and nutrition, agricultural production, and natural resource use worldwide.
+
+Here are some key aspects of FAOSTAT:
+
+Wide Scope: FAOSTAT covers domains such as agricultural production, trade, food security, emissions, land use, and many more. It provides data for over 245 countries and territories, from 1961 onwards.
+
+Ease of Access: The data is freely accessible to anyone with an internet connection, and can be easily downloaded in different formats or accessed via an API.
+
+Comprehensive Data: FAOSTAT provides comprehensive data on various aspects related to food and agriculture. This includes data on agricultural inputs, crop production, livestock and livestock products, organic agriculture, forestry production, emissions, and more.
+
+Regularly Updated: The database is regularly updated, ensuring that users have access to the most recent data.
+
+Multilingual: The FAOSTAT website is available in multiple languages, including English, Spanish, French, and Chinese, making it more accessible to users worldwide.
+
+Researchers, policymakers, and organizations use FAOSTAT data for a wide range of purposes, from monitoring global food security and predicting future food trends to developing policies and interventions in agriculture, forestry, and fisheries.
+
+## Food Balance Sheets (FBS)
+
+The Food Balance Sheets (FBS) dataset presents a comprehensive picture of the pattern of a country's food supply during a specified reference period, typically a year. The FBS shows for each food item (like wheat, rice, milk, meat, etc.) - the sources of supply (production, imports, and stock changes) and its utilization (exports, feed, seed, processing, waste, and other uses), leading to the final category of 'food available for human consumption'. https://www.fao.org/home/en
+
+The FBS provides essential information on a country's food system, allowing for a better understanding of food flows, food availability, and changes in eating habits over time. The data can be used to assess nutritional patterns and to develop strategies for food security and sustainable food systems.
+
+The data available include values for over 245 countries and territories from 1961 onwards. It includes information on crop and livestock products, including both primary and processed products. The values are given in terms of mass quantity (tonnes), and in some cases, you can also find caloric value (kcal) and protein and fat content (g).
+
+R code:
+
+```{r, cache=TRUE, warnings=FALSE,results='hide'}
+# Load necessary libraries
+library(FAOSTAT)
+library(ggplot2)
+library(dplyr)
+
+data_folder <- "data_raw" 
+dir.create(data_folder)
+crop_production <- get_faostat_bulk(code = "QCL", data_folder = data_folder) # Show the structure of the data
+str(crop_production)
+
+saveRDS(crop_production, "data_raw/crop_production_e_all_data.rds")
+```
+
+```{r, cache=TRUE, warnings=FALSE}
+# Now you can load your local version of the data from the RDS file 
+crop_production <- readRDS("data_raw/crop_production_e_all_data.rds")
+print(levels(factor(crop_production$item)))
+```
+
+
+```{r, cache=TRUE, warnings=FALSE, message=FALSE}
+subset <- crop_production %>% 
+  filter(item %in% c("Wine","Meat of buffalo, fresh or chilled", "Bees","Sugar beet", "Natural honey")) %>% 
+  filter(area == "United States of America")
+
+# Plot the data
+ggplot(subset, aes(x = year, y = value, colour=item)) +
+  geom_smooth() +
+  labs(
+    title = "USA supply of food items (kcal/capita/day)",
+    x = "Year",
+    y = "Food Supply (kcal/capita/day)"
+  ) + theme_minimal()
+```
+

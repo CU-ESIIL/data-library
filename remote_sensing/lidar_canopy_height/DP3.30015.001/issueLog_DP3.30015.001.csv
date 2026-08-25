@@ -1,0 +1,5 @@
+"id","parentIssueID","issueDate","resolvedDate","dateRangeStart","dateRangeEnd","locationAffected","issue","resolution"
+45804,NA,"2022-01-19T00:00:00Z","2022-01-15T00:00:00Z","2018-08-01T00:00:00Z","2018-08-31T00:00:00Z","JORN, SRER","Original algorithm did not take advantage of improvements in the Riegl Lidar to handle short stature vegetation.","Algorithm was updated to improve data product quality for short stature vegetation when the Riegl lidar was used for data collection."
+45909,NA,"2022-01-20T00:00:00Z","2022-03-31T00:00:00Z","2016-07-01T00:00:00Z","2016-07-31T00:00:00Z","STEI","Files referenced in incorrect UTM zone (16N) for the Chequamegon-Nicolet National Forest region of STEI","Files will be reprocessed and referenced within the correct UTM zone (15N)"
+63004,NA,"2022-08-09T00:00:00Z",NA,"2020-06-01T00:00:00Z","2020-06-30T00:00:00Z","CPER","Data was incorrectly referenced to UTM Zone 33N instead of Zone 13N",""
+74606,NA,"2022-12-08T00:00:00Z","2022-12-08T00:00:00Z","2018-05-01T00:00:00Z","2018-05-31T00:00:00Z","ORNL","Some 'No Data' values at site edges coded as NaNs instead of -9999",""
