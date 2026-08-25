@@ -28,6 +28,10 @@
 
 - [dryad](harmonization/dryad/dryad.md)
 
+## ecostress
+
+- [ECOSTRESS Water Use Efficiency](remote_sensing/ECOSTRESS/ecostress.md)
+
 ## education
 
 - [NCES](education/NCES/NCES.md)
@@ -212,6 +216,10 @@
 
 - [nrcs soil exploration](maka-sitomniya/NRCS/nrcs_soil_exploration.md)
 
+## no key required
+
+- [ECOSTRESS Water Use Efficiency](remote_sensing/ECOSTRESS/ecostress.md)
+
 ## osm
 
 - [osm](solutions/osm/osm.md)
@@ -251,10 +259,15 @@
 
 ## remote_sensing
 
+- [ECOSTRESS Water Use Efficiency](remote_sensing/ECOSTRESS/ecostress.md)
 - [lidar canopy height](remote_sensing/lidar_canopy_height/lidar_canopy_height.md)
 - [neon hyperspectral](remote_sensing/neon_hyperspectral/neon_hyperspectral.md)
 - [sentinel streaming](remote_sensing/sentinel_streaming/sentinel_streaming.md)
 - [sentinel2 aws](remote_sensing/sentinel2_aws/sentinel2_aws.md)
+
+## raster
+
+- [ECOSTRESS Water Use Efficiency](remote_sensing/ECOSTRESS/ecostress.md)
 
 ## scale
 
@@ -276,6 +289,10 @@
 
 - [rap-tiles](vegetation/rap-tiles/rap-tiles.md)
 - [sentinel streaming](remote_sensing/sentinel_streaming/sentinel_streaming.md)
+
+## streaming
+
+- [ECOSTRESS Water Use Efficiency](remote_sensing/ECOSTRESS/ecostress.md)
 
 ## teaching
 
@@ -314,4 +331,3 @@
 ## wgi
 
 - [wgi](ethics/wgi/wgi.md)
-

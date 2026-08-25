@@ -2,6 +2,25 @@
 
 This log records substantial agent-assisted changes to the ESIIL Data Library so future contributors can understand why changes were made.
 
+## 2026-08-25
+
+### ECOSTRESS discoverability fix
+
+- Agent/tool used: Codex
+- Purpose: Make the new ECOSTRESS dataset entry discoverable in MkDocs search and topic/tag browsing.
+- Files changed:
+  - `docs/remote_sensing/ECOSTRESS/ecostress.md`
+  - `docs/remote_sensinge/ECOSTRESS/ecostress.md`
+  - `docs/topic/remote_sensing.md`
+  - `docs/tags.md`
+  - `docs/prompt-log.md`
+- Major decisions:
+  - Moved the page from the misspelled `remote_sensinge` directory into the existing `remote_sensing` collection.
+  - Added front matter, a clear H1 title, standard Data Library sections, fenced R/Python examples, and stronger discovery tags.
+  - Linked the entry from the remote sensing topic page and static tag index.
+- Unresolved TODOs:
+  - Verify the deployed GitHub Pages search index after the change is committed, pushed, and Pages finishes rebuilding.
+
 ## 2026-04-29
 
 ### Playwright site health
