@@ -1,0 +1,22 @@
+!table
+!version 300
+!charset WindowsLatin1
+
+Definition Table
+  Type NATIVE Charset "WindowsLatin1"
+  Fields 15
+    ICF_ID Float ;
+    DB_ALIAS Float ;
+    DBUNIQUE Char (15) ;
+    LATITUDE Float ;
+    LONGITUDE Float ;
+    DATUM Char (10) ;
+    COUNTY_NAM Char (20) ;
+    CNTY_FIPS Char (3) ;
+    STATE_NAME Char (20) ;
+    STATE_CODE Char (2) ;
+    Mine_Name Char (75) ;
+    QC_FLAG Char (1) ;
+    ZIPCODE Char (5) ;
+    QAQC Char (1) ;
+    MADS Char (1) ;

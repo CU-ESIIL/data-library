@@ -1,0 +1,720 @@
+Identification_Information
+  Citation
+    Citation_Information
+      Originator:        Montana State Library
+      Publication_Date:  19921006
+      Title:             U.S. Bureau of Mines Mineral Location Database
+      Geospatial_Data_Presentation_Form:  map
+      Publication_Information
+        Publication_Place:  Helena, Montana
+        Publisher:          Montana State Library
+      Online_Linkage: http://nris.mt.gov/nsdi/nris/ms4.e00.zip
+  Description
+    Abstract:
+        Mine locations from the U.S. Bureau of Mines Mineral
+        Information Location System (MILS) database. Provided to
+        NRIS by Frances Baker of the Spokane office (509-353-2738 or
+        509-353-2712). This data was provided to BOM from many State
+        and Federal agencies, and the coordinates come from sources
+        of varying accuracy. The attributes included here are a
+        subset of those available from USBOM. Data from BOM's
+        "one-liner" report on 9/1/1992.
+    Purpose:
+        Mine information database.
+  Time_Period_of_Content
+    Time_Period_Information
+      Single_Date/Time
+        Calendar_Date:  19920901
+    Currentness_Reference:  Publication Date
+  Status
+    Progress:  Complete
+    Maintenance_and_Update_Frequency:  Unknown
+  Spatial_Domain
+    Bounding_Coordinates
+      West_Bounding_Coordinate:    -117.523697
+      East_Bounding_Coordinate:    -103.552101
+      North_Bounding_Coordinate:     49.122799
+      South_Bounding_Coordinate:     44.183399
+    Data_Set_G-Polygon
+      Data_Set_G-Polygon_Outer_G-Ring
+        G-Ring_Latitude:   49.02441787719
+        G-Ring_Longitude:  -116.0748825073
+        G-Ring_Latitude:   47.93949127197
+        G-Ring_Longitude:  -116.0513381958
+        G-Ring_Latitude:   47.45859146118
+        G-Ring_Longitude:  -115.7472457885
+        G-Ring_Latitude:   46.60823059082
+        G-Ring_Longitude:  -114.6641998291
+        G-Ring_Latitude:   46.61886978149
+        G-Ring_Longitude:  -114.424659729
+        G-Ring_Latitude:   45.60388565063
+        G-Ring_Longitude:  -114.5483016967
+        G-Ring_Latitude:   45.43321228027
+        G-Ring_Longitude:  -114.3186950683
+        G-Ring_Latitude:   45.58434677124
+        G-Ring_Longitude:  -113.9458312988
+        G-Ring_Latitude:   44.86284637451
+        G-Ring_Longitude:  -113.5072631835
+        G-Ring_Latitude:   44.31266784668
+        G-Ring_Longitude:  -112.8395233154
+        G-Ring_Latitude:   44.44471740722
+        G-Ring_Longitude:  -110.9373550415
+        G-Ring_Latitude:   44.95633697509
+        G-Ring_Longitude:  -110.950553894
+        G-Ring_Latitude:   44.98777389526
+        G-Ring_Longitude:  -108.1549987793
+        G-Ring_Latitude:   44.98892211914
+        G-Ring_Longitude:  -103.8922653198
+        G-Ring_Latitude:   49.05199050903
+        G-Ring_Longitude:  -103.7473602294
+        G-Ring_Latitude:   49.08559036254
+        G-Ring_Longitude:  -109.5802764892
+        G-Ring_Latitude:   49.02441787719
+        G-Ring_Longitude:  -116.0748825073
+  Keywords
+    Theme
+      Theme_Keyword_Thesaurus:  None
+      Theme_Keyword:  mining
+      Theme_Keyword:  mine
+    Place
+      Place_Keyword_Thesaurus:  None
+      Place_Keyword:  Montana
+  Access_Constraints:
+        None
+  Use_Constraints:
+        None
+  Point_of_Contact
+    Contact_Information
+      Contact_Organization_Primary
+        Contact_Organization:  Montana State Library
+        Contact_Person:        Fred Gifford
+      Contact_Position:        GIS Coordinator
+      Contact_Address
+        Address_Type:  mailing and physical address
+        Address:            1515 East 6th Avenue
+        City:               Helena
+        State_or_Province:  Montana
+        Postal_Code:        59620-1800
+        Country:            USA
+      Contact_Voice_Telephone:          (406) 444-5357
+      Contact_Facsimile_Telephone:      (406) 444-0581
+      Contact_Electronic_Mail_Address:  fgifford@nris.mt.gov
+      Hours_of_Service:  Monday-Friday, 8-5, Mountain Time
+  Native_Data_Set_Environment:
+    Arc/Info version 6.1.1, SunOS version 4.1.3
+    Pathname = /montana/human/mine92
+ 
+Data_Quality_Information:
+  Attribute_Accuracy
+    Attribute_Accuracy_Report:
+        Unknown
+  Logical_Consistency_Report:
+        None
+  Completeness_Report:
+        Unknown
+  Positional_Accuracy
+    Horizontal_Positional_Accuracy
+      Horizontal_Positional_Accuracy_Report:
+        Unknown
+  Lineage
+    Source_Information
+      Source_Citation
+        Citation_Information
+          Originator:
+            U.S. Bureau of Mines
+            Branch of Engineering and Economic Analysis
+          Publication_Date:  19920901
+          Title:  Mineral Information System
+          Geospatial_Data_Presentation_Form:  map
+          Publication_Information
+            Publication_Place:  Spokane, WA
+            Publisher:  U.S. Bureau of Mines
+          Other_Citation_Details:
+            East 360 3rd Avenue
+            509-353-2735
+      Source_Scale_Denominator:  0
+      Type_of_Source_Media:  Electronic file
+      Source_Time_Period_of_Content
+        Time_Period_Information
+          Single_Date/Time
+            Calendar_Date:  19920901
+        Source_Currentness_Reference:  Publication Date
+      Source_Citation_Abbreviation:  s1
+      Source_Contribution:
+          The data set is a copy of this source.
+    Process_Step
+      Process_Description:
+        Project the Bureau of Mines data to Albers.
+      Source_Used_Citation_Abbreviation:  s1
+      Process_Date:  19921006
+      Source_Produced_Citation_Abbreviation:  fin
+ 
+Spatial_Data_Organization_Information:
+  Direct_Spatial_Reference_Method:  Point
+  Point_and_Vector_Object_Information
+    SDTS_Terms_Description
+      SDTS_Point_and_Vector_Object_Type:  Point
+      Point_and_Vector_Object_Count:   7481
+ 
+Spatial_Reference_Information
+  Horizontal_Coordinate_System_Definition
+    Planar
+      Grid_Coordinate_System
+        Grid_Coordinate_System_Name: State Plane Coordinate System 1983
+        State_Plane_Coordinate_System
+          SPCS_Zone_Identifier: 2500
+          Lambert_Conformal_Conic
+            Standard_Parallel:  45
+            Standard_Parallel:  49
+            Longitude_of_Central_Meridian:  -109.5
+            Latitude_of_Projection_Origin:  44.25
+            False_Easting:   600000.00000
+            False_Northing:  0.00000
+      Planar_Coordinate_Information
+        Planar_Coordinate_Encoding_Method:  coordinate pair
+        Coordinate_Representation
+          Abscissa_Resolution:  .1
+          Ordinate_Resolution:  .1
+        Planar_Distance_Units:  meters
+    Geodetic_Model
+      Horizontal_Datum_Name:  North American Datum of 1983
+      Ellipsoid_Name:   Geodetic Reference System 80
+      Semi-major_Axis:  6378137.0
+      Denominator_of_Flattening_Ratio:  298.257
+Entity_and_Attribute_Information:
+  Detailed_Description
+    Entity_Type
+      Entity_Type_Label:  MINE92.PAT
+      Entity_Type_Definition:  Point Attribute Table
+      Entity_Type_Definition_Source:  None
+    Attribute
+      Attribute_Label:  SEQ
+      Attribute_Definition:
+        U.S. BOM sequence number
+          1st two digits are the State code, next three are the
+          County code.
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Unrepresentable_Domain:  Character field
+      Beginning_Date_of_Attribute_Values:  19920901
+    Attribute
+      Attribute_Label:  NAME
+      Attribute_Definition:
+        Name of mine or prospect
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Unrepresentable_Domain:  Character field
+      Beginning_Date_of_Attribute_Values:  19920901
+    Attribute
+      Attribute_Label:  OPTYPE
+      Attribute_Definition:
+        Type of Mining Operation
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Enumerated_Domain
+          Enumerated_Domain_Value:  UNDERGROUND
+          Enumerated_Domain_Value_Definition:  Underground Mine
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  SURFACE
+          Enumerated_Domain_Value_Definition:  Surface Mine
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  PROSPECT
+          Enumerated_Domain_Value_Definition:  Mineral Prospect
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  SURF-UNDERG
+          Enumerated_Domain_Value_Definition:  Surface & Underground Mine
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  HOT SPRING
+          Enumerated_Domain_Value_Definition:  Hot Spring
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  MINERAL LOC
+          Enumerated_Domain_Value_Definition:  Located Minerals
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  PLACER
+          Enumerated_Domain_Value_Definition:  Placer Mine
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  UNKNOWN
+          Enumerated_Domain_Value_Definition:  Unknown
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  PROC PLANT
+          Enumerated_Domain_Value_Definition:  Processing Plant
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  WELL
+          Enumerated_Domain_Value_Definition:  Well
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  UNDERWATER
+          Enumerated_Domain_Value_Definition:  Under Water
+          Enumerated_Domain_Value_Definition_Source:  none
+      Beginning_Date_of_Attribute_Values:  19920901
+    Attribute
+      Attribute_Label:  STATUS
+      Attribute_Definition:
+        Operations status
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Enumerated_Domain
+          Enumerated_Domain_Value:  PAST PRODUCER
+          Enumerated_Domain_Value_Definition:  Formerly a producing mine
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  RAW PROSPECT
+          Enumerated_Domain_Value_Definition:  Raw Prospect
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  PRODUCER
+          Enumerated_Domain_Value_Definition:  Currently a producing mine
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  EXP PROSPECT
+          Enumerated_Domain_Value_Definition:  Exploration prospect???
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  DEVEL DEPOSIT
+          Enumerated_Domain_Value_Definition:  Developed deposit???
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  UNKNOWN
+          Enumerated_Domain_Value_Definition:  Unknown
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  TEMP SHUTDOWN
+          Enumerated_Domain_Value_Definition:  Temporarily shut down
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  OTHER
+          Enumerated_Domain_Value_Definition:  Other
+          Enumerated_Domain_Value_Definition_Source:  none
+      Beginning_Date_of_Attribute_Values:  19920901
+    Attribute
+      Attribute_Label:  DLAT
+      Attribute_Definition:
+        Degrees of Latitude
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Range_Domain
+          Range_Domain_Minimum:  44
+          Range_Domain_Maximum:  48
+      Attribute_Measurement_Resolution:  1
+      Beginning_Date_of_Attribute_Values:  19920901
+    Attribute
+      Attribute_Label:  MLAT
+      Attribute_Definition:
+        Minutes of Latitude
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Range_Domain
+          Range_Domain_Minimum:  0
+          Range_Domain_Maximum:  59
+      Attribute_Measurement_Resolution:  1
+      Beginning_Date_of_Attribute_Values:  19920901
+    Attribute
+      Attribute_Label:  SLAT
+      Attribute_Definition:
+        Seconds of Latitude
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Range_Domain
+          Range_Domain_Minimum:  0
+          Range_Domain_Maximum:  59
+      Beginning_Date_of_Attribute_Values:  19920901
+    Attribute
+      Attribute_Label:  DLONG
+      Attribute_Definition:
+        Degrees of Longitude
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Range_Domain
+          Range_Domain_Minimum:  104
+          Range_Domain_Maximum:  117
+      Attribute_Measurement_Resolution:  1
+      Beginning_Date_of_Attribute_Values:  19920901
+    Attribute
+      Attribute_Label:  MLONG
+      Attribute_Definition:
+        Minutes of Longitude
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Range_Domain
+          Range_Domain_Minimum:  0
+          Range_Domain_Maximum:  59
+      Beginning_Date_of_Attribute_Values:  19920901
+    Attribute
+      Attribute_Label:  SLONG
+      Attribute_Definition:
+        Seconds of Longitude
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Range_Domain
+          Range_Domain_Minimum:  0
+          Range_Domain_Maximum:  59
+      Beginning_Date_of_Attribute_Values:  19920901
+    Attribute
+      Attribute_Label:  UTMZ
+      Attribute_Definition:
+        UTM coordinate zone
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Range_Domain
+          Range_Domain_Minimum:  11
+          Range_Domain_Maximum:  13
+      Beginning_Date_of_Attribute_Values:  19920901
+    Attribute
+      Attribute_Label:  UTMN
+      Attribute_Definition:
+        UTM northing
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Range_Domain
+          Range_Domain_Minimum:  4920699
+          Range_Domain_Maximum:  5428180
+      Beginning_Date_of_Attribute_Values:  19920901
+    Attribute
+      Attribute_Label:  UTME
+      Attribute_Definition:
+        UTM easting
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Range_Domain
+          Range_Domain_Minimum:  267358
+          Range_Domain_Maximum:  732812
+      Attribute_Measurement_Resolution:  1
+      Beginning_Date_of_Attribute_Values:  19920901
+    Attribute
+      Attribute_Label:  PREC
+      Attribute_Definition:
+        Precision of coordinates
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Enumerated_Domain
+          Enumerated_Domain_Value:  100M
+          Enumerated_Domain_Value_Definition:  100 meters
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  10M
+          Enumerated_Domain_Value_Definition:  10 meters
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  500M
+          Enumerated_Domain_Value_Definition:  500 meters
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  UNK
+          Enumerated_Domain_Value_Definition:  Unknown
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  1KM
+          Enumerated_Domain_Value_Definition:  1000 meters
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  1000
+          Enumerated_Domain_Value_Definition:  1000 meters?
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  10
+          Enumerated_Domain_Value_Definition:  10 meters?
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  5KM
+          Enumerated_Domain_Value_Definition:  5000 meters
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  500
+          Enumerated_Domain_Value_Definition:  500 meters?
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  250
+          Enumerated_Domain_Value_Definition:  250 meters?
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  100
+          Enumerated_Domain_Value_Definition:  100 meters?
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  5000
+          Enumerated_Domain_Value_Definition:  5000 meters?
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  10KM
+          Enumerated_Domain_Value_Definition:  10000 meters
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  >10KM
+          Enumerated_Domain_Value_Definition:  More than 10000 meters
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  10000
+          Enumerated_Domain_Value_Definition:  10000 meters?
+          Enumerated_Domain_Value_Definition_Source:  none
+      Beginning_Date_of_Attribute_Values:  19920901
+    Attribute
+      Attribute_Label:  TWN
+      Attribute_Definition:
+        Public Land Survey Township Number
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Unrepresentable_Domain:  Character field
+      Beginning_Date_of_Attribute_Values:  19920901
+    Attribute
+      Attribute_Label:  NS
+      Attribute_Definition:
+        Township North/South Designation
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Enumerated_Domain
+          Enumerated_Domain_Value:  S
+          Enumerated_Domain_Value_Definition:  Township South of Base Line
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  N
+          Enumerated_Domain_Value_Definition:  Township North of Base Line
+          Enumerated_Domain_Value_Definition_Source:  none
+      Beginning_Date_of_Attribute_Values:  19920901
+    Attribute
+      Attribute_Label:  RNG
+      Attribute_Definition:
+        Public Land Survey Range Number
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Unrepresentable_Domain:  Character field
+      Beginning_Date_of_Attribute_Values:  19920901
+    Attribute
+      Attribute_Label:  EW
+      Attribute_Definition:
+        Range East/West Designation
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Enumerated_Domain
+          Enumerated_Domain_Value:  W
+          Enumerated_Domain_Value_Definition:  Range West of Principal Meridian
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  E
+          Enumerated_Domain_Value_Definition:  Range East of Principal Meridian
+          Enumerated_Domain_Value_Definition_Source:  none
+      Beginning_Date_of_Attribute_Values:  19920901
+    Attribute
+      Attribute_Label:  SECT
+      Attribute_Definition:
+        Public Land Survey Section Number
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Unrepresentable_Domain:  Character field
+      Beginning_Date_of_Attribute_Values:  19920901
+    Attribute
+      Attribute_Label:  SUB-SECT
+      Attribute_Definition:
+        Sub-section designation
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Unrepresentable_Domain:  Character field
+      Beginning_Date_of_Attribute_Values:  19920901
+    Attribute
+      Attribute_Label:  QUAD
+      Attribute_Definition:
+        USGS quadrangle name
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Unrepresentable_Domain:  Character field
+      Beginning_Date_of_Attribute_Values:  19920901
+    Attribute
+      Attribute_Label:  QUAD-SIZE
+      Attribute_Definition:
+        USGS map series
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Enumerated_Domain
+          Enumerated_Domain_Value:  7.5 MIN
+          Enumerated_Domain_Value_Definition:  1:24,000 scale 7.5-minute quadrangle
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  15 MIN
+          Enumerated_Domain_Value_Definition:  1:62,500 scale 15-minute quadrangle
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  1:250K
+          Enumerated_Domain_Value_Definition:  1:250,000 scale 1x2 degeree quadrangle
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  30 MIN
+          Enumerated_Domain_Value_Definition:  30-minute quadrangle
+          Enumerated_Domain_Value_Definition_Source:  none
+      Beginning_Date_of_Attribute_Values:  19920901
+    Attribute
+      Attribute_Label:  EVAL-TYPE
+      Attribute_Definition:
+        Type of evaluation
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Enumerated_Domain
+          Enumerated_Domain_Value:  R
+          Enumerated_Domain_Value_Definition:  Resource data is available
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  C
+          Enumerated_Domain_Value_Definition:  Complete data is available
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  M
+          Enumerated_Domain_Value_Definition:  Not confirmed
+          Enumerated_Domain_Value_Definition_Source:  none
+          Enumerated_Domain_Value:  L
+          Enumerated_Domain_Value_Definition:  Location is confirmed
+          Enumerated_Domain_Value_Definition_Source:  none
+      Beginning_Date_of_Attribute_Values:  19920901
+    Attribute
+      Attribute_Label:  YR-CHKD
+      Attribute_Definition:
+        Year checked
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Range_Domain
+          Range_Domain_Minimum:  0
+          Range_Domain_Maximum:  1992
+      Beginning_Date_of_Attribute_Values:  19920901
+    Attribute
+      Attribute_Label:  EVALUATOR
+      Attribute_Definition:
+        Checked by
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Unrepresentable_Domain:  Character field
+      Beginning_Date_of_Attribute_Values:  19920901
+    Attribute
+      Attribute_Label:  PROP-FILE
+      Attribute_Definition:
+        US BOM backup file number
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Range_Domain
+          Range_Domain_Minimum:  0
+          Range_Domain_Maximum:  100
+      Beginning_Date_of_Attribute_Values:  19920901
+    Attribute
+      Attribute_Label:  LAST-MOD
+      Attribute_Definition:
+        Date last modified
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Unrepresentable_Domain:  Character field
+      Beginning_Date_of_Attribute_Values:  19920901
+    Attribute
+      Attribute_Label:  COM
+      Attribute_Definition:
+        List of up to 5 commodities mined
+      Attribute_Definition_Source:  None
+      Attribute_Domain_Values
+        Unrepresentable_Domain:  Character field
+      Beginning_Date_of_Attribute_Values:  19920901
+ 
+Distribution_Information:
+  Distributor
+    Contact_Information
+      Contact_Organization_Primary
+        Contact_Organization:  Montana State Library
+        Contact_Person:        Fred Gifford
+      Contact_Position:        GIS Coordinator
+      Contact_Address
+        Address_Type:  mailing and physical address
+        Address:            1515 East 6th Avenue
+        City:               Helena
+        State_or_Province:  Montana
+        Postal_Code:        59620-1800
+        Country:            USA
+      Contact_Voice_Telephone:          (406) 444-5357
+      Contact_Facsimile_Telephone:      (406) 444-0581
+      Contact_Electronic_Mail_Address:  fgifford@nris.mt.gov
+      Hours_of_Service:  Monday-Friday, 8-5, Mountain Time
+  Distribution_Liability:
+    Users must assume responsibility to determine the
+    usability of this data for their purposes.
+  Standard_Order_Process
+    Non-digital_Form:
+      Contact the State Library to see if the data is
+      available as hardcopy maps.
+    Fees:
+      For-profit organizations must pay our costs to reproduce the
+      data.  Fees can be waived if doing Government work.
+  Standard_Order_Process
+    Digital_Form
+      Digital_Transfer_Information
+        Format_Name:            Arc/Info Export
+        Format_Version_Number:  7.0.2
+        Format_Version_Date:    19940915
+      Digital_Transfer_Option
+        Online_Option
+          Computer_Contact_Information
+            Network_Address
+              Network_Resource_Name:  http://nris.mt.gov/nsdi/nris/ms4.e00.zip
+      Digital_Transfer_Option
+        Offline_Option
+          Offline_Media:     8mm tape cartridge
+          Recording_Format:  tar
+      Digital_Transfer_Option
+        Offline_Option
+          Offline_Media:     quarter-inch tape cartridge
+          Recording_Format:  tar
+      Digital_Transfer_Option
+        Offline_Option
+          Offline_Media:     3.5-inch floppy disk
+          Recording_Format:  DOS
+    Digital_Form
+      Digital_Transfer_Information
+        Format_Name:            DXF
+        Format_Version_Number:  Unknown
+      Digital_Transfer_Option
+        Offline_Option
+          Offline_Media:     8mm tape cartridge
+          Recording_Format:  tar
+      Digital_Transfer_Option
+        Offline_Option
+          Offline_Media:     quarter-inch tape cartridge
+          Recording_Format:  tar
+      Digital_Transfer_Option
+        Offline_Option
+          Offline_Media:     3.5-inch floppy disk
+          Recording_Format:  DOS
+    Digital_Form
+      Digital_Transfer_Information
+        Format_Name:            DLG
+        Format_Version_Number:  Unknown
+      Digital_Transfer_Option
+        Offline_Option
+          Offline_Media:     8mm tape cartridge
+          Recording_Format:  tar
+      Digital_Transfer_Option
+        Offline_Option
+          Offline_Media:     quarter-inch tape cartridge
+          Recording_Format:  tar
+      Digital_Transfer_Option
+        Offline_Option
+          Offline_Media:     3.5-inch floppy disk
+          Recording_Format:  DOS
+    Digital_Form
+      Digital_Transfer_Information
+        Format_Name:            MOSS
+        Format_Version_Number:  Unknown
+      Digital_Transfer_Option
+        Offline_Option
+          Offline_Media:     8mm tape cartridge
+          Recording_Format:  tar
+      Digital_Transfer_Option
+        Offline_Option
+          Offline_Media:     quarter-inch tape cartridge
+          Recording_Format:  tar
+      Digital_Transfer_Option
+        Offline_Option
+          Offline_Media:     3.5-inch floppy disk
+          Recording_Format:  DOS
+    Digital_Form
+      Digital_Transfer_Information
+        Format_Name:            IGDS
+        Format_Version_Number:  Unknown
+      Digital_Transfer_Option
+        Offline_Option
+          Offline_Media:     8mm tape cartridge
+          Recording_Format:  tar
+      Digital_Transfer_Option
+        Offline_Option
+          Offline_Media:     quarter-inch tape cartridge
+          Recording_Format:  tar
+      Digital_Transfer_Option
+        Offline_Option
+          Offline_Media:     3.5-inch floppy disk
+          Recording_Format:  DOS
+    Fees:
+      For-profit organizations must pay our costs to reproduce the
+      data.  Fees can be waived if doing Government work.
+ 
+Metadata_Reference_Information:
+  Metadata_Date:  19930702
+  Metadata_Review_Date:  19961005
+  Metadata_Contact
+    Contact_Information
+      Contact_Organization_Primary
+        Contact_Organization:  Montana State Library
+        Contact_Person:        Gerry Daumiller
+      Contact_Address
+        Address_Type:  mailing and physical address
+        Address:            1515 East 6th Avenue
+        City:               Helena
+        State_or_Province:  Montana
+        Postal_Code:        59620-1800
+        Country:            USA
+      Contact_Voice_Telephone:          (406) 444-5357
+      Contact_Facsimile_Telephone:      (406) 444-0581
+      Contact_Electronic_Mail_Address:  fgifford@nris.mt.gov
+      Hours_of_Service:  Monday-Friday, 8-5, Mountain Time
+  Metadata_Standard_Name:  FGDC Content Standards for Digital Geospatial Metadata
+  Metadata_Standard_Version:  19940608

@@ -1,0 +1,12 @@
+!table
+!version 300
+!charset WindowsLatin1
+
+Definition Table
+  Type NATIVE Charset "Neutral"
+  Fields 5
+    ID Integer ;
+    Mine_Name Char (50) ;
+    Reference Char (75) ;
+    State Char (2) ;
+    County Char (20) ;
